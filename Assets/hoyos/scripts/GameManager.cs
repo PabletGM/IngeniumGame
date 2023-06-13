@@ -5,9 +5,12 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    //lista de objetos que pueden ser seleccionados con clase PlacementObject
+    //lista de objetos botones generales que pueden ser seleccionados con clase SelectedButton
     [SerializeField]
     private SelectedButton[] buttons;
+    //lista de objetos Button texto de botones especificos 
+    [SerializeField]
+    private GameObject [] buttonTextClick;
     //guardamos boton pulsado
     private SelectedButton selectionButton;
 
@@ -62,6 +65,8 @@ public class GameManager : MonoBehaviour
                 button.gameObject.transform.localScale = new Vector3(aumento, aumento, aumento);
                 //cambiamos color de letra a verde
                 button.gameObject.GetComponentInChildren<TextMeshProUGUI>().color = Color.green;
+                //
+                
             }
         }
     }
