@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -71,6 +72,8 @@ public class GameManager : MonoBehaviour
                 //para modificar a el hijp del hijo de button, esto es a el texto del boton click
                 GameObject grandChild = button.gameObject.transform.GetChild(0).GetChild(0).gameObject;
                 grandChild.GetComponentInChildren<TextMeshProUGUI>().text = "Click";
+                //hacemos tween sobre texto escalable
+                grandChild.transform.DOScale(new Vector3(1.35f, 1.35f, 1.35f), 1).SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
             }
         }
     }
