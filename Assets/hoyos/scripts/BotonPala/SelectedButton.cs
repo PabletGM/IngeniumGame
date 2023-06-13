@@ -9,7 +9,7 @@ public class SelectedButton : MonoBehaviour
 {
     
     private bool isSelected = false;
-    private float aumentoSize = 1.5f;
+    private float aumentoSize = 1.2f;
     GameManager _myGameManager;
 
     //devuelve estado del boton

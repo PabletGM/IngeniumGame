@@ -54,6 +54,9 @@ public class GameManager : MonoBehaviour
                 Vector3 size = new Vector3(1, 1, 1);
                 //pasamos el tamaño normal y el boton que debe cambiar
                 NormalPala(size, current);
+                //para modificar a el hijp del hijo de button, esto es a el texto del boton click
+                GameObject grandChild = current.gameObject.transform.GetChild(0).GetChild(0).gameObject;
+                grandChild.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
             //si coinciden y es nuestro boton
             else
@@ -65,8 +68,9 @@ public class GameManager : MonoBehaviour
                 button.gameObject.transform.localScale = new Vector3(aumento, aumento, aumento);
                 //cambiamos color de letra a verde
                 button.gameObject.GetComponentInChildren<TextMeshProUGUI>().color = Color.green;
-                //
-                
+                //para modificar a el hijp del hijo de button, esto es a el texto del boton click
+                GameObject grandChild = button.gameObject.transform.GetChild(0).GetChild(0).gameObject;
+                grandChild.GetComponentInChildren<TextMeshProUGUI>().text = "Click";
             }
         }
     }
