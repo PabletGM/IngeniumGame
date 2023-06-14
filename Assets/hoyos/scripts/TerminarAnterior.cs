@@ -22,4 +22,13 @@ public class TerminarAnterior : MonoBehaviour
         //hacemos boton interactuable
         botonAnteriorExcavacion.GetComponent<Button>().interactable = false;
     }
+
+    //asi se puede cerrar la excavacion de un hoyo concreto y no del anterior todo el rato
+    public void CerrarExcavacionManual(GameObject go)
+    {
+        //cambiamos a sprite Pico
+        go.GetComponent<Image>().sprite = dobleTick;
+        //hacemos boton interactuable
+        go.GetComponent<Button>().interactable = false;
+    }
 }

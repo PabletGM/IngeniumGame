@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Excavando : MonoBehaviour
@@ -16,6 +17,9 @@ public class Excavando : MonoBehaviour
 
     [SerializeField]
     private ParticleSystem vfxExcavacion;
+
+    [SerializeField]
+    private TerminarAnterior term;
 
 
 
@@ -37,6 +41,17 @@ public class Excavando : MonoBehaviour
             //calculamos y ponemos por consola excavaciones extra
             int num = _myGameManager.NumExcavacionesTotales();
             Debug.Log(num);
+        }
+        //cambio el estado a los 2 ticks del hoyo actual ya que ya has acabado y quito letras
+        else
+        {
+           
+            //encontramos boton actual
+            SelectedButton button = _myGameManager.buttonPressed();
+            GameObject go = button.gameObject;
+            go.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            //accedemos a su metodo
+            term.CerrarExcavacionManual(button.gameObject);
         }
         
     }
