@@ -14,6 +14,9 @@ public class Excavando : MonoBehaviour
     //para bajar la cantidad 1 nivel se le suma -0.5 a y
     private float cantidadDesplazable = -0.5f;
 
+    [SerializeField]
+    private ParticleSystem vfxExcavacion;
+
 
 
    
@@ -24,6 +27,8 @@ public class Excavando : MonoBehaviour
         //Desplazamos mientras que el numero de picadas sea menor que maximas
         if(numeroPicadasHoyo < numeroPicadasMaximasPorHoyo)
         {
+            //hacemos vfx
+            vfxExcavacion.Play();
             transform.position = transform.position+ new Vector3(0, cantidadDesplazable, 0);
             //aumenta numero de picadas
             numeroPicadasHoyo++;
