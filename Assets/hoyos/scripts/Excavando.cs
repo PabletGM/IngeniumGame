@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Excavando : MonoBehaviour
 {
+    GameManager _myGameManager;
     //segun el hoyo será diferente
     [SerializeField]
     private int numeroPicadasMaximasPorHoyo;
@@ -26,7 +27,16 @@ public class Excavando : MonoBehaviour
             transform.position = transform.position+ new Vector3(0, cantidadDesplazable, 0);
             //aumenta numero de picadas
             numeroPicadasHoyo++;
+            //avisa al GameManager que se ha picado 1 vez más
+            _myGameManager.ExcavacionExtra();
+            //calculamos y ponemos por consola excavaciones extra
+            int num = _myGameManager.NumExcavacionesTotales();
+            Debug.Log(num);
         }
         
+    }
+    private void Start()
+    {
+        _myGameManager = GameManager.GetInstance();
     }
 }

@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     private GameObject [] buttonTextClick;
     //guardamos boton pulsado
     private SelectedButton selectionButton;
+    //numero de excavaciones totales en la partida
+    private int numeroExcavacionesTotalesPartida = 0;
 
     
 
@@ -95,6 +97,18 @@ public class GameManager : MonoBehaviour
     public void NewbuttonPressed(SelectedButton buttonSelect)
     {
         selectionButton = buttonSelect;
+    }
+
+    //metodo que devuelve las veces excavadas por partida
+    public int NumExcavacionesTotales()
+    {
+        return numeroExcavacionesTotalesPartida;
+    }
+
+    //metodo que suma 1 al total de veces excavadas
+    public void ExcavacionExtra()
+    {
+         numeroExcavacionesTotalesPartida += 1;
     }
 
 
