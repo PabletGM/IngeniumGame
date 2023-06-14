@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 81754576}
   - component: {fileID: 81754579}
   - component: {fileID: 81754575}
+  - component: {fileID: 81754580}
   m_Layer: 5
   m_Name: Hoyo3
   m_TagString: Untagged
@@ -273,6 +274,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 81754580}
+        m_TargetAssemblyTypeName: TerminarAnterior, Assembly-CSharp
+        m_MethodName: CerrarExcavacion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &81754577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -325,6 +338,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pico: {fileID: 21300000, guid: dba915db9b67d8245a11afad88273004, type: 3}
   botonSiguienteExcavacion: {fileID: 1418780827}
+--- !u!114 &81754580
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81754573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2ce4e224dc5da47b9983cb1cbec7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dobleTick: {fileID: 21300000, guid: 3bdb096281e1dcc40a1753efa2937650, type: 3}
+  botonAnteriorExcavacion: {fileID: 1275369719}
 --- !u!1 &89337453
 GameObject:
   m_ObjectHideFlags: 0
@@ -2982,6 +3009,7 @@ GameObject:
   - component: {fileID: 1275369719}
   - component: {fileID: 1275369722}
   - component: {fileID: 1275369718}
+  - component: {fileID: 1275369723}
   m_Layer: 5
   m_Name: Hoyo2
   m_TagString: Untagged
@@ -3102,6 +3130,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1275369723}
+        m_TargetAssemblyTypeName: TerminarAnterior, Assembly-CSharp
+        m_MethodName: CerrarExcavacion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1275369720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3154,6 +3194,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pico: {fileID: 21300000, guid: dba915db9b67d8245a11afad88273004, type: 3}
   botonSiguienteExcavacion: {fileID: 81754576}
+--- !u!114 &1275369723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275369716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2ce4e224dc5da47b9983cb1cbec7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dobleTick: {fileID: 21300000, guid: 3bdb096281e1dcc40a1753efa2937650, type: 3}
+  botonAnteriorExcavacion: {fileID: 1868337794}
 --- !u!1 &1405216280
 GameObject:
   m_ObjectHideFlags: 0
@@ -3252,6 +3306,7 @@ GameObject:
   - component: {fileID: 1418780827}
   - component: {fileID: 1418780830}
   - component: {fileID: 1418780826}
+  - component: {fileID: 1418780831}
   m_Layer: 5
   m_Name: Hoyo4
   m_TagString: Untagged
@@ -3372,6 +3427,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1418780831}
+        m_TargetAssemblyTypeName: TerminarAnterior, Assembly-CSharp
+        m_MethodName: CerrarExcavacion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1418780828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3424,6 +3491,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pico: {fileID: 21300000, guid: dba915db9b67d8245a11afad88273004, type: 3}
   botonSiguienteExcavacion: {fileID: 1723098021}
+--- !u!114 &1418780831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1418780824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2ce4e224dc5da47b9983cb1cbec7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dobleTick: {fileID: 21300000, guid: 3bdb096281e1dcc40a1753efa2937650, type: 3}
+  botonAnteriorExcavacion: {fileID: 81754576}
 --- !u!1 &1568133710
 GameObject:
   m_ObjectHideFlags: 0
@@ -3895,6 +3976,7 @@ GameObject:
   - component: {fileID: 1723098022}
   - component: {fileID: 1723098021}
   - component: {fileID: 1723098020}
+  - component: {fileID: 1723098024}
   m_Layer: 5
   m_Name: Hoyo5
   m_TagString: Untagged
@@ -4003,6 +4085,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1723098024}
+        m_TargetAssemblyTypeName: TerminarAnterior, Assembly-CSharp
+        m_MethodName: CerrarExcavacion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1723098022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4041,6 +4135,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1723098018}
   m_CullTransparentMesh: 1
+--- !u!114 &1723098024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1723098018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2ce4e224dc5da47b9983cb1cbec7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dobleTick: {fileID: 21300000, guid: 3bdb096281e1dcc40a1753efa2937650, type: 3}
+  botonAnteriorExcavacion: {fileID: 1418780827}
 --- !u!1 &1757379237
 GameObject:
   m_ObjectHideFlags: 0
@@ -4344,6 +4452,7 @@ GameObject:
   - component: {fileID: 1868337796}
   - component: {fileID: 1868337795}
   - component: {fileID: 1868337794}
+  - component: {fileID: 1868337798}
   - component: {fileID: 1868337797}
   - component: {fileID: 1868337793}
   m_Layer: 5
@@ -4466,6 +4575,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1868337798}
+        m_TargetAssemblyTypeName: TerminarAnterior, Assembly-CSharp
+        m_MethodName: CerrarExcavacion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1868337795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4518,6 +4639,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pico: {fileID: 21300000, guid: dba915db9b67d8245a11afad88273004, type: 3}
   botonSiguienteExcavacion: {fileID: 1275369719}
+--- !u!114 &1868337798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868337791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2ce4e224dc5da47b9983cb1cbec7f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dobleTick: {fileID: 21300000, guid: 3bdb096281e1dcc40a1753efa2937650, type: 3}
+  botonAnteriorExcavacion: {fileID: 121829096}
 --- !u!1001 &1980440361
 PrefabInstance:
   m_ObjectHideFlags: 0
