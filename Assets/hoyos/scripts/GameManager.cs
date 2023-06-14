@@ -57,6 +57,9 @@ public class GameManager : MonoBehaviour
                 Vector3 size = new Vector3(1, 1, 1);
                 //pasamos el tamaño normal y el boton que debe cambiar
                 NormalPala(size, current);
+                //hacemos tween de movimiento
+                current.transform.DOMoveY(600.5f, 0.8f).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+                
                 //para modificar a el hijp del hijo de button, esto es a el texto del boton click
                 GameObject grandChild = current.gameObject.transform.GetChild(0).GetChild(0).gameObject;
                 grandChild.GetComponentInChildren<TextMeshProUGUI>().text = "";
@@ -74,6 +77,7 @@ public class GameManager : MonoBehaviour
                 //para modificar a el hijp del hijo de button, esto es a el texto del boton click
                 GameObject grandChild = button.gameObject.transform.GetChild(0).GetChild(0).gameObject;
                 grandChild.GetComponentInChildren<TextMeshProUGUI>().text = "Click";
+                current.transform.DOPause();
                 //hacemos tween sobre texto escalable
                 grandChild.transform.DOScale(new Vector3(1.35f, 1.35f, 1.35f), 1).SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
             }
@@ -100,7 +104,7 @@ public class GameManager : MonoBehaviour
     }
 
     //metodo que devuelve las veces excavadas por partida
-    public int NumExcavacionesTotales()
+    public int NumExcavacionesTotales   ()
     {
         return numeroExcavacionesTotalesPartida;
     }
