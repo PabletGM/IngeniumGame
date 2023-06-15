@@ -36,7 +36,7 @@ public class EscribirTexto : MonoBehaviour
     void Start()
     {
         
-        dialogueText.text = string.Empty;
+        //dialogueText.text = string.Empty;
     }
 
     // Update is called once per frame
