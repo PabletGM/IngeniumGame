@@ -17,7 +17,10 @@ public class GameManager : MonoBehaviour
     //numero de excavaciones totales en la partida
     private int numeroExcavacionesTotalesPartida = 0;
 
-    
+    //booleano que nos diga si quedan picadas por hacer o no
+    private bool quedanPicadasHoyo = true;
+
+
 
     /// <summary>
     /// Unique GameManager instance (Singleton Pattern).
@@ -67,21 +70,37 @@ public class GameManager : MonoBehaviour
             //si coinciden y es nuestro boton
             else
             {
-                //lo ponemos al boton como pulsado
-                NewbuttonPressed(current);
-                current.Selected = true;
-                //cambiamos tamaño
-                button.gameObject.transform.localScale = new Vector3(aumento, aumento, aumento);
-                //cambiamos color de letra a verde
-                button.gameObject.GetComponentInChildren<TextMeshProUGUI>().color = Color.green;
-                //para modificar a el hijp del hijo de button, esto es a el texto del boton click
-                GameObject grandChild = button.gameObject.transform.GetChild(0).GetChild(0).gameObject;
-                grandChild.GetComponentInChildren<TextMeshProUGUI>().text = "Excavar";
-                current.transform.DOPause();
-                //hacemos tween sobre texto escalable
-                grandChild.transform.DOScale(new Vector3(1.35f, 1.35f, 1.35f), 1).SetEase(Ease.InOutSine).SetLoops(-1,LoopType.Yoyo);
+                //lo ponemos al boton como pulsado si quedan picadas por hacer en ese hoyo, sino quedan picadas no
+                if(QuedanPicadasHoyoReturn())
+                {
+                    NewbuttonPressed(current);
+                    current.Selected = true;
+                    //cambiamos tamaño
+                    button.gameObject.transform.localScale = new Vector3(aumento, aumento, aumento);
+                    //cambiamos color de letra a verde
+                    button.gameObject.GetComponentInChildren<TextMeshProUGUI>().color = Color.green;
+                    //para modificar a el hijp del hijo de button, esto es a el texto del boton click
+                    GameObject grandChild = button.gameObject.transform.GetChild(0).GetChild(0).gameObject;
+                    grandChild.GetComponentInChildren<TextMeshProUGUI>().text = "Excavar";
+                    current.transform.DOPause();
+                    //hacemos tween sobre texto escalable
+                    grandChild.transform.DOScale(new Vector3(1.35f, 1.35f, 1.35f), 1).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+                }
+                
             }
         }
+    }
+
+    //cambia estado booleano y se le llama cuando ya no queden picadas
+    public void QuedanPicadasHoyo(bool estado)
+    {
+        quedanPicadasHoyo = estado;
+    }
+
+    //deuelve estado de bool
+    public bool QuedanPicadasHoyoReturn()
+    {
+        return quedanPicadasHoyo;
     }
 
     //lo mismo pweo reduciendo tamaño

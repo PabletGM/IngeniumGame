@@ -21,23 +21,27 @@ public class Excavando : MonoBehaviour
     [SerializeField]
     private TerminarAnterior term;
 
-
-
    
+   
+  
+
     //metodo que quita profundidad cada vez que se hace click al boton click
     public void QuitarProfundidad()
     {
-        
+        //aumenta numero de picadas nntes de comprobar
+        numeroPicadasHoyo++;
+        //avisa al GameManager que se ha picado 1 vez más
+        _myGameManager.ExcavacionExtra();
+        //picar efecto
+        transform.position = transform.position + new Vector3(0, cantidadDesplazable, 0);
+
         //Desplazamos mientras que el numero de picadas sea menor que maximas
-        if(numeroPicadasHoyo < numeroPicadasMaximasPorHoyo-1)
+        if (numeroPicadasHoyo < numeroPicadasMaximasPorHoyo)
         {
+            //quedan picadas por hacer y avisamos
+            _myGameManager.QuedanPicadasHoyo(true);
             //hacemos vfx
             vfxExcavacion.Play();
-            transform.position = transform.position+ new Vector3(0, cantidadDesplazable, 0);
-            //aumenta numero de picadas
-            numeroPicadasHoyo++;
-            //avisa al GameManager que se ha picado 1 vez más
-            _myGameManager.ExcavacionExtra();
             //calculamos y ponemos por consola excavaciones extra
             int num = _myGameManager.NumExcavacionesTotales();
             Debug.Log(num);
@@ -45,7 +49,8 @@ public class Excavando : MonoBehaviour
         //cambio el estado a los 2 ticks del hoyo actual ya que ya has acabado y quito letras
         else
         {
-           
+            //ya no quedan picadas por hacer y avisamos para que no se pongan letras excavar
+            _myGameManager.QuedanPicadasHoyo(false);
             //encontramos boton actual
             SelectedButton button = _myGameManager.buttonPressed();
             GameObject go = button.gameObject;
