@@ -93,6 +93,8 @@ public class EscribirTexto : MonoBehaviour
     //para pasar de lineas
     public void NextLine()
     {
+        //sonido escribir texto
+        AudioManager.Instance.PlaySFX("Escribir");
         //si la linea en la que estamos no es la ultima puede pasar de linea
         if (index < lines.Length - 1)
         {

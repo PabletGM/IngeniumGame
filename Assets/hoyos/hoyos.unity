@@ -4461,6 +4461,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 90ae18a12a1108348b2f8f4e385cc078, type: 3}
   - name: Pala
     clip: {fileID: 8300000, guid: 2394d1287e900d441b9c8ce624b8cfa8, type: 3}
+  - name: Boton
+    clip: {fileID: 8300000, guid: 86f4aa52d30b0c644b1f2e267787de9e, type: 3}
+  - name: Escribir
+    clip: {fileID: 8300000, guid: d32fb155bf8213f48b8f72312753dae9, type: 3}
   musicSource: {fileID: 461834306}
   sfxSource: {fileID: 1496474188}
 --- !u!1 &1138744673
