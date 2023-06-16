@@ -29,7 +29,7 @@ public class Excavando : MonoBehaviour
     {
         
         //Desplazamos mientras que el numero de picadas sea menor que maximas
-        if(numeroPicadasHoyo < numeroPicadasMaximasPorHoyo)
+        if(numeroPicadasHoyo < numeroPicadasMaximasPorHoyo-1)
         {
             //hacemos vfx
             vfxExcavacion.Play();

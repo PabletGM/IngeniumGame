@@ -373,6 +373,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 81754582}
+        m_TargetAssemblyTypeName: PicarAnimacion, Assembly-CSharp
+        m_MethodName: Picar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 77834646}
+        m_TargetAssemblyTypeName: Excavando, Assembly-CSharp
+        m_MethodName: QuitarProfundidad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &81754577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,31 +580,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 89337456}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2098243169}
-        m_TargetAssemblyTypeName: Excavando, Assembly-CSharp
-        m_MethodName: QuitarProfundidad
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1723098026}
-        m_TargetAssemblyTypeName: PicarAnimacion, Assembly-CSharp
-        m_MethodName: Picar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &89337456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,6 +869,30 @@ MonoBehaviour:
       - m_Target: {fileID: 121829100}
         m_TargetAssemblyTypeName: DesbloquearSiguiente, Assembly-CSharp
         m_MethodName: DesbloquearExcavacion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8614619470601501450}
+        m_TargetAssemblyTypeName: Excavando, Assembly-CSharp
+        m_MethodName: QuitarProfundidad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 121829102}
+        m_TargetAssemblyTypeName: PicarAnimacion, Assembly-CSharp
+        m_MethodName: Picar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1490,31 +1514,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 298664400}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 289940742}
-        m_TargetAssemblyTypeName: Excavando, Assembly-CSharp
-        m_MethodName: QuitarProfundidad
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1868337800}
-        m_TargetAssemblyTypeName: PicarAnimacion, Assembly-CSharp
-        m_MethodName: Picar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &298664400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3386,31 +3386,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 871055920}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 676522817}
-        m_TargetAssemblyTypeName: Excavando, Assembly-CSharp
-        m_MethodName: QuitarProfundidad
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1418780833}
-        m_TargetAssemblyTypeName: PicarAnimacion, Assembly-CSharp
-        m_MethodName: Picar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &871055920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4402,6 +4378,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1275369725}
+        m_TargetAssemblyTypeName: PicarAnimacion, Assembly-CSharp
+        m_MethodName: Picar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 308886005}
+        m_TargetAssemblyTypeName: Excavando, Assembly-CSharp
+        m_MethodName: QuitarProfundidad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1275369720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4735,6 +4735,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1418780833}
+        m_TargetAssemblyTypeName: PicarAnimacion, Assembly-CSharp
+        m_MethodName: Picar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 676522817}
+        m_TargetAssemblyTypeName: Excavando, Assembly-CSharp
+        m_MethodName: QuitarProfundidad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1418780828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5058,31 +5082,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1579477463}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8614619470601501450}
-        m_TargetAssemblyTypeName: Excavando, Assembly-CSharp
-        m_MethodName: QuitarProfundidad
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 121829102}
-        m_TargetAssemblyTypeName: PicarAnimacion, Assembly-CSharp
-        m_MethodName: Picar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1579477463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5624,6 +5624,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1723098026}
+        m_TargetAssemblyTypeName: PicarAnimacion, Assembly-CSharp
+        m_MethodName: Picar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2098243169}
+        m_TargetAssemblyTypeName: Excavando, Assembly-CSharp
+        m_MethodName: QuitarProfundidad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1723098022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5793,31 +5817,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1757379240}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 77834646}
-        m_TargetAssemblyTypeName: Excavando, Assembly-CSharp
-        m_MethodName: QuitarProfundidad
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 81754582}
-        m_TargetAssemblyTypeName: PicarAnimacion, Assembly-CSharp
-        m_MethodName: Picar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1757379240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6178,6 +6178,30 @@ MonoBehaviour:
       - m_Target: {fileID: 1868337798}
         m_TargetAssemblyTypeName: TerminarAnterior, Assembly-CSharp
         m_MethodName: CerrarExcavacion
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 289940742}
+        m_TargetAssemblyTypeName: Excavando, Assembly-CSharp
+        m_MethodName: QuitarProfundidad
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1868337800}
+        m_TargetAssemblyTypeName: PicarAnimacion, Assembly-CSharp
+        m_MethodName: Picar
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6580,31 +6604,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2043362243}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 308886005}
-        m_TargetAssemblyTypeName: Excavando, Assembly-CSharp
-        m_MethodName: QuitarProfundidad
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1275369725}
-        m_TargetAssemblyTypeName: PicarAnimacion, Assembly-CSharp
-        m_MethodName: Picar
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2043362243
 MonoBehaviour:
   m_ObjectHideFlags: 0
