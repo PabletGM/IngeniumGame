@@ -60,4 +60,13 @@ public class AudioManager : MonoBehaviour
             sfxSource.PlayOneShot(s.clip);
         }
     }
+
+
+    //sonidos de canvas como botones se llaman desde aqui
+
+    public void PulsarBotonSound()
+    {
+        //sonido pala golpe al acabar animacion
+        PlaySFX("Boton");
+    }
 }

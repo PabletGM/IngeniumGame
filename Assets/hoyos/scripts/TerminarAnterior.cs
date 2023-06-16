@@ -21,11 +21,15 @@ public class TerminarAnterior : MonoBehaviour
         botonAnteriorExcavacion.GetComponent<Image>().sprite = dobleTick;
         //hacemos boton interactuable
         botonAnteriorExcavacion.GetComponent<Button>().interactable = false;
+
+        
     }
 
     //asi se puede cerrar la excavacion de un hoyo concreto y no del anterior todo el rato
     public void CerrarExcavacionManual(GameObject go)
     {
+        //sonido CerrarMina
+        AudioManager.Instance.PlaySFX("CerrarMina");
         //cambiamos a sprite Pico
         go.GetComponent<Image>().sprite = dobleTick;
         //hacemos boton interactuable
