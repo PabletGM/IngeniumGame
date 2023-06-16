@@ -8,14 +8,25 @@ public class PicarAnimacion : MonoBehaviour
 
     public Animator animatorPicar;
 
+    GameManager _myGameManager;
+
     public void Picar()
     {
         animatorPicar.SetBool("picar", true);
+        //mientras está activa debemos desactivar el isInteractable del boton para que no se pueda dar a picar todo el rato
+        _myGameManager.FuncionalidadBotonPicoTemporalPonerQuitar(false);
         //invocamos en 1 segundo y medio que es lo que dura la animacion el nopicar para que pare
         Invoke("NoPicar", 1.5f);
     }
     public void NoPicar()
     {
         animatorPicar.SetBool("picar", false);
+        //mientras está desactiva debemos activar el isInteractable del boton para que no se  picar de normal
+        _myGameManager.FuncionalidadBotonPicoTemporalPonerQuitar(true);
+    }
+
+    private void Start()
+    {
+        _myGameManager = GameManager.GetInstance();
     }
 }

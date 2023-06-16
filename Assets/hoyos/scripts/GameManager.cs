@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -44,6 +45,15 @@ public class GameManager : MonoBehaviour
     static public GameManager GetInstance()
     {
         return _instance;
+    }
+
+    //segun el booleano que se pase se activará en el boton selected el isInteractable o no para así solo se pueda presionar en el pico mientras no hace animacion
+    public void FuncionalidadBotonPicoTemporalPonerQuitar(bool estado)
+    {
+        //vemos en que boton estamos actualmente
+        SelectedButton buttonNow = buttonPressed();
+        //accedemos a su GO para cambiar su propiedad
+        buttonNow.gameObject.GetComponent<Button>().interactable = estado;
     }
 
     //se pasa el aumento que quieres hacer y la instancia a la que haces el aumento
