@@ -21,6 +21,12 @@ public class Excavando : MonoBehaviour
     [SerializeField]
     private TerminarAnterior term;
 
+    //para ver en que toque de cada hoyo hay agua, si es 0 es que no hay en ese hoyo
+    [SerializeField]
+    private int numeroToquesAgua;
+
+    private bool picarMas = true;
+
    
    
   
@@ -28,36 +34,52 @@ public class Excavando : MonoBehaviour
     //metodo que quita profundidad cada vez que se hace click al boton click
     public void QuitarProfundidad()
     {
-        //aumenta numero de picadas nntes de comprobar
-        numeroPicadasHoyo++;
-        //avisa al GameManager que se ha picado 1 vez más
-        _myGameManager.ExcavacionExtra();
-        //picar efecto
-        transform.position = transform.position + new Vector3(0, cantidadDesplazable, 0);
+        //para ver si se puede picarMas
+        if(picarMas)
+        {
+            //aumenta numero de picadas nntes de comprobar
+            numeroPicadasHoyo++;
+            //avisa al GameManager que se ha picado 1 vez más
+            _myGameManager.ExcavacionExtra();
+            //picar efecto
+            transform.position = transform.position + new Vector3(0, cantidadDesplazable, 0);
 
-        //Desplazamos mientras que el numero de picadas sea menor que maximas
-        if (numeroPicadasHoyo < numeroPicadasMaximasPorHoyo)
-        {
-            //quedan picadas por hacer y avisamos
-            _myGameManager.QuedanPicadasHoyo(true);
-            //hacemos vfx
-            vfxExcavacion.Play();
-            //calculamos y ponemos por consola excavaciones extra
-            int num = _myGameManager.NumExcavacionesTotales();
-            Debug.Log(num);
+
+            //Desplazamos mientras que el numero de picadas sea menor que maximas
+            if (numeroPicadasHoyo < numeroPicadasMaximasPorHoyo)
+            {
+
+                //quedan picadas por hacer y avisamos
+                _myGameManager.QuedanPicadasHoyo(true);
+                //hacemos vfx
+                vfxExcavacion.Play();
+                //calculamos y ponemos por consola excavaciones extra
+                int num = _myGameManager.NumExcavacionesTotales();
+                Debug.Log(num);
+            }
+            //cambio el estado a los 2 ticks del hoyo actual ya que ya has acabado y quito letras
+            else
+            {
+
+                //ya no quedan picadas por hacer y avisamos para que no se pongan letras excavar
+                _myGameManager.QuedanPicadasHoyo(false);
+                //encontramos boton actual
+                SelectedButton button = _myGameManager.buttonPressed();
+                GameObject go = button.gameObject;
+                go.GetComponentInChildren<TextMeshProUGUI>().text = "";
+                //accedemos a su metodo
+                term.CerrarExcavacionManual(button.gameObject);
+            }
+
+            //vemos si ha encontrado agua para sonido, si está entre 0 y 10 y es igual a numeroPicadas
+            if (numeroToquesAgua > 0 && numeroToquesAgua <= 10 && numeroToquesAgua == numeroPicadasHoyo)
+            {
+                //no se puede picar más
+                picarMas = false;
+                AudioManager.Instance.PlaySFX("Agua");
+            }
         }
-        //cambio el estado a los 2 ticks del hoyo actual ya que ya has acabado y quito letras
-        else
-        {
-            //ya no quedan picadas por hacer y avisamos para que no se pongan letras excavar
-            _myGameManager.QuedanPicadasHoyo(false);
-            //encontramos boton actual
-            SelectedButton button = _myGameManager.buttonPressed();
-            GameObject go = button.gameObject;
-            go.GetComponentInChildren<TextMeshProUGUI>().text = "";
-            //accedemos a su metodo
-            term.CerrarExcavacionManual(button.gameObject);
-        }
+        
         
     }
     private void Start()

@@ -1617,6 +1617,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 675259188}
     - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
+      propertyPath: numeroToquesAgua
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
       propertyPath: numeroPicadasMaximasPorHoyo
       value: 10
       objectReference: {fileID: 0}
@@ -5724,7 +5728,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -6818,6 +6822,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1431965368}
     - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
+      propertyPath: numeroToquesAgua
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
       propertyPath: numeroPicadasMaximasPorHoyo
       value: 3
       objectReference: {fileID: 0}
@@ -7479,6 +7487,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1837853517}
     - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
+      propertyPath: numeroToquesAgua
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
       propertyPath: numeroPicadasMaximasPorHoyo
       value: 6
       objectReference: {fileID: 0}
@@ -7927,6 +7939,10 @@ PrefabInstance:
       propertyPath: posicionTierra
       value: 
       objectReference: {fileID: 404814333}
+    - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
+      propertyPath: numeroToquesAgua
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
       propertyPath: numeroPicadasMaximasPorHoyo
       value: 3
