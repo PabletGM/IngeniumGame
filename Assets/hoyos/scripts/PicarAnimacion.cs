@@ -15,11 +15,14 @@ public class PicarAnimacion : MonoBehaviour
         animatorPicar.SetBool("picar", true);
         //mientras está activa debemos desactivar el isInteractable del boton para que no se pueda dar a picar todo el rato
         _myGameManager.FuncionalidadBotonPicoTemporalPonerQuitar(false);
+        //sonido pala golpe al acabar animacion
+        AudioManager.Instance.PlaySFX("Pala");
         //invocamos en 1 segundo y medio que es lo que dura la animacion el nopicar para que pare
         Invoke("NoPicar", 1.5f);
     }
     public void NoPicar()
     {
+
         animatorPicar.SetBool("picar", false);
         //mientras está desactiva debemos activar el isInteractable del boton para que no se  picar de normal
         _myGameManager.FuncionalidadBotonPicoTemporalPonerQuitar(true);
