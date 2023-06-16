@@ -30,13 +30,15 @@ public class EscribirTexto : MonoBehaviour
     //para saber en que linea estamos
     private int index;
 
+    private int clickCount = 0;
+
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         
-        //dialogueText.text = string.Empty;
+
     }
 
     // Update is called once per frame
@@ -45,16 +47,21 @@ public class EscribirTexto : MonoBehaviour
         //click izquierdo
         if (Input.GetMouseButtonDown(0))
         {
+            //sumamos 1 al clickcount
+            clickCount++;
+            //si el numero de clicks es mayor que numero de lineas aparece boton entendido
+            if(clickCount > lines.Length)
+            {
+                continuar.SetActive(true);
+            }
             //o siguiente linea
             if (dialogueText.text == lines[index])
             {
                 NextLine();
-
             }
             //o se termina texto 
             else
             {
-                continuar.SetActive(true);
                 StopAllCoroutines();
                 dialogueText.text = lines[index];
             }
