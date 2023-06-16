@@ -32,6 +32,8 @@ public class EscribirTexto : MonoBehaviour
 
     private int clickCount = 0;
 
+    private bool permisoEscritura = true;
+
     #endregion
 
     // Start is called before the first frame update
@@ -44,8 +46,8 @@ public class EscribirTexto : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //click izquierdo
-        if (Input.GetMouseButtonDown(0))
+        //click izquierdo y permiso para escribir
+        if (Input.GetMouseButtonDown(0) && permisoEscritura)
         {
             //sumamos 1 al clickcount
             clickCount++;
@@ -53,6 +55,8 @@ public class EscribirTexto : MonoBehaviour
             if(clickCount > lines.Length)
             {
                 continuar.SetActive(true);
+                //cuando ya no hay mas lineas ya no hay mas permiso de escritura
+                permisoEscritura  = false;
             }
             //o siguiente linea
             if (dialogueText.text == lines[index])
