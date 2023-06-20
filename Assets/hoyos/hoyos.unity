@@ -2958,7 +2958,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u201C\xA1No me lo puedo creer! \""
+  m_text: "\u201C\xA1Vaya descubrimiento! \""
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -3050,9 +3050,10 @@ MonoBehaviour:
   dialogueText: {fileID: 484604594}
   continuar: {fileID: 753656366}
   lines:
-  - 'El radar ha detectado agua en esta zona." '
-  - "\"baja ah\xED y saca el agua que puedas de esos pozos, con unos pocos toques
-    del pico deber\xEDa valer. Puedes volver cuando quieras\u201D\""
+  - '"El radar ha detectado agua en esta zona." '
+  - '"Extrae todo el agua posible, aunque debes elegir que pozos excavar ya que si
+    no..".'
+  - "\"Podr\xEDas perder tiempo de manera innececesaria\""
   textSpeed: 0.02
 --- !u!1 &487656216
 GameObject:
