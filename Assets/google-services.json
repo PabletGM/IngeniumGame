@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "583081314768",
+    "project_id": "ingenium-tareas-conductuales",
+    "storage_bucket": "ingenium-tareas-conductuales.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583081314768:android:001f8ee8c6600b1e9d51d5",
+        "android_client_info": {
+          "package_name": "com.Ingenium.game"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "583081314768-0klho3e15gl74stgmvjcgout3848pqvh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACm8ZBkwO7dStoxghrVvsGqANUlXntcVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "583081314768-0klho3e15gl74stgmvjcgout3848pqvh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
