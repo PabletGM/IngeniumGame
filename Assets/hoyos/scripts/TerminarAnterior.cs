@@ -34,5 +34,7 @@ public class TerminarAnterior : MonoBehaviour
         go.GetComponent<Image>().sprite = dobleTick;
         //hacemos boton interactuable
         go.GetComponent<Button>().interactable = false;
+
+        
     }
 }

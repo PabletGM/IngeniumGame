@@ -21,6 +21,10 @@ public class Excavando : MonoBehaviour
     [SerializeField]
     private TerminarAnterior term;
 
+    //a la que cerramos la mina accede a picarAnimacion para cambiar num clicksInstantaneos
+    [SerializeField]
+    private PicarAnimacion clicksInstantaneos;
+
     //para ver en que toque de cada hoyo hay agua, si es 0 es que no hay en ese hoyo
     [SerializeField]
     private int numeroToquesAgua;
@@ -69,6 +73,8 @@ public class Excavando : MonoBehaviour
                 go.GetComponentInChildren<TextMeshProUGUI>().text = "";
                 //accedemos a su metodo
                 term.CerrarExcavacionManual(button.gameObject);
+                //volvemos a reiniciar la variable privada de clicks Instantaneos a 0 de el script PicarAnimacion
+                clicksInstantaneos.ReiniciarClicksInstantaneos();
             }
 
             //vemos si ha encontrado agua para sonido, si está entre 0 y 10 y es igual a numeroPicadas

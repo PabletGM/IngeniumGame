@@ -2004,6 +2004,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
+      propertyPath: clicksInstantaneos
+      value: 
+      objectReference: {fileID: 1723098026}
+    - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
       propertyPath: numeroPicadasMaximasPorHoyo
       value: 10
       objectReference: {fileID: 0}
@@ -5001,6 +5005,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 197660708}
     - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
+      propertyPath: clicksInstantaneos
+      value: 
+      objectReference: {fileID: 1418780833}
+    - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
       propertyPath: numeroPicadasMaximasPorHoyo
       value: 10
       objectReference: {fileID: 0}
@@ -6152,6 +6160,10 @@ PrefabInstance:
       propertyPath: vfxExcavacion
       value: 
       objectReference: {fileID: 54155962}
+    - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
+      propertyPath: clicksInstantaneos
+      value: 
+      objectReference: {fileID: 81754582}
     - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
       propertyPath: numeroPicadasMaximasPorHoyo
       value: 10
@@ -8568,6 +8580,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
+      propertyPath: clicksInstantaneos
+      value: 
+      objectReference: {fileID: 1275369725}
+    - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
       propertyPath: numeroPicadasMaximasPorHoyo
       value: 3
       objectReference: {fileID: 0}
@@ -9444,6 +9460,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
+      propertyPath: clicksInstantaneos
+      value: 
+      objectReference: {fileID: 1723098026}
+    - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
       propertyPath: numeroPicadasMaximasPorHoyo
       value: 6
       objectReference: {fileID: 0}
@@ -10129,6 +10149,10 @@ PrefabInstance:
       propertyPath: numeroToquesAgua
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
+      propertyPath: clicksInstantaneos
+      value: 
+      objectReference: {fileID: 1868337800}
     - target: {fileID: 793544096259248836, guid: 5df63fb1bd34d4c4b91df9ac01494564, type: 3}
       propertyPath: numeroPicadasMaximasPorHoyo
       value: 3
