@@ -49,7 +49,7 @@ public class DataBaseManagerHoyos : MonoBehaviour
         //guardamos info del objeto como un string
         string json = JsonUtility.ToJson(newUser);
         //escribimos en carpeta users ese string con la info guardada
-        dbReference.Child("users").Child(userID).SetRawJsonValueAsync(json);
+        dbReference.Child("pruebaHoyos").Child(userID).SetRawJsonValueAsync(json);
     }
 
     //metodo que se llama cuando se acaba la prueba y que actualiza los datos del usuario
@@ -71,7 +71,7 @@ public class DataBaseManagerHoyos : MonoBehaviour
         //guardamos info del objeto como un string
         string json = JsonUtility.ToJson(newUser);
         //escribimos en carpeta users ese string con la info guardada
-        dbReference.Child("users").Child(userID).SetRawJsonValueAsync(json);
+        dbReference.Child("pruebaHoyos").Child(userID).SetRawJsonValueAsync(json);
     }
 
 
@@ -80,7 +80,7 @@ public class DataBaseManagerHoyos : MonoBehaviour
     public IEnumerator GetNamePlayer(Action<string> onCallback)
     {
         //hacemos carpeta Users
-        var userNamePlayerData = dbReference.Child("users").Child(userID).Child("namePlayer").GetValueAsync();
+        var userNamePlayerData = dbReference.Child("pruebaHoyos").Child(userID).Child("namePlayer").GetValueAsync();
 
         yield return new WaitUntil(predicate: () => userNamePlayerData.IsCompleted);
 
@@ -96,7 +96,7 @@ public class DataBaseManagerHoyos : MonoBehaviour
     public IEnumerator GetMailPlayer(Action<string> onCallback)
     {
         //hacemos carpeta Users
-        var userMailPlayerData = dbReference.Child("users").Child(userID).Child("mailPlayer").GetValueAsync();
+        var userMailPlayerData = dbReference.Child("pruebaHoyos").Child(userID).Child("mailPlayer").GetValueAsync();
 
         yield return new WaitUntil(predicate: () => userMailPlayerData.IsCompleted);
 
