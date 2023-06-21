@@ -2784,7 +2784,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1874044137}
         m_TargetAssemblyTypeName: DataBaseManagerHoyos, Assembly-CSharp
-        m_MethodName: CreateUser
+        m_MethodName: CreateUserInicial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3867,6 +3867,18 @@ MonoBehaviour:
       - m_Target: {fileID: 594555196}
         m_TargetAssemblyTypeName: Quit, Assembly-CSharp
         m_MethodName: QuitarApp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1874044137}
+        m_TargetAssemblyTypeName: DataBaseManagerHoyos, Assembly-CSharp
+        m_MethodName: CreateUserTotal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

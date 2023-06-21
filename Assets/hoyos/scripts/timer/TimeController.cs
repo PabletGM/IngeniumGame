@@ -15,9 +15,15 @@ public class TimeController : MonoBehaviour
     [SerializeField]
     private int tiempoMaximo;
 
+    GameManager _myGameManager;
+
     private void Awake()
     {
         restante = 0;
+    }
+    private void Start()
+    {
+        _myGameManager = GameManager.GetInstance();
     }
 
     public void ActivarTimer()
@@ -33,6 +39,8 @@ public class TimeController : MonoBehaviour
         {
             //va sumando segundos
             restante += Time.deltaTime;
+            //informamos del tiempo al gameManager en cada segundo
+            InformarTimeGameManager();
             //en caso de superar el tiempo maximo 90 segundos
             if(restante >tiempoMaximo)
             {
@@ -45,5 +53,10 @@ public class TimeController : MonoBehaviour
             //cambiamos texto
             tiempo.text = string.Format("{00:00}:{01:00}", tempMin, tempSeg);
         }
+    }
+
+    public void InformarTimeGameManager()
+    {
+        _myGameManager.NumSecsPartida((int)restante);
     }
 }

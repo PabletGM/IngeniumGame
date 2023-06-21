@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
     //booleano que nos diga si quedan picadas por hacer o no
     private bool quedanPicadasHoyo = true;
 
+    //numero de segundos por partida
+    private int numSecsPartida;
+
 
 
     /// <summary>
@@ -144,6 +147,17 @@ public class GameManager : MonoBehaviour
          numeroExcavacionesTotalesPartida += 1;
     }
 
+    //metodo que guardará el numero de segundos totales de partida que lleva
+    public void NumSecsPartida(int secsPartida)
+    {
+        numSecsPartida = secsPartida;
+    }
+
+    //metodo que devuelve el numero de segundos de partida totales que se llevan
+    public int NumSecsPartidaReturn()
+    {
+        return numSecsPartida;
+    }
 
 
 }

@@ -17,6 +17,9 @@ public class DataBaseManagerHoyos : MonoBehaviour
     private string userID;
     private DatabaseReference dbReference;
 
+    //conexion con GameManager
+    GameManager _myGameManager;
+
 
     //Start is called before the first frame update
     void Start()
@@ -25,10 +28,12 @@ public class DataBaseManagerHoyos : MonoBehaviour
         userID = SystemInfo.deviceUniqueIdentifier;
         //hace referencia a el firebase
         dbReference = FirebaseDatabase.DefaultInstance.RootReference;
+        //gameManager
+       _myGameManager = GameManager.GetInstance();
     }
 
     //creamos nuevo usuario en base de datos
-    public void CreateUser()
+    public void CreateUserInicial()
     {
         //Habiendo puesto al principio el nombre y el correo electronico estará guardado en las 2 variables InputField
         //que se podrán acceder desde un método
@@ -43,6 +48,22 @@ public class DataBaseManagerHoyos : MonoBehaviour
         dbReference.Child("users").Child(userID).SetRawJsonValueAsync(json);
     }
 
+    //metodo que se llama cuando se acaba la prueba y que actualiza los datos del usuario
+    public void CreateUserTotal()
+    {
+        //Habiendo puesto al principio el nombre y el correo electronico estará guardado en las 2 variables InputField
+        //que se podrán acceder desde un método
+        //despues debemos registrar con llamada a GameManager con otro método el time y el numero de ticks totales
+        int totalTime = _myGameManager.NumSecsPartidaReturn();
+
+        //registramos los 2 valores que es nombre y correo en el objeto clase user
+        //los otros 2 valores de 0 por ahora se quedan así
+        HoyoInfo newUser = new HoyoInfo(NamePlayer.text, MailPlayer.text, 0, totalTime);
+        //guardamos info del objeto como un string
+        string json = JsonUtility.ToJson(newUser);
+        //escribimos en carpeta users ese string con la info guardada
+        dbReference.Child("users").Child(userID).SetRawJsonValueAsync(json);
+    }
 
 
 
