@@ -11,8 +11,8 @@ public class DataBaseManagerHoyos : MonoBehaviour
     public InputField NamePlayer;
     public InputField MailPlayer;
 
-    public Text NamePlayerText;
-    public Text MailPlayerText;
+    //public Text NamePlayerText;
+    //public Text MailPlayerText;
 
     private string userID;
     private DatabaseReference dbReference;
@@ -78,32 +78,32 @@ public class DataBaseManagerHoyos : MonoBehaviour
         }
     }
 
-    //coge datos de la base de datos namePlayer y mailPlayer, su resultado y lo escribe
-    public void GetUserInfo()
-    {
-        StartCoroutine(GetMailPlayer((string mailPlayer) => {
-            MailPlayerText.text = "Mail: " + mailPlayer.ToString();
+    ////coge datos de la base de datos namePlayer y mailPlayer, su resultado y lo escribe
+    //public void GetUserInfo()
+    //{
+    //    StartCoroutine(GetMailPlayer((string mailPlayer) => {
+    //        MailPlayerText.text = "Mail: " + mailPlayer.ToString();
 
 
-        }));
+    //    }));
 
-        StartCoroutine(GetNamePlayer((string namePlayer) => {
-            NamePlayerText.text = "Name: " + namePlayer.ToString();
-
-
-        }));
+    //    StartCoroutine(GetNamePlayer((string namePlayer) => {
+    //        NamePlayerText.text = "Name: " + namePlayer.ToString();
 
 
-    }
+    //    }));
 
-    public void UpdateName()
-    {
-        dbReference.Child("users").Child(userID).Child("namePlayer").SetValueAsync(NamePlayerText.text);
-    }
 
-    public void UpdateGold()
-    {
-        dbReference.Child("users").Child(userID).Child("mailPlayer").SetValueAsync(MailPlayerText.text);
-    }
+    //}
+
+    //public void UpdateName()
+    //{
+    //    dbReference.Child("users").Child(userID).Child("namePlayer").SetValueAsync(NamePlayerText.text);
+    //}
+
+    //public void UpdateGold()
+    //{
+    //    dbReference.Child("users").Child(userID).Child("mailPlayer").SetValueAsync(MailPlayerText.text);
+    //}
 
 }
