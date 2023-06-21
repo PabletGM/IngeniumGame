@@ -55,10 +55,11 @@ public class DataBaseManagerHoyos : MonoBehaviour
         //que se podrán acceder desde un método
         //despues debemos registrar con llamada a GameManager con otro método el time y el numero de ticks totales
         int totalTime = _myGameManager.NumSecsPartidaReturn();
+        int numExcavacionesTotales = _myGameManager.NumExcavacionesTotales();
 
         //registramos los 2 valores que es nombre y correo en el objeto clase user
         //los otros 2 valores de 0 por ahora se quedan así
-        HoyoInfo newUser = new HoyoInfo(NamePlayer.text, MailPlayer.text, 0, totalTime);
+        HoyoInfo newUser = new HoyoInfo(NamePlayer.text, MailPlayer.text, numExcavacionesTotales, totalTime);
         //guardamos info del objeto como un string
         string json = JsonUtility.ToJson(newUser);
         //escribimos en carpeta users ese string con la info guardada

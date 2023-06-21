@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
     }
 
     //metodo que devuelve las veces excavadas por partida
-    public int NumExcavacionesTotales   ()
+    public int NumExcavacionesTotales()
     {
         return numeroExcavacionesTotalesPartida;
     }
