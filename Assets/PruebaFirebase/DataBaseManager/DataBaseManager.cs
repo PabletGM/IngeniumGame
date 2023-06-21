@@ -37,6 +37,9 @@ public class DataBaseManager : MonoBehaviour
         dbReference.Child("users").Child(userID).SetRawJsonValueAsync(json);
     }
 
+    
+
+
     //obtener nombre de carpeta users
     public IEnumerator GetName(Action<string> onCallback)
     {
