@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     //lista de objetos botones generales que pueden ser seleccionados con clase SelectedButton
     [SerializeField]
     private SelectedButton[] buttons;
+    //saber en que posicion de boton estamos
+    private int posBotonHoyo;
     //lista de objetos Button texto de botones especificos 
     [SerializeField]
     private GameObject [] buttonTextClick;
@@ -214,6 +216,41 @@ public class GameManager : MonoBehaviour
     public int[] DevolverPicadasHoyo()
     {
         return valoresPicadasHoyoIndividual;
+    }
+
+    //averiguamos posicion hoyo actual, pasamos al siguiente y lo ponemos como boton pressed
+    public void PasarAlSiguienteHoyo()
+    {
+        //buscamos pos hoyo actual
+        posBotonHoyo = AveriguarHoyoDevolverNumero();
+        //cambiamos hoyo actual al siguiente, si hay siguiente
+        if(posBotonHoyo+1 < buttons.Length)
+        {
+            NewbuttonPressed(buttons[posBotonHoyo + 1]);
+        }
+       
+    }
+
+    //pasas un numero y te devuelve ese boton
+    public SelectedButton botonDevueltoIndice(int i)
+    {
+        switch (i)
+        {
+            case 0:
+                return buttons[0];
+            case 1:
+                return buttons[1];
+            case 2:
+                return buttons[2];
+            case 3:
+                return buttons[3];
+            case 4:
+                return buttons[4];
+            case 5:
+                return buttons[5];
+            default:
+                return buttons[0];
+        }
     }
 
 

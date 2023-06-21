@@ -44,7 +44,9 @@ public class Excavando : MonoBehaviour
 
             //aumenta numero de picadas antes de comprobar
             numeroPicadasHoyo++;
-            
+            //cada vez que aumenta numero de picadas modificamos el numero total de picadas de este hoyo en concreto
+            //en el array
+            _myGameManager.ModificarArrayPicadasTotalesCadaHoyo(numeroPicadasHoyo);
             //avisa al GameManager que se ha picado 1 vez más
             _myGameManager.ExcavacionExtra();
             //picar efecto
@@ -70,19 +72,22 @@ public class Excavando : MonoBehaviour
                 picarMas = false;
                 //ya no quedan picadas por hacer y avisamos para que no se pongan letras excavar y se cambia el boton
                 _myGameManager.QuedanPicadasHoyo(false);
-                //encontramos boton actual
-                SelectedButton button = _myGameManager.buttonPressed();
-                GameObject go = button.gameObject;
+                //pasamos al siguiente boton y lo hacemos selected inmediatamente
+                _myGameManager.PasarAlSiguienteHoyo();
+                //vemos que numero de boton es el actual
+                int i = _myGameManager.AveriguarHoyoDevolverNumero();
+                //así podemos saber el boton anterior al actual, que es el que queremos cambiar
+                SelectedButton buttonAnterior = _myGameManager.botonDevueltoIndice(i - 1);
+                GameObject go = buttonAnterior.gameObject;
                 go.GetComponentInChildren<TextMeshProUGUI>().text = "";
                 //accedemos a su metodo
-                term.CerrarExcavacionManual(button.gameObject);
+                term.CerrarExcavacionManual(buttonAnterior.gameObject);
+               
                 //volvemos a reiniciar la variable privada de clicks Instantaneos a 0 de el script PicarAnimacion
                 clicksInstantaneos.ReiniciarClicksInstantaneos();
             }
 
-            //cada vez que aumenta numero de picadas modificamos el numero total de picadas de este hoyo en concreto
-            //en el array
-            _myGameManager.ModificarArrayPicadasTotalesCadaHoyo(numeroPicadasHoyo);
+            
 
             //vemos si ha encontrado agua para sonido, si está entre 0 y 10 y es igual a numeroPicadas
             if (numeroToquesAgua > 0 && numeroToquesAgua <= 10 && numeroToquesAgua == numeroPicadasHoyo)
