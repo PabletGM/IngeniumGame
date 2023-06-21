@@ -64,7 +64,7 @@ public class Excavando : MonoBehaviour
             //cambio el estado a los 2 ticks del hoyo actual ya que ya has acabado y quito letras
             else
             {
-
+                picarMas = false;
                 //ya no quedan picadas por hacer y avisamos para que no se pongan letras excavar
                 _myGameManager.QuedanPicadasHoyo(false);
                 //encontramos boton actual
