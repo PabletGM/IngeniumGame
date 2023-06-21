@@ -7,6 +7,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 
+
 public class DataBaseManager : MonoBehaviour
 {
     public InputField Name;
@@ -16,6 +17,7 @@ public class DataBaseManager : MonoBehaviour
     public Text GoldText;
 
     private string userID;
+    private string CustomUserID;
     private DatabaseReference dbReference;
     //Start is called before the first frame update
     void Start()
@@ -94,4 +96,7 @@ public class DataBaseManager : MonoBehaviour
     {
         dbReference.Child("users").Child(userID).Child("gold").SetValueAsync(Gold.text);
     }
+
+
+   
 }
