@@ -20,6 +20,9 @@ public class DataBaseManagerHoyos : MonoBehaviour
     //conexion con GameManager
     GameManager _myGameManager;
 
+    //numero de picadas en cada hoyo
+    private int[] numpicadasHoyosIndiv;
+
 
     //Start is called before the first frame update
     void Start()
@@ -41,7 +44,8 @@ public class DataBaseManagerHoyos : MonoBehaviour
 
         //registramos los 2 valores que es nombre y correo en el objeto clase user
         //los otros 2 valores de 0 por ahora se quedan así
-        HoyoInfo newUser = new HoyoInfo(NamePlayer.text, MailPlayer.text,0,0);
+        int[] valorInicialNumeroPicadas = new int[0];
+        HoyoInfo newUser = new HoyoInfo(NamePlayer.text, MailPlayer.text,0,0, valorInicialNumeroPicadas);
         //guardamos info del objeto como un string
         string json = JsonUtility.ToJson(newUser);
         //escribimos en carpeta users ese string con la info guardada
@@ -51,15 +55,19 @@ public class DataBaseManagerHoyos : MonoBehaviour
     //metodo que se llama cuando se acaba la prueba y que actualiza los datos del usuario
     public void CreateUserTotal()
     {
+        //declaramos tamaño array hoyos
+        numpicadasHoyosIndiv = new int[6];
         //Habiendo puesto al principio el nombre y el correo electronico estará guardado en las 2 variables InputField
         //que se podrán acceder desde un método
         //despues debemos registrar con llamada a GameManager con otro método el time y el numero de ticks totales
         int totalTime = _myGameManager.NumSecsPartidaReturn();
         int numExcavacionesTotales = _myGameManager.NumExcavacionesTotales();
+        //numero picadas totales cada hoyo
+        numpicadasHoyosIndiv = _myGameManager.DevolverPicadasHoyo();
 
         //registramos los 2 valores que es nombre y correo en el objeto clase user
         //los otros 2 valores de 0 por ahora se quedan así
-        HoyoInfo newUser = new HoyoInfo(NamePlayer.text, MailPlayer.text, numExcavacionesTotales, totalTime);
+        HoyoInfo newUser = new HoyoInfo(NamePlayer.text, MailPlayer.text, numExcavacionesTotales, totalTime,numpicadasHoyosIndiv);
         //guardamos info del objeto como un string
         string json = JsonUtility.ToJson(newUser);
         //escribimos en carpeta users ese string con la info guardada

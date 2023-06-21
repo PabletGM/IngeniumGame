@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using DG.Tweening;
 using UnityEngine.UI;
+using static UnityEngine.GraphicsBuffer;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,6 +25,12 @@ public class GameManager : MonoBehaviour
     //numero de segundos por partida
     private int numSecsPartida;
 
+    //array de valores que guardará el numero de toques que se ha hecho en cada hoyo y que se pasará luego
+    //a la base de datos
+    public int[] valoresPicadasHoyoIndividual;
+    //numero de posicion del hoyo a devolver
+    int valorArray = 0;
+
 
 
     /// <summary>
@@ -43,6 +50,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        //inicializamos tamaño fijo array picadas
+        valoresPicadasHoyoIndividual = new int[6];
     }
 
     static public GameManager GetInstance()
@@ -158,6 +168,54 @@ public class GameManager : MonoBehaviour
     {
         return numSecsPartida;
     }
+
+    //metodo que 1.Averigua en que hoyo estamos y su numero 2.Añade al array y su posición el numerodePicadas del hoyo
+    public void ModificarArrayPicadasTotalesCadaHoyo(int numeroPicadasTotalesHoyo)
+    {
+        int posicionArray = AveriguarHoyoDevolverNumero();
+        valoresPicadasHoyoIndividual[posicionArray] = numeroPicadasTotalesHoyo;
+    }
+
+    public int AveriguarHoyoDevolverNumero()
+    {
+        
+        //vemos que hoyo-boton esta pulsado
+        SelectedButton button = buttonPressed();
+        string nameButton = button.gameObject.name;
+        //segun que nombre tenga asignamos un valor a el numero del array
+        switch (nameButton)
+        {
+            case "Hoyo0":
+                valorArray = 0;
+                break;
+            case "Hoyo1":
+                valorArray = 1;
+                break;
+            case "Hoyo2":
+                valorArray = 2;
+                break;
+            case "Hoyo3":
+                valorArray = 3;
+                break;
+            case "Hoyo4":
+                valorArray = 4;
+                break;
+            case "Hoyo5":
+                valorArray = 5;
+                break;
+            default:
+                break;
+        }
+
+        return valorArray;
+    }
+
+    //metodo que devuelva el array de picadas que tiene cada hoyo
+    public int[] DevolverPicadasHoyo()
+    {
+        return valoresPicadasHoyoIndividual;
+    }
+
 
 
 }

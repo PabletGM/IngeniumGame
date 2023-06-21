@@ -11,14 +11,16 @@ public class HoyoInfo
     public int numberTicksTotal;
     //tiempo total
     public int totalTime;
-    //lista de numero de toques de cada hoyo
+    //array de numero de toques de cada hoyo
+    public int[] numPicadasCadaHoyo;
 
     //constructor
-    public HoyoInfo(string namePlayer,string mailPlayer, int numberTicksTotal,int  totalTime)
+    public HoyoInfo(string namePlayer,string mailPlayer, int numberTicksTotal,int  totalTime, int[]numPicadasCadaHoyo)
     {
         this.namePlayer = namePlayer;
         this.mailPlayer = mailPlayer;
         this.numberTicksTotal = numberTicksTotal;
         this.totalTime = totalTime;
+        this.numPicadasCadaHoyo = numPicadasCadaHoyo;
     }
 }

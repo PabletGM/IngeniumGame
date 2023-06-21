@@ -41,8 +41,10 @@ public class Excavando : MonoBehaviour
         //para ver si se puede picarMas
         if(picarMas)
         {
-            //aumenta numero de picadas nntes de comprobar
+
+            //aumenta numero de picadas antes de comprobar
             numeroPicadasHoyo++;
+            
             //avisa al GameManager que se ha picado 1 vez más
             _myGameManager.ExcavacionExtra();
             //picar efecto
@@ -64,8 +66,9 @@ public class Excavando : MonoBehaviour
             //cambio el estado a los 2 ticks del hoyo actual ya que ya has acabado y quito letras
             else
             {
+                
                 picarMas = false;
-                //ya no quedan picadas por hacer y avisamos para que no se pongan letras excavar
+                //ya no quedan picadas por hacer y avisamos para que no se pongan letras excavar y se cambia el boton
                 _myGameManager.QuedanPicadasHoyo(false);
                 //encontramos boton actual
                 SelectedButton button = _myGameManager.buttonPressed();
@@ -76,6 +79,10 @@ public class Excavando : MonoBehaviour
                 //volvemos a reiniciar la variable privada de clicks Instantaneos a 0 de el script PicarAnimacion
                 clicksInstantaneos.ReiniciarClicksInstantaneos();
             }
+
+            //cada vez que aumenta numero de picadas modificamos el numero total de picadas de este hoyo en concreto
+            //en el array
+            _myGameManager.ModificarArrayPicadasTotalesCadaHoyo(numeroPicadasHoyo);
 
             //vemos si ha encontrado agua para sonido, si está entre 0 y 10 y es igual a numeroPicadas
             if (numeroToquesAgua > 0 && numeroToquesAgua <= 10 && numeroToquesAgua == numeroPicadasHoyo)
