@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/PruebaFirebase/pruebaFirebase.unity
-    guid: ebb65df0fbaa1ab4596a2720ff9f3568
+    path: Assets/hoyos/hoyos.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   m_configObjects: {}
