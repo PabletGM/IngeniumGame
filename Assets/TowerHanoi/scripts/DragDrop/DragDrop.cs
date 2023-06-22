@@ -5,6 +5,7 @@ using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEndDragHandler, IDragHandler, IDropHandler
 {
+    GameManagerHanoi _myGameManagerHanoi;
     [SerializeField] private Canvas canvas;
     [SerializeField] private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
@@ -13,6 +14,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+    }
+    private void Start()
+    {
+        _myGameManagerHanoi = GameManagerHanoi.GetInstance();
     }
 
 
@@ -28,7 +33,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     {
         //Debug.Log("OnDrag");
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-        //cuando se coja el disco ponemos todos los palos como image.raycastTarget = true;
+        //cuando se coja el disco ponemos habilitamos todos los palos
+        _myGameManagerHanoi.HabilitarPalos();
     }
 
     //END DRAG
