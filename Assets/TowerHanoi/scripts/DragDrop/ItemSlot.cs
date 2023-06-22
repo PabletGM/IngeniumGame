@@ -1,18 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class ItemSlot : MonoBehaviour
+public class ItemSlot : MonoBehaviour, IDropHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnDrop(PointerEventData eventData)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("OnDrop");
+        //info del objeto que ha sido cogido
+        if(eventData.pointerDrag!=null)
+        {
+            eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+        }
     }
 }
