@@ -41,3 +41,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: trasero
+    uniqueID: 3563348017
+    locked: 0
+  - name: palo
+    uniqueID: 1540092221
+    locked: 0
+  - name: frontal
+    uniqueID: 3559415091
+    locked: 0
