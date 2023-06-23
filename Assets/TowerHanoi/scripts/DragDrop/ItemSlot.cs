@@ -27,6 +27,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             _myGameManagerHanoi.SetPaloYPosicionUltimoDiscoSeleccionado(this.gameObject, huecoLibre);
             //si cuando dejamos el disco quitamos el raycast target a la imagen del palo, se puede volver a coger.
             imagePalo.raycastTarget = false;
+            //si cuando dejamos el disco quitasemos todos los raycast target de la imagen de los palos, se pueden volver a coger.
+            _myGameManagerHanoi.DesHabilitarPalos();
 
         }
     }

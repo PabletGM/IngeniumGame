@@ -66,6 +66,18 @@ public class GameManagerHanoi : MonoBehaviour
         }
     }
 
+    //metodo que deshabilita los 3 palos y pone todos como rayCastTarget = false; para que se puedan coger discos
+    public void DesHabilitarPalos()
+    {
+
+        //ponemos todos con raycastTarget = true
+        foreach (ItemSlot currentPalo in Palos)
+        {
+            Image imagePalo = currentPalo.gameObject.GetComponent<Image>();
+            imagePalo.raycastTarget = false;
+        }
+    }
+
     //metodo que busca en el palo que tu pases como argumento que posiciones libres hay para devolver así una posicion
     public GameObject BuscarHuecoEnPalo(GameObject palo)
     {
