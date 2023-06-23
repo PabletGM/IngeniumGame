@@ -12,6 +12,11 @@ public class GameManagerHanoi : MonoBehaviour
     //singleton
     static private GameManagerHanoi _instanceHanoi;
 
+
+    //lista de los 4 lugares Palo1 para poner ahí cada disco
+    [SerializeField]
+    private GameObject[] palo1Places;
+
     private void Awake()
     {
         //si la instancia no existe se hace este script la instancia
