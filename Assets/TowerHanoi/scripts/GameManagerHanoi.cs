@@ -14,6 +14,9 @@ public class GameManagerHanoi : MonoBehaviour
     //singleton
     static private GameManagerHanoi _instanceHanoi;
 
+    //lista de los discos que hay en juego
+    [SerializeField]
+    private DragDrop[] listaDiscos;
 
     //lista de los 4 lugares Palo1 para poner ahí cada disco
     [SerializeField]

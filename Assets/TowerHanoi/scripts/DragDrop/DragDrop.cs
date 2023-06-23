@@ -55,6 +55,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     public void OnDrop(PointerEventData eventData)
     {
         //Debug.Log("OnDrop);
+        //cuando se suelte el disco en una zona se debe saber la info de:
+        //en qué palo está el disco
+        //en que posicion del palo está el disco
+
+        //así ya podemos poner si se quita este disco(OnDrag) el valor de libre de la pos a true
     }
 }
 
