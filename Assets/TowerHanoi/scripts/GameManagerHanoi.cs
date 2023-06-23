@@ -35,6 +35,9 @@ public class GameManagerHanoi : MonoBehaviour
     [SerializeField]
     private GameObject[] palo3Places;
 
+    //booleano que dice si ultimo disco colocado en un palo o no
+    private bool ultimoDiscoColocado = true;
+
     private void Awake()
     {
         //si la instancia no existe se hace este script la instancia
@@ -66,6 +69,7 @@ public class GameManagerHanoi : MonoBehaviour
         }
     }
 
+
     //metodo que deshabilita los 3 palos y pone todos como rayCastTarget = false; para que se puedan coger discos
     public void DesHabilitarPalos()
     {
@@ -76,6 +80,18 @@ public class GameManagerHanoi : MonoBehaviour
             Image imagePalo = currentPalo.gameObject.GetComponent<Image>();
             imagePalo.raycastTarget = false;
         }
+    }
+
+    //cambia si ultimo disco colocado en un palo o no
+    public void SetDiscoPalo(bool set)
+    {
+        ultimoDiscoColocado = set;
+    }
+
+    //dice si ultimo disco colocado en un palo o no
+    public bool GetDiscoPalo()
+    {
+       return ultimoDiscoColocado;
     }
 
     //metodo que busca en el palo que tu pases como argumento que posiciones libres hay para devolver así una posicion
