@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Sockets;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,12 +47,72 @@ public class GameManagerHanoi : MonoBehaviour
     //metodo que compruebe los 3 palos y pone todos como rayCastTarget = true;
     public void HabilitarPalos()
     {
+
         //ponemos todos con raycastTarget = true
         foreach (ItemSlot currentPalo in Palos)
         {
             Image imagePalo = currentPalo.gameObject.GetComponent<Image>();
             imagePalo.raycastTarget = true;
         }
+    }
+
+    //metodo que busca en el palo que tu pases como argumento que posiciones libres hay para devolver así una posicion
+    public GameObject BuscarHuecoEnPalo(GameObject palo)
+    {
+        //miramos que palo es el pasado en argumentos
+        string namePalo = palo.name;
+        //segun que palo sea buscamos hueco libre en una lista u otra
+        switch (namePalo)
+        {
+            //buscar hueco en primera lista
+            case "palo1":
+                //recorrer hijos del palo
+                foreach (GameObject currentHuecoPalo1 in palo1Places)
+                {
+                    //cada hijo del palo tendrá clase libre a true o false, lo comprobamos de la Pos1 a la Pos4
+                    //si es true está libre el hueco
+                    bool libre =currentHuecoPalo1.GetComponent<Libre>().GetHuecoLibre();
+                    //si esta libre el hueco enviamos este como GameObject
+                    if(libre) return currentHuecoPalo1;
+                    //sino seguimos buscando
+
+                }
+                break;
+            //buscar hueco en segunda lista
+            case "palo2":
+                foreach (GameObject currentHuecoPalo2 in palo2Places)
+                {
+                    
+                    //cada hijo del palo tendrá clase libre a true o false, lo comprobamos de la Pos1 a la Pos4
+                    //si es true está libre el hueco
+                    bool libre = currentHuecoPalo2.GetComponent<Libre>().GetHuecoLibre();
+                    //si esta libre el hueco enviamos este como GameObject
+                    if (libre) return currentHuecoPalo2;
+                    //sino seguimos buscando
+
+                }
+                break;
+            //buscar hueco en tercera lista
+            case "palo3":
+                foreach (GameObject currentHuecoPalo3 in palo3Places)
+                {
+                    //cada hijo del palo tendrá clase libre a true o false, lo comprobamos de la Pos1 a la Pos4
+                    //si es true está libre el hueco
+                    bool libre = currentHuecoPalo3.GetComponent<Libre>().GetHuecoLibre();
+                    //si esta libre el hueco enviamos este como GameObject
+                    if (libre) return currentHuecoPalo3;
+                    //sino seguimos buscando
+                }
+                break;
+            //excepciones
+            default:
+                Debug.Log("No hay hueco");
+                break;
+            
+        }
+
+        return null;
+
     }
 
 
