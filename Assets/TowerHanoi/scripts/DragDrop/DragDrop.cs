@@ -9,6 +9,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     [SerializeField] private Canvas canvas;
     [SerializeField] private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
+    private GameObject ultimaPosicionSeleccionadaUltimoDisco = null;
 
     private void Awake()
     {
@@ -31,10 +32,17 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //hacer drag
     public void OnDrag(PointerEventData eventData)
     {
+        //miramos si ese disco se ha movido a una posicion antes de hacero ahora
+        if(ultimaPosicionSeleccionadaUltimoDisco != null)
+        {
+            //si es el caso, como se ha cogido el disco, ponemos esta posicion a true otra vez
+            ultimaPosicionSeleccionadaUltimoDisco.GetComponent<Libre>().SetHuecoLibre(true);
+        }
         //Debug.Log("OnDrag");
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
         //cuando se coja el disco ponemos habilitamos todos los palos
         _myGameManagerHanoi.HabilitarPalos();
+
     }
 
     //END DRAG
@@ -43,6 +51,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
         //Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+
+        //cuando se suelte el disco en una zona se debe saber la info de:
+        //en qué palo está el disco
+        //en que posicion del palo está el disco
+        //poner la propiedad del disco 
+        //así ya podemos poner si se quita este disco(OnDrag) el valor de libre de la pos a true
+        ultimaPosicionSeleccionadaUltimoDisco = _myGameManagerHanoi.GetPosicionUltimoDiscoSeleccionado();
     }
 
     //se llamará a esta funcion cuando se apriete el ratón
@@ -55,11 +70,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     public void OnDrop(PointerEventData eventData)
     {
         //Debug.Log("OnDrop);
-        //cuando se suelte el disco en una zona se debe saber la info de:
-        //en qué palo está el disco
-        //en que posicion del palo está el disco
+        
 
-        //así ya podemos poner si se quita este disco(OnDrag) el valor de libre de la pos a true
     }
 }
 

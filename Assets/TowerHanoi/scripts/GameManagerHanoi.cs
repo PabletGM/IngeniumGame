@@ -18,6 +18,13 @@ public class GameManagerHanoi : MonoBehaviour
     [SerializeField]
     private DragDrop[] listaDiscos;
 
+    //ultimo disco seleccionado
+    private GameObject ultimoDiscoSeleccionado;
+    //info palo ultimo disco seleccionado
+    private GameObject ultimoPaloSeleccionado;
+    //info posicion del palo ultimo disco seleccionado
+    private GameObject ultimaPosicionSeleccionada;
+
     //lista de los 4 lugares Palo1 para poner ahí cada disco
     [SerializeField]
     private GameObject[] palo1Places;
@@ -118,6 +125,37 @@ public class GameManagerHanoi : MonoBehaviour
 
     }
 
+
+    //ponemos cual ha sido el ultimo disco seleccionado
+    public void SetUltimoDiscoSeleccionado(GameObject ultimoDisco)
+    {
+        ultimoDiscoSeleccionado = ultimoDisco;
+    }
+
+    //vemos cual ha sido el ultimo disco seleccionado
+    public GameObject GetUltimoDiscoSeleccionado()
+    {
+        return ultimoDiscoSeleccionado;
+    }
+
+    //para poner ultima posicion del palo y posicion del disco o ultimo movimiento hecho
+    public void SetPaloYPosicionUltimoDiscoSeleccionado(GameObject paloUltimoDisco, GameObject posicionPaloUltimoDisco)
+    {
+        ultimoPaloSeleccionado = paloUltimoDisco;
+        ultimaPosicionSeleccionada = posicionPaloUltimoDisco;
+    }
+
+    //para saber ultima  palo del ultimo disco ultimo movimiento hecho
+    public GameObject GetPaloUltimoDiscoSeleccionado()
+    {
+        return ultimoPaloSeleccionado;
+    }
+
+    //para saber ultima posicion del hueco  del ultimo disco ultimo movimiento hecho
+    public GameObject GetPosicionUltimoDiscoSeleccionado()
+    {
+        return ultimaPosicionSeleccionada;
+    }
 
 
     // Start is called before the first frame update
