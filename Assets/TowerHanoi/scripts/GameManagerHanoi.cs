@@ -16,6 +16,12 @@ public class GameManagerHanoi : MonoBehaviour
     //lista de los 4 lugares Palo1 para poner ahí cada disco
     [SerializeField]
     private GameObject[] palo1Places;
+    //lista de los 4 lugares Palo1 para poner ahí cada disco
+    [SerializeField]
+    private GameObject[] palo2Places;
+    //lista de los 4 lugares Palo1 para poner ahí cada disco
+    [SerializeField]
+    private GameObject[] palo3Places;
 
     private void Awake()
     {
