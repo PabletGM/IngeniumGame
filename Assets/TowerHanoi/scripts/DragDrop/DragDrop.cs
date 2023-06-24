@@ -11,6 +11,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     private RectTransform rectTransform;
     private GameObject ultimaPosicionSeleccionadaUltimoDisco = null;
 
+    //ultima posicion
+    private Vector3 ultimaPos;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -19,6 +22,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     private void Start()
     {
         _myGameManagerHanoi = GameManagerHanoi.GetInstance();
+        ultimaPos = transform.position;
     }
 
 
@@ -32,9 +36,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //hacer drag
     public void OnDrag(PointerEventData eventData)
     {
+        
         //miramos si ese disco se ha movido a una posicion antes de hacero ahora
-        if(ultimaPosicionSeleccionadaUltimoDisco != null)
+        if (ultimaPosicionSeleccionadaUltimoDisco != null)
         {
+            //ultimaPos = transform.position;
             //si es el caso, como se ha cogido el disco, ponemos esta posicion a true otra vez
             ultimaPosicionSeleccionadaUltimoDisco.GetComponent<Libre>().SetHuecoLibre(true);
         }
@@ -58,6 +64,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
         //poner la propiedad del disco 
         //así ya podemos poner si se quita este disco(OnDrag) el valor de libre de la pos a true
         ultimaPosicionSeleccionadaUltimoDisco = _myGameManagerHanoi.GetPosicionUltimoDiscoSeleccionado();
+        ////miramos si esta en un palo o no el disco para ponerlo en la ultima pos
+        //bool discoEnPalo = _myGameManagerHanoi.VerSiDiscoEstaEnPalo(transform);
+        ////sino está en el palo
+        //if(!discoEnPalo)
+        //{
+        //    transform.position = ultimaPos;
+        //}
     }
 
     //se llamará a esta funcion cuando se apriete el ratón

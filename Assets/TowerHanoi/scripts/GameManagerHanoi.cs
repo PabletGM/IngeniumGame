@@ -82,17 +82,45 @@ public class GameManagerHanoi : MonoBehaviour
         }
     }
 
-    //cambia si ultimo disco colocado en un palo o no
-    public void SetDiscoPalo(bool set)
+    //ver si pòs disco coincide con alguna pos de algun hueco
+    public bool VerSiDiscoEstaEnPalo(Transform posDisco)
     {
-        ultimoDiscoColocado = set;
-    }
+                bool discoEnPalo = false;
 
-    //dice si ultimo disco colocado en un palo o no
-    public bool GetDiscoPalo()
-    {
-       return ultimoDiscoColocado;
+                //recorrer hijos del palo 1, huecos
+                foreach (GameObject currentHuecoPalo1 in palo1Places)
+                {
+                    //en cada hijo comparamos las posiciones, si son iguales true
+                    if(currentHuecoPalo1.transform.position == posDisco.position)
+                    {
+                        discoEnPalo = true;
+                    }
+                }
+                
+                //recorrer hijos del palo 2, huecos
+                foreach (GameObject currentHuecoPalo2 in palo2Places)
+                {
+
+                    //en cada hijo comparamos las posiciones, si son iguales true
+                    if (currentHuecoPalo2.transform.position == posDisco.position)
+                    {
+                        discoEnPalo = true;
+                    }
+                }
+
+                //recorrer hijos del palo 3, huecos
+                foreach (GameObject currentHuecoPalo3 in palo3Places)
+                {
+                    //en cada hijo comparamos las posiciones, si son iguales true
+                    if (currentHuecoPalo3.transform.position == posDisco.position)
+                    {
+                        discoEnPalo = true;
+                    }
+                }
+
+        return discoEnPalo;
     }
+    
 
     //metodo que busca en el palo que tu pases como argumento que posiciones libres hay para devolver así una posicion
     public GameObject BuscarHuecoEnPalo(GameObject palo)
