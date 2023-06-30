@@ -15,6 +15,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         //info del objeto que ha sido cogido
         if(eventData.pointerDrag!=null)
         {
+            //llamamos a metodo de GameManager que quite el raycastTarget a todos los discos de este palo excepto de el que esté más arriba
+
             //llamamos a metodo de GameManager que devuelva el hueco libre y su GameObject
             GameObject huecoLibre = _myGameManagerHanoi.BuscarHuecoEnPalo(this.gameObject);
             //para así poder colocar el disco sobre la posicion del hueco libre
