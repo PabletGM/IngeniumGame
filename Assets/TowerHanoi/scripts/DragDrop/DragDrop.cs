@@ -12,6 +12,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     [SerializeField]
     private GameObject ultimaPosicionSeleccionadaUltimoDisco = null;
 
+    //para saber el width de cada disco y así diferenciarlos, cada disco guarda su width
+    private float widthDisco;
+
     //ultima posicion
     private Vector3 ultimaPos;
 
@@ -24,6 +27,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     {
         _myGameManagerHanoi = GameManagerHanoi.GetInstance();
         ultimaPos =transform.position;
+        //registra width del disco
+        widthDisco = this.gameObject.GetComponent<RectTransform>().sizeDelta.x;
 
     }
 

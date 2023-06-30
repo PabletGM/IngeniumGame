@@ -122,7 +122,16 @@ public class GameManagerHanoi : MonoBehaviour
     }
     
 
+    //metodo al que le de dos widths, y devuelve true si el disco que se quiere poner(el primer argumento) es mas pequeño que el disco que estaba
+    public bool PosiblePonerDiscoEncimaWidth(float widthDiscoNuevo, float widthDiscoAntiguo)
+    {
+        //cumple la condicion para ponerse encima
+        if (widthDiscoNuevo < widthDiscoAntiguo) return true;
+        else return false;
+    }
+
     //metodo que busca en el palo que tu pases como argumento que posiciones libres hay para devolver así una posicion
+    //solo devolverá una posicion sino se intenta poner un disco mas grande en uno mas pequeño
     public GameObject BuscarHuecoEnPalo(GameObject palo)
     {
         //miramos que palo es el pasado en argumentos
