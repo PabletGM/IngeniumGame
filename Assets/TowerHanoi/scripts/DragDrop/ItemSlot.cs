@@ -33,8 +33,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             _myGameManagerHanoi.DesHabilitarPalos();
 
 
-            //llamamos a metodo de GameManager que devuelva el disco que está mas arriba una vez se ha colocado el ultimo
-            GameObject discoMasAlto = _myGameManagerHanoi.MetodoDevuelveDiscoMasArribaPalo(this.gameObject);
+            
             //llamamos a metodo de GameManager que quite el raycastTarget a todos los discos de este palo excepto de el que esté más arriba
 
         }

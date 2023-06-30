@@ -346,9 +346,12 @@ public class GameManagerHanoi : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    //en todo momento sabemos cual es el disco que está mas arriba en cada palo
     void Update()
     {
-        
+        //llamamos a metodo de GameManager que devuelva el disco que está mas arriba una vez se ha colocado el ultimo
+        GameObject discoMasAltoPalo1 = MetodoDevuelveDiscoMasArribaPalo(Palos[0].gameObject);
+        GameObject discoMasAltoPalo2 = MetodoDevuelveDiscoMasArribaPalo(Palos[1].gameObject);
+        GameObject discoMasAltoPalo3 = MetodoDevuelveDiscoMasArribaPalo(Palos[2].gameObject);
     }
 }
