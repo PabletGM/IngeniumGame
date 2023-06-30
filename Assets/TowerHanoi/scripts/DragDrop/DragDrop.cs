@@ -9,6 +9,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     [SerializeField] private Canvas canvas;
     [SerializeField] private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
+    [SerializeField]
     private GameObject ultimaPosicionSeleccionadaUltimoDisco = null;
 
     //ultima posicion
@@ -22,7 +23,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     private void Start()
     {
         _myGameManagerHanoi = GameManagerHanoi.GetInstance();
-        ultimaPos = transform.position;
+        ultimaPos =transform.position;
+
     }
 
 
