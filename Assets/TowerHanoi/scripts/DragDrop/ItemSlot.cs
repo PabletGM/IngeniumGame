@@ -32,10 +32,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             //si cuando dejamos el disco quitasemos todos los raycast target de la imagen de los palos, se pueden volver a coger.
             _myGameManagerHanoi.DesHabilitarPalos();
 
-
-            
-            //llamamos a metodo de GameManager que quite el raycastTarget a todos los discos de este palo excepto de el que esté más arriba
-
         }
     }
     private void Start()

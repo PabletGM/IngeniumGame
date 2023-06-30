@@ -353,5 +353,6 @@ public class GameManagerHanoi : MonoBehaviour
         GameObject discoMasAltoPalo1 = MetodoDevuelveDiscoMasArribaPalo(Palos[0].gameObject);
         GameObject discoMasAltoPalo2 = MetodoDevuelveDiscoMasArribaPalo(Palos[1].gameObject);
         GameObject discoMasAltoPalo3 = MetodoDevuelveDiscoMasArribaPalo(Palos[2].gameObject);
+        //en todo momento actualizar y poner que solo tenga raycastTarget activado para poder cogerse el disco más alto
     }
 }
