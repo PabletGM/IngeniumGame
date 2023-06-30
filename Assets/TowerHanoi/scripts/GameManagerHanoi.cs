@@ -130,6 +130,123 @@ public class GameManagerHanoi : MonoBehaviour
         else return false;
     }
 
+    //devuelve numero de posicion segun el nombre
+    public int DevolverPosicionSegunNombre(string namePos)
+    {
+        int num =0;
+        switch (namePos)
+        {
+            case "Pos1":
+                num = 1;
+                break;
+            case "Pos2":
+                num = 2;
+                break;
+            case "Pos3":
+                num = 3;
+                break;
+            case "Pos4":
+                num = 4;
+                break;
+            //excepciones
+            default:  
+                break;
+
+        }
+        return num;
+    }
+
+    //devuelve el disco de arriba del todo
+    public GameObject MetodoDevuelveDiscoMasArribaPalo(GameObject palo)
+    {
+        int posicionDiscoArriba = 0;
+        GameObject discoMasAlto = null;
+        //segun que palo sea buscamos hueco libre en una lista u otra
+        switch (palo.name)
+        {
+            //buscar hueco en primera lista
+            case "palo1":
+                //recorrer hijos del palo
+                foreach (GameObject currentHuecoPalo1 in palo1Places)
+                {
+                    //cada hijo del palo tendrá clase libre a true o false, lo comprobamos de la Pos1 a la Pos4
+                    //si es true está libre el hueco, si está libre el hueco en la 4a pos devolvemos ese disco ya que estará encima de todo
+                    bool libre = currentHuecoPalo1.GetComponent<Libre>().GetHuecoLibre();
+                    //si está ocupada vemos que posicion es, su numero
+                    if (!libre)
+                    {
+                        string namePos = currentHuecoPalo1.name;
+                        int numero = DevolverPosicionSegunNombre(namePos);
+                        //ahora comparamos su numero con el numero de posicionDiscoArriba, si es mayor, se cambia, ya que el disco está mas alto
+                        if(numero> posicionDiscoArriba) 
+                        { 
+                            posicionDiscoArriba = numero;
+                            discoMasAlto = currentHuecoPalo1;
+                        }
+                    }
+                    //sino seguimos buscando
+
+                }
+                break;
+
+            //buscar hueco en segunda lista
+            case "palo2":
+                foreach (GameObject currentHuecoPalo2 in palo2Places)
+                {
+
+                    //cada hijo del palo tendrá clase libre a true o false, lo comprobamos de la Pos1 a la Pos4
+                    //si es true está libre el hueco, si está libre el hueco en la 4a pos devolvemos ese disco ya que estará encima de todo
+                    bool libre = currentHuecoPalo2.GetComponent<Libre>().GetHuecoLibre();
+                    //si está ocupada vemos que posicion es, su numero
+                    if (!libre)
+                    {
+                        string namePos = currentHuecoPalo2.name;
+                        int numero = DevolverPosicionSegunNombre(namePos);
+                        //ahora comparamos su numero con el numero de posicionDiscoArriba, si es mayor, se cambia, ya que el disco está mas alto
+                        if (numero > posicionDiscoArriba)
+                        {
+                            posicionDiscoArriba = numero;
+                            discoMasAlto = currentHuecoPalo2;
+                        }
+                    }
+                    //sino seguimos buscando
+
+                }
+                break;
+
+            //buscar hueco en tercera lista
+            case "palo3":
+                foreach (GameObject currentHuecoPalo3 in palo3Places)
+                {
+                    //cada hijo del palo tendrá clase libre a true o false, lo comprobamos de la Pos1 a la Pos4
+                    //si es true está libre el hueco, si está libre el hueco en la 4a pos devolvemos ese disco ya que estará encima de todo
+                    bool libre = currentHuecoPalo3.GetComponent<Libre>().GetHuecoLibre();
+                    //si está ocupada vemos que posicion es, su numero
+                    if (!libre)
+                    {
+                        string namePos = currentHuecoPalo3.name;
+                        int numero = DevolverPosicionSegunNombre(namePos);
+                        //ahora comparamos su numero con el numero de posicionDiscoArriba, si es mayor, se cambia, ya que el disco está mas alto
+                        if (numero > posicionDiscoArriba)
+                        {
+                            posicionDiscoArriba = numero;
+                            discoMasAlto = currentHuecoPalo3;
+                        }
+                    }
+                    //sino seguimos buscando
+                }
+                break;
+
+            //excepciones
+            default:
+                Debug.Log("No hay hueco");
+                break;
+
+        }
+
+        return discoMasAlto;
+    }
+
     //metodo que busca en el palo que tu pases como argumento que posiciones libres hay para devolver así una posicion
     //solo devolverá una posicion sino se intenta poner un disco mas grande en uno mas pequeño
     public GameObject BuscarHuecoEnPalo(GameObject palo)

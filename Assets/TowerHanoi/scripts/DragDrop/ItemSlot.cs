@@ -15,7 +15,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         //info del objeto que ha sido cogido
         if(eventData.pointerDrag!=null)
         {
-            //llamamos a metodo de GameManager que quite el raycastTarget a todos los discos de este palo excepto de el que esté más arriba
+            
 
             //llamamos a metodo de GameManager que devuelva el hueco libre y su GameObject
             GameObject huecoLibre = _myGameManagerHanoi.BuscarHuecoEnPalo(this.gameObject);
@@ -32,11 +32,17 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             //si cuando dejamos el disco quitasemos todos los raycast target de la imagen de los palos, se pueden volver a coger.
             _myGameManagerHanoi.DesHabilitarPalos();
 
+
+            //llamamos a metodo de GameManager que devuelva el disco que está mas arriba una vez se ha colocado el ultimo
+            GameObject discoMasAlto = _myGameManagerHanoi.MetodoDevuelveDiscoMasArribaPalo(this.gameObject);
+            //llamamos a metodo de GameManager que quite el raycastTarget a todos los discos de este palo excepto de el que esté más arriba
+
         }
     }
     private void Start()
     {
         _myGameManagerHanoi = GameManagerHanoi.GetInstance();
+        
     }
 
 }
