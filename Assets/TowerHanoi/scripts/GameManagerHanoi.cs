@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Sockets;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,7 +17,7 @@ public class GameManagerHanoi : MonoBehaviour
 
     //lista de los discos que hay en juego
     [SerializeField]
-    private DragDrop[] listaDiscos;
+    private GameObject[] listaDiscos;
 
     //ultimo disco seleccionado
     private GameObject ultimoDiscoSeleccionado;
@@ -339,6 +340,23 @@ public class GameManagerHanoi : MonoBehaviour
         return ultimaPosicionSeleccionada;
     }
 
+    public void QuitarPermisoDiscosExceptoArriba(GameObject discoMasAlto)
+    {
+        //de todos los discos que hay quitamos raycastTarget de todos excepto del que está primero
+        foreach(GameObject currentDisco in listaDiscos)
+        {
+            //si el currentDisco no es el discoMasAlto le quitamos su raycastTarget
+            if(currentDisco.name != discoMasAlto.name)
+            {
+                currentDisco.GetComponent<Image>().raycastTarget = false;
+            }
+            else
+            {
+                currentDisco.GetComponent<Image>().raycastTarget = true;
+            }
+        }
+    }
+
 
     // Start is called before the first frame update
     void Start()
@@ -351,8 +369,28 @@ public class GameManagerHanoi : MonoBehaviour
     {
         //llamamos a metodo de GameManager que devuelva el disco que está mas arriba una vez se ha colocado el ultimo
         GameObject discoMasAltoPalo1 = MetodoDevuelveDiscoMasArribaPalo(Palos[0].gameObject);
+        //si hay disco en el palo
+        if(discoMasAltoPalo1 != null)
+        {
+            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo1);
+        }
+       
         GameObject discoMasAltoPalo2 = MetodoDevuelveDiscoMasArribaPalo(Palos[1].gameObject);
+        //si hay disco en el palo
+        if (discoMasAltoPalo2 != null)
+        {
+            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo2);
+        }
+
         GameObject discoMasAltoPalo3 = MetodoDevuelveDiscoMasArribaPalo(Palos[2].gameObject);
+        //si hay disco en el palo
+        if (discoMasAltoPalo3 != null)
+        {
+            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo3);
+        }
         //en todo momento actualizar y poner que solo tenga raycastTarget activado para poder cogerse el disco más alto
+
+
+
     }
 }

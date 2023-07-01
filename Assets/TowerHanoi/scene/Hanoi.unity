@@ -2155,10 +2155,10 @@ MonoBehaviour:
   - {fileID: 756069280}
   - {fileID: 1535126870}
   listaDiscos:
-  - {fileID: 1765973657}
-  - {fileID: 808589259}
-  - {fileID: 223252637}
-  - {fileID: 787482573}
+  - {fileID: 1765973653}
+  - {fileID: 808589256}
+  - {fileID: 223252634}
+  - {fileID: 787482570}
   palo1Places:
   - {fileID: 1189454298}
   - {fileID: 1671259450}
