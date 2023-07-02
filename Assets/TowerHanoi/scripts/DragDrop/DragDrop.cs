@@ -36,6 +36,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //BEGIN DRAG
     public void OnBeginDrag(PointerEventData eventData)
     {
+        //quitamos nombre de disco en anterior hueco ya que ya no está
+        ultimaPosicionSeleccionadaUltimoDisco.GetComponent<Libre>().SetNombreDiscoActual("");
         //Debug.Log("OnBeginDrag");
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
@@ -50,6 +52,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
             //ultimaPos = transform.position;
             //si es el caso, como se ha cogido el disco, ponemos esta posicion a true otra vez
             ultimaPosicionSeleccionadaUltimoDisco.GetComponent<Libre>().SetHuecoLibre(true);
+            
         }
         //Debug.Log("OnDrag");
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
@@ -71,6 +74,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
         //poner la propiedad del disco 
         //así ya podemos poner si se quita este disco(OnDrag) el valor de libre de la pos a true
         ultimaPosicionSeleccionadaUltimoDisco = _myGameManagerHanoi.GetPosicionUltimoDiscoSeleccionado();
+       
         ////miramos si esta en un palo o no el disco para ponerlo en la ultima pos
         //bool discoEnPalo = _myGameManagerHanoi.VerSiDiscoEstaEnPalo(transform);
         ////sino está en el palo

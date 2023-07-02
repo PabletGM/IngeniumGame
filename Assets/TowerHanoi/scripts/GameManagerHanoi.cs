@@ -157,12 +157,41 @@ public class GameManagerHanoi : MonoBehaviour
         return num;
     }
 
-    //devuelve el disco de arriba del todo
-    public GameObject MetodoDevuelveDiscoMasArribaPalo(GameObject palo)
+    //devuelve gameObject disco segun el nombre
+    public GameObject DevolverDiscoSegunNombre(string nameDisco)
+    {
+        GameObject discoDevuelto= null;
+        switch (nameDisco)
+        {
+            case "disco1Imagen":
+                discoDevuelto = listaDiscos[0];
+                break;
+            case "disco2Imagen":
+                discoDevuelto = listaDiscos[1];
+                break;
+            case "disco3Imagen":
+                discoDevuelto = listaDiscos[2];
+                break;
+            case "disco4Imagen":
+                discoDevuelto = listaDiscos[3];
+                break;
+            //excepciones
+            default:
+                break;
+
+        }
+        return discoDevuelto;
+    }
+
+    //devuelve el nombre del disco de arriba del todo
+    public string MetodoDevuelveDiscoMasArribaPalo(GameObject palo)
     {
         int posicionDiscoArriba = 0;
-        GameObject discoMasAlto = null;
-        //segun que palo sea buscamos hueco libre en una lista u otra
+        //esta será la posicion del disco más alto
+        GameObject PosiciondiscoMasAlto = null;
+        //disco mas alto nombre
+        string name = "";
+        //segun que palo sea buscamos disco mas arriba
         switch (palo.name)
         {
             //buscar hueco en primera lista
@@ -182,7 +211,10 @@ public class GameManagerHanoi : MonoBehaviour
                         if(numero> posicionDiscoArriba) 
                         { 
                             posicionDiscoArriba = numero;
-                            discoMasAlto = currentHuecoPalo1;
+                            PosiciondiscoMasAlto = currentHuecoPalo1;
+                            //hacemos metodo que busque él disco mas alto buscandolo en su propio hueco en sus variables
+                            name =PosiciondiscoMasAlto.GetComponent<Libre>().GetNombreDiscoActual();
+
                         }
                     }
                     //sino seguimos buscando
@@ -207,7 +239,10 @@ public class GameManagerHanoi : MonoBehaviour
                         if (numero > posicionDiscoArriba)
                         {
                             posicionDiscoArriba = numero;
-                            discoMasAlto = currentHuecoPalo2;
+                            PosiciondiscoMasAlto = currentHuecoPalo2;
+                            //hacemos metodo que busque él disco mas alto buscandolo en su propio hueco en sus variables
+                            name = PosiciondiscoMasAlto.GetComponent<Libre>().GetNombreDiscoActual();
+
                         }
                     }
                     //sino seguimos buscando
@@ -231,7 +266,10 @@ public class GameManagerHanoi : MonoBehaviour
                         if (numero > posicionDiscoArriba)
                         {
                             posicionDiscoArriba = numero;
-                            discoMasAlto = currentHuecoPalo3;
+                            PosiciondiscoMasAlto = currentHuecoPalo3;
+                            //hacemos metodo que busque él disco mas alto buscandolo en su propio hueco en sus variables
+                            name = PosiciondiscoMasAlto.GetComponent<Libre>().GetNombreDiscoActual();
+
                         }
                     }
                     //sino seguimos buscando
@@ -245,8 +283,10 @@ public class GameManagerHanoi : MonoBehaviour
 
         }
 
-        return discoMasAlto;
+        return name;
     }
+
+    
 
     //metodo que busca en el palo que tu pases como argumento que posiciones libres hay para devolver así una posicion
     //solo devolverá una posicion sino se intenta poner un disco mas grande en uno mas pequeño
@@ -340,20 +380,86 @@ public class GameManagerHanoi : MonoBehaviour
         return ultimaPosicionSeleccionada;
     }
 
-    public void QuitarPermisoDiscosExceptoArriba(GameObject discoMasAlto)
+    //pero tenemos que ver que discos tiene en concreto cada palo
+    public void QuitarPermisoDiscosExceptoArriba(string discoMasAltoName, GameObject paloActual)
     {
-        //de todos los discos que hay quitamos raycastTarget de todos excepto del que está primero
-        foreach(GameObject currentDisco in listaDiscos)
+        //almacenamos en un array los discos que si estan en el palo y podemos modificar
+        GameObject[] listaDiscosModificablesPalo = new GameObject[4];
+        int contadorListadiscosModificables = 0;
+        //miramos en que palo estamos
+        switch (paloActual.gameObject.name)
+        {
+            //una vez lo sabemos miramos que huecos libres tenemos en cada palo
+            case "palo1":
+                foreach (GameObject currentHuecoPalo1 in palo1Places)
+                {
+                    //miramos en cada hueco y su script Libre para ver que disco tiene
+                    string name = currentHuecoPalo1.GetComponent<Libre>().GetNombreDiscoActual();
+                    //si el nombre es diferente de "", lo añadimos a los discos modificables
+                    if(name!= "")
+                    {
+                        //cogemeos disco segun el nombre
+                        GameObject discoValido = DevolverDiscoSegunNombre(name);
+                        listaDiscosModificablesPalo[contadorListadiscosModificables] = discoValido;
+                        contadorListadiscosModificables++;
+                    }
+                }
+                break;
+
+            case "palo2":
+                foreach (GameObject currentHuecoPalo2 in palo2Places)
+                {
+                    //miramos en cada hueco y su script Libre para ver que disco tiene
+                    string name = currentHuecoPalo2.GetComponent<Libre>().GetNombreDiscoActual();
+                    //si el nombre es diferente de "", lo añadimos a los discos modificables
+                    if (name != "")
+                    {
+                        //cogmeos disco segun el nombre
+                        GameObject discoValido = DevolverDiscoSegunNombre(name);
+                        listaDiscosModificablesPalo[contadorListadiscosModificables] = discoValido;
+                        contadorListadiscosModificables++;
+                    }
+                }
+                break;
+
+            case "palo3":
+                foreach (GameObject currentHuecoPalo3 in palo3Places)
+                {
+                    //miramos en cada hueco y su script Libre para ver que disco tiene
+                    string name = currentHuecoPalo3.GetComponent<Libre>().GetNombreDiscoActual();
+                    //si el nombre es diferente de "", lo añadimos a los discos modificables
+                    if (name != "")
+                    {
+                        //cogmeos disco segun el nombre
+                        GameObject discoValido = DevolverDiscoSegunNombre(name);
+                        listaDiscosModificablesPalo[contadorListadiscosModificables] = discoValido;
+                        contadorListadiscosModificables++;
+                    }
+                }
+                break;
+
+        }
+
+        // se reinicia
+        contadorListadiscosModificables = 0;
+
+        //quitamos funcionalidad o la ponemos en los discos del palo actual
+        foreach (GameObject currentDisco in listaDiscosModificablesPalo)
         {
             //si el currentDisco no es el discoMasAlto le quitamos su raycastTarget
-            if(currentDisco.name != discoMasAlto.name)
+            //puede ser null si solo hay 3 discos pues el disco 4
+            if(currentDisco!= null)
             {
-                currentDisco.GetComponent<Image>().raycastTarget = false;
+                if (currentDisco.name != discoMasAltoName)
+                {
+                    currentDisco.GetComponent<Image>().raycastTarget = false;
+                }
+                else
+                {
+                    currentDisco.GetComponent<Image>().raycastTarget = true;
+                }
             }
-            else
-            {
-                currentDisco.GetComponent<Image>().raycastTarget = true;
-            }
+            
         }
     }
 
@@ -368,25 +474,25 @@ public class GameManagerHanoi : MonoBehaviour
     void Update()
     {
         //llamamos a metodo de GameManager que devuelva el disco que está mas arriba una vez se ha colocado el ultimo
-        GameObject discoMasAltoPalo1 = MetodoDevuelveDiscoMasArribaPalo(Palos[0].gameObject);
+        string discoMasAltoPalo1Name = MetodoDevuelveDiscoMasArribaPalo(Palos[0].gameObject);
         //si hay disco en el palo
-        if(discoMasAltoPalo1 != null)
+        if(discoMasAltoPalo1Name != "")
         {
-            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo1);
-        }
-       
-        GameObject discoMasAltoPalo2 = MetodoDevuelveDiscoMasArribaPalo(Palos[1].gameObject);
-        //si hay disco en el palo
-        if (discoMasAltoPalo2 != null)
-        {
-            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo2);
+            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo1Name, Palos[0].gameObject);
         }
 
-        GameObject discoMasAltoPalo3 = MetodoDevuelveDiscoMasArribaPalo(Palos[2].gameObject);
+        string discoMasAltoPalo2Name = MetodoDevuelveDiscoMasArribaPalo(Palos[1].gameObject);
         //si hay disco en el palo
-        if (discoMasAltoPalo3 != null)
+        if (discoMasAltoPalo2Name != "")
         {
-            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo3);
+            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo2Name, Palos[1].gameObject);
+        }
+
+        string discoMasAltoPalo3Name = MetodoDevuelveDiscoMasArribaPalo(Palos[2].gameObject);
+        //si hay disco en el palo
+        if (discoMasAltoPalo3Name != "")
+        {
+            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo3Name, Palos[2].gameObject);
         }
         //en todo momento actualizar y poner que solo tenga raycastTarget activado para poder cogerse el disco más alto
 

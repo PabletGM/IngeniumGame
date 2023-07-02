@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
+  nombreDiscoActual: disco4imagen
 --- !u!1 &223252634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1025,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 0
+  nombreDiscoActual: disco3Imagen
 --- !u!1 &594555191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1448,6 +1450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
+  nombreDiscoActual: disco4imagen
 --- !u!1 &688387312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,6 +1625,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
+  nombreDiscoActual: disco4imagen
 --- !u!1 &756069278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1730,7 +1734,7 @@ GameObject:
   - component: {fileID: 787482573}
   - component: {fileID: 787482572}
   m_Layer: 5
-  m_Name: disco4imagen
+  m_Name: disco4Imagen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2016,6 +2020,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
+  nombreDiscoActual: disco4imagen
 --- !u!1 &825780405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2106,6 +2111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
+  nombreDiscoActual: disco4imagen
 --- !u!1 &845126869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2264,6 +2270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
+  nombreDiscoActual: disco4imagen
 --- !u!1 &950621632
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,6 +2496,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 0
+  nombreDiscoActual: disco1Imagen
 --- !u!1 &1261306253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2579,6 +2587,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
+  nombreDiscoActual: disco4imagen
 --- !u!1 &1501877253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2971,6 +2980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 0
+  nombreDiscoActual: disco2Imagen
 --- !u!1 &1677607351
 GameObject:
   m_ObjectHideFlags: 0
@@ -3666,6 +3676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 0
+  nombreDiscoActual: disco4Imagen
 --- !u!1 &2067335785
 GameObject:
   m_ObjectHideFlags: 0
@@ -3756,6 +3767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
+  nombreDiscoActual: disco4imagen
 --- !u!1 &2074313248
 GameObject:
   m_ObjectHideFlags: 0
