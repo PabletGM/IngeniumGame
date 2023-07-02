@@ -136,6 +136,7 @@ public class GameManagerHanoi : MonoBehaviour
     //para esto llamamos a metodo de GameManager que compare width del discoMasAlto y el discoNuevo
     public bool ComparacionWidthDiscos(GameObject discoNuevo, GameObject palo)
     {
+        //esta fallando porque el discoNuevo y el discoMasAlto lo pilla como el mismo, y el discoMasAlto deberia ser el discoAnterior
         //tenemos ya el GO del discoNuevo, buscamos el GO del discoMasAlto
         string nombreDiscoMasArriba = MetodoDevuelveDiscoMasArribaPalo(palo);
         GameObject discoMasAlto = DevolverDiscoSegunNombre(nombreDiscoMasArriba);
