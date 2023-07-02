@@ -127,8 +127,23 @@ public class GameManagerHanoi : MonoBehaviour
     public bool PosiblePonerDiscoEncimaWidth(float widthDiscoNuevo, float widthDiscoAntiguo)
     {
         //cumple la condicion para ponerse encima
-        if (widthDiscoNuevo < widthDiscoAntiguo) return true;
+        if (widthDiscoNuevo <= widthDiscoAntiguo) return true;
         else return false;
+    }
+
+    //para ver si colocamos el disco en el hueco de la posicion Libre por encima debemos ver si
+    //el width del discoNuevo es menor que el width del discoMasAlto
+    //para esto llamamos a metodo de GameManager que compare width del discoMasAlto y el discoNuevo
+    public bool ComparacionWidthDiscos(GameObject discoNuevo, GameObject palo)
+    {
+        //tenemos ya el GO del discoNuevo, buscamos el GO del discoMasAlto
+        string nombreDiscoMasArriba = MetodoDevuelveDiscoMasArribaPalo(palo);
+        GameObject discoMasAlto = DevolverDiscoSegunNombre(nombreDiscoMasArriba);
+
+        //sabiendo ahora estos 2 gameObjects podemos comparar sus widths
+        bool posiblePonerDiscoNuevoEncimaWidth = PosiblePonerDiscoEncimaWidth(discoNuevo.GetComponent<RectTransform>().sizeDelta.x, discoMasAlto.GetComponent<RectTransform>().sizeDelta.x);
+
+        return posiblePonerDiscoNuevoEncimaWidth;
     }
 
     //devuelve numero de posicion segun el nombre
@@ -213,7 +228,12 @@ public class GameManagerHanoi : MonoBehaviour
                             posicionDiscoArriba = numero;
                             PosiciondiscoMasAlto = currentHuecoPalo1;
                             //hacemos metodo que busque él disco mas alto buscandolo en su propio hueco en sus variables
-                            name =PosiciondiscoMasAlto.GetComponent<Libre>().GetNombreDiscoActual();
+                            if(PosiciondiscoMasAlto.GetComponent<Libre>().GetNombreDiscoActual()!="")
+                            {
+                                //comprobamos que no devuelva el nombre de un disco o posicion que ya no está
+                                name = PosiciondiscoMasAlto.GetComponent<Libre>().GetNombreDiscoActual();
+                            }
+                            
 
                         }
                     }

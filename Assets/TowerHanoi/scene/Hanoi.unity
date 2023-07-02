@@ -289,7 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
-  nombreDiscoActual: disco4imagen
+  nombreDiscoActual: 
 --- !u!1 &223252634
 GameObject:
   m_ObjectHideFlags: 0
@@ -357,6 +357,7 @@ MonoBehaviour:
   canvas: {fileID: 2074313251}
   canvasGroup: {fileID: 223252636}
   ultimaPosicionSeleccionadaUltimoDisco: {fileID: 584233658}
+  ultimaPos: {x: 0, y: 0, z: 0}
 --- !u!114 &223252638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1450,7 +1451,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
-  nombreDiscoActual: disco4imagen
+  nombreDiscoActual: 
 --- !u!1 &688387312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,7 +1626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
-  nombreDiscoActual: disco4imagen
+  nombreDiscoActual: 
 --- !u!1 &756069278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1787,6 +1788,7 @@ MonoBehaviour:
   canvas: {fileID: 2074313251}
   canvasGroup: {fileID: 787482572}
   ultimaPosicionSeleccionadaUltimoDisco: {fileID: 2019585986}
+  ultimaPos: {x: 0, y: 0, z: 0}
 --- !u!114 &787482574
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1892,6 +1894,7 @@ MonoBehaviour:
   canvas: {fileID: 2074313251}
   canvasGroup: {fileID: 808589258}
   ultimaPosicionSeleccionadaUltimoDisco: {fileID: 1671259450}
+  ultimaPos: {x: 0, y: 0, z: 0}
 --- !u!114 &808589260
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2020,7 +2023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
-  nombreDiscoActual: disco4imagen
+  nombreDiscoActual: 
 --- !u!1 &825780405
 GameObject:
   m_ObjectHideFlags: 0
@@ -2111,7 +2114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
-  nombreDiscoActual: disco4imagen
+  nombreDiscoActual: 
 --- !u!1 &845126869
 GameObject:
   m_ObjectHideFlags: 0
@@ -2270,7 +2273,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
-  nombreDiscoActual: disco4imagen
+  nombreDiscoActual: 
 --- !u!1 &950621632
 GameObject:
   m_ObjectHideFlags: 0
@@ -2587,7 +2590,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
-  nombreDiscoActual: disco4imagen
+  nombreDiscoActual: 
 --- !u!1 &1501877253
 GameObject:
   m_ObjectHideFlags: 0
@@ -3295,6 +3298,7 @@ MonoBehaviour:
   canvas: {fileID: 2074313251}
   canvasGroup: {fileID: 1765973658}
   ultimaPosicionSeleccionadaUltimoDisco: {fileID: 1189454298}
+  ultimaPos: {x: 0, y: 0, z: 0}
 --- !u!225 &1765973658
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -3767,7 +3771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   huecoLibre: 1
-  nombreDiscoActual: disco4imagen
+  nombreDiscoActual: 
 --- !u!1 &2074313248
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     private float widthDisco;
 
     //ultima posicion
-    private Vector3 ultimaPos;
+    [HideInInspector]
+    public Vector3 ultimaPos;
 
     private void Awake()
     {
@@ -36,6 +37,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //BEGIN DRAG
     public void OnBeginDrag(PointerEventData eventData)
     {
+        ultimaPos = transform.position;
         //quitamos nombre de disco en anterior hueco ya que ya no está
         ultimaPosicionSeleccionadaUltimoDisco.GetComponent<Libre>().SetNombreDiscoActual("");
         //Debug.Log("OnBeginDrag");
