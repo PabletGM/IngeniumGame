@@ -55,10 +55,14 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             }
             else
             {
-                //cambiamos la posicion del hueco libre a true para indicar que está libre
-                huecoLibre.GetComponent<Libre>().SetHuecoLibre(true);
                 //sino se puede poner disco encima ponemos posicion anterior en el hueco anterior
                 eventData.pointerDrag.GetComponent<RectTransform>().position = eventData.pointerDrag.GetComponent<DragDrop>().ultimaPos;
+                //cambiamos la posicion del hueco libre a true para indicar que está libre
+                huecoLibre.GetComponent<Libre>().SetHuecoLibre(true); 
+                //pasamos info al GameManager de cual es el ultimo disco seleccionado
+                _myGameManagerHanoi.SetUltimoDiscoSeleccionado(eventData.pointerDrag.gameObject);
+                //enviamos esa info al GameManager del ultimo palo y posicion del disco para luego conectar con script DragAndDrop del disco seleccionado para que sepa el palo y la posición donde se ha dejado
+                _myGameManagerHanoi.SetPaloYPosicionUltimoDiscoSeleccionado(this.gameObject, huecoLibre);
                 //si cuando dejamos el disco quitamos el raycast target a la imagen del palo, se puede volver a coger.
                 imagePalo.raycastTarget = false;
                 //si cuando dejamos el disco quitasemos todos los raycast target de la imagen de los palos, se pueden volver a coger.
