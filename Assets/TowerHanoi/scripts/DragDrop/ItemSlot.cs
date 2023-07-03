@@ -59,6 +59,10 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 huecoLibre.GetComponent<Libre>().SetHuecoLibre(true);
                 //sino se puede poner disco encima ponemos posicion anterior en el hueco anterior
                 eventData.pointerDrag.GetComponent<RectTransform>().position = eventData.pointerDrag.GetComponent<DragDrop>().ultimaPos;
+                //si cuando dejamos el disco quitamos el raycast target a la imagen del palo, se puede volver a coger.
+                imagePalo.raycastTarget = false;
+                //si cuando dejamos el disco quitasemos todos los raycast target de la imagen de los palos, se pueden volver a coger.
+                _myGameManagerHanoi.DesHabilitarPalos();
             }
             
 
