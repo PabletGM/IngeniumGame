@@ -20,19 +20,22 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             //llamamos a metodo de GameManager que devuelva el hueco libre y su GameObject
             GameObject huecoLibre = _myGameManagerHanoi.BuscarHuecoEnPalo(this.gameObject);
 
-            //cambiamos la posicion del hueco libre a false para indicar que está ocupada
-            huecoLibre.GetComponent<Libre>().SetHuecoLibre(false);
+            
 
             //y ponemos nombre del disco que esta ocupando el hueco
             huecoLibre.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
 
+            //cambiamos la posicion del hueco libre a false para indicar que está ocupada
+            huecoLibre.GetComponent<Libre>().SetHuecoLibre(false);
             //para ver si colocamos el disco en el hueco de la posicion Libre por encima debemos ver si
             //el width del discoNuevo es menor que el width del discoMasAlto
             //para esto llamamos a metodo de GameManager que compare width del discoMasAlto y el discoNuevo
             bool posibilidadDiscoEncima = _myGameManagerHanoi.ComparacionWidthDiscos(eventData.pointerDrag.gameObject, this.gameObject);
 
+            
+
             //si es true se hace todo normal
-            if(posibilidadDiscoEncima)
+            if (posibilidadDiscoEncima)
             {
                 //para así poder colocar el disco sobre la posicion del hueco libre
                 eventData.pointerDrag.GetComponent<RectTransform>().position = huecoLibre.GetComponent<RectTransform>().position;
@@ -49,7 +52,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             }
             else
             {
-                //cambiamos la posicion del hueco libre a false para indicar que está libre
+                //cambiamos la posicion del hueco libre a true para indicar que está libre
                 huecoLibre.GetComponent<Libre>().SetHuecoLibre(true);
                 //sino se puede poner disco encima ponemos posicion anterior en el hueco anterior
                 eventData.pointerDrag.GetComponent<RectTransform>().position = eventData.pointerDrag.GetComponent<DragDrop>().ultimaPos;

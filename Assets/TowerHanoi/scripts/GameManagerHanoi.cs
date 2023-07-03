@@ -136,13 +136,23 @@ public class GameManagerHanoi : MonoBehaviour
     //para esto llamamos a metodo de GameManager que compare width del discoMasAlto y el discoNuevo
     public bool ComparacionWidthDiscos(GameObject discoNuevo, GameObject palo)
     {
+        bool posiblePonerDiscoNuevoEncimaWidth = false;
         //esta fallando porque el discoNuevo y el discoMasAlto lo pilla como el mismo, y el discoMasAlto deberia ser el discoAnterior
         //tenemos ya el GO del discoNuevo, buscamos el GO del discoMasAlto
         string nombreDiscoMasArriba = MetodoDevuelveDiscoMasArribaPalo(palo);
         GameObject discoMasAlto = DevolverDiscoSegunNombre(nombreDiscoMasArriba);
 
         //sabiendo ahora estos 2 gameObjects podemos comparar sus widths
-        bool posiblePonerDiscoNuevoEncimaWidth = PosiblePonerDiscoEncimaWidth(discoNuevo.GetComponent<RectTransform>().sizeDelta.x, discoMasAlto.GetComponent<RectTransform>().sizeDelta.x);
+        //si hay discoMasAlto y no esta vacio el palo sin discos
+        if(discoMasAlto!=null)
+        {
+            posiblePonerDiscoNuevoEncimaWidth = PosiblePonerDiscoEncimaWidth(discoNuevo.GetComponent<RectTransform>().sizeDelta.x, discoMasAlto.GetComponent<RectTransform>().sizeDelta.x);
+        }
+        else
+        {
+            posiblePonerDiscoNuevoEncimaWidth=false;
+        }
+        
 
         return posiblePonerDiscoNuevoEncimaWidth;
     }
