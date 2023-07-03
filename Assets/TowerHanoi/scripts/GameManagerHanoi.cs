@@ -183,6 +183,74 @@ public class GameManagerHanoi : MonoBehaviour
         return num;
     }
 
+    //buscamos el palo y miramos si tiene algun disco o no
+    public bool PaloVacioONo(GameObject palo)
+    {
+        //por defecto true
+        bool paloVacio = true;
+        //si tiene disco devolvemos false
+        //sino tiene ninguno devolvemos true
+        switch (palo.name)
+        {
+            //buscar hueco en primera lista
+            case "palo1":
+                //recorrer hijos del palo
+                foreach (GameObject currentHuecoPalo1 in palo1Places)
+                {
+                    
+                    bool libre = currentHuecoPalo1.GetComponent<Libre>().GetHuecoLibre();
+                    //si está ocupada es que hay disco
+                    if (!libre)
+                    {
+                        paloVacio = false;
+                        return paloVacio;
+                    }
+                    //sino seguimos buscando
+
+                }
+                break;
+
+            //buscar hueco en segunda lista
+            case "palo2":
+                foreach (GameObject currentHuecoPalo2 in palo2Places)
+                {
+
+                    bool libre = currentHuecoPalo2.GetComponent<Libre>().GetHuecoLibre();
+                    //si está ocupada es que hay disco
+                    if (!libre)
+                    {
+                        paloVacio = false;
+                        return paloVacio;
+                    }
+                    //sino seguimos buscando
+
+                }
+                break;
+
+            //buscar hueco en tercera lista
+            case "palo3":
+                foreach (GameObject currentHuecoPalo3 in palo3Places)
+                {
+                    bool libre = currentHuecoPalo3.GetComponent<Libre>().GetHuecoLibre();
+                    //si está ocupada es que hay disco
+                    if (!libre)
+                    {
+                        paloVacio = false;
+                        return paloVacio;
+                    }
+                    //sino seguimos buscando
+                }
+                break;
+
+            //excepciones
+            default:
+                Debug.Log("No hay hueco");
+                break;
+
+        }
+        return paloVacio;
+    }
+
     //devuelve gameObject disco segun el nombre
     public GameObject DevolverDiscoSegunNombre(string nameDisco)
     {

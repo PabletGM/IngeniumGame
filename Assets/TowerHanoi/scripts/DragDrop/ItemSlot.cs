@@ -31,11 +31,14 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             //para esto llamamos a metodo de GameManager que compare width del discoMasAlto y el discoNuevo
             bool posibilidadDiscoEncima = _myGameManagerHanoi.ComparacionWidthDiscos(eventData.pointerDrag.gameObject, this.gameObject);
 
+            //miramos tambien si esta vacio el palo
+           bool paloVacio = _myGameManagerHanoi.PaloVacioONo(this.gameObject);
+
             //cambiamos la posicion del hueco libre a false para indicar que está ocupada
             huecoLibre.GetComponent<Libre>().SetHuecoLibre(false);
 
-            //si es true se hace todo normal
-            if (posibilidadDiscoEncima)
+            //si es true se hace todo normal, o si el palo está vacio
+            if (posibilidadDiscoEncima || paloVacio)
             {
                 //para así poder colocar el disco sobre la posicion del hueco libre
                 eventData.pointerDrag.GetComponent<RectTransform>().position = huecoLibre.GetComponent<RectTransform>().position;
