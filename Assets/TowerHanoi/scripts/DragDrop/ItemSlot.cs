@@ -22,7 +22,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
             
 
-            //y ponemos nombre del disco que esta ocupando el hueco
+            //y ponemos nombre del disco que esta ocupando el hueco en un principio
             huecoLibre.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
 
             
@@ -55,17 +55,21 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             }
             else
             {
+                //si al final no se ocupa el huecoLibre, sino el huecoAnterior
+                huecoLibre.GetComponent<Libre>().SetNombreDiscoActual("");
+                
                 //sino se puede poner disco encima ponemos posicion anterior en el hueco anterior
                 eventData.pointerDrag.GetComponent<RectTransform>().position = eventData.pointerDrag.GetComponent<DragDrop>().ultimaPos;
-                //cambiamos la posicion del hueco libre a true para indicar que está libre
+                //cambiamos la posicion del hueco libre a true para indicar que está libre ya que volvemos al anterior
                 huecoLibre.GetComponent<Libre>().SetHuecoLibre(true);
                 //falta indicar que el hueco anterior al que se vuelve se debe poner a false
                 GameObject huecoAnterior = eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada();
+                huecoAnterior.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
                 huecoAnterior.GetComponent<Libre>().SetHuecoLibre(false);
                 //pasamos info al GameManager de cual es el ultimo disco seleccionado
                 _myGameManagerHanoi.SetUltimoDiscoSeleccionado(eventData.pointerDrag.gameObject);
                 //enviamos esa info al GameManager del ultimo palo y posicion del disco para luego conectar con script DragAndDrop del disco seleccionado para que sepa el palo y la posición donde se ha dejado
-                _myGameManagerHanoi.SetPaloYPosicionUltimoDiscoSeleccionado(this.gameObject, huecoLibre);
+                _myGameManagerHanoi.SetPaloYPosicionUltimoDiscoSeleccionado(this.gameObject, huecoAnterior);
                 //si cuando dejamos el disco quitamos el raycast target a la imagen del palo, se puede volver a coger.
                 imagePalo.raycastTarget = false;
                 //si cuando dejamos el disco quitasemos todos los raycast target de la imagen de los palos, se pueden volver a coger.
