@@ -58,7 +58,10 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 //sino se puede poner disco encima ponemos posicion anterior en el hueco anterior
                 eventData.pointerDrag.GetComponent<RectTransform>().position = eventData.pointerDrag.GetComponent<DragDrop>().ultimaPos;
                 //cambiamos la posicion del hueco libre a true para indicar que está libre
-                huecoLibre.GetComponent<Libre>().SetHuecoLibre(true); 
+                huecoLibre.GetComponent<Libre>().SetHuecoLibre(true);
+                //falta indicar que el hueco anterior al que se vuelve se debe poner a false
+                GameObject huecoAnterior = eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada();
+                huecoAnterior.GetComponent<Libre>().SetHuecoLibre(false);
                 //pasamos info al GameManager de cual es el ultimo disco seleccionado
                 _myGameManagerHanoi.SetUltimoDiscoSeleccionado(eventData.pointerDrag.gameObject);
                 //enviamos esa info al GameManager del ultimo palo y posicion del disco para luego conectar con script DragAndDrop del disco seleccionado para que sepa el palo y la posición donde se ha dejado

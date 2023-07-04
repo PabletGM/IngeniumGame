@@ -99,5 +99,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
         
 
     }
+
+    //metodo que devuelve la ultimaPosSeleccionada para así acceder a su script Libre y cambiarlo a false ya que si recyhaza el disco vuelve a este
+    public GameObject ReturnPosSeleccionada()
+    {
+        return ultimaPosicionSeleccionadaUltimoDisco;
+    }
 }
 
