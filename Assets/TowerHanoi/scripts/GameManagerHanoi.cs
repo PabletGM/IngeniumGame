@@ -15,6 +15,8 @@ public class GameManagerHanoi : MonoBehaviour
     //singleton
     static private GameManagerHanoi _instanceHanoi;
 
+    UIManagerHanoi _myUIManagerHanoi;
+
     //lista de los discos que hay en juego
     [SerializeField]
     private GameObject[] listaDiscos;
@@ -569,7 +571,7 @@ public class GameManagerHanoi : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        _myUIManagerHanoi = UIManagerHanoi.GetInstance();
     }
 
     //en todo momento sabemos cual es el disco que está mas arriba en cada palo
@@ -606,7 +608,8 @@ public class GameManagerHanoi : MonoBehaviour
         Debug.Log("ganaste!!");
         //bloqueamos palos para no poder coger mas discos
         HabilitarPalos();
-        //efectos especiales fuegos artificiales
+        //efectos especiales fuegos artificiales ACTIVARLOS UIMANAGER
+        _myUIManagerHanoi.SetFireworks(true);
     }
 
 
