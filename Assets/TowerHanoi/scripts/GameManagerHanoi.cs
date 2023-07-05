@@ -39,6 +39,9 @@ public class GameManagerHanoi : MonoBehaviour
     //booleano que dice si ultimo disco colocado en un palo o no
     private bool ultimoDiscoColocado = true;
 
+    [HideInInspector]
+    public string combinacionGanadora = "";
+
     private void Awake()
     {
         //si la instancia no existe se hace este script la instancia
@@ -595,7 +598,68 @@ public class GameManagerHanoi : MonoBehaviour
         }
         //en todo momento actualizar y poner que solo tenga raycastTarget activado para poder cogerse el disco más alto
 
+    }
 
+    private void Victoria()
+    {
+        Debug.Log("ganaste!!");
+        //efectos especiales fuegos artificiales
+    }
+    //comprobacion si hay combinacion ganadora palo3
+    //llamamos a metodo en el cual cada vez que se pone un disco en palo3 segun la posición añadimos una letra, esto es
+    //disco1Azul = W , disco2Verde = I, disco3Amarillo = N, disco4Rojo = !, y sin disco "", asi se deben juntar para formar
+    // WIN!, asi se revisan las letras cada vez que se añade disco a palo3
+    //comprobamos en lista Palo3Places el nombre del disco actual, segun este vamos cambiando la combinacion ganadora
+    public void ActualizarCombinacionGanadora()
+    {
+        
+        
+        string sumaTotalletrasCombinacion = "";
+        //quitamos funcionalidad o la ponemos en los discos del palo actual
+        foreach (GameObject huecoPalo3 in palo3Places)
+        {
+            //accedemos a componente Libre de la Pos de la lista y a su discoActual
+            string nombreDiscoActualHueco =huecoPalo3.GetComponent<Libre>().GetNombreDiscoActual();
+            //hacemos metodo que según el nombre devuelva una letra de la combinacion ganadora
+            string letraCombinacion = SegunNombreLetra(nombreDiscoActualHueco);
+            sumaTotalletrasCombinacion += letraCombinacion;
+        }
+        combinacionGanadora = sumaTotalletrasCombinacion;
 
+        //comprobamos si hemos ganado
+        if (combinacionGanadora == "WIN!")
+        {
+            Victoria();
+        }
+    }
+
+    private string SegunNombreLetra(string nombreDiscoActualHueco)
+    {
+        string letraCombinacion = "";
+        switch (nombreDiscoActualHueco)
+        {
+            //5 casos, 4 de discos y si no hay disco
+            case "disco1Imagen":
+                letraCombinacion = "W";
+                break;
+            case "disco2Imagen":
+                letraCombinacion = "I";
+                break;
+            case "disco3Imagen":
+                letraCombinacion = "N";
+                break;
+            case "disco4Imagen":
+                letraCombinacion = "!";
+                break;
+            case "":
+                letraCombinacion = "";
+                break;
+        }
+        return letraCombinacion;
+    }
+
+    public string DevolverCombinacionGanadora()
+    {
+        return combinacionGanadora;
     }
 }

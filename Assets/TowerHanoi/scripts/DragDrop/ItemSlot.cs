@@ -20,7 +20,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             //llamamos a metodo de GameManager que devuelva el hueco libre y su GameObject
             GameObject huecoLibre = _myGameManagerHanoi.BuscarHuecoEnPalo(this.gameObject);
 
-            
 
             //y ponemos nombre del disco que esta ocupando el hueco en un principio
             huecoLibre.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
@@ -75,7 +74,14 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 //si cuando dejamos el disco quitasemos todos los raycast target de la imagen de los palos, se pueden volver a coger.
                 _myGameManagerHanoi.DesHabilitarPalos();
             }
-            
+
+
+            //si este gameObject es el palo3, pasamos metodo a GameManager con disco y huecoLibre para que modifique la combinacion ganadora
+            if (this.gameObject.name == "palo3")
+            {
+                _myGameManagerHanoi.ActualizarCombinacionGanadora();
+            }
+
 
         }
     }
