@@ -11,7 +11,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     private Image imagePalo;
     public void OnDrop(PointerEventData eventData)
     {
-        Debug.Log("OnDrop");
         //info del objeto que ha sido cogido
         if(eventData.pointerDrag!=null)
         {

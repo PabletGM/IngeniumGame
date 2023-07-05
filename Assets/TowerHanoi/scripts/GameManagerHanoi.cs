@@ -602,9 +602,14 @@ public class GameManagerHanoi : MonoBehaviour
 
     private void Victoria()
     {
+        //ganaste
         Debug.Log("ganaste!!");
+        //bloqueamos palos para no poder coger mas discos
+        HabilitarPalos();
         //efectos especiales fuegos artificiales
     }
+
+
     //comprobacion si hay combinacion ganadora palo3
     //llamamos a metodo en el cual cada vez que se pone un disco en palo3 segun la posición añadimos una letra, esto es
     //disco1Azul = W , disco2Verde = I, disco3Amarillo = N, disco4Rojo = !, y sin disco "", asi se deben juntar para formar
