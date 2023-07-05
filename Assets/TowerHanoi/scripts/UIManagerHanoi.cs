@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class UIManagerHanoi : MonoBehaviour
     static private UIManagerHanoi _instanceUIHanoi;
 
     [SerializeField] private GameObject vfxFireworks;
+    [SerializeField] private GameObject ImageWin;
 
     private void Awake()
     {
@@ -23,7 +25,7 @@ public class UIManagerHanoi : MonoBehaviour
         }
     }
 
-    static public UIManagerHanoi GetInstance()
+    static public UIManagerHanoi GetInstanceUI()
     {
         return _instanceUIHanoi;
     }
@@ -39,8 +41,10 @@ public class UIManagerHanoi : MonoBehaviour
         
     }
 
-    public void SetFireworks(bool set)
+    public void SetFireworksWin(bool set)
     {
         vfxFireworks.SetActive(set);
+        ImageWin.SetActive(set);
+        ImageWin.transform.DOScale(new Vector3(0.8f, 0.8f, 1f), 1).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
     }
 }
