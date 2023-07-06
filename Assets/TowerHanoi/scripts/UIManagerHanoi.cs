@@ -10,6 +10,7 @@ public class UIManagerHanoi : MonoBehaviour
 
     [SerializeField] private GameObject vfxFireworks;
     [SerializeField] private GameObject ImageWin;
+    [SerializeField] private GameObject zoom;
 
     private void Awake()
     {
@@ -45,6 +46,8 @@ public class UIManagerHanoi : MonoBehaviour
     {
         vfxFireworks.SetActive(set);
         ImageWin.SetActive(set);
-        ImageWin.transform.DOScale(new Vector3(0.8f, 0.8f, 1f), 1).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+        zoom.GetComponent<ZoomAutomatic>().ZoomOut();
+        ImageWin.transform.DOScale(new Vector3(0.8f, 0.8f, 1f), 2).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+        
     }
 }
