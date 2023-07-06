@@ -48,6 +48,7 @@ public class UIManagerHanoi : MonoBehaviour
         ImageWin.SetActive(set);
         zoom.GetComponent<ZoomAutomatic>().ZoomOut();
         ImageWin.transform.DOScale(new Vector3(0.8f, 0.8f, 1f), 2).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
+        //boton quit tween
         
     }
 }
