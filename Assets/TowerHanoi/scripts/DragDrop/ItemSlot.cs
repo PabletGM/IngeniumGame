@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IDropHandler
+public class ItemSlot : EventTrigger
 {
     GameManagerHanoi _myGameManagerHanoi;
     [SerializeField]
     private Image imagePalo;
-    public void OnDrop(PointerEventData eventData)
+    public override void OnDrop(PointerEventData eventData)
     {
         //info del objeto que ha sido cogido
         if(eventData.pointerDrag!=null)
@@ -84,6 +84,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
         }
     }
+   
     private void Start()
     {
         _myGameManagerHanoi = GameManagerHanoi.GetInstance();

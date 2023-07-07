@@ -9,8 +9,8 @@ using UnityEngine.UI;
 public class GameManagerHanoi : MonoBehaviour
 {
     //lista de objetos Palo metalico que soporta a los discos
-    [SerializeField]
-    private ItemSlot[] Palos;
+    [HideInInspector]
+    public ItemSlot[] Palos;
 
     //singleton
     static private GameManagerHanoi _instanceHanoi;
@@ -86,6 +86,50 @@ public class GameManagerHanoi : MonoBehaviour
             Image imagePalo = currentPalo.gameObject.GetComponent<Image>();
             imagePalo.raycastTarget = false;
         }
+    }
+
+    public bool DiscoEnAlgunHueco(GameObject disco)
+    {
+        
+            bool verSidiscoPalo = VerSiDiscoEstaEnPalo(disco.transform);
+            return verSidiscoPalo;
+    }
+
+    //pasamos una posicion y nos tiene que devolver el hueco que la posee
+    public GameObject BuscandoHuecoConPosicion(Vector3 position)
+    {
+        //recorrer hijos del palo 1, huecos
+        foreach (GameObject currentHuecoPalo1 in palo1Places)
+        {
+            //en cada hijo comparamos las posiciones, si son iguales true
+            if (currentHuecoPalo1.transform.position == position)
+            {
+                return currentHuecoPalo1;
+            }
+        }
+
+        //recorrer hijos del palo 2, huecos
+        foreach (GameObject currentHuecoPalo2 in palo2Places)
+        {
+
+            //en cada hijo comparamos las posiciones, si son iguales true
+            if (currentHuecoPalo2.transform.position == position)
+            {
+                return currentHuecoPalo2;
+            }
+        }
+
+        //recorrer hijos del palo 3, huecos
+        foreach (GameObject currentHuecoPalo3 in palo3Places)
+        {
+            //en cada hijo comparamos las posiciones, si son iguales true
+            if (currentHuecoPalo3.transform.position == position)
+            {
+                return currentHuecoPalo3;
+            }
+        }
+
+        return null;
     }
 
     //ver si pòs disco coincide con alguna pos de algun hueco
@@ -452,6 +496,32 @@ public class GameManagerHanoi : MonoBehaviour
 
     }
 
+    public GameObject BuscarHuecoEnAlgunPalo(GameObject discoNuevo)
+    {
+        GameObject huecoPalo1 = BuscarHuecoEnPalo(Palos[0].gameObject);
+        GameObject huecoPalo2 = BuscarHuecoEnPalo(Palos[1].gameObject);
+        GameObject huecoPalo3 = BuscarHuecoEnPalo(Palos[2].gameObject);
+
+        //miramos y cogemos el primero que no sea nulo y sea posible por width reglas
+        if(huecoPalo1!=null && ComparacionWidthDiscos(discoNuevo, Palos[0].gameObject))
+        {
+            return huecoPalo1;
+        }
+        //miramos y cogemos el primero que no sea nulo y sea posible por width reglas
+        else if (huecoPalo2 != null && ComparacionWidthDiscos(discoNuevo, Palos[1].gameObject))
+        {
+            return huecoPalo2;
+        }
+        //miramos y cogemos el primero que no sea nulo y sea posible por width reglas
+        else if (huecoPalo3 != null && ComparacionWidthDiscos(discoNuevo, Palos[2].gameObject))
+        {
+            return huecoPalo3;
+        }
+        else
+        {
+            return null;
+        }
+    }
 
     //ponemos cual ha sido el ultimo disco seleccionado
     public void SetUltimoDiscoSeleccionado(GameObject ultimoDisco)

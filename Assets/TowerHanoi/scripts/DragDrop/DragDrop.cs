@@ -19,6 +19,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     [HideInInspector]
     public Vector3 ultimaPos;
 
+    private bool limitessuperados = false;
+
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -56,8 +59,19 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
             ultimaPosicionSeleccionadaUltimoDisco.GetComponent<Libre>().SetHuecoLibre(true);
             
         }
+
+        Cursor.lockState = CursorLockMode.Confined;
         //Debug.Log("OnDrag");
-        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        if(eventData.delta.x>= -250 && eventData.delta.x <= 260 && eventData.delta.y >= -158 && eventData.delta.y <= 93 && rectTransform.anchoredPosition.x >= -250 && rectTransform.anchoredPosition.x <= 260 && rectTransform.anchoredPosition.y >= -158 && rectTransform.anchoredPosition.y <= 93)
+        {
+                rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+            
+        }
+        else
+        {
+            limitessuperados = true;
+        }
+
         //cuando se coja el disco ponemos habilitamos todos los palos
         _myGameManagerHanoi.HabilitarPalos();
 
@@ -66,6 +80,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //END DRAG
     public void OnEndDrag(PointerEventData eventData)
     {
+        if(limitessuperados) transform.position = ultimaPos;
+        limitessuperados = false;
         //Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
@@ -76,14 +92,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
         //poner la propiedad del disco 
         //así ya podemos poner si se quita este disco(OnDrag) el valor de libre de la pos a true
         ultimaPosicionSeleccionadaUltimoDisco = _myGameManagerHanoi.GetPosicionUltimoDiscoSeleccionado();
-       
-        ////miramos si esta en un palo o no el disco para ponerlo en la ultima pos
-        //bool discoEnPalo = _myGameManagerHanoi.VerSiDiscoEstaEnPalo(transform);
-        ////sino está en el palo
-        //if(!discoEnPalo)
-        //{
-        //    transform.position = ultimaPos;
-        //}
+
+        
     }
 
     //se llamará a esta funcion cuando se apriete el ratón
