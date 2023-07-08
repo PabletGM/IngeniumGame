@@ -12,6 +12,8 @@ public class UIManagerHanoi : MonoBehaviour
     [SerializeField] private GameObject ImageWin;
     [SerializeField] private GameObject zoom;
 
+
+    [SerializeField] private GameObject panelIncorrect;
     private void Awake()
     {
         //si la instancia no existe se hace este script la instancia
@@ -50,5 +52,20 @@ public class UIManagerHanoi : MonoBehaviour
         ImageWin.transform.DOScale(new Vector3(0.8f, 0.8f, 1f), 2).SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo);
         //boton quit tween
         
+    }
+
+
+    public void Incorrect()
+    {
+        panelIncorrect.SetActive(true);
+        panelIncorrect.transform.DOScale(new Vector3(1.2f, 1.1f, 0), 0.5f).SetEase(Ease.InOutSine);
+        Invoke("QuitIncorrect", 2.5f);
+    }
+
+    public void QuitIncorrect()
+    {
+        panelIncorrect.transform.DOScale(new Vector3(0,0,0), 0.5f).SetEase(Ease.InBounce);
+        panelIncorrect.SetActive(false);
+       
     }
 }

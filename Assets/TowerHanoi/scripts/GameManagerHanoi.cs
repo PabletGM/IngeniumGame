@@ -672,6 +672,11 @@ public class GameManagerHanoi : MonoBehaviour
 
     }
 
+    public void Incorrect()
+    {
+        _myUIManagerHanoi.Incorrect();
+    }
+
     private void Victoria()
     {
         //ganaste

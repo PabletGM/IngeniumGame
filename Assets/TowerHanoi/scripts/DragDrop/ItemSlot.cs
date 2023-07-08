@@ -53,6 +53,8 @@ public class ItemSlot : EventTrigger
             }
             else
             {
+                //como no se puede hacer la acción ponemos por el UI el consejito
+                _myGameManagerHanoi.Incorrect();
                 //si al final no se ocupa el huecoLibre, sino el huecoAnterior
                 huecoLibre.GetComponent<Libre>().SetNombreDiscoActual("");
                 
