@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.Net.Sockets;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
+
 
 public class GameManagerHanoi : MonoBehaviour
 {
@@ -205,6 +207,10 @@ public class GameManagerHanoi : MonoBehaviour
 
         return posiblePonerDiscoNuevoEncimaWidth;
     }
+
+    
+
+    
 
     //devuelve numero de posicion segun el nombre
     public int DevolverPosicionSegunNombre(string namePos)
@@ -496,6 +502,112 @@ public class GameManagerHanoi : MonoBehaviour
 
     }
 
+
+    //metodo que comprueba si en la pos del hueco hay algun disco
+    public bool ComprobarSihayDiscoEnPos(Transform posicionHueco)
+    {
+        foreach (GameObject disco in listaDiscos)
+        {
+            if(disco.transform.position == posicionHueco.transform.position)
+            {
+                return true;
+            }
+
+        }
+        return false;
+    }
+
+    //por cada hueco que ponga que tiene disco y no lo tiene lo cambio en ese palo
+    public void CambiarFalsoHuecoEnPalo(GameObject palo)
+    {
+        //miramos que palo es el pasado en argumentos
+        string namePalo = palo.name;
+        //segun que palo sea buscamos hueco libre en una lista u otra
+        switch (namePalo)
+        {
+            //buscar hueco en primera lista
+            case "palo1":
+                //recorrer hijos del palo
+                foreach (GameObject currentHuecoPalo1 in palo1Places)
+                {
+                    //buscamos huecoLibre con caracteristicas especiales = (huecoLibre = false y nombreDiscoActual != "")
+                    //esto es un hueco ocupado para ver si realmente está ocupado
+                    bool libre = currentHuecoPalo1.GetComponent<Libre>().GetHuecoLibre();
+                    string name = currentHuecoPalo1.GetComponent<Libre>().GetNombreDiscoActual();
+
+                    if (!libre && name!="")
+                    {
+                        //comprobamos si en la posicion del hueco hay algun disco
+                        bool discoEnPos = ComprobarSihayDiscoEnPos(currentHuecoPalo1.transform);
+                        //si hay disco en esa posicion todo correcto, sino lo hay, hay que cambiarlo
+                        if(!discoEnPos)
+                        {
+                            currentHuecoPalo1.GetComponent<Libre>().SetHuecoLibre(true);
+                            currentHuecoPalo1.GetComponent<Libre>().SetNombreDiscoActual("");
+                        }
+                    }
+                    //sino seguimos buscando
+
+                }
+                break;
+            //buscar hueco en segunda lista
+            case "palo2":
+                foreach (GameObject currentHuecoPalo2 in palo2Places)
+                {
+
+                    //buscamos huecoLibre con caracteristicas especiales = (huecoLibre = false y nombreDiscoActual != "")
+                    //esto es un hueco ocupado para ver si realmente está ocupado
+                    bool libre = currentHuecoPalo2.GetComponent<Libre>().GetHuecoLibre();
+                    string name = currentHuecoPalo2.GetComponent<Libre>().GetNombreDiscoActual();
+
+                    if (!libre && name != "")
+                    {
+                        //comprobamos si en la posicion del hueco hay algun disco
+                        bool discoEnPos = ComprobarSihayDiscoEnPos(currentHuecoPalo2.transform);
+                        //si hay disco en esa posicion todo correcto, sino lo hay, hay que cambiarlo
+                        if (!discoEnPos)
+                        {
+                            currentHuecoPalo2.GetComponent<Libre>().SetHuecoLibre(true);
+                            currentHuecoPalo2.GetComponent<Libre>().SetNombreDiscoActual("");
+                        }
+                    }
+                    //sino seguimos buscando
+                }
+                break;
+            //buscar hueco en tercera lista
+            case "palo3":
+                foreach (GameObject currentHuecoPalo3 in palo3Places)
+                {
+                    //buscamos huecoLibre con caracteristicas especiales = (huecoLibre = false y nombreDiscoActual != "")
+                    //esto es un hueco ocupado para ver si realmente está ocupado
+                    bool libre = currentHuecoPalo3.GetComponent<Libre>().GetHuecoLibre();
+                    string name = currentHuecoPalo3.GetComponent<Libre>().GetNombreDiscoActual();
+
+                    if (!libre && name != "")
+                    {
+                        //comprobamos si en la posicion del hueco hay algun disco
+                        bool discoEnPos = ComprobarSihayDiscoEnPos(currentHuecoPalo3.transform);
+                        //si hay disco en esa posicion todo correcto, sino lo hay, hay que cambiarlo
+                        if (!discoEnPos)
+                        {
+                            currentHuecoPalo3.GetComponent<Libre>().SetHuecoLibre(true);
+                            currentHuecoPalo3.GetComponent<Libre>().SetNombreDiscoActual("");
+                        }
+                    }
+                    //sino seguimos buscando
+                }
+                break;
+            //excepciones
+            default:
+                Debug.Log("No hay hueco");
+                break;
+
+        }
+
+      
+
+    }
+
     public GameObject BuscarHuecoEnAlgunPalo(GameObject discoNuevo)
     {
         GameObject huecoPalo1 = BuscarHuecoEnPalo(Palos[0].gameObject);
@@ -670,7 +782,22 @@ public class GameManagerHanoi : MonoBehaviour
         }
         //en todo momento actualizar y poner que solo tenga raycastTarget activado para poder cogerse el disco más alto
 
+        
+        //si se quedan 2 discos en 1 posicion lo resuelve y sube uno a la siguiente pos
+        MismaPosicionDiscoMismoPalo();
     }
+
+
+    //con los 3 palos
+    public void CorreccionHuecosFalsoRelleno()
+    {
+        CambiarFalsoHuecoEnPalo(Palos[0].gameObject);
+        CambiarFalsoHuecoEnPalo(Palos[1].gameObject);
+        CambiarFalsoHuecoEnPalo(Palos[2].gameObject);
+    }
+
+    
+
 
     public void Incorrect()
     {
@@ -687,6 +814,62 @@ public class GameManagerHanoi : MonoBehaviour
         _myUIManagerHanoi.SetFireworksWin(true);
     }
 
+    //creamos metodo que compruebe si en los huecos de un palo hay 2 discos con misma posicion, si son así, cogemos ambos discos
+    //vemos si se puede poner uno encima del otro y se hace, poniendolo en siguiente posicion del palo, sino pos anterior del disco
+    public void MismaPosicionDiscoMismoPalo()
+    {
+        //metodo que 
+        //vea si 2 discos poseen la misma posición
+        foreach(GameObject objetoDisco in listaDiscos )
+        {
+            //comparamos posicion disco con la del resto
+            for(int i = 0; i < listaDiscos.Length; i++)
+            {
+                //si son diferentes objetos y misma posicion
+                if( objetoDisco.name != listaDiscos[i].name && objetoDisco.transform.position == listaDiscos[i].transform.position)
+                {
+                    //metodo que comprueba si los discos que estan libres tienen disco o no para cambiar su variable discoActual
+                    CorreccionHuecosFalsoRelleno();
+
+
+                    //comprobar si se puede poner 1 encima de otro de alguna manera
+                    bool combinacion1 = PosiblePonerDiscoEncimaWidth(objetoDisco.GetComponent<RectTransform>().sizeDelta.x, listaDiscos[i].GetComponent<RectTransform>().sizeDelta.x);
+
+                    bool combinacion2 = PosiblePonerDiscoEncimaWidth( listaDiscos[i].GetComponent<RectTransform>().sizeDelta.x, objetoDisco.GetComponent<RectTransform>().sizeDelta.x);
+
+                    //si alguna combinacion es true, esto es el discoNuevo es mas pequeño que discoAntiguo, lo hacemos
+                    //buscamos el palo donde estan estos discos y llamamos a metodo de ItemSlot para colocar el pequeño encima
+                    GameObject huecoQuePosee2Discos = BuscandoHuecoConPosicion(objetoDisco.transform.position);
+                    //ver objeto padre
+                    GameObject palo = huecoQuePosee2Discos.GetComponentInParent<Transform>().parent.gameObject;
+
+                    //si la combinacion 1 es true es que el disco pequeño es objetoDisco
+                    if (combinacion1)
+                    {
+                        //buscar siguiente hueco libre 
+                        GameObject huecoLibre =BuscarHuecoEnPalo(palo);
+                        //objetoDisco.GetComponent<DragDrop>().OnBeginDragManual();
+                        objetoDisco.GetComponent<DragDrop>().OnDragManual(palo,huecoLibre);
+                        palo.GetComponent<ItemSlot>().SetDiscoEnPosicionManual(objetoDisco, huecoLibre, huecoQuePosee2Discos, listaDiscos[i]);
+                        //objetoDisco.GetComponent<DragDrop>().OnEndDragManual();
+                    }
+                    //si la combinacion 2 es true es que el disco pequeño es listaDiscos[i]
+                    else if (combinacion2)
+                    {
+                        //buscar siguiente hueco libre 
+                        GameObject huecoLibre = BuscarHuecoEnPalo(palo);
+                        //listaDiscos[i].GetComponent<DragDrop>().OnBeginDragManual();
+                        listaDiscos[i].GetComponent<DragDrop>().OnDragManual(palo,huecoLibre);
+                        palo.GetComponent<ItemSlot>().SetDiscoEnPosicionManual(listaDiscos[i], huecoLibre, huecoQuePosee2Discos, objetoDisco);
+                        //listaDiscos[i].GetComponent<DragDrop>().OnEndDragManual();
+                    }
+
+                }
+            }
+        }
+        
+        //colocarlo encima
+    }
 
     //comprobacion si hay combinacion ganadora palo3
     //llamamos a metodo en el cual cada vez que se pone un disco en palo3 segun la posición añadimos una letra, esto es

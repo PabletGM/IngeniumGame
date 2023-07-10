@@ -11,6 +11,14 @@ public class Libre : MonoBehaviour
     [SerializeField]
     private string nombreDiscoActual;
 
+    GameManagerHanoi _myGameManagerHanoi;
+
+
+    private void Start()
+    {
+        _myGameManagerHanoi = GetComponent<GameManagerHanoi>();
+    }
+
 
     public void SetNombreDiscoActual(string nombre)
     {
@@ -33,4 +41,5 @@ public class Libre : MonoBehaviour
     {
         return huecoLibre;
     }
+
 }
