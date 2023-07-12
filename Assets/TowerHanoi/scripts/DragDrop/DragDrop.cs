@@ -169,6 +169,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
 
     }
 
+    public bool GetBoolDiscosEncimaOtro()
+    {
+        return discoEncimaDeOtro;
+    }
+
     public bool GetLimitesSuperados()
     {
         return limitessuperados;
