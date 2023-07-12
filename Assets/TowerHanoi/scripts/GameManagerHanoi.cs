@@ -98,6 +98,42 @@ public class GameManagerHanoi : MonoBehaviour
     }
 
     //pasamos una posicion y nos tiene que devolver el hueco que la posee
+    public GameObject BuscandoPaloConPosicion(Vector3 position)
+    {
+        //recorrer hijos del palo 1, huecos
+        foreach (GameObject currentHuecoPalo1 in palo1Places)
+        {
+            //en cada hijo comparamos las posiciones, si son iguales true
+            if (currentHuecoPalo1.transform.position == position)
+            {
+                return Palos[0].gameObject;
+            }
+        }
+
+        //recorrer hijos del palo 2, huecos
+        foreach (GameObject currentHuecoPalo2 in palo2Places)
+        {
+
+            //en cada hijo comparamos las posiciones, si son iguales true
+            if (currentHuecoPalo2.transform.position == position)
+            {
+                return Palos[1].gameObject;
+            }
+        }
+
+        //recorrer hijos del palo 3, huecos
+        foreach (GameObject currentHuecoPalo3 in palo3Places)
+        {
+            //en cada hijo comparamos las posiciones, si son iguales true
+            if (currentHuecoPalo3.transform.position == position)
+            {
+                return Palos[2].gameObject;
+            }
+        }
+
+        return null;
+    }
+
     public GameObject BuscandoHuecoConPosicion(Vector3 position)
     {
         //recorrer hijos del palo 1, huecos
@@ -784,7 +820,7 @@ public class GameManagerHanoi : MonoBehaviour
 
         
         //si se quedan 2 discos en 1 posicion lo resuelve y sube uno a la siguiente pos
-        MismaPosicionDiscoMismoPalo();
+        //MismaPosicionDiscoMismoPalo();
     }
 
 
@@ -803,6 +839,12 @@ public class GameManagerHanoi : MonoBehaviour
     {
         AudioManagerHanoi.Instance.PlaySFX("error");
         _myUIManagerHanoi.Incorrect();
+    }
+
+    public void FueraLimites()
+    {
+        AudioManagerHanoi.Instance.PlaySFX("error");
+        _myUIManagerHanoi.FueraLimites();
     }
 
     private void Victoria()

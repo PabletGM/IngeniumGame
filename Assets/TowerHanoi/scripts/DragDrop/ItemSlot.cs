@@ -11,19 +11,22 @@ public class ItemSlot : EventTrigger
     private Image imagePalo;
     public override void OnDrop(PointerEventData eventData)
     {
+        //solo hacemos drop sino se han superado los limites
         //info del objeto que ha sido cogido
-        if(eventData.pointerDrag!=null)
+        if(eventData.pointerDrag!=null && !eventData.pointerDrag.gameObject.GetComponent<DragDrop>().GetLimitesSuperados())
         {
             
 
             //llamamos a metodo de GameManager que devuelva el hueco libre y su GameObject
             GameObject huecoLibre = _myGameManagerHanoi.BuscarHuecoEnPalo(this.gameObject);
 
-
-            //y ponemos nombre del disco que esta ocupando el hueco en un principio
-            huecoLibre.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
-
             
+                //y ponemos nombre del disco que esta ocupando el hueco en un principio
+                huecoLibre.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
+               
+            
+            
+
             //para ver si colocamos el disco en el hueco de la posicion Libre por encima debemos ver si
             //el width del discoNuevo es menor que el width del discoMasAlto
             //para esto llamamos a metodo de GameManager que compare width del discoMasAlto y el discoNuevo
@@ -34,6 +37,8 @@ public class ItemSlot : EventTrigger
 
             //cambiamos la posicion del hueco libre a false para indicar que está ocupada
             huecoLibre.GetComponent<Libre>().SetHuecoLibre(false);
+
+
 
             //si es true se hace todo normal, o si el palo está vacio
             if (posibilidadDiscoEncima || paloVacio)
@@ -52,6 +57,7 @@ public class ItemSlot : EventTrigger
                 //si cuando dejamos el disco quitasemos todos los raycast target de la imagen de los palos, se pueden volver a coger.
                 _myGameManagerHanoi.DesHabilitarPalos();
             }
+            //sino se puede poner disco
             else
             {
                 

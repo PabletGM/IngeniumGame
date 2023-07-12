@@ -14,6 +14,7 @@ public class UIManagerHanoi : MonoBehaviour
 
 
     [SerializeField] private GameObject panelIncorrect;
+    [SerializeField] private GameObject panelFueraLimites;
     private void Awake()
     {
         //si la instancia no existe se hace este script la instancia
@@ -64,8 +65,22 @@ public class UIManagerHanoi : MonoBehaviour
 
     public void QuitIncorrect()
     {
-        panelIncorrect.transform.DOScale(new Vector3(0,0,0), 0.5f).SetEase(Ease.InBounce);
+        panelIncorrect.transform.DOScale(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.InBounce);
         panelIncorrect.SetActive(false);
-       
+
+    }
+
+    public void FueraLimites()
+    {
+        panelFueraLimites.SetActive(true);
+        panelFueraLimites.transform.DOScale(new Vector3(1.2f, 1.1f, 0), 0.5f).SetEase(Ease.InOutSine);
+        Invoke("QuitFueraLimites", 2.5f);
+    }
+
+    public void QuitFueraLimites()
+    {
+        panelFueraLimites.transform.DOScale(new Vector3(0, 0, 0), 0.5f).SetEase(Ease.InBounce);
+        panelFueraLimites.SetActive(false);
+
     }
 }

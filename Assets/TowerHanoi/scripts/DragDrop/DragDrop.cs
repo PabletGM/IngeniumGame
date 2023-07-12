@@ -42,9 +42,20 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //BEGIN DRAG
     public void OnBeginDrag(PointerEventData eventData)
     {
-        ultimaPos = transform.position;
-        //quitamos nombre de disco en anterior hueco ya que ya no está
-        ultimaPosicionSeleccionadaUltimoDisco.GetComponent<Libre>().SetNombreDiscoActual("");
+        //si existe el hueco donde está la pos del disco ya seha liberado y lo ponemos
+        GameObject hueco = _myGameManagerHanoi.BuscandoHuecoConPosicion(this.gameObject.transform.position);
+        if (hueco != null)
+        {
+            hueco.GetComponent<Libre>().SetHuecoLibre(true);
+            hueco.GetComponent<Libre>().SetNombreDiscoActual("");
+            ultimaPos = transform.position;
+            
+        }
+        limitessuperados = false;
+        //ponemos la ultimPos como posicion correcta si esta es una posicion de un hueco
+
+        
+
         //Debug.Log("OnBeginDrag");
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
@@ -62,19 +73,23 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //hacer drag
     public void OnDrag(PointerEventData eventData)
     {
-       
+
+        Vector2 pos = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y);
+        Debug.Log(pos);
         //miramos si ese disco se ha movido a una posicion antes de hacero ahora
         if (ultimaPosicionSeleccionadaUltimoDisco != null)
         {
             //ultimaPos = transform.position;
             //si es el caso, como se ha cogido el disco, ponemos esta posicion a true otra vez
             ultimaPosicionSeleccionadaUltimoDisco.GetComponent<Libre>().SetHuecoLibre(true);
-            
+            //quitamos nombre de disco en anterior hueco ya que ya no está
+            ultimaPosicionSeleccionadaUltimoDisco.GetComponent<Libre>().SetNombreDiscoActual("");
+
         }
 
         Cursor.lockState = CursorLockMode.Confined;
         //Debug.Log("OnDrag");
-        if(eventData.delta.x>= -250 && eventData.delta.x <= 260 && eventData.delta.y >= -158 && eventData.delta.y <= 93 && rectTransform.anchoredPosition.x >= -250 && rectTransform.anchoredPosition.x <= 260 && rectTransform.anchoredPosition.y >= -158 && rectTransform.anchoredPosition.y <= 93)
+        if(eventData.delta.x>= -180 && eventData.delta.x <= 230 && eventData.delta.y >= -130 && eventData.delta.y <= 45 && rectTransform.anchoredPosition.x >= -180 && rectTransform.anchoredPosition.x <= 230 && rectTransform.anchoredPosition.y >= -130 && rectTransform.anchoredPosition.y <= 45)
         {
                 rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
             
@@ -110,14 +125,24 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     {
         if (limitessuperados)
         {
+            //su posicion la cambia a ultima pos
             transform.position = ultimaPos;
-            //metodo que cambie la posicion ultima con el GO posicion que posea la position de ultimaPos
-            GameObject ultimoHuecoCorrecto = _myGameManagerHanoi.BuscandoHuecoConPosicion(ultimaPos);
-            ultimaPosicionSeleccionadaUltimoDisco = ultimoHuecoCorrecto;
-            _myGameManagerHanoi.MismaPosicionDiscoMismoPalo();
-            //_myGameManagerHanoi.CorreccionHuecosFalsoRelleno();
+            ////metodo que cambie la posicion ultima con el GO posicion que posea la position de ultimaPos
+            //GameObject ultimoHuecoCorrecto = _myGameManagerHanoi.BuscandoHuecoConPosicion(ultimaPos);
+            //_myGameManagerHanoi.SetPaloYPosicionUltimoDiscoSeleccionado(_myGameManagerHanoi.BuscandoPaloConPosicion(ultimaPos), ultimoHuecoCorrecto);
+            //ultimaPosicionSeleccionadaUltimoDisco = ultimoHuecoCorrecto;
+
+            //al superar limites algun hueco en el que hay disco se borra
+            _myGameManagerHanoi.FueraLimites();
+            GameObject huecoAnterior = eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada();
+            huecoAnterior.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
+            huecoAnterior.GetComponent<Libre>().SetHuecoLibre(false);
+            //pasamos info al GameManager de cual es el ultimo disco seleccionado
+            _myGameManagerHanoi.SetUltimoDiscoSeleccionado(eventData.pointerDrag.gameObject);
+            //enviamos esa info al GameManager del ultimo palo y posicion del disco para luego conectar con script DragAndDrop del disco seleccionado para que sepa el palo y la posición donde se ha dejado
+            _myGameManagerHanoi.SetPaloYPosicionUltimoDiscoSeleccionado(this.gameObject, huecoAnterior);
         }
-        limitessuperados = false;
+        
         //Debug.Log("OnEndDrag");
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
@@ -128,17 +153,27 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
         //poner la propiedad del disco 
         //así ya podemos poner si se quita este disco(OnDrag) el valor de libre de la pos a true
         ultimaPosicionSeleccionadaUltimoDisco = _myGameManagerHanoi.GetPosicionUltimoDiscoSeleccionado();
-        _myGameManagerHanoi.MismaPosicionDiscoMismoPalo();
+        //_myGameManagerHanoi.MismaPosicionDiscoMismoPalo();
         //en la posicion donde esté cada disco avisa al hueco que coincida con esta posicion
-        GameObject hueco = _myGameManagerHanoi.BuscandoHuecoConPosicion(this.gameObject.transform.position);
-        if(hueco!=null)
-        {
-            hueco.GetComponent<Libre>().SetHuecoLibre(false);
-            hueco.GetComponent<Libre>().SetNombreDiscoActual(this.gameObject.name);
-        }
+        //GameObject hueco = _myGameManagerHanoi.BuscandoHuecoConPosicion(this.gameObject.transform.position);
+        //if(hueco!=null)
+        //{
+        //    hueco.GetComponent<Libre>().SetHuecoLibre(false);
+        //    hueco.GetComponent<Libre>().SetNombreDiscoActual(this.gameObject.name);
+        //}
        
 
 
+    }
+
+    public bool GetLimitesSuperados()
+    {
+        return limitessuperados;
+    }
+
+    public void SetLimitesSuperados(bool set)
+    {
+        limitessuperados = set;
     }
 
     public void OnEndDragManual()
