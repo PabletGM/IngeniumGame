@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
     
@@ -22,6 +23,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     public Vector3 ultimaPos;
 
     private bool limitessuperados = false;
+    private bool discoEncimaDeOtro = true;
 
 
     private void Awake()
@@ -123,7 +125,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //END DRAG
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (limitessuperados)
+        //vemos si ha superado limites o ha puesto un disco encima de la imagen de otro
+        if (limitessuperados || discoEncimaDeOtro)
         {
             //su posicion la cambia a ultima pos
             transform.position = ultimaPos;
@@ -193,7 +196,19 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
 
     }
 
+    //si se detecta que choca contra un disco
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        discoEncimaDeOtro = true;
+        //deteccion disco sobre disco
+    }
 
+    //si se detecta que ya no choca contra un disco
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        discoEncimaDeOtro = false;
+        //deteccion disco sobre disco
+    }
 
     //se llamará a esta funcion cuando se apriete el ratón
     public void OnPointerDown(PointerEventData eventData)

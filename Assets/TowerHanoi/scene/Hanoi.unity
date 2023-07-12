@@ -850,6 +850,7 @@ GameObject:
   - component: {fileID: 223252637}
   - component: {fileID: 223252636}
   - component: {fileID: 223252640}
+  - component: {fileID: 223252641}
   m_Layer: 5
   m_Name: disco3Imagen
   m_TagString: Untagged
@@ -972,7 +973,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.1911087, y: -6.551952}
@@ -988,6 +989,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 58.71134, y: 17.379826}
   m_EdgeRadius: 0
+--- !u!50 &223252641
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223252634}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &226015619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2528,6 +2556,7 @@ GameObject:
   - component: {fileID: 787482573}
   - component: {fileID: 787482572}
   - component: {fileID: 787482576}
+  - component: {fileID: 787482577}
   m_Layer: 5
   m_Name: disco4Imagen
   m_TagString: Untagged
@@ -2650,7 +2679,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.19110489, y: -4.586393}
@@ -2666,6 +2695,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 40.366028, y: 14.759061}
   m_EdgeRadius: 0
+--- !u!50 &787482577
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787482570}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &808589256
 GameObject:
   m_ObjectHideFlags: 0
@@ -2680,6 +2736,7 @@ GameObject:
   - component: {fileID: 808589259}
   - component: {fileID: 808589258}
   - component: {fileID: 808589262}
+  - component: {fileID: 808589263}
   m_Layer: 5
   m_Name: disco2Imagen
   m_TagString: Untagged
@@ -2802,7 +2859,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.33351517, y: -6.861327}
@@ -2818,6 +2875,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 84.38438, y: 19.29688}
   m_EdgeRadius: 0
+--- !u!50 &808589263
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808589256}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &823543023
 GameObject:
   m_ObjectHideFlags: 0
@@ -4666,6 +4750,7 @@ GameObject:
   - component: {fileID: 1765973657}
   - component: {fileID: 1765973658}
   - component: {fileID: 1765973659}
+  - component: {fileID: 1765973660}
   m_Layer: 5
   m_Name: disco1Imagen
   m_TagString: Untagged
@@ -4788,7 +4873,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.00002670288, y: -7.4331264}
@@ -4804,6 +4889,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 109.066124, y: 27.301815}
   m_EdgeRadius: 0
+--- !u!50 &1765973660
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765973653}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1919115436
 PrefabInstance:
   m_ObjectHideFlags: 0
