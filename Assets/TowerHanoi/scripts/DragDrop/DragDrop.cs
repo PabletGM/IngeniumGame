@@ -78,7 +78,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
 
         Vector2 pos = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y);
         Debug.Log(pos);
-        //miramos si ese disco se ha movido a una posicion antes de hacero ahora
+        //miramos si ese disco se ha movido a una posicion antes de hacerlo ahora
         if (ultimaPosicionSeleccionadaUltimoDisco != null)
         {
             //ultimaPos = transform.position;
@@ -125,6 +125,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //END DRAG
     public void OnEndDrag(PointerEventData eventData)
     {
+
+        
+
         //vemos si ha superado limites o ha puesto un disco encima de la imagen de otro
         if (limitessuperados || discoEncimaDeOtro)
         {
@@ -213,6 +216,12 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     {
         discoEncimaDeOtro = false;
         //deteccion disco sobre disco
+    }
+
+    //si se detectan 2 discos en misma posicion cambiamos este booleano
+    public void SetDiscoEncimaOtro(bool set)
+    {
+        discoEncimaDeOtro = set;
     }
 
     //se llamará a esta funcion cuando se apriete el ratón

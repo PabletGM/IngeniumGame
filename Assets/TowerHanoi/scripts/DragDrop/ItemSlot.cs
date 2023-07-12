@@ -11,18 +11,24 @@ public class ItemSlot : EventTrigger
     private Image imagePalo;
     public override void OnDrop(PointerEventData eventData)
     {
+       
+
+
         //solo hacemos drop sino se han superado los limites y sino se ha puesto un disco en la posicion o area de otro
         //info del objeto que ha sido cogido
-        if(eventData.pointerDrag!=null && !eventData.pointerDrag.gameObject.GetComponent<DragDrop>().GetLimitesSuperados() &&!eventData.pointerDrag.gameObject.GetComponent<DragDrop>().GetBoolDiscosEncimaOtro())
+        if (eventData.pointerDrag!=null && !eventData.pointerDrag.gameObject.GetComponent<DragDrop>().GetLimitesSuperados() &&!eventData.pointerDrag.gameObject.GetComponent<DragDrop>().GetBoolDiscosEncimaOtro())
         {
             
 
             //llamamos a metodo de GameManager que devuelva el hueco libre y su GameObject
             GameObject huecoLibre = _myGameManagerHanoi.BuscarHuecoEnPalo(this.gameObject);
 
+
             
-                //y ponemos nombre del disco que esta ocupando el hueco en un principio
-                huecoLibre.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
+
+
+            //y ponemos nombre del disco que esta ocupando el hueco en un principio
+            huecoLibre.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
                
             
             
@@ -38,6 +44,16 @@ public class ItemSlot : EventTrigger
             //cambiamos la posicion del hueco libre a false para indicar que está ocupada
             huecoLibre.GetComponent<Libre>().SetHuecoLibre(false);
 
+
+            //antes de hacer OnDrop
+            //miramos si nuestra pos hueco al quue vamos a ir coincidio con algun disco
+            //si coincidio eentonces 2 discos tendrán misma posicion y no podemos permitir ese movimiento
+            //COMPROBACION EXTRA
+            if (_myGameManagerHanoi.ComprobarSihayDiscoEnPos(huecoLibre.transform))
+            {
+                posibilidadDiscoEncima = false;
+                //para que así vuelva a su sitio
+            }
 
 
             //si es true se hace todo normal, o si el palo está vacio
