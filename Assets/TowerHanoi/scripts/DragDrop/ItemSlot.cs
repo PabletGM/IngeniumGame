@@ -11,7 +11,7 @@ public class ItemSlot : EventTrigger
     private Image imagePalo;
     public override void OnDrop(PointerEventData eventData)
     {
-        //solo hacemos drop sino se han superado los limites
+        //solo hacemos drop sino se han superado los limites y sino se ha puesto un disco en la posicion o area de otro
         //info del objeto que ha sido cogido
         if(eventData.pointerDrag!=null && !eventData.pointerDrag.gameObject.GetComponent<DragDrop>().GetLimitesSuperados())
         {
