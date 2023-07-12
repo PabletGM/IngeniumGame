@@ -38,6 +38,7 @@ public class ItemSlot : EventTrigger
             //si es true se hace todo normal, o si el palo está vacio
             if (posibilidadDiscoEncima || paloVacio)
             {
+                AudioManagerHanoi.Instance.PlaySFX("colocarDisco");
                 //para así poder colocar el disco sobre la posicion del hueco libre
                 eventData.pointerDrag.GetComponent<RectTransform>().position = huecoLibre.GetComponent<RectTransform>().position;
                 //cambiamos la posicion del hueco libre a false para indicar que está ocupada
@@ -53,6 +54,7 @@ public class ItemSlot : EventTrigger
             }
             else
             {
+                
                 //como no se puede hacer la acción ponemos por el UI el consejito
                 _myGameManagerHanoi.Incorrect();
                 //si al final no se ocupa el huecoLibre, sino el huecoAnterior

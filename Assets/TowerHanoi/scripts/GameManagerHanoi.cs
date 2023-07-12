@@ -801,6 +801,7 @@ public class GameManagerHanoi : MonoBehaviour
 
     public void Incorrect()
     {
+        AudioManagerHanoi.Instance.PlaySFX("error");
         _myUIManagerHanoi.Incorrect();
     }
 
@@ -810,6 +811,7 @@ public class GameManagerHanoi : MonoBehaviour
         Debug.Log("ganaste!!");
         //bloqueamos palos para no poder coger mas discos
         HabilitarPalos();
+        AudioManagerHanoi.Instance.PlaySFX("firework");
         //efectos especiales fuegos artificiales ACTIVARLOS UIMANAGER
         _myUIManagerHanoi.SetFireworksWin(true);
     }

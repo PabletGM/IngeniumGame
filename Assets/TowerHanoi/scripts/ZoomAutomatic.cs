@@ -20,11 +20,13 @@ public class ZoomAutomatic : MonoBehaviour
 
     public void ZoomIn()
     {
+        AudioManagerHanoi.Instance.PlaySFX("zoom");
         ZoomActive = true;
     }
 
     public void ZoomOut()
     {
+        AudioManagerHanoi.Instance.PlaySFX("zoom");
         ZoomActive = false;
     }
 

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+    
 
 
 public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEndDragHandler, IDragHandler, IDropHandler
@@ -61,7 +62,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //hacer drag
     public void OnDrag(PointerEventData eventData)
     {
-        
+       
         //miramos si ese disco se ha movido a una posicion antes de hacero ahora
         if (ultimaPosicionSeleccionadaUltimoDisco != null)
         {
@@ -82,6 +83,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
         {
             limitessuperados = true;
         }
+        
 
         //cuando se coja el disco ponemos habilitamos todos los palos
         _myGameManagerHanoi.HabilitarPalos();
@@ -126,8 +128,17 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
         //poner la propiedad del disco 
         //así ya podemos poner si se quita este disco(OnDrag) el valor de libre de la pos a true
         ultimaPosicionSeleccionadaUltimoDisco = _myGameManagerHanoi.GetPosicionUltimoDiscoSeleccionado();
+        _myGameManagerHanoi.MismaPosicionDiscoMismoPalo();
+        //en la posicion donde esté cada disco avisa al hueco que coincida con esta posicion
+        GameObject hueco = _myGameManagerHanoi.BuscandoHuecoConPosicion(this.gameObject.transform.position);
+        if(hueco!=null)
+        {
+            hueco.GetComponent<Libre>().SetHuecoLibre(false);
+            hueco.GetComponent<Libre>().SetNombreDiscoActual(this.gameObject.name);
+        }
+       
 
-        
+
     }
 
     public void OnEndDragManual()

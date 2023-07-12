@@ -1709,6 +1709,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PulsarBotonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &619929567
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3432,42 +3444,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1256965991}
-  - component: {fileID: 1256965990}
+  - component: {fileID: 1256965992}
   m_Layer: 0
-  m_Name: AudioManager
+  m_Name: AudioManagerHanoi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1256965990
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1256965989}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c21719f7631f9d4488cdd22762abab3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicSounds:
-  - name: theme_hanoi
-    clip: {fileID: 8300000, guid: 2d42ad9e4e866c544b026fc01731c7a7, type: 3}
-  sfxSounds:
-  - name: Zoom
-    clip: {fileID: 8300000, guid: 11d10bbfd2cbfd745b4f81e6462c096a, type: 3}
-  - name: colocarDisco
-    clip: {fileID: 8300000, guid: 9716ff490290d1442a51d234950d88ed, type: 3}
-  - name: Boton
-    clip: {fileID: 8300000, guid: 86f4aa52d30b0c644b1f2e267787de9e, type: 3}
-  - name: Correct
-    clip: {fileID: 8300000, guid: e32b2283edb09b24c9a70a0d657868e2, type: 3}
-  - name: error
-    clip: {fileID: 8300000, guid: a2760a8415ac694428c48ef802c8c50b, type: 3}
-  musicSource: {fileID: 226015620}
-  sfxSource: {fileID: 197545376}
 --- !u!4 &1256965991
 Transform:
   m_ObjectHideFlags: 0
@@ -3485,6 +3469,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1256965992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1256965989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c709cc24f139da947b1255b3159d96bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicSounds:
+  - name: theme_hanoi
+    clip: {fileID: 8300000, guid: 2d42ad9e4e866c544b026fc01731c7a7, type: 3}
+  sfxSounds:
+  - name: zoom
+    clip: {fileID: 8300000, guid: 11d10bbfd2cbfd745b4f81e6462c096a, type: 3}
+  - name: colocarDisco
+    clip: {fileID: 8300000, guid: 9716ff490290d1442a51d234950d88ed, type: 3}
+  - name: boton
+    clip: {fileID: 8300000, guid: 86f4aa52d30b0c644b1f2e267787de9e, type: 3}
+  - name: correct
+    clip: {fileID: 8300000, guid: e32b2283edb09b24c9a70a0d657868e2, type: 3}
+  - name: error
+    clip: {fileID: 8300000, guid: a2760a8415ac694428c48ef802c8c50b, type: 3}
+  musicSource: {fileID: 226015620}
+  sfxSource: {fileID: 197545376}
 --- !u!1 &1261306253
 GameObject:
   m_ObjectHideFlags: 0

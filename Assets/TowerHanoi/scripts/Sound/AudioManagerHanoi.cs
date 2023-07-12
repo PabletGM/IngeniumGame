@@ -25,7 +25,7 @@ public class AudioManagerHanoi : MonoBehaviour
 
     private void Start()
     {
-        PlayMusic("Theme");
+        PlayMusic("theme_hanoi");
     }
 
     public void PlayMusic(string name)
@@ -67,7 +67,7 @@ public class AudioManagerHanoi : MonoBehaviour
     public void PulsarBotonSound()
     {
         //sonido pala golpe al acabar animacion
-        PlaySFX("Boton");
+        PlaySFX("boton");
     }
 
     public void ToggleMusic()
