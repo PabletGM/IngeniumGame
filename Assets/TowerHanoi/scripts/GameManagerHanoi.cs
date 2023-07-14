@@ -790,30 +790,43 @@ public class GameManagerHanoi : MonoBehaviour
     void Start()
     {
         _myUIManagerHanoi = UIManagerHanoi.GetInstanceUI();
+
     }
 
     //en todo momento sabemos cual es el disco que está mas arriba en cada palo
     void Update()
     {
+        
+
+
         //llamamos a metodo de GameManager que devuelva el disco que está mas arriba una vez se ha colocado el ultimo
         string discoMasAltoPalo1Name = MetodoDevuelveDiscoMasArribaPalo(Palos[0].gameObject);
+        //con el nombre necesitamos el GameObject
+        GameObject discoMasAlto = BuscarDiscoSegunNombre(discoMasAltoPalo1Name);
         //si hay disco en el palo
-        if(discoMasAltoPalo1Name != "")
+        if (discoMasAltoPalo1Name != "")
         {
+            PonerDraggableDiscoElegido(discoMasAlto);
             QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo1Name, Palos[0].gameObject);
         }
 
         string discoMasAltoPalo2Name = MetodoDevuelveDiscoMasArribaPalo(Palos[1].gameObject);
+        //con el nombre necesitamos el GameObject
+        GameObject discoMasAlto2 = BuscarDiscoSegunNombre(discoMasAltoPalo2Name);
         //si hay disco en el palo
         if (discoMasAltoPalo2Name != "")
         {
+            PonerDraggableDiscoElegido(discoMasAlto2);
             QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo2Name, Palos[1].gameObject);
         }
 
         string discoMasAltoPalo3Name = MetodoDevuelveDiscoMasArribaPalo(Palos[2].gameObject);
+        //con el nombre necesitamos el GameObject
+        GameObject discoMasAlto3 = BuscarDiscoSegunNombre(discoMasAltoPalo3Name);
         //si hay disco en el palo
         if (discoMasAltoPalo3Name != "")
         {
+            PonerDraggableDiscoElegido(discoMasAlto3);
             QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo3Name, Palos[2].gameObject);
         }
         //en todo momento actualizar y poner que solo tenga raycastTarget activado para poder cogerse el disco más alto
@@ -821,6 +834,49 @@ public class GameManagerHanoi : MonoBehaviour
         
         //si se quedan 2 discos en 1 posicion lo resuelve y sube uno a la siguiente pos
         //MismaPosicionDiscoMismoPalo();
+    }
+
+    public GameObject BuscarDiscoSegunNombre(string discoName)
+    {
+        switch(discoName)
+        {
+            case "disco1Imagen":
+                return listaDiscos[0];
+
+            case "disco2Imagen":
+                return listaDiscos[1];
+
+
+            case "disco3Imagen":
+                return listaDiscos[2];
+
+            case "disco4Imagen":
+                return listaDiscos[3];
+                
+        }
+        return null;
+    }
+
+
+    //quitamos todos los Draggable 
+    public void QuitarDraggable()
+    {
+        foreach(GameObject  currentDisco in listaDiscos)
+        {  
+                currentDisco.GetComponent<Draggable>().SetDraggable(false); 
+        }
+    }
+
+    public void PonerDraggableDiscoElegido(GameObject discoAlto)
+    {
+        foreach (GameObject currentDisco in listaDiscos)
+        {
+            if (currentDisco == discoAlto)
+            {
+                currentDisco.GetComponent<Draggable>().SetDraggable(true);
+            }
+
+        }
     }
 
 

@@ -851,6 +851,7 @@ GameObject:
   - component: {fileID: 223252636}
   - component: {fileID: 223252640}
   - component: {fileID: 223252641}
+  - component: {fileID: 223252642}
   m_Layer: 5
   m_Name: disco3Imagen
   m_TagString: Untagged
@@ -1016,6 +1017,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &223252642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 223252634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a956c6e897034eaec5db0adce5258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &226015619
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,6 +2570,7 @@ GameObject:
   - component: {fileID: 787482572}
   - component: {fileID: 787482576}
   - component: {fileID: 787482577}
+  - component: {fileID: 787482578}
   m_Layer: 5
   m_Name: disco4Imagen
   m_TagString: Untagged
@@ -2722,6 +2736,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &787482578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787482570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a956c6e897034eaec5db0adce5258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &808589256
 GameObject:
   m_ObjectHideFlags: 0
@@ -2737,6 +2763,7 @@ GameObject:
   - component: {fileID: 808589258}
   - component: {fileID: 808589262}
   - component: {fileID: 808589263}
+  - component: {fileID: 808589264}
   m_Layer: 5
   m_Name: disco2Imagen
   m_TagString: Untagged
@@ -2902,6 +2929,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &808589264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808589256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a956c6e897034eaec5db0adce5258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &823543023
 GameObject:
   m_ObjectHideFlags: 0
@@ -4751,6 +4790,7 @@ GameObject:
   - component: {fileID: 1765973658}
   - component: {fileID: 1765973659}
   - component: {fileID: 1765973660}
+  - component: {fileID: 1765973661}
   m_Layer: 5
   m_Name: disco1Imagen
   m_TagString: Untagged
@@ -4916,6 +4956,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1765973661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1765973653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 744a956c6e897034eaec5db0adce5258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1919115436
 PrefabInstance:
   m_ObjectHideFlags: 0

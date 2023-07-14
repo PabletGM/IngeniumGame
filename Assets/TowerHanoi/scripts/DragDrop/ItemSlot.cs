@@ -11,8 +11,8 @@ public class ItemSlot : EventTrigger
     private Image imagePalo;
     public override void OnDrop(PointerEventData eventData)
     {
-       
-
+        //quita todos los permisos de discos de drgaggable
+        _myGameManagerHanoi.QuitarDraggable();
 
         //solo hacemos drop sino se han superado los limites y sino se ha puesto un disco en la posicion o area de otro
         //info del objeto que ha sido cogido

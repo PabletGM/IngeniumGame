@@ -23,7 +23,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     public Vector3 ultimaPos;
 
     private bool limitessuperados = false;
-    private bool discoEncimaDeOtro = true;
+    private bool discoEncimaDeOtro = false;
 
 
     private void Awake()
@@ -44,6 +44,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //BEGIN DRAG
     public void OnBeginDrag(PointerEventData eventData)
     {
+        
+
         //si existe el hueco donde está la pos del disco ya seha liberado y lo ponemos
         GameObject hueco = _myGameManagerHanoi.BuscandoHuecoConPosicion(this.gameObject.transform.position);
         if (hueco != null)
@@ -75,9 +77,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //hacer drag
     public void OnDrag(PointerEventData eventData)
     {
+        //recalcamos que disco que esta OnDrag es Draggable
+        _myGameManagerHanoi.PonerDraggableDiscoElegido(this.gameObject);
 
-        Vector2 pos = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y);
-        Debug.Log(pos);
+
         //miramos si ese disco se ha movido a una posicion antes de hacerlo ahora
         if (ultimaPosicionSeleccionadaUltimoDisco != null)
         {
@@ -93,14 +96,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
         //Debug.Log("OnDrag");
         if(eventData.delta.x>= -180 && eventData.delta.x <= 230 && eventData.delta.y >= -130 && eventData.delta.y <= 45 && rectTransform.anchoredPosition.x >= -180 && rectTransform.anchoredPosition.x <= 230 && rectTransform.anchoredPosition.y >= -130 && rectTransform.anchoredPosition.y <= 45)
         {
-                rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
-            
+            //no sale de limites   
         }
         else
         {
             limitessuperados = true;
         }
-        
+
 
         //cuando se coja el disco ponemos habilitamos todos los palos
         _myGameManagerHanoi.HabilitarPalos();
@@ -125,7 +127,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     //END DRAG
     public void OnEndDrag(PointerEventData eventData)
     {
+       
 
+
+
+
+
+        
         
 
         //vemos si ha superado limites o ha puesto un disco encima de la imagen de otro
