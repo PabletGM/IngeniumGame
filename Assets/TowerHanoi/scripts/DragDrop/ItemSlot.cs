@@ -13,7 +13,7 @@ public class ItemSlot : EventTrigger
     {
         //quita todos los permisos de discos de drgaggable
         _myGameManagerHanoi.QuitarDraggable();
-
+        eventData.pointerDrag.gameObject.GetComponent<DragDrop>().ComprobarLimites(eventData);
         //solo hacemos drop sino se han superado los limites y sino se ha puesto un disco en la posicion o area de otro
         //info del objeto que ha sido cogido
         if (eventData.pointerDrag!=null && !eventData.pointerDrag.gameObject.GetComponent<DragDrop>().GetLimitesSuperados() &&!eventData.pointerDrag.gameObject.GetComponent<DragDrop>().GetBoolDiscosEncimaOtro())

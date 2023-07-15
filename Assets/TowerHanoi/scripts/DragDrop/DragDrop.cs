@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
     
 
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEndDragHandler, IDragHandler, IDropHandler
+public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEndDragHandler, IDragHandler, IDropHandler, IPointerUpHandler
 {
     GameManagerHanoi _myGameManagerHanoi;
     [SerializeField] private Canvas canvas;
@@ -94,14 +94,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
 
         Cursor.lockState = CursorLockMode.Confined;
         //Debug.Log("OnDrag");
-        if(eventData.delta.x>= -180 && eventData.delta.x <= 230 && eventData.delta.y >= -130 && eventData.delta.y <= 45 && rectTransform.anchoredPosition.x >= -180 && rectTransform.anchoredPosition.x <= 230 && rectTransform.anchoredPosition.y >= -130 && rectTransform.anchoredPosition.y <= 45)
-        {
-            //no sale de limites   
-        }
-        else
-        {
-            limitessuperados = true;
-        }
+
+        ComprobarLimites(eventData);
 
 
         //cuando se coja el disco ponemos habilitamos todos los palos
@@ -109,33 +103,13 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
 
     }
 
-    //on drag manual
-    public void OnDragManual( GameObject palo ,GameObject huecoLibre)
-    {
 
-        //miramos si ese disco se ha movido a una posicion antes de hacero ahora
-        if (ultimaPosicionSeleccionadaUltimoDisco != null)
-        {
-            //ultimaPos = transform.position;
-            //si es el caso, como se ha cogido el disco, ponemos esta posicion a true otra vez
-            ultimaPosicionSeleccionadaUltimoDisco.GetComponent<Libre>().SetHuecoLibre(true);
-            _myGameManagerHanoi.SetPaloYPosicionUltimoDiscoSeleccionado(palo , huecoLibre);
-            ultimaPosicionSeleccionadaUltimoDisco = _myGameManagerHanoi.GetPosicionUltimoDiscoSeleccionado();
-        }
-    }
+   
 
-    //END DRAG
+    //END DRAG, se hace despues de itemSlot
+
     public void OnEndDrag(PointerEventData eventData)
     {
-       
-
-
-
-
-
-        
-        
-
         //vemos si ha superado limites o ha puesto un disco encima de la imagen de otro
         if (limitessuperados || discoEncimaDeOtro)
         {
@@ -195,22 +169,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
         limitessuperados = set;
     }
 
-    public void OnEndDragManual()
-    {
-       
-        //Debug.Log("OnEndDrag");
-        canvasGroup.alpha = 1f;
-        canvasGroup.blocksRaycasts = true;
-
-        //cuando se suelte el disco en una zona se debe saber la info de:
-        //en qué palo está el disco
-        //en que posicion del palo está el disco
-        //poner la propiedad del disco 
-        //así ya podemos poner si se quita este disco(OnDrag) el valor de libre de la pos a true
-        ultimaPosicionSeleccionadaUltimoDisco = _myGameManagerHanoi.GetPosicionUltimoDiscoSeleccionado();
-
-
-    }
+   
 
     //si se detecta que choca contra un disco
     private void OnTriggerEnter2D(Collider2D other)
@@ -233,23 +192,43 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler,IBeginDragHandler,IEn
     }
 
     //se llamará a esta funcion cuando se apriete el ratón
-    public void OnPointerDown(PointerEventData eventData)
-    {
-        //Debug.Log("OnPointerDown");
-    }
 
-    //hacer drop
-    public void OnDrop(PointerEventData eventData)
-    {
-        //Debug.Log("OnDrop);
-        
 
+    public void ComprobarLimites(PointerEventData eventData)
+    {
+        if (eventData.delta.x >= -180 && eventData.delta.x <= 230 && eventData.delta.y >= -130 && eventData.delta.y <= 45 && rectTransform.anchoredPosition.x >= -180 && rectTransform.anchoredPosition.x <= 230 && rectTransform.anchoredPosition.y >= -130 && rectTransform.anchoredPosition.y <= 45)
+        {
+            //no sale de limites
+            SetLimitesSuperados(false);
+        }
+        else
+        {
+            //no sale de limites
+            SetLimitesSuperados(true);
+        }
     }
 
     //metodo que devuelve la ultimaPosSeleccionada para así acceder a su script Libre y cambiarlo a false ya que si recyhaza el disco vuelve a este
     public GameObject ReturnPosSeleccionada()
     {
         return ultimaPosicionSeleccionadaUltimoDisco;
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        
+    }
+
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        
+    }
+
+    //vemoc si se hace antes de ItemSlot
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        //coment
+        Debug.Log("PointerUp");
     }
 }
 

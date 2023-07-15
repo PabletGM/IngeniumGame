@@ -949,7 +949,7 @@ public class GameManagerHanoi : MonoBehaviour
                         //buscar siguiente hueco libre 
                         GameObject huecoLibre =BuscarHuecoEnPalo(palo);
                         //objetoDisco.GetComponent<DragDrop>().OnBeginDragManual();
-                        objetoDisco.GetComponent<DragDrop>().OnDragManual(palo,huecoLibre);
+                        //objetoDisco.GetComponent<DragDrop>().OnDragManual(palo,huecoLibre);
                         palo.GetComponent<ItemSlot>().SetDiscoEnPosicionManual(objetoDisco, huecoLibre, huecoQuePosee2Discos, listaDiscos[i]);
                         //objetoDisco.GetComponent<DragDrop>().OnEndDragManual();
                     }
@@ -959,7 +959,7 @@ public class GameManagerHanoi : MonoBehaviour
                         //buscar siguiente hueco libre 
                         GameObject huecoLibre = BuscarHuecoEnPalo(palo);
                         //listaDiscos[i].GetComponent<DragDrop>().OnBeginDragManual();
-                        listaDiscos[i].GetComponent<DragDrop>().OnDragManual(palo,huecoLibre);
+                        //listaDiscos[i].GetComponent<DragDrop>().OnDragManual(palo,huecoLibre);
                         palo.GetComponent<ItemSlot>().SetDiscoEnPosicionManual(listaDiscos[i], huecoLibre, huecoQuePosee2Discos, objetoDisco);
                         //listaDiscos[i].GetComponent<DragDrop>().OnEndDragManual();
                     }
