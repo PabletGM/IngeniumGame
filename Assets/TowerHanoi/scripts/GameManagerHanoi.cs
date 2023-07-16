@@ -494,6 +494,155 @@ public class GameManagerHanoi : MonoBehaviour
 
     }
 
+    public GameObject PosDiscoFalsaEncontrarla(GameObject paloDondeBuscar)
+    {
+        switch (paloDondeBuscar.name)
+        {
+            //buscar hueco en primera lista
+            case "palo1":
+                //recorrer hijos del palo
+                foreach (GameObject currentHuecoPalo1 in palo1Places)
+                {
+                    //buscamos una posicion que huecoLibre = false
+                    bool libre = currentHuecoPalo1.GetComponent<Libre>().GetHuecoLibre();
+                    //buscamos una posicion que nombre =! ""
+                    string name = currentHuecoPalo1.GetComponent<Libre>().GetNombreDiscoActual();
+                    //si cumple ambas
+                    if (!libre && name !="")
+                    {
+                        //comprobamos si algun disco está en su posicion para ver si es falsa posicion o no
+                        //si tiene misma posicion con algun disco es que coincide y es disco real
+                        //si ningun disco coincide en pos es que es un hueco falso
+                        int num = 0;
+                        foreach (GameObject currentDisco in listaDiscos)
+                        {
+
+                            //a la hora de comparar pasamos a float ambos para un decimal
+                            double currentHuecopositionX1 = Math.Round(currentHuecoPalo1.transform.position.x, 1);
+                            double currentHuecopositionY1 = Math.Round(currentHuecoPalo1.transform.position.y, 1);
+                            double currentHuecopositionZ1 = Math.Round(currentHuecoPalo1.transform.position.z, 1);
+
+                            double currentDiscoPalo1X = Math.Round(currentDisco.transform.position.x, 1);
+                            double currentDiscoPalo1Y = Math.Round(currentDisco.transform.position.y, 1);
+                            double currentDiscoPalo1Z = Math.Round(currentDisco.transform.position.z, 1);
+
+                            Vector3 currentHuecoPaloPositionFloat1 = new Vector3((float)currentHuecopositionX1, (float)currentHuecopositionY1, (float)currentHuecopositionZ1);
+                            Vector3 currentDiscoPositionFloat1 = new Vector3((float)currentDiscoPalo1X, (float)currentDiscoPalo1Y, (float)currentDiscoPalo1Z);
+                            //sino coincide sumamos un intento
+                            if (currentDiscoPositionFloat1 != currentHuecoPaloPositionFloat1)
+                            {
+                                num++;
+                                //cuando ya se hayan recorrido todos los discos sino coincide ninguno num = 4
+                                if(num>=4)
+                                {
+                                    //disco falso encontrado
+                                    return currentHuecoPalo1;
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+
+            //buscar hueco en segunda lista
+            case "palo2":
+                foreach (GameObject currentHuecoPalo2 in palo2Places)
+                {
+
+                    //buscamos una posicion que huecoLibre = false
+                    bool libre = currentHuecoPalo2.GetComponent<Libre>().GetHuecoLibre();
+                    //buscamos una posicion que nombre =! ""
+                    string name = currentHuecoPalo2.GetComponent<Libre>().GetNombreDiscoActual();
+                    //si cumple ambas
+                    if (!libre && name != "")
+                    {
+                        //comprobamos si algun disco está en su posicion para ver si es falsa posicion o no
+                        //si tiene misma posicion con algun disco es que coincide y es disco real
+                        //si ningun disco coincide en pos es que es un hueco falso
+                        int num = 0;
+                        foreach (GameObject currentDisco in listaDiscos)
+                        {
+                            //a la hora de comparar pasamos a float ambos para un decimal
+                            double currentHuecopositionX2 = Math.Round(currentHuecoPalo2.transform.position.x, 1);
+                            double currentHuecopositionY2 = Math.Round(currentHuecoPalo2.transform.position.y, 1);
+                            double currentHuecopositionZ2 = Math.Round(currentHuecoPalo2.transform.position.z, 1);
+
+                            double currentDiscoPalo2X = Math.Round(currentDisco.transform.position.x, 1);
+                            double currentDiscoPalo2Y = Math.Round(currentDisco.transform.position.y, 1);
+                            double currentDiscoPalo2Z = Math.Round(currentDisco.transform.position.z, 1);
+
+                            Vector3 currentHuecoPaloPositionFloat2 = new Vector3((float)currentHuecopositionX2, (float)currentHuecopositionY2, (float)currentHuecopositionZ2);
+                            Vector3 currentDiscoPositionFloat2 = new Vector3((float)currentDiscoPalo2X, (float)currentDiscoPalo2Y, (float)currentDiscoPalo2Z);
+                            //sino coincide sumamos un intento
+                            if (currentDiscoPositionFloat2 != currentHuecoPaloPositionFloat2)
+                            {
+                                num++;
+                                //cuando ya se hayan recorrido todos los discos sino coincide ninguno num = 4
+                                if (num >= 4)
+                                {
+                                    //disco falso encontrado
+                                    return currentHuecoPalo2;
+                                }
+                            }
+                        }
+                    }
+
+                }
+                break;
+
+            //buscar hueco en tercera lista
+            case "palo3":
+                foreach (GameObject currentHuecoPalo3 in palo3Places)
+                {
+                    //buscamos una posicion que huecoLibre = false
+                    bool libre = currentHuecoPalo3.GetComponent<Libre>().GetHuecoLibre();
+                    //buscamos una posicion que nombre =! ""
+                    string name = currentHuecoPalo3.GetComponent<Libre>().GetNombreDiscoActual();
+                    //si cumple ambas
+                    if (!libre && name != "")
+                    {
+                        //comprobamos si algun disco está en su posicion para ver si es falsa posicion o no
+                        //si tiene misma posicion con algun disco es que coincide y es disco real
+                        //si ningun disco coincide en pos es que es un hueco falso
+                        int num = 0;
+                        foreach (GameObject currentDisco in listaDiscos)
+                        {
+                            //a la hora de comparar pasamos a float ambos para un decimal
+                            double currentHuecopositionX3 = Math.Round(currentHuecoPalo3.transform.position.x, 1);
+                            double currentHuecopositionY3 = Math.Round(currentHuecoPalo3.transform.position.y, 1);
+                            double currentHuecopositionZ3 = Math.Round(currentHuecoPalo3.transform.position.z, 1);
+
+                            double currentDiscoPalo3X = Math.Round(currentDisco.transform.position.x, 1);
+                            double currentDiscoPalo3Y = Math.Round(currentDisco.transform.position.y, 1);
+                            double currentDiscoPalo3Z = Math.Round(currentDisco.transform.position.z, 1);
+
+                            Vector3 currentHuecoPaloPositionFloat3 = new Vector3((float)currentHuecopositionX3, (float)currentHuecopositionY3, (float)currentHuecopositionZ3);
+                            Vector3 currentDiscoPositionFloat3 = new Vector3((float)currentDiscoPalo3X, (float)currentDiscoPalo3Y, (float)currentDiscoPalo3Z);
+                            //sino coincide sumamos un intento
+                            if (currentDiscoPositionFloat3 != currentHuecoPaloPositionFloat3)
+                            {
+                                num++;
+                                //cuando ya se hayan recorrido todos los discos sino coincide ninguno num = 4
+                                if (num >= 4)
+                                {
+                                    //disco falso encontrado
+                                    return currentHuecoPalo3;
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+
+            //excepciones
+            default:
+                Debug.Log("No hay hueco");
+                break;
+
+        }
+        return null;
+    }
+
     //devuelve gameObject disco segun el nombre
     public GameObject DevolverDiscoSegunNombre(string nameDisco)
     {
@@ -696,7 +845,19 @@ public class GameManagerHanoi : MonoBehaviour
     {
         foreach (GameObject disco in listaDiscos)
         {
-            if(disco.transform.position == posicionHueco.transform.position)
+
+            //a la hora de comparar pasamos a float ambos para un decimal
+            double currentHuecopositionX3 = Math.Round(posicionHueco.transform.position.x, 1);
+            double currentHuecopositionY3 = Math.Round(posicionHueco.transform.position.y, 1);
+            double currentHuecopositionZ3 = Math.Round(posicionHueco.transform.position.z, 1);
+
+            double currentDiscoPalo3X = Math.Round(disco.transform.position.x, 1);
+            double currentDiscoPalo3Y = Math.Round(disco.transform.position.y, 1);
+            double currentDiscoPalo3Z = Math.Round(disco.transform.position.z, 1);
+
+            Vector3 currentHuecoPaloPositionFloat = new Vector3((float)currentHuecopositionX3, (float)currentHuecopositionY3, (float)currentHuecopositionZ3);
+            Vector3 currentDiscoPositionFloat = new Vector3((float)currentDiscoPalo3X, (float)currentDiscoPalo3Y, (float)currentDiscoPalo3Z);
+            if (currentDiscoPositionFloat == currentHuecoPaloPositionFloat)
             {
                 return true;
             }

@@ -21,10 +21,26 @@ public class ItemSlot : EventTrigger
         //info del objeto que ha sido cogido
         if (eventData.pointerDrag!=null && !eventData.pointerDrag.gameObject.GetComponent<DragDrop>().GetLimitesSuperados() &&!eventData.pointerDrag.gameObject.GetComponent<DragDrop>().GetBoolDiscosEncimaOtro())
         {
+            //antes de mirar el huecoLibre debemos comprobar una excepcion o fallo que es que al hacer OutOfLimits a veces te sube al siguiente hueco, así comprobamos que en todas las posiciones de los discos en Libre hay realmente un disco
+
+            //primero un metodo que te diga si existe una posicion de disco Falsa y la devuelva en el palo
+            //GameObject posDiscoFalsa = _myGameManagerHanoi.PosDiscoFalsaEncontrarla(this.gameObject);
+            ////si existe
+            //if(posDiscoFalsa != null)
+            //{
+            //    //intentamos corregirlo
+            //    Debug.Log("Pos falsa encontrada");
+            //    posDiscoFalsa.GetComponent<Libre>().SetHuecoLibre(true);
+            //    posDiscoFalsa.GetComponent<Libre>().SetNombreDiscoActual("");
+            //    //ahora el huecoLibre que buscará será este despejado
+            //}
+
+
             GameObject huecoLibre;
             //llamamos a metodo de GameManager que devuelva el hueco libre y su GameObject
             huecoLibre = _myGameManagerHanoi.BuscarHuecoEnPalo(this.gameObject);
 
+            
 
             //y ponemos nombre del disco que esta ocupando el hueco en un principio
             huecoLibre.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
@@ -58,21 +74,37 @@ public class ItemSlot : EventTrigger
             //si es true se hace todo normal, o si el palo está vacio
             if (posibilidadDiscoEncima || paloVacio)
             {
-                //debemos saber si el ultimo movimiento hecho ha caido en la misma posicion para volver a poner su nombre
-                //esto es, comprobamos si el huecoLibre es igual a la ultimaPosSeleccionada por el disco
-                if(huecoLibre == eventData.pointerDrag.gameObject.GetComponent<DragDrop>().ReturnPosSeleccionada())
-                {
-                    //ha vuelto al mismo hueco, ponemos en este hueco
-                    //huecoLibre.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
-                    //huecoLibre.GetComponent<Libre>().SetHuecoLibre(false);
-                }
+                
 
                 AudioManagerHanoi.Instance.PlaySFX("colocarDisco");
                 //para así poder colocar el disco sobre la posicion del hueco libre
                 eventData.pointerDrag.GetComponent<RectTransform>().position = huecoLibre.GetComponent<RectTransform>().position;
-                //cambiamos la posicion del hueco libre a false para indicar que está ocupada
-                huecoLibre.GetComponent<Libre>().SetHuecoLibre(false);
-                huecoLibre.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
+
+                //cuando se busque el huecoLibre, miramos si se tiene un disco o no en la posicion anterior, sabemos que el disco del huecoLibre estará en la posicion por encima, pero si la de debajo, no tiene disco, falsa posicion encontrada
+                bool discoEnPosicionAnterior = _myGameManagerHanoi.ComprobarSihayDiscoEnPos(eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada().gameObject.transform);
+                if(!discoEnPosicionAnterior && !paloVacio)
+                {
+                    //si es false, no hay disco en la posicion anterior
+                    //así cambiamos position
+                    eventData.pointerDrag.GetComponent<RectTransform>().position = eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada().transform.position;
+                    //ponemos disco en huecoCorrecto
+                    GameObject huecoCorrecto = eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada();
+                    huecoCorrecto.GetComponent<Libre>().SetHuecoLibre(false);
+                    huecoCorrecto.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
+                    //y en el huecoLibre que es el falso quitamos disco
+                    huecoLibre.GetComponent<Libre>().SetHuecoLibre(true);
+                    huecoLibre.GetComponent<Libre>().SetNombreDiscoActual("");
+
+                }
+                //si hay disco en posicion anterior todo normal
+                else
+                {
+                    //cambiamos la posicion del hueco libre a false para indicar que está ocupada
+                    huecoLibre.GetComponent<Libre>().SetHuecoLibre(false);
+                    huecoLibre.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
+                }
+
+               
                 ////pasamos info al GameManager de cual es el ultimo disco seleccionado
                 //_myGameManagerHanoi.SetUltimoDiscoSeleccionado(eventData.pointerDrag.gameObject);
                 ////enviamos esa info al GameManager del ultimo palo y posicion del disco para luego conectar con script DragAndDrop del disco seleccionado para que sepa el palo y la posición donde se ha dejado
@@ -93,8 +125,31 @@ public class ItemSlot : EventTrigger
                 
                 //sino se puede poner disco encima ponemos posicion anterior en el hueco anterior
                 eventData.pointerDrag.GetComponent<RectTransform>().position = eventData.pointerDrag.GetComponent<DragDrop>().ultimaPos;
-                //cambiamos la posicion del hueco libre a true para indicar que está libre ya que volvemos al anterior
-                huecoLibre.GetComponent<Libre>().SetHuecoLibre(true);
+
+
+                //cuando se busque el huecoLibre, miramos si se tiene un disco o no en la posicion anterior, sabemos que el disco del huecoLibre estará en la posicion por encima, pero si la de debajo, no tiene disco, falsa posicion encontrada
+                bool discoEnPosicionAnterior = _myGameManagerHanoi.ComprobarSihayDiscoEnPos(eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada().gameObject.transform);
+                if (!discoEnPosicionAnterior && !paloVacio)
+                {
+                    //si es false, no hay disco en la posicion anterior
+                    //así cambiamos position
+                    eventData.pointerDrag.GetComponent<RectTransform>().position = eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada().transform.position;
+                    //ponemos disco en huecoCorrecto
+                    GameObject huecoCorrecto = eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada();
+                    huecoCorrecto.GetComponent<Libre>().SetHuecoLibre(false);
+                    huecoCorrecto.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
+                    //y en el huecoLibre que es el falso quitamos disco
+                    huecoLibre.GetComponent<Libre>().SetHuecoLibre(true);
+                    huecoLibre.GetComponent<Libre>().SetNombreDiscoActual("");
+
+                }
+                else
+                {
+                    //cambiamos la posicion del hueco libre a true para indicar que está libre ya que volvemos al anterior
+                    huecoLibre.GetComponent<Libre>().SetHuecoLibre(true);
+                }
+
+               
                 //falta indicar que el hueco anterior al que se vuelve se debe poner a false
                 GameObject huecoAnterior = eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada();
                 if(huecoAnterior != null)
