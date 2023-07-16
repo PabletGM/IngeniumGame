@@ -74,14 +74,22 @@ public class ItemSlot : EventTrigger
             //si es true se hace todo normal, o si el palo está vacio
             if (posibilidadDiscoEncima || paloVacio)
             {
-                
+                //por defecto
+                bool discoEnPosicionAnterior = true;
 
                 AudioManagerHanoi.Instance.PlaySFX("colocarDisco");
                 //para así poder colocar el disco sobre la posicion del hueco libre
                 eventData.pointerDrag.GetComponent<RectTransform>().position = huecoLibre.GetComponent<RectTransform>().position;
-
-                //cuando se busque el huecoLibre, miramos si se tiene un disco o no en la posicion anterior, sabemos que el disco del huecoLibre estará en la posicion por encima, pero si la de debajo, no tiene disco, falsa posicion encontrada
-                bool discoEnPosicionAnterior = _myGameManagerHanoi.ComprobarSihayDiscoEnPos(eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada().gameObject.transform);
+                //ahora debemos devolver la posicion de abajo de huecoLibre, para eso, nos enteramos que numero es huecoLibre
+                int numeroPosAnterior = _myGameManagerHanoi.DevolverPosicionSegunNombre(huecoLibre.gameObject.name)-1;
+                if(numeroPosAnterior!=0)
+                {
+                    //va a existir ese hueco
+                    GameObject huecoABuscar = _myGameManagerHanoi.DevolverHuecoConNumeroYPalo(this.gameObject, numeroPosAnterior);
+                    //cuando se busque el huecoLibre, miramos si se tiene un disco o no en la posicion anterior, sabemos que el disco del huecoLibre estará en la posicion por encima, pero si la de debajo, no tiene disco, falsa posicion encontrada
+                    discoEnPosicionAnterior = _myGameManagerHanoi.ComprobarSihayDiscoEnPos(huecoABuscar.transform);
+                }
+                
                 if(!discoEnPosicionAnterior && !paloVacio)
                 {
                     //si es false, no hay disco en la posicion anterior
@@ -117,7 +125,10 @@ public class ItemSlot : EventTrigger
             //sino se puede poner disco
             else
             {
-                
+
+                //por defecto
+                bool discoEnPosicionAnterior = true;
+
                 //como no se puede hacer la acción ponemos por el UI el consejito
                 _myGameManagerHanoi.Incorrect();
                 //si al final no se ocupa el huecoLibre, sino el huecoAnterior
@@ -126,9 +137,15 @@ public class ItemSlot : EventTrigger
                 //sino se puede poner disco encima ponemos posicion anterior en el hueco anterior
                 eventData.pointerDrag.GetComponent<RectTransform>().position = eventData.pointerDrag.GetComponent<DragDrop>().ultimaPos;
 
-
-                //cuando se busque el huecoLibre, miramos si se tiene un disco o no en la posicion anterior, sabemos que el disco del huecoLibre estará en la posicion por encima, pero si la de debajo, no tiene disco, falsa posicion encontrada
-                bool discoEnPosicionAnterior = _myGameManagerHanoi.ComprobarSihayDiscoEnPos(eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada().gameObject.transform);
+                //ahora debemos devolver la posicion de abajo de huecoLibre, para eso, nos enteramos que numero es huecoLibre
+                int numeroPosAnterior = _myGameManagerHanoi.DevolverPosicionSegunNombre(huecoLibre.gameObject.name)-1;
+                if (numeroPosAnterior != 0)
+                {
+                    //va a existir ese hueco
+                    GameObject huecoABuscar = _myGameManagerHanoi.DevolverHuecoConNumeroYPalo(this.gameObject, numeroPosAnterior);
+                    //cuando se busque el huecoLibre, miramos si se tiene un disco o no en la posicion anterior, sabemos que el disco del huecoLibre estará en la posicion por encima, pero si la de debajo, no tiene disco, falsa posicion encontrada
+                    discoEnPosicionAnterior = _myGameManagerHanoi.ComprobarSihayDiscoEnPos(huecoABuscar.transform);
+                }
                 if (!discoEnPosicionAnterior && !paloVacio)
                 {
                     //si es false, no hay disco en la posicion anterior
