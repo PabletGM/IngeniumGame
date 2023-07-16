@@ -23,6 +23,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     private bool limitessuperados = false;
     private bool discoEncimaDeOtro = false;
+    
+    public bool falloSaltarSiguientePosOutOfLimitsHuecoNull = false;
 
 
     private void Awake()
@@ -120,6 +122,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
                 huecoAnterior.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
                 huecoAnterior.GetComponent<Libre>().SetHuecoLibre(false);
             }
+           
 
             //pasamos info al GameManager de cual es el ultimo disco seleccionado
             //_myGameManagerHanoi.SetUltimoDiscoSeleccionado(eventData.pointerDrag.gameObject);
