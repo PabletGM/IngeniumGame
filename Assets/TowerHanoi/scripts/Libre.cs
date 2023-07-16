@@ -25,16 +25,18 @@ public class Libre : MonoBehaviour
         nombreDiscoActual = nombre;
     }
 
-    public string GetNombreDiscoActual()
-    {
-        return nombreDiscoActual;
-    }
-
     //metodo para cambiar estado de huecoLibre
     public void SetHuecoLibre(bool set)
     {
         huecoLibre = set;
     }
+
+    public string GetNombreDiscoActual()
+    {
+        return nombreDiscoActual;
+    }
+
+    
 
     //metodo que devuelve estado de huecoLibre
     public bool GetHuecoLibre()

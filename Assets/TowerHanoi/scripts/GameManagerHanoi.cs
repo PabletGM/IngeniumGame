@@ -90,6 +90,45 @@ public class GameManagerHanoi : MonoBehaviour
         }
     }
 
+    public void PonerDraggableDiscosMasAltos()
+    {
+        //quita todos los permisos de discos de drgaggable
+        QuitarDraggable();
+
+
+        //llamamos a metodo de GameManager que devuelva el disco que está mas arriba una vez se ha colocado el ultimo
+        string discoMasAltoPalo1Name = MetodoDevuelveDiscoMasArribaPalo(Palos[0].gameObject);
+        //con el nombre necesitamos el GameObject
+        GameObject discoMasAlto = BuscarDiscoSegunNombre(discoMasAltoPalo1Name);
+        //si hay disco en el palo
+        if (discoMasAltoPalo1Name != "")
+        {
+            PonerDraggableDiscoElegido(discoMasAlto);
+            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo1Name, Palos[0].gameObject);
+        }
+
+        string discoMasAltoPalo2Name = MetodoDevuelveDiscoMasArribaPalo(Palos[1].gameObject);
+        //con el nombre necesitamos el GameObject
+        GameObject discoMasAlto2 = BuscarDiscoSegunNombre(discoMasAltoPalo2Name);
+        //si hay disco en el palo
+        if (discoMasAltoPalo2Name != "")
+        {
+            PonerDraggableDiscoElegido(discoMasAlto2);
+            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo2Name, Palos[1].gameObject);
+        }
+
+        string discoMasAltoPalo3Name = MetodoDevuelveDiscoMasArribaPalo(Palos[2].gameObject);
+        //con el nombre necesitamos el GameObject
+        GameObject discoMasAlto3 = BuscarDiscoSegunNombre(discoMasAltoPalo3Name);
+        //si hay disco en el palo
+        if (discoMasAltoPalo3Name != "")
+        {
+            PonerDraggableDiscoElegido(discoMasAlto3);
+            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo3Name, Palos[2].gameObject);
+        }
+        //en todo momento actualizar y poner que solo tenga raycastTarget activado para poder cogerse el disco más alto
+    }
+
     public bool DiscoEnAlgunHueco(GameObject disco)
     {
         
@@ -139,8 +178,20 @@ public class GameManagerHanoi : MonoBehaviour
         //recorrer hijos del palo 1, huecos
         foreach (GameObject currentHuecoPalo1 in palo1Places)
         {
+            //a la hora de comparar pasamos a float ambos para un decimal
+            double positionX = Math.Round(position.x, 1) ;
+            double positionY = Math.Round(position.y, 1);
+            double positionZ = Math.Round(position.z, 1);
+
+            double currentHuecoPalo1X = Math.Round(currentHuecoPalo1.transform.position.x, 1);
+            double currentHuecoPalo1Y = Math.Round(currentHuecoPalo1.transform.position.y, 1);
+            double currentHuecoPalo1Z = Math.Round(currentHuecoPalo1.transform.position.z, 1);
+
+            Vector3 positionFloat = new Vector3((float)positionX, (float)positionY, (float)positionZ);
+            Vector3 currentHuecoPalo1Float = new Vector3((float)currentHuecoPalo1X, (float)currentHuecoPalo1Y,(float)currentHuecoPalo1Z);
+
             //en cada hijo comparamos las posiciones, si son iguales true
-            if (currentHuecoPalo1.transform.position == position)
+            if (positionFloat == currentHuecoPalo1Float)
             {
                 return currentHuecoPalo1;
             }
@@ -149,9 +200,20 @@ public class GameManagerHanoi : MonoBehaviour
         //recorrer hijos del palo 2, huecos
         foreach (GameObject currentHuecoPalo2 in palo2Places)
         {
+            //a la hora de comparar pasamos a float ambos para un decimal
+            double positionX2 = Math.Round(position.x, 1);
+            double positionY2 = Math.Round(position.y, 1);
+            double positionZ2 = Math.Round(position.z, 1);
+
+            double currentHuecoPalo2X = Math.Round(currentHuecoPalo2.transform.position.x, 1);
+            double currentHuecoPalo2Y = Math.Round(currentHuecoPalo2.transform.position.y, 1);
+            double currentHuecoPalo2Z = Math.Round(currentHuecoPalo2.transform.position.z, 1);
+
+            Vector3 positionFloat2 = new Vector3((float)positionX2, (float)positionY2, (float)positionZ2);
+            Vector3 currentHuecoPalo2Float = new Vector3((float)currentHuecoPalo2X, (float)currentHuecoPalo2Y, (float)currentHuecoPalo2Z);
 
             //en cada hijo comparamos las posiciones, si son iguales true
-            if (currentHuecoPalo2.transform.position == position)
+            if (positionFloat2 == currentHuecoPalo2Float)
             {
                 return currentHuecoPalo2;
             }
@@ -160,8 +222,20 @@ public class GameManagerHanoi : MonoBehaviour
         //recorrer hijos del palo 3, huecos
         foreach (GameObject currentHuecoPalo3 in palo3Places)
         {
+            //a la hora de comparar pasamos a float ambos para un decimal
+            double positionX3 = Math.Round(position.x, 1);
+            double positionY3 = Math.Round(position.y, 1);
+            double positionZ3 = Math.Round(position.z, 1);
+
+            double currentHuecoPalo3X = Math.Round(currentHuecoPalo3.transform.position.x, 1);
+            double currentHuecoPalo3Y = Math.Round(currentHuecoPalo3.transform.position.y, 1);
+            double currentHuecoPalo3Z = Math.Round(currentHuecoPalo3.transform.position.z, 1);
+
+            Vector3 positionFloat2 = new Vector3((float)positionX3, (float)positionY3, (float)positionZ3);
+            Vector3 currentHuecoPalo2Float = new Vector3((float)currentHuecoPalo3X, (float)currentHuecoPalo3Y, (float)currentHuecoPalo3Z);
+
             //en cada hijo comparamos las posiciones, si son iguales true
-            if (currentHuecoPalo3.transform.position == position)
+            if (positionFloat2 == currentHuecoPalo2Float)
             {
                 return currentHuecoPalo3;
             }
@@ -791,14 +865,6 @@ public class GameManagerHanoi : MonoBehaviour
     {
         _myUIManagerHanoi = UIManagerHanoi.GetInstanceUI();
 
-    }
-
-    //en todo momento sabemos cual es el disco que está mas arriba en cada palo
-    void Update()
-    {
-        
-
-
         //llamamos a metodo de GameManager que devuelva el disco que está mas arriba una vez se ha colocado el ultimo
         string discoMasAltoPalo1Name = MetodoDevuelveDiscoMasArribaPalo(Palos[0].gameObject);
         //con el nombre necesitamos el GameObject
@@ -810,28 +876,12 @@ public class GameManagerHanoi : MonoBehaviour
             QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo1Name, Palos[0].gameObject);
         }
 
-        string discoMasAltoPalo2Name = MetodoDevuelveDiscoMasArribaPalo(Palos[1].gameObject);
-        //con el nombre necesitamos el GameObject
-        GameObject discoMasAlto2 = BuscarDiscoSegunNombre(discoMasAltoPalo2Name);
-        //si hay disco en el palo
-        if (discoMasAltoPalo2Name != "")
-        {
-            PonerDraggableDiscoElegido(discoMasAlto2);
-            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo2Name, Palos[1].gameObject);
-        }
+    }
 
-        string discoMasAltoPalo3Name = MetodoDevuelveDiscoMasArribaPalo(Palos[2].gameObject);
-        //con el nombre necesitamos el GameObject
-        GameObject discoMasAlto3 = BuscarDiscoSegunNombre(discoMasAltoPalo3Name);
-        //si hay disco en el palo
-        if (discoMasAltoPalo3Name != "")
-        {
-            PonerDraggableDiscoElegido(discoMasAlto3);
-            QuitarPermisoDiscosExceptoArriba(discoMasAltoPalo3Name, Palos[2].gameObject);
-        }
-        //en todo momento actualizar y poner que solo tenga raycastTarget activado para poder cogerse el disco más alto
+    //en todo momento sabemos cual es el disco que está mas arriba en cada palo
+    void Update()
+    {
 
-        
         //si se quedan 2 discos en 1 posicion lo resuelve y sube uno a la siguiente pos
         //MismaPosicionDiscoMismoPalo();
     }
