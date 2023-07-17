@@ -46,7 +46,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     //BEGIN DRAG
     public void OnBeginDrag(PointerEventData eventData)
     {
-
+        //ponemos animaciones de palo opacidad
+        _myGameManagerHanoi.SetAnimacionesOpacidad(true);
 
 
         //si existe el hueco donde está la pos del disco ya seha liberado y lo ponemos
@@ -149,6 +150,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         this.gameObject.GetComponent<Draggable>().enabled = false;
         //al empezar el drag debemos saber que discos son draggable y cuales no, los discos mas altos
         _myGameManagerHanoi.PonerDraggableDiscosMasAltos();
+
+        //ponemos animaciones de palo opacidad las quitamos
+        _myGameManagerHanoi.SetAnimacionesOpacidad(false);
     }
 
     public bool GetBoolDiscosEncimaOtro()
