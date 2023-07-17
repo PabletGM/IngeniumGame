@@ -42,6 +42,11 @@ public class GameManagerHanoi : MonoBehaviour
     [SerializeField]
     private GameObject[] palo3Places;
 
+
+    //palos reales sprites y su animacion
+    [SerializeField]
+    private Animator[] animacionPalosOpacidad;
+
     //booleano que dice si ultimo disco colocado en un palo o no
     private bool ultimoDiscoColocado = true;
 
@@ -76,6 +81,16 @@ public class GameManagerHanoi : MonoBehaviour
         {
             Image imagePalo = currentPalo.gameObject.GetComponent<Image>();
             imagePalo.raycastTarget = true;
+        }
+    }
+
+
+    //activa/desactiva todas las animaciones Palo Opacidad
+    public void SetAnimacionesOpacidad(bool set)
+    {
+        foreach (Animator animacionPaloOpacidad in animacionPalosOpacidad)
+        {
+            animacionPaloOpacidad.SetBool("DiscoDrag", set);
         }
     }
 

@@ -3341,6 +3341,10 @@ MonoBehaviour:
   - {fileID: 2067335785}
   - {fileID: 156860632}
   - {fileID: 707765427}
+  animacionPalosOpacidad:
+  - {fileID: 2144091890}
+  - {fileID: 313282473}
+  - {fileID: 1919115440}
   combinacionGanadora: 
 --- !u!1 &903512074
 GameObject:
