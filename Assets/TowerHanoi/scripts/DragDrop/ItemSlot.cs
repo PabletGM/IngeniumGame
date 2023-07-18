@@ -125,7 +125,7 @@ public class ItemSlot : EventTrigger
             //sino se puede poner disco
             else
             {
-
+                _myGameManagerHanoi.AumentarNumMovimientosIncorrectosHanoiRegistrado();
                 //por defecto
                 bool discoEnPosicionAnterior = true;
 
@@ -191,6 +191,8 @@ public class ItemSlot : EventTrigger
             {
                 _myGameManagerHanoi.ActualizarCombinacionGanadora();
             }
+
+            _myGameManagerHanoi.AumentarNumJugadasTotalHanoiRegistrado();
 
 
         }

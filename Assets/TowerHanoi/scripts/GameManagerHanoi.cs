@@ -16,16 +16,16 @@ public class GameManagerHanoi : MonoBehaviour
     #region parametersDataBase
 
     [HideInInspector]
-    public int tiempoTotalHanoiRegistrado;
+    public int tiempoTotalHanoiRegistrado=0;
 
     [HideInInspector]
-    public int numJugadasTotal;
+    public int numJugadasTotal=0;
 
     [HideInInspector]
-    public int numMovimientosIncorrectos;
+    public int numMovimientosIncorrectos=0;
 
     [HideInInspector]
-    public int numMovimientosOutOfLimits;
+    public int numMovimientosOutOfLimits=0;
 
     #endregion
 
@@ -150,7 +150,24 @@ public class GameManagerHanoi : MonoBehaviour
                     numMovimientosOutOfLimits = numMovsOutOfLimits;
                 }
 
-        #endregion
+    #endregion
+
+
+        public void AumentarNumJugadasTotalHanoiRegistrado()
+        {
+
+            numJugadasTotal++;
+        }
+        public void AumentarNumMovimientosIncorrectosHanoiRegistrado()
+        {
+
+            numMovimientosIncorrectos++;
+        }
+        public void AumentarNumMovimientosOutOfLimitsHanoiRegistrado()
+        {
+
+            numMovimientosOutOfLimits++;
+        }
 
     #endregion
 

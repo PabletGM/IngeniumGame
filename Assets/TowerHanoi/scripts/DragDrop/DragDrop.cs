@@ -113,6 +113,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         //vemos si ha superado limites o ha puesto un disco encima de la imagen de otro
         if (limitessuperados || discoEncimaDeOtro)
         {
+            _myGameManagerHanoi.AumentarNumMovimientosOutOfLimitsHanoiRegistrado();
             //su posicion la cambia a ultima pos
             transform.position = ultimaPos;
             //al superar limites algun hueco en el que hay disco se borra
