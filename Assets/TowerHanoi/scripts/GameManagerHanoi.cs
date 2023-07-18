@@ -12,6 +12,25 @@ using UnityEngine.UI;
 
 public class GameManagerHanoi : MonoBehaviour
 {
+
+    #region parametersDataBase
+
+    [HideInInspector]
+    public int tiempoTotalHanoiRegistrado;
+
+    [HideInInspector]
+    public int numJugadasTotal;
+
+    [HideInInspector]
+    public int numMovimientosIncorrectos;
+
+    [HideInInspector]
+    public int numMovimientosOutOfLimits;
+
+    #endregion
+
+
+
     //lista de objetos Palo metalico que soporta a los discos
     [HideInInspector]
     public ItemSlot[] Palos;
@@ -67,10 +86,78 @@ public class GameManagerHanoi : MonoBehaviour
         }
     }
 
+
+
+
+
     static public GameManagerHanoi GetInstance()
     {
         return _instanceHanoi;
     }
+
+
+    #region DataBaseDatos
+
+        #region Get
+                        public int GetTiempoTotalHanoiRegistrado()
+                        {
+                            return tiempoTotalHanoiRegistrado;
+                        }
+
+   
+                        public int GetnumJugadasTotalHanoiRegistrado()
+                        {
+
+                            return numJugadasTotal;
+                        }
+
+                        public int GetnumMovsIncorrectosHanoiRegistrado()
+                        {
+
+                            return numMovimientosIncorrectos;
+                        }
+
+                        public int GetnumMovsOutOfLimitsHanoiRegistrado()
+                        {
+
+                            return numMovimientosOutOfLimits;
+                        }
+    #endregion
+
+        #region Set
+
+                public void SetTiempoTotalHanoiRegistrado(int tiempoPartida)
+                {
+                    tiempoTotalHanoiRegistrado = tiempoPartida;
+                }
+
+
+                public void SetnumJugadasTotalHanoiRegistrado(int numJugadas)
+                {
+
+                    numJugadasTotal = numJugadas;
+                }
+
+                public void SetnumMovsIncorrectosHanoiRegistrado(int numMovsIncorrect)
+                {
+
+                    numMovimientosIncorrectos = numMovsIncorrect;
+                }
+
+                public void SetnumMovsOutOfLimitsHanoiRegistrado(int numMovsOutOfLimits)
+                {
+
+                    numMovimientosOutOfLimits = numMovsOutOfLimits;
+                }
+
+        #endregion
+
+    #endregion
+
+
+
+
+
 
     //metodo que compruebe los 3 palos y pone todos como rayCastTarget = true;
     public void HabilitarPalos()
