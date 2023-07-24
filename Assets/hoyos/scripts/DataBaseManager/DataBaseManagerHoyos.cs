@@ -221,7 +221,7 @@ public class DataBaseManagerHoyos : MonoBehaviour
             int totalTime = _myGameManager.NumSecsPartidaReturn();
             int numExcavacionesTotales = _myGameManager.NumExcavacionesTotales();
             //el segundo es diccionario de numeros, donde hay un valor y un string
-            Dictionary<string, int> numerosHoyos = new Dictionary<string, int>
+            Dictionary<string, object> numerosHoyos = new Dictionary<string, object>
             {
                 //asignamos a mailPlayer el valor de MailPlayer.text
                 //y asignamos a namePlayer el valor de NamePlayer.text
@@ -243,7 +243,7 @@ public class DataBaseManagerHoyos : MonoBehaviour
             //numero picadas totales cada hoyo
             numpicadasHoyosIndiv = _myGameManager.DevolverPicadasHoyo();
             //el primero es diccionario de strings
-                Dictionary<string, Array> arrayHoyos = new Dictionary<string, Array>
+                Dictionary<string, object> arrayHoyos = new Dictionary<string, object>
                 {
                         { "numPicadasCadaHoyo",numpicadasHoyosIndiv },
                 };
