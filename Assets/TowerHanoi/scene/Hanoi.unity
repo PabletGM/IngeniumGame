@@ -1523,7 +1523,7 @@ MonoBehaviour:
   target:
   - {x: -1.238484, y: -1.657653, z: -10.99888}
   cam: {fileID: 519420031}
-  speed: 0.0125
+  speed: 0.018
 --- !u!4 &370415291
 Transform:
   m_ObjectHideFlags: 0
@@ -1747,8 +1747,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -18.634888, y: -6.549988}
-  m_SizeDelta: {x: -406.40283, y: 368.77612}
+  m_AnchoredPosition: {x: 10.60968, y: 154.46408}
+  m_SizeDelta: {x: -1049.7847, y: -915.0718}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &437853992
 MonoBehaviour:
@@ -1956,8 +1956,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -28.7954, y: -20.7966}
-  m_SizeDelta: {x: 987.0724, y: 219.5725}
+  m_AnchoredPosition: {x: -28.7954, y: -17.328}
+  m_SizeDelta: {x: 987.0724, y: 199.5861}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &495229231
 MonoBehaviour:
@@ -1979,7 +1979,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rapido...Necesitamos tu ayuda...
+  m_text: ' Rapido...Necesitamos tu ayuda...'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
   m_sharedMaterial: {fileID: 2140032, guid: dc36b3fdc14f47ebb36fd484a67e268a, type: 2}
@@ -2042,7 +2042,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 145.72797, y: -109.29614, z: 33.829834, w: 33.829773}
+  m_margin: {x: 87.23859, y: 25.593262, z: 33.829834, w: 29.63736}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2089,7 +2089,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420035}
   - component: {fileID: 519420036}
   m_Layer: 0
   m_Name: Main Camera
@@ -2215,22 +2214,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420035
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fb645de0c4f28b478344e46ad2db871, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ZoomActive: 0
-  target: []
-  cam: {fileID: 0}
-  speed: 0
 --- !u!114 &519420036
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2649,13 +2632,13 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1376927971}
-        m_TargetAssemblyTypeName: DataBaseManagerHanoi, Assembly-CSharp
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 437853990}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3745,7 +3728,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 412.6349, y: -165.45001}
+  m_AnchoredPosition: {x: 412.6349, y: -386}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &894022390

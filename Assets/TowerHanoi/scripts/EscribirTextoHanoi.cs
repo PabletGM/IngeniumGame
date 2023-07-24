@@ -57,8 +57,9 @@ public class EscribirTextoHanoi : MonoBehaviour
             //si el numero de clicks es mayor que numero de lineas aparece boton entendido
             if(clickCount > lines.Length)
             {
+                //mision.SetActive(false);
                 continuar.SetActive(true);
-                mision.SetActive(false);
+                
                 //cuando ya no hay mas lineas ya no hay mas permiso de escritura
                 permisoEscritura  = false;
             }
