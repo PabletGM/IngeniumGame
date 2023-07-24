@@ -11,6 +11,8 @@ using Firebase.Firestore;
 using Firebase.Extensions;
 public class DataBaseManagerHoyos : MonoBehaviour
 {
+    #region realTime database arguments
+
     public InputField NamePlayer;
     public InputField MailPlayer;
 
@@ -26,6 +28,12 @@ public class DataBaseManagerHoyos : MonoBehaviour
     //numero de picadas en cada hoyo
     private int[] numpicadasHoyosIndiv;
 
+    #endregion
+
+    #region fireBase arguments
+    private FirebaseApp _app;
+    #endregion
+
 
     //Start is called before the first frame update
     void Start()
@@ -36,12 +44,38 @@ public class DataBaseManagerHoyos : MonoBehaviour
         dbReference = FirebaseDatabase.DefaultInstance.RootReference;
         //gameManager
        _myGameManager = GameManager.GetInstance();
+
+        #region ServiciosGooglePlay
+
+        Firebase.FirebaseApp.CheckAndFixDependenciesAsync().ContinueWith(task => {
+            var dependencyStatus = task.Result;
+            if (dependencyStatus == Firebase.DependencyStatus.Available)
+            {
+                // Create and hold a reference to your FirebaseApp,
+                // where app is a Firebase.FirebaseApp property of your application class.
+                _app = Firebase.FirebaseApp.DefaultInstance;
+
+                // Set a flag here to indicate whether Firebase is ready to use by your app.
+
+
+                //si todo ha funcionado bien decimos que llame a login
+                LoginTutorial();
+            }
+            else
+            {
+                UnityEngine.Debug.LogError(System.String.Format(
+                  "Could not resolve all Firebase dependencies: {0}", dependencyStatus));
+                // Firebase Unity SDK is not safe to use here.
+            }
+        });
+
+        #endregion
     }
 
 
     #region realTimeDatabase
 
-            //creamos nuevo usuario en base de datos
+    //creamos nuevo usuario en base de datos
             public void CreateUserInicial()
             {
                 //Habiendo puesto al principio el nombre y el correo electronico estará guardado en las 2 variables InputField
@@ -147,6 +181,141 @@ public class DataBaseManagerHoyos : MonoBehaviour
 
     #region dataBase
 
+    //aqui se crea data de los hoyos
+    private void AddDataFirestoreInfoHoyos()
+    {
+        FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+        Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+
+        #region recolectar documentos
+            //hacemos referencia al documento de infoHoyos, concretamente al documento de la subcoleccion "numeros"
+            DocumentReference docRefNumerosInfoHoyo = db.Collection("users").Document(auth.CurrentUser.UserId).Collection("infoHoyos").Document("infoHoyosDocument").Collection("numeros").Document("numerosDocument");
+
+            //hacemos referencia al documento de infoHoyos, concretamente al documento de la subcoleccion "strings"
+            DocumentReference docRefStringsInfoHoyo = db.Collection("users").Document(auth.CurrentUser.UserId).Collection("infoHoyos").Document("infoHoyosDocument").Collection("strings").Document("stringDocument");
+
+            //hacemos referencia al documento de infoHoyos, concretamente al documento de la subcoleccion "array"
+            DocumentReference docRefArrayInfoHoyo = db.Collection("users").Document(auth.CurrentUser.UserId).Collection("infoHoyos").Document("infoHoyosDocument").Collection("array").Document("arrayDocument");
+
+            //hacemos 3 diccionarios, numeros, strings y arrays para sobreescribir o cambiar los 3
+        #endregion
+
+        #region dictionary string
+        //el primero es diccionario de strings
+        Dictionary<string, object> stringHoyos = new Dictionary<string, object>
+            {
+                //asignamos a mailPlayer el valor de MailPlayer.text
+                //y asignamos a namePlayer el valor de NamePlayer.text
+                    { "mailPlayer", MailPlayer.text },
+                    { "namePlayer",  NamePlayer.text},
+            };
+            //cambiamos el documento stringDocument con diccionario string lo actualizamos con valores nuevos stringHoyos
+            docRefStringsInfoHoyo.UpdateAsync(stringHoyos).ContinueWithOnMainThread(task => {
+                Debug.Log("Added data to the alovelace document in the users collection.");
+                GetDataFirestore();
+            });
+        #endregion
+
+
+        #region dictionary numeros
+            int totalTime = _myGameManager.NumSecsPartidaReturn();
+            int numExcavacionesTotales = _myGameManager.NumExcavacionesTotales();
+            //el segundo es diccionario de numeros, donde hay un valor y un string
+            Dictionary<string, int> numerosHoyos = new Dictionary<string, int>
+            {
+                //asignamos a mailPlayer el valor de MailPlayer.text
+                //y asignamos a namePlayer el valor de NamePlayer.text
+
+                    { "numExcavacionesTotales" , numExcavacionesTotales },
+                    { "totalTime",  totalTime},
+            };
+            //cambiamos el documento stringDocument con diccionario string lo actualizamos con valores nuevos stringHoyos
+            docRefNumerosInfoHoyo.UpdateAsync((IDictionary<string, object>)numerosHoyos).ContinueWithOnMainThread(task => {
+                Debug.Log("Added data to the alovelace document in the users collection.");
+                GetDataFirestore();
+            });
+
+        #endregion
+
+        #region dictionary array
+            //declaramos tamaño array hoyos
+            numpicadasHoyosIndiv = new int[6];
+            //numero picadas totales cada hoyo
+            numpicadasHoyosIndiv = _myGameManager.DevolverPicadasHoyo();
+            //el primero es diccionario de strings
+                Dictionary<string, Array> arrayHoyos = new Dictionary<string, Array>
+                {
+                        { "numPicadasCadaHoyo",numpicadasHoyosIndiv },
+                };
+            //cambiamos el documento stringDocument con diccionario string lo actualizamos con valores nuevos stringHoyos
+            docRefArrayInfoHoyo.UpdateAsync((IDictionary<string, object>)arrayHoyos).ContinueWithOnMainThread(task => {
+                Debug.Log("Added data to the alovelace document in the users collection.");
+                GetDataFirestore();
+            });
+        #endregion
+
+
+    }
+
+    private void GetDataFirestore()
+    {
+        FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+        //cogemos la coleccion users y tenemos unareferencia a esta usersRef
+        CollectionReference usersRef = db.Collection("users");
+        //coge como esté la base de datos ahora mismo y te la descargas
+        usersRef.GetSnapshotAsync().ContinueWithOnMainThread(task =>
+        {
+            //recorremos nuestro documento
+            QuerySnapshot snapshot = task.Result;
+            foreach (DocumentSnapshot document in snapshot.Documents)
+            {
+                Debug.Log(message: $"User: {document.Id}");
+                Dictionary<string, object> documentDictionary = document.ToDictionary();
+                Debug.Log(message: $"First: {documentDictionary["First"]}");
+                if (documentDictionary.ContainsKey("Middle"))
+                {
+                    Debug.Log(message: $"Middle: {documentDictionary["Middle"]}");
+                }
+
+                Debug.Log(message: $"Last: {documentDictionary["Last"]}");
+                Debug.Log(message: $"Born: {documentDictionary["Born"]}");
+            }
+
+            Debug.Log("Read all data from the users collection.");
+        });
+    }
+
+    public void LoginTutorial()
+    {
+        Firebase.Auth.FirebaseAuth auth = Firebase.Auth.FirebaseAuth.DefaultInstance;
+        //si el usuario se ha identificado antes currentUser poseerá sus datos
+        if (auth.CurrentUser != null)
+        {
+            Debug.Log("Ya estaba autentificado");
+            //se conecta con base de datos firebase local data(no realtime)
+            AddDataFirestoreInfoHoyos();
+            return;
+        }
+        auth.SignInAnonymouslyAsync().ContinueWith(task => {
+            if (task.IsCanceled)
+            {
+                Debug.LogError("SignInAnonymouslyAsync was canceled.");
+                return;
+            }
+            if (task.IsFaulted)
+            {
+                Debug.LogError("SignInAnonymouslyAsync encountered an error: " + task.Exception);
+                return;
+            }
+
+            Firebase.Auth.AuthResult result = task.Result;
+            Debug.LogFormat("User signed in successfully: {0} ({1})",
+                result.User.DisplayName, result.User.UserId);
+
+            //se conecta con base de datos firebase local data(no realtime)
+            AddDataFirestoreInfoHoyos();
+        });
+    }
     #endregion
 
 }
