@@ -17,16 +17,16 @@ public class FirebaseAuthManager : MonoBehaviour
    // Login Variables
    [Space]
    [Header("Login")]
-   public TMP_InputField emailLoginField;
-   public TMP_InputField passwordLoginField;
+   public TextMeshProUGUI emailLoginField;
+   public TextMeshProUGUI passwordLoginField;
 
    // Registration Variables
    [Space]
    [Header("Registration")]
-   public TMP_InputField nameRegisterField;
-   public TMP_InputField emailRegisterField;
-   public TMP_InputField passwordRegisterField;
-   public TMP_InputField confirmPasswordRegisterField;
+   public TextMeshProUGUI nameRegisterField;
+   public TextMeshProUGUI emailRegisterField;
+   public TextMeshProUGUI passwordRegisterField;
+   public TextMeshProUGUI confirmPasswordRegisterField;
 
 
 
@@ -147,7 +147,7 @@ public class FirebaseAuthManager : MonoBehaviour
 
    private IEnumerator RegisterAsync(string name, string email, string password, string confirmPassword)
    {
-       if (name == "")
+       if (name == " ")
        {
            Debug.LogError("User Name is empty");
        }
