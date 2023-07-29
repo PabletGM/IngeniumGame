@@ -2001,7 +2001,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1659882465}
         m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
-        m_MethodName: Login
+        m_MethodName: LoginUser
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3020,7 +3020,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1659882465}
         m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
-        m_MethodName: Register
+        m_MethodName: SignUpUser
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
