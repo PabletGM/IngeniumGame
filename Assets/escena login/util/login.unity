@@ -1999,7 +1999,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1659882465}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
         m_MethodName: LoginUser
         m_Mode: 1
@@ -3018,7 +3018,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1659882465}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
         m_MethodName: SignUpUser
         m_Mode: 1
@@ -4073,7 +4073,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1659882466}
-  - component: {fileID: 1659882465}
   m_Layer: 0
   m_Name: FirebaseAuth
   m_TagString: Untagged
@@ -4081,25 +4080,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1659882465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1659882464}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c8e9bcc60ae8084f8459040eeeaac92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dependencyStatus: 0
-  emailLoginField: {fileID: 1234554576}
-  passwordLoginField: {fileID: 2080291201}
-  nameRegisterField: {fileID: 966093628}
-  emailRegisterField: {fileID: 1666562034}
-  passwordRegisterField: {fileID: 2080364823}
-  confirmPasswordRegisterField: {fileID: 2084828148}
 --- !u!4 &1659882466
 Transform:
   m_ObjectHideFlags: 0
