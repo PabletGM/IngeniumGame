@@ -27,6 +27,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public bool falloSaltarSiguientePosOutOfLimitsHuecoNull = false;
 
 
+    private bool discoColocadoEnPosicionExistente = true;
+
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -110,7 +113,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         //la ultimaPos seleccionada no la pillamos del GameManager sino de saber que posicion es con nuestro transform
         ultimaPosicionSeleccionadaUltimoDisco = _myGameManagerHanoi.BuscandoHuecoConPosicion(ultimaPos);
 
-        //vemos si ha superado limites o ha puesto un disco encima de la imagen de otro
+        //vemos si ha superado limites o ha puesto un disco encima de la imagen de otro 
         if (limitessuperados || discoEncimaDeOtro)
         {
             _myGameManagerHanoi.AumentarNumMovimientosOutOfLimitsHanoiRegistrado();
@@ -154,6 +157,16 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
         //ponemos animaciones de palo opacidad las quitamos
         _myGameManagerHanoi.SetAnimacionesOpacidad(false);
+
+        #region ComprobacionDiscoEnPosHuecoExistente
+        //comprobamos que el disco se ha puesto en una posicion existente(para evitar que se pueda hacer drop por ahí en sitio random, sino vuelta al sitio anterior
+        discoColocadoEnPosicionExistente = _myGameManagerHanoi.VerSiDiscoEstaEnPalo(eventData.pointerDrag.transform);
+        //si se ha hecho, no ocurre nada, si esa posicion no es la de ningun hueco vuelve a pos anterior
+        if(!discoColocadoEnPosicionExistente)
+        {
+            VolverASitioAnterior(eventData);
+        }
+        #endregion
     }
 
     public bool GetBoolDiscosEncimaOtro()
@@ -232,6 +245,22 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnPointerClick(PointerEventData eventData)
     {
 
+    }
+
+    //vuelves a pos anterior y te contabiliza como OutOfLimits
+    public void VolverASitioAnterior(PointerEventData eventData)
+    {
+        _myGameManagerHanoi.AumentarNumMovimientosOutOfLimitsHanoiRegistrado();
+        //su posicion la cambia a ultima pos
+        transform.position = ultimaPos;
+        //al superar limites algun hueco en el que hay disco se borra
+        _myGameManagerHanoi.FueraLimites();
+        GameObject huecoAnterior = eventData.pointerDrag.GetComponent<DragDrop>().ReturnPosSeleccionada();
+        if (huecoAnterior != null)
+        {
+            huecoAnterior.GetComponent<Libre>().SetNombreDiscoActual(eventData.pointerDrag.gameObject.name);
+            huecoAnterior.GetComponent<Libre>().SetHuecoLibre(false);
+        }
     }
 }
 
