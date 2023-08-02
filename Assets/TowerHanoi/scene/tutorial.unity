@@ -2067,7 +2067,6 @@ GameObject:
   - component: {fileID: 903512078}
   - component: {fileID: 903512077}
   - component: {fileID: 903512076}
-  - component: {fileID: 903512075}
   m_Layer: 5
   m_Name: CanvasTutorial
   m_TagString: Untagged
@@ -2075,23 +2074,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &903512075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 903512074}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 956b739df187a9643ae4ecd8408866fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vfxFireworks: {fileID: 0}
-  ImageWin: {fileID: 0}
-  zoom: {fileID: 0}
-  panelIncorrect: {fileID: 0}
-  panelFueraLimites: {fileID: 0}
 --- !u!114 &903512076
 MonoBehaviour:
   m_ObjectHideFlags: 0
