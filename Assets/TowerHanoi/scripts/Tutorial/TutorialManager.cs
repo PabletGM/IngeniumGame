@@ -25,6 +25,12 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     private Button PanelbotonPlayVideoIncorrect;
 
+    [SerializeField]
+    private GameObject portadaVideoPanelDiscosNormal;
+
+    [SerializeField]
+    private GameObject portadaVideoPanelDiscosGrandePequeño;
+
     //color del buton
     private Color colorButton;
 
@@ -85,12 +91,16 @@ public class TutorialManager : MonoBehaviour
             //damos a Play el video
             videoPlayerIncorrect.Play();
             PanelbotonPlayVideoIncorrect.image.color = new Color(255f, 0f, 0f, 0f);
+            //quitamos portada
+            portadaVideoPanelDiscosGrandePequeño.SetActive(false);
         }
         //sino se esta viendo el video
         else
         {
             videoPlayerIncorrect.Stop();
             PanelbotonPlayVideoIncorrect.image.color = colorButton;
+            //activamos portada
+            portadaVideoPanelDiscosGrandePequeño.SetActive(true);
         }
         
     }
@@ -106,12 +116,16 @@ public class TutorialManager : MonoBehaviour
             //damos a Play el video
             videoPlayerCorrect.Play();
             PanelbotonPlayVideoCorrectWin.image.color = new Color(255f, 0f, 0f, 0f);
+            //quitamos portada
+            portadaVideoPanelDiscosNormal.SetActive(false);
         }
         //sino se esta viendo el video
         else
         {
             videoPlayerCorrect.Stop();
             PanelbotonPlayVideoCorrectWin.image.color = colorButton;
+            //ponemos portada
+            portadaVideoPanelDiscosNormal.SetActive(true);
         }
 
     }
