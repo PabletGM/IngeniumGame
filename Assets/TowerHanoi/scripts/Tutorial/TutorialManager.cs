@@ -31,6 +31,12 @@ public class TutorialManager : MonoBehaviour
     [SerializeField]
     private GameObject portadaVideoPanelDiscosGrandePequeño;
 
+    [SerializeField]
+    private GameObject marcoVideoCorrect;
+
+    [SerializeField]
+    private GameObject marcoVideoIncorrect;
+
     //color del buton
     private Color colorButton;
 
