@@ -391,9 +391,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Desterrarlo en el nuevo planeta. Aunque s\xE9 que es la decisi\xF3n m\xE1s
-    rotunda ha traspasado los l\xEDmites, creo que solucionar el problema de ra\xEDz
-    es lo mejor para la seguridad de todos."
+  m_text: "\xA1Partida igualada! Juega contra un oponente asequible y demuestra tu
+    val\xEDa ante tus compa\xF1eros con un 65% de posibilidades de victoria. \xA1Recompensa
+    garantizada de 20 recursos si vences!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
@@ -420,8 +420,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 32
-  m_fontSizeBase: 32
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1900,9 +1900,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Perdonarle y hablar con \xE9l para que intente cambiar. A pesar de todo
-    lo que ha hecho y aunque mantenerle con nosotros implique un alto riesgo, conf\xEDo
-    en el potencial de cambio de las personas."
+  m_text: "\xA1Sin miedo a lo desconocido! Prefiero probar un nuevo reto aunque pueda
+    demandar habilidades que a\xFAn no poseo y no sepa la recompensa \r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
@@ -2951,12 +2950,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Despu\xE9s de un arduo esfuerzo, finalmente has logrado detener al Capit\xE1n
-    y prevenir su plan destructivo. Ese hombre hab\xEDa perdido la esperanza y en
-    su desesperaci\xF3n decidi\xF3 acabar con todos. Ahora, se lleva a cabo un juicio
-    p\xFAblico para decidir su futuro. Sin embargo, como t\xFA fuiste quien lo captur\xF3,
-    la Capitana te da la oportunidad de tomar la decisi\xF3n final sobre su destino.
-    La elecci\xF3n est\xE1 en tus manos:"
+  m_text: "Te dan la opci\xF3n de volver a jugar a una din\xE1mica del 3 en raya
+    que ya hab\xEDas realizado antes. En esta ocasi\xF3n podr\xE1s elegir a quien
+    te enfrentas y las probabilidades de \xE9xito que tienes contra esa persona.
+    Las opciones ser\xEDan:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -3790,9 +3787,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Mantenerlo encarcelado en la nave. No me quiero precipitar, pero dado
-    que tiene conocimientos t\xE9cnicos muy valiosos, lo mejor ser\xEDa encerrarlo
-    en la nave y utilizarlo en caso de que surja alg\xFAn problema en el futuro."
+  m_text: "\xA1Complicado pero con posibilidades! Juega contra un oponente complicado
+    con solo un 35% de posibilidades de victoria. \xA1Apuesta en ti mismo y gana
+    una recompensa de 30 recursos si triunfas!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
