@@ -93,7 +93,7 @@ public class ConfianzaManager : MonoBehaviour
 
     #region methods Confianza2
     //metodo que elige la opcion A de la prueba1 de capacidad
-    public void ChooseOptionACapacidad2()
+    public void ChooseOptionAConfianza2()
     {
         resultadoPruebaConfianza2 = "a";
         opcionElegidaResult2.text = resultadoPruebaConfianza2;
@@ -104,7 +104,7 @@ public class ConfianzaManager : MonoBehaviour
     }
 
     //metodo que elige la opcion B de la prueba1 de capacidad
-    public void ChooseOptionBCapacidad2()
+    public void ChooseOptionBConfianza2()
     {
         resultadoPruebaConfianza2 = "b";
         opcionElegidaResult2.text = resultadoPruebaConfianza2;
@@ -114,7 +114,7 @@ public class ConfianzaManager : MonoBehaviour
     }
 
     //metodo que elige la opcion C de la prueba1 de capacidad
-    public void ChooseOptionCCapacidad2()
+    public void ChooseOptionCConfianza2()
     {
         resultadoPruebaConfianza2 = "c";
         opcionElegidaResult2.text = resultadoPruebaConfianza2;
@@ -124,11 +124,11 @@ public class ConfianzaManager : MonoBehaviour
     }
 
     //para pasar a siguiente test
-    public void ContinueNextQuestionCapacidad2()
+    public void ContinueNextQuestionConfianza2()
     {
         //pasariamos el resultadoPruebaCapacidad1 como string y argumento al metodo que lo subiese a la base de datos
 
-        //pasa al siguiente test
+        //pasa al siguiente test o escena capacidad
     }
     #endregion
 }
