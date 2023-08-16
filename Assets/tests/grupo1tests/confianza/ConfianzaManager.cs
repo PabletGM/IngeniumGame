@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ConfianzaManager : MonoBehaviour
 {
@@ -129,6 +130,7 @@ public class ConfianzaManager : MonoBehaviour
         //pasariamos el resultadoPruebaCapacidad1 como string y argumento al metodo que lo subiese a la base de datos
 
         //pasa al siguiente test o escena capacidad
+        SceneManager.LoadScene("capacidadDeAdaptacion");
     }
     #endregion
 }

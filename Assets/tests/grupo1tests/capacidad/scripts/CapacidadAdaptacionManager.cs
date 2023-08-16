@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CapacidadAdaptacionManager : MonoBehaviour
 {
@@ -166,7 +167,7 @@ public class CapacidadAdaptacionManager : MonoBehaviour
 
     #endregion
 
-    #region methods Capacidad1
+    #region methods Capacidad2
 
     //metodo opcion A que abre panel opcion A de la pregunta 1
     public void OpenOptionA2()
@@ -255,6 +256,7 @@ public class CapacidadAdaptacionManager : MonoBehaviour
         //pasariamos el resultadoPruebaCapacidad1 como string y argumento al metodo que lo subiese a la base de datos
 
         //pasa al siguiente test
+        SceneManager.LoadScene("finalTest1");
     }
 
     #endregion
