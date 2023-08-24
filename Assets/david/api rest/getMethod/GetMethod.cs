@@ -23,7 +23,7 @@ public class GetMethod : MonoBehaviour
     IEnumerator GetData_Coroutine()
     {
         outputArea.text = "Loading...";
-        string uri = "https://eu-west-1.aws.data.mongodb-api.com/app/ingenuity-application-lfzzr/endpoint/Ingenuity/Test";
+        string uri = "https://eu-west-1.aws.data.mongodb-api.com/app/ingenuity-app-0-mmgty/endpoint/Ingenuity/Test";
         using (UnityWebRequest request = UnityWebRequest.Get(uri))
         {
             yield return request.SendWebRequest();
