@@ -2771,9 +2771,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
-        m_MethodName: LoginUser
+      - m_Target: {fileID: 1898360291}
+        m_TargetAssemblyTypeName: UIManagerLogin, Assembly-CSharp
+        m_MethodName: DebugLoginParameters
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4666,9 +4666,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FirebaseAuthManager, Assembly-CSharp
-        m_MethodName: SignUpUser
+      - m_Target: {fileID: 1898360291}
+        m_TargetAssemblyTypeName: UIManagerLogin, Assembly-CSharp
+        m_MethodName: DebugRegisterParameters
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7144,6 +7144,16 @@ MonoBehaviour:
   registrationPanel: {fileID: 639377908}
   buttonChangeStateLoginToRegister: {fileID: 965920260}
   buttonChangeStateRegisterToLogin: {fileID: 919576502}
+  userNameRegister: {fileID: 989123923}
+  company: {fileID: 1723863185}
+  email: {fileID: 703988486}
+  firstName: {fileID: 2086349524}
+  lastName: {fileID: 884262449}
+  age: {fileID: 213246049}
+  passwordRegister: {fileID: 1706037678}
+  confirmPasswordRegister: {fileID: 775838982}
+  userNameLogin: {fileID: 949604619}
+  passwordLogin: {fileID: 530183117}
 --- !u!1 &1958511882
 GameObject:
   m_ObjectHideFlags: 0
