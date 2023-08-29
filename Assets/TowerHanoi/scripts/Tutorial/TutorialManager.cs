@@ -153,6 +153,7 @@ public class TutorialManager : MonoBehaviour
 
     public void IniciarPartida()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene(1, UnityEngine.SceneManagement.LoadSceneMode.Single);
+        //UnityEngine.SceneManagement.SceneManager.LoadScene(1, UnityEngine.SceneManagement.LoadSceneMode.Single);
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Hanoi");
     }
 }
