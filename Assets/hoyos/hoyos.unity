@@ -10891,8 +10891,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7996202afe03b44974ebab503644b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NamePlayer: {fileID: 1691012782}
-  MailPlayer: {fileID: 1012136445}
 --- !u!1 &1893888960
 GameObject:
   m_ObjectHideFlags: 0
