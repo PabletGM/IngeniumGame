@@ -270,18 +270,7 @@ public class UIManagerLogin : MonoBehaviour
     //metodo que mira a ver si lo que ha devuelto el register es un codigo 201, esto es register correct
     public void ComprobacionAccessTokenLoginCorrect(string loginCorrect)
     {
-        //// Obtener una subcadena que comienza en el índice 15(longitud de palabra {"status_code": y tiene una longitud de 3 caracteres  201
-        //string codigoCorrecto201 = registerCorrect.Substring(15, 3);
-        ////es correcto
-        //if(codigoCorrecto201 =="201")
-        //{
-        //    Debug.Log("Correcto, codigo 201 devuelto");
-        //    //notificacion en pantalla unity
-        //}
-        //else
-        //{
-        //    Debug.Log("No correcto");
-        //}
+        
 
         // Deserializar el JSON usando JsonUtility
         JsonResponseData response = JsonUtility.FromJson<JsonResponseData>(loginCorrect);
