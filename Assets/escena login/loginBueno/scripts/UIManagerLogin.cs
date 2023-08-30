@@ -1,6 +1,8 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -64,6 +66,14 @@ public class UIManagerLogin : MonoBehaviour
 
     #endregion
 
+    #region urlConexionMongo
+
+    
+    private string uriRegister = "http://192.168.1.135:8000/Users/register";
+    private string uriLogin = "http://192.168.1.135:8000/Users/login";
+
+    #endregion
+
     private void Awake()
     {
         //si la instancia no existe se hace este script la instancia
@@ -109,17 +119,27 @@ public class UIManagerLogin : MonoBehaviour
 
     IEnumerator PostLogin(string userNameLogin, string passwordLogin)
     {
-       //direccion con base de datos de MongoDB
-        string uri = "https://eu-west-1.aws.data.mongodb-api.com/app/ingenuity-app-0-mmgty/endpoint/Ingenuity/Test";
-
+        //direccion con base de datos de MongoDB
+        //string uri = "https://eu-west-1.aws.data.mongodb-api.com/app/ingenuity-app-0-mmgty/endpoint/Ingenuity/Test";
         //se pone el form en el segundo argumento de la funcion post
         //string body = $"{{ \"username\": {s}, \"password\": \"1234\", \"field3\": {{\"field3.-1\": {num},\"field3.0\": [{numbersArrayString}],\"field3.1\": [\"uno\",1], \"field3.2\": \"dos\"}} }}";
-        string body = $@"{{
-            ""username"": ""{userNameLogin}"",
-            ""password"": ""{passwordLogin}""
-        }}";
+        //string userName = "dtertre59";
+        //string password = "1234";
+        //string body = $@"{{
+        //    ""username"": ""{userName}"",
+        //    ""password"": ""{password}""
+        //}}";
 
-        using (UnityWebRequest request = UnityWebRequest.Post(uri, body, "application/json"))
+        // Crear formulario con los datos, todo en minusculas , porque va predefinido el formulario y username esta vez en minuscula
+        WWWForm form = new WWWForm();
+        form.AddField("username", userNameLogin);
+        form.AddField("password", passwordLogin);
+
+        
+
+
+
+        using (UnityWebRequest request = UnityWebRequest.Post(uriLogin, form))
         {
             yield return request.SendWebRequest();
             /*
@@ -135,6 +155,7 @@ public class UIManagerLogin : MonoBehaviour
             else
             {
                 Debug.Log( request.downloadHandler.text);
+                ComprobacionAccessTokenLoginCorrect(request.downloadHandler.text);
                 Debug.Log("BIEN");
             }
         }
@@ -161,25 +182,42 @@ public class UIManagerLogin : MonoBehaviour
     IEnumerator PostRegister(string userNameRegister, string company, string email, string firstName, string lastName, string age, string passwordRegister, string confirmPasswordRegister)
     {
         //direccion con base de datos de MongoDB
-        string uri = "https://eu-west-1.aws.data.mongodb-api.com/app/ingenuity-app-0-mmgty/endpoint/Ingenuity/Test";
+        //string uri = "https://eu-west-1.aws.data.mongodb-api.com/app/ingenuity-app-0-mmgty/endpoint/Ingenuity/Test";
+        //acceso a user register
 
         //se pone el form en el segundo argumento de la funcion post
         //string body = $"{{ \"username\": {s}, \"password\": \"1234\", \"field3\": {{\"field3.-1\": {num},\"field3.0\": [{numbersArrayString}],\"field3.1\": [\"uno\",1], \"field3.2\": \"dos\"}} }}";
 
+        // Cambia esto al valor adecuado de la edad
+        string body;
+        if (int.TryParse(age, out int age2))
+        {
+             body = $@"{{
+                ""userName"": ""{userNameRegister}"",
+                ""company"": ""{company}"",
+                ""email"": ""{email}"",
+                ""firstName"": ""{firstName}"",
+                ""lastName"": ""{lastName}"",
+                ""age"": {age2},
+                ""password"": ""{passwordRegister}""
+            }}";
+        }
+        else
+        {
+            //inventado
+            body = $@"{{
+                ""userName"": "",
+                ""company"": "",
+                ""email"": "",
+                ""firstName"": "",
+                ""lastName"": "",
+                ""age"": {age2},
+                ""password"": ""
+            }}";
+            Console.WriteLine("El valor de 'age' no es un número entero válido.");
+        }
 
-        string body = $@"{{
-            ""firstName"": ""{firstName}"",
-            ""lastName"": ""{lastName}"",
-            ""age"": ""{age}"",
-            ""company"": ""{company}"",
-            ""email"": ""{email}"",
-            ""userNameRegister"": ""{userNameRegister}"",
-            ""passwordRegister"": ""{passwordRegister}"",
-            ""confirmPasswordRegister"": ""{confirmPasswordRegister}""
- 
-        }}";
-
-        using (UnityWebRequest request = UnityWebRequest.Post(uri, body, "application/json"))
+        using (UnityWebRequest request = UnityWebRequest.Post(uriRegister, body, "application/json"))
         {
             yield return request.SendWebRequest();
             /*
@@ -195,10 +233,81 @@ public class UIManagerLogin : MonoBehaviour
             else
             {
                 Debug.Log(request.downloadHandler.text);
+                //comprobamos si es correcto el register
+                Comprobacion201RegisterCorrect(request.downloadHandler.text);
                 Debug.Log("BIEN");
             }
         }
 
     }
+
+    //metodo que mira a ver si lo que ha devuelto el register es un codigo 201, esto es register correct
+    public void Comprobacion201RegisterCorrect(string registerCorrect)
+    {
+        //// Obtener una subcadena que comienza en el índice 15(longitud de palabra {"status_code": y tiene una longitud de 3 caracteres  201
+        //string codigoCorrecto201 = registerCorrect.Substring(15, 3);
+        ////es correcto
+        //if(codigoCorrecto201 =="201")
+        //{
+        //    Debug.Log("Correcto, codigo 201 devuelto");
+        //    //notificacion en pantalla unity
+        //}
+        //else
+        //{
+        //    Debug.Log("No correcto");
+        //}
+
+        // Deserializar el JSON usando JsonUtility
+        JsonResponseData response = JsonUtility.FromJson<JsonResponseData>(registerCorrect);
+
+        // Acceder al valor del campo status_code
+        int statusCode = response.status_code;
+
+        Debug.Log("Status Code: " + statusCode);
+
+    }
+
+    //metodo que mira a ver si lo que ha devuelto el register es un codigo 201, esto es register correct
+    public void ComprobacionAccessTokenLoginCorrect(string loginCorrect)
+    {
+        //// Obtener una subcadena que comienza en el índice 15(longitud de palabra {"status_code": y tiene una longitud de 3 caracteres  201
+        //string codigoCorrecto201 = registerCorrect.Substring(15, 3);
+        ////es correcto
+        //if(codigoCorrecto201 =="201")
+        //{
+        //    Debug.Log("Correcto, codigo 201 devuelto");
+        //    //notificacion en pantalla unity
+        //}
+        //else
+        //{
+        //    Debug.Log("No correcto");
+        //}
+
+        // Deserializar el JSON usando JsonUtility
+        JsonResponseData response = JsonUtility.FromJson<JsonResponseData>(loginCorrect);
+
+        // Acceder al valor del campo status_code
+        string token = response.access_token;
+
+        Debug.Log("Access token: " + "" + token + "");
+
+    }
+
+
+
+
+    //metodo para comprobar contraseña con confirmPaswwrod
+
+}
+
+
+//variables que almacenan comprobaciones de si se ha loggeado bien y registrado bien
+[System.Serializable]
+public class JsonResponseData
+{
+    //status code correcto register 201
+    public int status_code;
+    //token de login para ver que loggea bien
+    public string access_token;
 
 }
