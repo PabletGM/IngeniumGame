@@ -93,6 +93,8 @@ public class UIManagerLogin : MonoBehaviour
         return _instanceUILogin;
     }
 
+
+    #region OpenPanelsMethods
     //quitas el panel de registro y pones el de login
     public void OpenLoginPanel()
     {
@@ -107,6 +109,9 @@ public class UIManagerLogin : MonoBehaviour
         loginPanel.SetActive(false);
     }
 
+    #endregion
+
+    #region DebugLoginRegister
     //metodo que escribe parametros de Login
     public void DebugLoginParameters()
     {
@@ -117,6 +122,24 @@ public class UIManagerLogin : MonoBehaviour
         StartCoroutine(PostLogin(userNameLogin.text, passwordLogin.text));
     }
 
+    //metodo que escribe parametros de Registers
+    public void DebugRegisterParameters()
+    {
+        Debug.Log(userNameRegister.text);
+        Debug.Log(company.text);
+        Debug.Log(email.text);
+        Debug.Log(firstName.text);
+        Debug.Log(lastName.text);
+        Debug.Log(age.text);
+        Debug.Log(passwordRegister.text);
+        Debug.Log(confirmPasswordRegister.text);
+
+        StartCoroutine(PostRegister(userNameRegister.text, company.text, email.text, firstName.text, lastName.text, age.text, passwordRegister.text, confirmPasswordRegister.text));
+
+    }
+    #endregion
+
+    #region ExecuteLoginRegister
     IEnumerator PostLogin(string userNameLogin, string passwordLogin)
     {
         //direccion con base de datos de MongoDB
@@ -134,10 +157,6 @@ public class UIManagerLogin : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("username", userNameLogin);
         form.AddField("password", passwordLogin);
-
-        
-
-
 
         using (UnityWebRequest request = UnityWebRequest.Post(uriLogin, form))
         {
@@ -161,23 +180,6 @@ public class UIManagerLogin : MonoBehaviour
         }
 
     }
-
-    //metodo que escribe parametros de Registers
-    public void DebugRegisterParameters()
-    {
-        Debug.Log(userNameRegister.text);
-        Debug.Log(company.text);
-        Debug.Log(email.text);
-        Debug.Log(firstName.text);
-        Debug.Log(lastName.text);
-        Debug.Log(age.text);
-        Debug.Log(passwordRegister.text);
-        Debug.Log(confirmPasswordRegister.text);
-
-        StartCoroutine(PostRegister(userNameRegister.text , company.text, email.text, firstName.text, lastName.text , age.text, passwordRegister.text, confirmPasswordRegister.text));
-        
-    }
-
 
     IEnumerator PostRegister(string userNameRegister, string company, string email, string firstName, string lastName, string age, string passwordRegister, string confirmPasswordRegister)
     {
@@ -241,6 +243,10 @@ public class UIManagerLogin : MonoBehaviour
 
     }
 
+    #endregion
+
+
+    #region ComprobationLoginRegisterCorrect
     //metodo que mira a ver si lo que ha devuelto el register es un codigo 201, esto es register correct
     public void Comprobacion201RegisterCorrect(string registerCorrect)
     {
@@ -281,11 +287,44 @@ public class UIManagerLogin : MonoBehaviour
         Debug.Log("Access token: " + "" + token + "");
 
     }
+    #endregion
 
 
+    #region TiposLoginIncorrecto
+        //metodo para comprobar contraseña con confirmPaswwrod
+        public bool ComprobarContraseñaCorrecta(string password)
+        {
+            //vemos si la contraseña del login y register es la misma
+            if(passwordLogin.text == passwordRegister.text)
+            {
+                //contraseña correcta
+                return true;
+            }
+            else
+            {
+                //contraseña incorrecta
+                //poner aviso en pantalla contraseña incorrecta
+                return false;
+            }
+        }
 
-
-    //metodo para comprobar contraseña con confirmPaswwrod
+        //comprobar si usuario existe
+        public bool UsuarioExistente(string username)
+        {
+            //si el username que ha puesto el jugador en el login es el mismo que el del register existe
+            if(userNameLogin.text == userNameRegister.text)
+            {
+                //usuario existe
+                return true;
+            }
+            else
+            {
+                //usuario no existe
+                //poner aviso en pantalla usuario incorrecto
+                return false;
+            }
+        }
+    #endregion
 
 }
 
