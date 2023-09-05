@@ -6,6 +6,7 @@ using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using static System.Net.WebRequestMethods;
 
 public class UIManagerLogin : MonoBehaviour
 {
@@ -68,14 +69,19 @@ public class UIManagerLogin : MonoBehaviour
 
     #region urlConexionMongo
 
-    
-    private string uriRegister = "http://192.168.1.135:8000/Users/register";
-    private string uriLogin = "http://192.168.1.135:8000/Users/login";
+    private string uriBackend = "http://127.0.0.1:8000/";
 
+    private string uriRegisterBackend;
+    private string uriLoginBackend;
+    private string uriRegister = "Users/register";
+    private string uriLogin = "Users/login";
+    
     #endregion
 
     private void Awake()
     {
+        uriRegisterBackend = uriBackend + uriRegister;
+        uriLoginBackend = uriBackend + uriLogin;
         //si la instancia no existe se hace este script la instancia
         if (_instanceUILogin == null)
         {
@@ -158,7 +164,7 @@ public class UIManagerLogin : MonoBehaviour
         form.AddField("username", userNameLogin);
         form.AddField("password", passwordLogin);
 
-        using (UnityWebRequest request = UnityWebRequest.Post(uriLogin, form))
+        using (UnityWebRequest request = UnityWebRequest.Post(uriLoginBackend, form))
         {
             yield return request.SendWebRequest();
             /*
@@ -219,7 +225,7 @@ public class UIManagerLogin : MonoBehaviour
             Console.WriteLine("El valor de 'age' no es un número entero válido.");
         }
 
-        using (UnityWebRequest request = UnityWebRequest.Post(uriRegister, body, "application/json"))
+        using (UnityWebRequest request = UnityWebRequest.Post(uriRegisterBackend, body, "application/json"))
         {
             yield return request.SendWebRequest();
             /*
