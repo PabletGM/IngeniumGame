@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
+using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.Networking;
 using static System.Net.WebRequestMethods;
@@ -12,6 +13,8 @@ public class UIManagerLogin : MonoBehaviour
 {
     //singleton
     static private UIManagerLogin _instanceUILogin;
+
+    private string errorCode = "";
 
     #region CambiarPanelLoginRegister
     [SerializeField]
@@ -55,6 +58,8 @@ public class UIManagerLogin : MonoBehaviour
     [SerializeField]
     private TMP_InputField confirmPasswordRegister;
 
+    private int numeroCaracteresMinContraseñaRegister = 4;
+
     #endregion
 
     #region InputFieldParametersLogin
@@ -65,6 +70,13 @@ public class UIManagerLogin : MonoBehaviour
     [SerializeField]
     private TMP_InputField passwordLogin;
 
+    #endregion
+
+    #region Pop-UpsLoginRegisterGO
+    [SerializeField]
+    private GameObject popUpLoginFallo;
+    [SerializeField]
+    private GameObject popUpRegisterFallo;
     #endregion
 
     #region urlConexionMongo
@@ -121,8 +133,8 @@ public class UIManagerLogin : MonoBehaviour
     //metodo que escribe parametros de Login
     public void DebugLoginParameters()
     {
-        Debug.Log(userNameLogin.text);
-        Debug.Log(passwordLogin.text);
+        //Debug.Log(userNameLogin.text);
+        //Debug.Log(passwordLogin.text);
 
         //metodo que envia a la base de datos un post del Login
         StartCoroutine(PostLogin(userNameLogin.text, passwordLogin.text));
@@ -131,14 +143,14 @@ public class UIManagerLogin : MonoBehaviour
     //metodo que escribe parametros de Registers
     public void DebugRegisterParameters()
     {
-        Debug.Log(userNameRegister.text);
-        Debug.Log(company.text);
-        Debug.Log(email.text);
-        Debug.Log(firstName.text);
-        Debug.Log(lastName.text);
-        Debug.Log(age.text);
-        Debug.Log(passwordRegister.text);
-        Debug.Log(confirmPasswordRegister.text);
+        //Debug.Log(userNameRegister.text);
+        //Debug.Log(company.text);
+        //Debug.Log(email.text);
+        //Debug.Log(firstName.text);
+        //Debug.Log(lastName.text);
+        //Debug.Log(age.text);
+        //Debug.Log(passwordRegister.text);
+        //Debug.Log(confirmPasswordRegister.text);
 
         StartCoroutine(PostRegister(userNameRegister.text, company.text, email.text, firstName.text, lastName.text, age.text, passwordRegister.text, confirmPasswordRegister.text));
 
@@ -174,7 +186,10 @@ public class UIManagerLogin : MonoBehaviour
             }*/
             if (request.isNetworkError || request.isHttpError)
             {
-                Debug.Log(request.error);
+                errorCode = request.error;
+                Debug.Log(errorCode);
+                //metodo que segun el error me devuelva una cosa u otra
+                TiposFalloLogin(errorCode);
                 Debug.Log("ERRORRRRR");
             }
             else
@@ -233,9 +248,20 @@ public class UIManagerLogin : MonoBehaviour
             {
                 Debug.Log(www.error);
             }*/
-            if (request.isNetworkError || request.isHttpError)
-            {
-                Debug.Log(request.error);
+
+            //si es incorrecto
+            if (request.isNetworkError || request.isHttpError || !LongitudContraseñaValida(passwordRegister))
+            {  
+                //ponemos errorCode
+                errorCode = request.error;
+                //si contraseña es invalida
+                if (!LongitudContraseñaValida(passwordRegister))
+                {
+                    //cambiamos error code
+                    errorCode = "Contraseña muy corta, porfavor, que tenga mas de 4 caracteres";
+                }
+                Debug.Log(errorCode);
+                TiposFalloRegister(errorCode);
                 Debug.Log("ERRORRRRR");
             }
             else
@@ -297,40 +323,124 @@ public class UIManagerLogin : MonoBehaviour
 
 
     #region TiposLoginIncorrecto
-        //metodo para comprobar contraseña con confirmPaswwrod
+        //metodo para comprobar contraseña a ver si existe en la base de datos.
         public bool ComprobarContraseñaCorrecta(string password)
         {
-            //vemos si la contraseña del login y register es la misma
-            if(passwordLogin.text == passwordRegister.text)
-            {
-                //contraseña correcta
-                return true;
-            }
-            else
-            {
-                //contraseña incorrecta
-                //poner aviso en pantalla contraseña incorrecta
-                return false;
-            }
+            return false;
+            
         }
 
-        //comprobar si usuario existe
+        //comprobar si usuario existe,lo tiene que mirar en base de datos
         public bool UsuarioExistente(string username)
         {
-            //si el username que ha puesto el jugador en el login es el mismo que el del register existe
-            if(userNameLogin.text == userNameRegister.text)
+            return false;
+        }
+
+        //switch con tipos de fallo, segun lo que devuelva hacemos una cosa u otra
+        public void TiposFalloLogin(string errorDevuelto)
+        {
+            switch (errorDevuelto)
             {
-                //usuario existe
-                return true;
-            }
-            else
-            {
-                //usuario no existe
-                //poner aviso en pantalla usuario incorrecto
-                return false;
+                case "HTTP/1.1 400 Bad Request":
+                    //fallo de login porque usuario o contraseña está mal escrita
+                    //deberia devolver fallo diferente si usuario está mal o si contraseña está mal
+                    Debug.Log("Contraseña o Usuario está mal escrito");
+                    break;
+                default:
+                    Console.WriteLine("It's something else.");
+                    break;
             }
         }
     #endregion
+
+    #region TiposRegisterIncorrecto
+        public void TiposFalloRegister(string errorCode)
+        {
+            
+            switch (errorCode)
+            {
+                case "HTTP/1.1 502 Bad Gateway":
+                    //fallo de register porque usuario ya existente
+                
+                    Debug.Log("Formato de register mal enviado");
+                    break;
+
+                case "Contraseña muy corta, porfavor, que tenga mas de 4 caracteres":
+                    //fallo de register porque usuario ya existente
+
+                    Debug.Log("Pon una contraseña bien hombre!");
+                    break;
+
+                case "HTTP/1.1 422 Unprocessable Entity":
+                    //fallo de register porque usuario ya existente
+
+                    Debug.Log("Desconocido...");
+                    break;
+            default:
+                        Console.WriteLine("It's something else.");
+                        break;
+            }
+        }
+        
+        //comprobar si ya existe usuario, reutilizamos metodo de login UsuarioExistente
+
+        //ver si la contraseña no tiene minimo 4 caracteres
+        public bool LongitudContraseñaValida(string passwordRegister)
+        {
+            if(passwordRegister.Length < numeroCaracteresMinContraseñaRegister)
+            {
+                //aparece aviso pop-Up por pantalla
+                SetPopUpRegister(true);
+                //cambia mensaje
+                CambiarMensajeRegister("**** Fallo Register: Contraseña muy corta, minimo 4 caracteres ****");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+    #endregion
+
+    #region PopUpRegister
+        //Activa/Desactiva popUp Login
+        public void SetPopUpRegister(bool set)
+        {
+            popUpRegisterFallo.SetActive(set);
+        }
+
+        public void DesactivarPopUpRegister()
+        {
+            popUpRegisterFallo.SetActive(false);
+        }
+        
+        //Cambiar popUpLogin Mensaje
+        public void CambiarMensajeRegister(string newMessage)
+        {
+            popUpRegisterFallo.GetComponentInChildren<TextMeshProUGUI>().text = newMessage;
+            Invoke("DesactivarPopUpRegister", 1.5f);
+        }
+    #endregion
+
+    #region PopUpLogin
+        //Activa/Desactiva popUp Login
+        public void SetPopUpLogin(bool set)
+        {
+            popUpLoginFallo.SetActive(set);
+        }
+
+        public void DesactivarPopUpLogin()
+        {
+            popUpLoginFallo.SetActive(false);
+        }
+        //Cambiar popUpLogin Mensaje
+        public void CambiarMensajeLogin(string newMessage)
+        {
+            popUpLoginFallo.GetComponentInChildren<TextMeshProUGUI>().text = newMessage;
+            Invoke("DesactivarPopUpLogin", 1.5f);
+        }
+    #endregion
+
 
 }
 
