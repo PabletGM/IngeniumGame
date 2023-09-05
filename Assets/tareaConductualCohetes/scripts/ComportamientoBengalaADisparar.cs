@@ -4,20 +4,40 @@ using UnityEngine;
 
 public class ComportamientoBengalaADisparar : MonoBehaviour
 {
-    private float velocidad = 4f;
+    private float velocidad = 1f;
     private float aceleracion = 0.25f;
+    private bool permisoParaDespegar = false;
+    private float tiempoParaAcelerar = 0f;
+    private float tiempoMaxParaAcelerar = 0.5f;
+
+
+    #region vfx
     [SerializeField]
     private GameObject vfxDespegue;
+    [SerializeField]
+    private GameObject vfxAcelerar;
+    #endregion
     public void DespegarCohete()
     {
-        InvokeRepeating("CoheteVolar",0.1f, 0.1f);
+        permisoParaDespegar = true;
     }
 
-    private void CoheteVolar()
-    { 
-        //le aplicamos velocidad y lo movemos en una direccion
-        transform.Translate(Vector2.up * velocidad * Time.deltaTime);
-        velocidad += aceleracion;
+    private void Update()
+    {
+        if(permisoParaDespegar)
+        {
+            //le aplicamos velocidad y lo movemos en una direccion
+            transform.Translate(Vector2.up * velocidad * Time.deltaTime);
+
+            tiempoParaAcelerar += Time.deltaTime;
+            //cada cierto tiempo aceleramos, si llega al limite de la variable se acelera
+            if(tiempoParaAcelerar>tiempoMaxParaAcelerar)
+            {
+                velocidad += aceleracion;
+                //se reinicia contador
+                tiempoParaAcelerar=0;
+            }
+        }
     }
 
     public void DespegueVFX()
@@ -26,5 +46,17 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
         vfxDespegue.GetComponent<ParticleSystem>().Play();
         //vfxDespegue.GetComponent<ParticleSystem>().Stop();
         //vfxDespegue.SetActive(false);
+    }
+
+    //invocas metodo en un segundo
+    public void PrepararPropulsion()
+    {
+        Invoke("AcelerarCohete", 0.1f);
+    }
+
+    public void AcelerarCohete()
+    {
+        vfxAcelerar.SetActive(true);
+        vfxAcelerar.GetComponent<ParticleSystem>().Play();
     }
 }

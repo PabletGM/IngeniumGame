@@ -7,9 +7,10 @@ public class GameManagerTareaBengalas : MonoBehaviour
     #region references
     static private GameManagerTareaBengalas _instanceGMTareaBengalas;
     UIManagerTareaBengalas UITareaBengalas;
+    #endregion
+
     [SerializeField]
     private GameObject bengalaParaDespegar;
-    #endregion
 
     private void Awake()
     {
@@ -36,5 +37,8 @@ public class GameManagerTareaBengalas : MonoBehaviour
         //llama a la funcion del cohete que lo propulsa para arriba
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().DespegarCohete();
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().DespegueVFX();
+        bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().PrepararPropulsion();
     }
+
+    
 }
