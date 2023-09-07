@@ -9,13 +9,17 @@ public class InfoHoyosMongodb : MonoBehaviour
     private int[] numpicadasHoyosIndiv;
     //conexion con GameManager
     GameManager _myGameManager;
+    UIManagerLogin _myUIManagerLogin;
     string baseUrl = "https://simplebackendingenuity.onrender.com/";
-    private string access_token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkdGVydHJlNTkiLCJleHAiOjE2OTM5OTU3MTF9.XtcoDHHQYrOFrgBtBJrIcpGXYQRrlED0Bbs47Kkp7ew";
+    //por defecto uno puesto a mano
+    private string access_token = "";
 
     private void Start()
     {
         //gameManager
         _myGameManager = GameManager.GetInstance();
+        //para recolectar el token
+        _myUIManagerLogin =UIManagerLogin.GetInstanceUI();
     }
 
     public void RecolectarArgumentosHoyos()
@@ -29,23 +33,16 @@ public class InfoHoyosMongodb : MonoBehaviour
         //se empieza corrutina hoyosMongoDB
         StartCoroutine(PutHoyosMongoDB(totalTime, numExcavacionesTotales, numpicadasHoyosIndiv));
         //recolectar token de script login register
+        access_token = _myUIManagerLogin.GetAccessToken();
 
     }
     
 
     IEnumerator PutHoyosMongoDB(int totalTime, int numExcavacionesTotales, int[] numPicadasHoyoIndiv)
     {
-        int[] numbersArray = new int[4]; // Crear un array de enteros con capacidad para 3 elementos
-
-        numbersArray[0] = 10;
-        numbersArray[1] = 20;
-        numbersArray[2] = 30;
-        numbersArray[3] = 30;
-
         string numPicadasHoyoIndivString = string.Join(",", numPicadasHoyoIndiv);
 
         string uri = $"{baseUrl + "Users/gameData/hoyos"}";
-        string body = "{ \"numExcavacionesTotales\": 0, \"totalTime\": 2, \"numPicadasCadaHoyo\": {\"0\": 0, \"1\": 1, \"2\": 2, \"3\": 3 } }";
 
         string body2= $"{{ \"numExcavacionesTotales\": {numExcavacionesTotales}, \"totalTime\": {totalTime}, \"numPicadasCadaHoyo\": [{numPicadasHoyoIndivString}]}}";
 

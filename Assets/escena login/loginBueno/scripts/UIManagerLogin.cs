@@ -7,6 +7,7 @@ using TMPro;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 using static System.Net.WebRequestMethods;
 
 public class UIManagerLogin : MonoBehaviour
@@ -15,6 +16,8 @@ public class UIManagerLogin : MonoBehaviour
     static private UIManagerLogin _instanceUILogin;
 
     private string errorCode = "";
+
+    private string access_tokenEntreEscenas = "";
 
     #region CambiarPanelLoginRegister
     [SerializeField]
@@ -198,6 +201,7 @@ public class UIManagerLogin : MonoBehaviour
                 ComprobacionAccessTokenLoginCorrect(request.downloadHandler.text);
                 Debug.Log("BIEN");
                 //en caso de que sea correcto nos movemos a escena hoyos
+                SceneManager.LoadScene("hoyos");
             }
         }
 
@@ -319,6 +323,7 @@ public class UIManagerLogin : MonoBehaviour
 
         // Acceder al valor del campo status_code
         string token = response.access_token;
+        SetAccessToken(token);
 
         Debug.Log("Access token: " + "" + token + "");
 
@@ -446,7 +451,16 @@ public class UIManagerLogin : MonoBehaviour
         }
     #endregion
 
-
+    #region DevolverPoner_access_token
+    public string GetAccessToken()
+    {
+        return access_tokenEntreEscenas;
+    }
+    public void SetAccessToken(string newToken)
+    {
+        access_tokenEntreEscenas = newToken;
+    }
+    #endregion
 }
 
 
