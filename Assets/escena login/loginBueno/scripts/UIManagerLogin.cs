@@ -155,7 +155,10 @@ public class UIManagerLogin : MonoBehaviour
         //Debug.Log(passwordRegister.text);
         //Debug.Log(confirmPasswordRegister.text);
 
-        StartCoroutine(PostRegister(userNameRegister.text, company.text, email.text, firstName.text, lastName.text, age.text, passwordRegister.text, confirmPasswordRegister.text));
+        string ageLetter = age.text;
+        int ageNumber = int.Parse(ageLetter);
+
+        StartCoroutine(PostRegister(userNameRegister.text, company.text, email.text, firstName.text, lastName.text, ageNumber, passwordRegister.text, confirmPasswordRegister.text));
 
     }
     #endregion
@@ -192,37 +195,21 @@ public class UIManagerLogin : MonoBehaviour
 
     }
 
-    IEnumerator PostRegister(string userNameRegister, string company, string email, string firstName, string lastName, string age, string passwordRegister, string confirmPasswordRegister)
+    IEnumerator PostRegister(string userNameRegister, string company, string email, string firstName, string lastName, int age, string passwordRegister, string confirmPasswordRegister)
     {
 
         // Cambia esto al valor adecuado de la edad
         string body;
-        if (int.TryParse(age, out int age2))
-        {
+        
              body = $@"{{
                 ""userName"": ""{userNameRegister}"",
                 ""company"": ""{company}"",
                 ""email"": ""{email}"",
                 ""firstName"": ""{firstName}"",
                 ""lastName"": ""{lastName}"",
-                ""age"": {age2},
+                ""age"": {age},
                 ""password"": ""{passwordRegister}""
             }}";
-        }
-        else
-        {
-            //inventado
-            body = $@"{{
-                ""userName"": "",
-                ""company"": "",
-                ""email"": "",
-                ""firstName"": "",
-                ""lastName"": "",
-                ""age"": {age2},
-                ""password"": ""
-            }}";
-            Console.WriteLine("El valor de 'age' no es un número entero válido.");
-        }
 
         using (UnityWebRequest request = UnityWebRequest.Post(uriRegisterBackend, body, "application/json"))
         {
