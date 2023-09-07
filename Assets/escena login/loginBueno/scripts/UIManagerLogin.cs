@@ -215,28 +215,28 @@ public class UIManagerLogin : MonoBehaviour
         {
             yield return request.SendWebRequest();
 
-            //si es incorrecto
-            if (request.isNetworkError || request.isHttpError || !LongitudContraseñaValida(passwordRegister))
+            //si es incorrecto, esto es si solicitud no llega a base de datos
+            if (request.isNetworkError || request.isHttpError)
             {  
                 //ponemos errorCode
                 errorCode = request.error;
+                Debug.Log(errorCode);
+                Debug.Log("ERRORRRRR");
+            }
+            //si la solicitud llega a base de datos vemos el texto que devuelve
+            else
+            {
                 //si contraseña es invalida
                 if (!LongitudContraseñaValida(passwordRegister))
                 {
                     //cambiamos error code
                     errorCode = "Contraseña muy corta, porfavor, que tenga mas de 4 caracteres";
                 }
-                Debug.Log(errorCode);
-                TiposFalloRegister(errorCode);
-                Debug.Log("ERRORRRRR");
-            }
-            else
-            {
-                //Todo lo que te devuelve el backend
-                Debug.Log(request.downloadHandler.text);
                 //comprobamos si es correcto el register
                 Comprobacion201RegisterCorrect(request.downloadHandler.text);
-                Debug.Log("BIEN");
+                TiposFalloRegister(errorCode);
+                //Todo lo que te devuelve el backend
+                Debug.Log(request.downloadHandler.text);
                 //vamos al login
                 OpenLoginPanel();
             }
@@ -257,8 +257,13 @@ public class UIManagerLogin : MonoBehaviour
 
         // Acceder al valor del campo status_code
         int statusCode = response.status_code;
-
-        Debug.Log("Status Code: " + statusCode);
+        //si devuelve 201 es correcto
+        if(statusCode == 201)
+        {
+            errorCode = "Status Code: " + statusCode;
+            Debug.Log("Status Code: " + statusCode);
+        }
+        
 
     }
 
@@ -333,6 +338,12 @@ public class UIManagerLogin : MonoBehaviour
 
                     Debug.Log("Desconocido...");
                     break;
+
+                case "Status Code: 201":
+                    Debug.Log("BIEN...el register se ha hecho correctamente, ahora login...");
+                    break;
+
+                
                 default:
                         Console.WriteLine("It's something else.");
                         break;
