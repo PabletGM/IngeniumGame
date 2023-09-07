@@ -3,12 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class InfoHoyosMongodb : MonoBehaviour
+public class InfoHanoiMongoDB : MonoBehaviour
 {
-    //numero de picadas en cada hoyo
-    private int[] numpicadasHoyosIndiv;
     //conexion con GameManager
-    GameManager _myGameManager;
+    GameManagerHanoi _myGameManagerHanoi;
     UIManagerLogin _myUIManagerLogin;
     string baseUrl = "https://simplebackendingenuity.onrender.com/";
     //por defecto uno puesto a mano
@@ -17,36 +15,32 @@ public class InfoHoyosMongodb : MonoBehaviour
     private void Start()
     {
         //gameManager
-        _myGameManager = GameManager.GetInstance();
+        _myGameManagerHanoi = GameManagerHanoi.GetInstance();
         //para recolectar el token
-        _myUIManagerLogin =UIManagerLogin.GetInstanceUI();
+        _myUIManagerLogin = UIManagerLogin.GetInstanceUI();
     }
 
     [System.Obsolete]
-    public void RecolectarArgumentosHoyos()
+    public void RecolectarArgumentosHanoi()
     {
-        int totalTime = _myGameManager.NumSecsPartidaReturn();
-        int numExcavacionesTotales = _myGameManager.NumExcavacionesTotales();
-        //declaramos tamaño array hoyos
-        numpicadasHoyosIndiv = new int[6];
-        //numero picadas totales cada hoyo
-        numpicadasHoyosIndiv = _myGameManager.DevolverPicadasHoyo();
+        int TotalTime = _myGameManagerHanoi.GetTiempoTotalHanoiRegistrado();
+        int numJugadas = _myGameManagerHanoi.GetnumJugadasTotalHanoiRegistrado();
+        int numMovimientosIncorrectos = _myGameManagerHanoi.GetnumMovsIncorrectosHanoiRegistrado();
+        int numMovimientosOutOfLimits = _myGameManagerHanoi.GetnumMovsOutOfLimitsHanoiRegistrado();
         //recolectar token de script login register
         access_token = _myUIManagerLogin.GetAccessToken();
         //se empieza corrutina hoyosMongoDB
-        StartCoroutine(PutHoyosMongoDB(totalTime, numExcavacionesTotales, numpicadasHoyosIndiv));
-       
-
+        StartCoroutine(PutHanoiMongoDB(TotalTime, numJugadas, numMovimientosIncorrectos, numMovimientosOutOfLimits));
     }
 
     [System.Obsolete]
-    IEnumerator PutHoyosMongoDB(int totalTime, int numExcavacionesTotales, int[] numPicadasHoyoIndiv)
+    IEnumerator PutHanoiMongoDB(int totalTime, int numJugadas, int numMovimientosIncorrectos, int numMovimientosOutOfLimits)
     {
-        string numPicadasHoyoIndivString = string.Join(",", numPicadasHoyoIndiv);
+        
 
-        string uri = $"{baseUrl + "Users/gameData/hoyos"}";
+        string uri = $"{baseUrl + "Users/gameData/torreHanoi"}";
 
-        string body2= $"{{ \"numExcavacionesTotales\": {numExcavacionesTotales}, \"totalTime\": {totalTime}, \"numPicadasCadaHoyo\": [{numPicadasHoyoIndivString}]}}";
+        string body2 = $"{{ \"totalTime\": {totalTime}, \"numJugadas\": {numJugadas}, \"numMovimientosIncorrectos\": {numMovimientosIncorrectos},\"numMovimientosOutOfLimits\": {numMovimientosOutOfLimits}}}";
 
         Debug.Log(body2);
 
