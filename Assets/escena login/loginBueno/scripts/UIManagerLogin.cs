@@ -163,17 +163,6 @@ public class UIManagerLogin : MonoBehaviour
     #region ExecuteLoginRegister
     IEnumerator PostLogin(string userNameLogin, string passwordLogin)
     {
-        //direccion con base de datos de MongoDB
-        //string uri = "https://eu-west-1.aws.data.mongodb-api.com/app/ingenuity-app-0-mmgty/endpoint/Ingenuity/Test";
-        //se pone el form en el segundo argumento de la funcion post
-        //string body = $"{{ \"username\": {s}, \"password\": \"1234\", \"field3\": {{\"field3.-1\": {num},\"field3.0\": [{numbersArrayString}],\"field3.1\": [\"uno\",1], \"field3.2\": \"dos\"}} }}";
-        //string userName = "dtertre59";
-        //string password = "1234";
-        //string body = $@"{{
-        //    ""username"": ""{userName}"",
-        //    ""password"": ""{password}""
-        //}}";
-
         // Crear formulario con los datos, todo en minusculas , porque va predefinido el formulario y username esta vez en minuscula
         WWWForm form = new WWWForm();
         form.AddField("username", userNameLogin);
@@ -182,11 +171,7 @@ public class UIManagerLogin : MonoBehaviour
         using (UnityWebRequest request = UnityWebRequest.Post(uriLoginBackend, form))
         {
             yield return request.SendWebRequest();
-            /*
-            if (www.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(www.error);
-            }*/
+           
             if (request.isNetworkError || request.isHttpError)
             {
                 errorCode = request.error;
@@ -209,12 +194,6 @@ public class UIManagerLogin : MonoBehaviour
 
     IEnumerator PostRegister(string userNameRegister, string company, string email, string firstName, string lastName, string age, string passwordRegister, string confirmPasswordRegister)
     {
-        //direccion con base de datos de MongoDB
-        //string uri = "https://eu-west-1.aws.data.mongodb-api.com/app/ingenuity-app-0-mmgty/endpoint/Ingenuity/Test";
-        //acceso a user register
-
-        //se pone el form en el segundo argumento de la funcion post
-        //string body = $"{{ \"username\": {s}, \"password\": \"1234\", \"field3\": {{\"field3.-1\": {num},\"field3.0\": [{numbersArrayString}],\"field3.1\": [\"uno\",1], \"field3.2\": \"dos\"}} }}";
 
         // Cambia esto al valor adecuado de la edad
         string body;
@@ -248,11 +227,6 @@ public class UIManagerLogin : MonoBehaviour
         using (UnityWebRequest request = UnityWebRequest.Post(uriRegisterBackend, body, "application/json"))
         {
             yield return request.SendWebRequest();
-            /*
-            if (www.result != UnityWebRequest.Result.Success)
-            {
-                Debug.Log(www.error);
-            }*/
 
             //si es incorrecto
             if (request.isNetworkError || request.isHttpError || !LongitudContraseñaValida(passwordRegister))
@@ -290,18 +264,6 @@ public class UIManagerLogin : MonoBehaviour
     //metodo que mira a ver si lo que ha devuelto el register es un codigo 201, esto es register correct
     public void Comprobacion201RegisterCorrect(string registerCorrect)
     {
-        //// Obtener una subcadena que comienza en el índice 15(longitud de palabra {"status_code": y tiene una longitud de 3 caracteres  201
-        //string codigoCorrecto201 = registerCorrect.Substring(15, 3);
-        ////es correcto
-        //if(codigoCorrecto201 =="201")
-        //{
-        //    Debug.Log("Correcto, codigo 201 devuelto");
-        //    //notificacion en pantalla unity
-        //}
-        //else
-        //{
-        //    Debug.Log("No correcto");
-        //}
 
         // Deserializar el JSON usando JsonUtility
         JsonResponseData response = JsonUtility.FromJson<JsonResponseData>(registerCorrect);
@@ -316,8 +278,6 @@ public class UIManagerLogin : MonoBehaviour
     //metodo que mira a ver si lo que ha devuelto el register es un codigo 201, esto es register correct
     public void ComprobacionAccessTokenLoginCorrect(string loginCorrect)
     {
-        
-
         // Deserializar el JSON usando JsonUtility
         JsonResponseData response = JsonUtility.FromJson<JsonResponseData>(loginCorrect);
 
