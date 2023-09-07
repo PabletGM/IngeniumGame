@@ -197,6 +197,7 @@ public class UIManagerLogin : MonoBehaviour
                 Debug.Log( request.downloadHandler.text);
                 ComprobacionAccessTokenLoginCorrect(request.downloadHandler.text);
                 Debug.Log("BIEN");
+                //en caso de que sea correcto nos movemos a escena hoyos
             }
         }
 
@@ -266,10 +267,13 @@ public class UIManagerLogin : MonoBehaviour
             }
             else
             {
+                //Todo lo que te devuelve el backend
                 Debug.Log(request.downloadHandler.text);
                 //comprobamos si es correcto el register
                 Comprobacion201RegisterCorrect(request.downloadHandler.text);
                 Debug.Log("BIEN");
+                //vamos al login
+                OpenLoginPanel();
             }
         }
 
@@ -372,11 +376,12 @@ public class UIManagerLogin : MonoBehaviour
                     break;
 
                 case "HTTP/1.1 422 Unprocessable Entity":
-                    //fallo de register porque usuario ya existente
+                    //fallo de register porque usuario ya existente,
+                    //COMPANY MAS DE 3 CARACTERES
 
                     Debug.Log("Desconocido...");
                     break;
-            default:
+                default:
                         Console.WriteLine("It's something else.");
                         break;
             }
