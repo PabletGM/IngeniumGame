@@ -22,6 +22,7 @@ public class InfoHoyosMongodb : MonoBehaviour
         _myUIManagerLogin =UIManagerLogin.GetInstanceUI();
     }
 
+    [System.Obsolete]
     public void RecolectarArgumentosHoyos()
     {
         int totalTime = _myGameManager.NumSecsPartidaReturn();
@@ -36,8 +37,8 @@ public class InfoHoyosMongodb : MonoBehaviour
         access_token = _myUIManagerLogin.GetAccessToken();
 
     }
-    
 
+    [System.Obsolete]
     IEnumerator PutHoyosMongoDB(int totalTime, int numExcavacionesTotales, int[] numPicadasHoyoIndiv)
     {
         string numPicadasHoyoIndivString = string.Join(",", numPicadasHoyoIndiv);

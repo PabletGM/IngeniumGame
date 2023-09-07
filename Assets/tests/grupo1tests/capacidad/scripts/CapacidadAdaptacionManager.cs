@@ -32,7 +32,9 @@ public class CapacidadAdaptacionManager : MonoBehaviour
 
     #region resultadoPruebaCapacidad1
     private string resultadoPruebaCapacidad1 = "";
-    private int resultadoNumPruebaCapacidad1 = 0;
+        #pragma warning disable CS0414
+        private int resultadoNumPruebaCapacidad1 = 0;
+        #pragma warning restore CS0414
     #endregion
 
     #region panelesJerarquiaCapacidad2
@@ -61,7 +63,9 @@ public class CapacidadAdaptacionManager : MonoBehaviour
 
     #region resultadoPruebaCapacidad1
     private string resultadoPruebaCapacidad2 = "";
-    private int resultadoNumPruebaCapacidad2 = 0;
+        #pragma warning disable CS0414
+        private int resultadoNumPruebaCapacidad2 = 0;
+        #pragma warning restore CS0414
     #endregion
 
     [SerializeField]

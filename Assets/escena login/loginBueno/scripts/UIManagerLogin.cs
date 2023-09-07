@@ -134,6 +134,7 @@ public class UIManagerLogin : MonoBehaviour
 
     #region DebugLoginRegister
     //metodo que escribe parametros de Login
+    [Obsolete]
     public void DebugLoginParameters()
     {
         //Debug.Log(userNameLogin.text);
@@ -144,6 +145,7 @@ public class UIManagerLogin : MonoBehaviour
     }
 
     //metodo que escribe parametros de Registers
+    [Obsolete]
     public void DebugRegisterParameters()
     {
         //Debug.Log(userNameRegister.text);
@@ -164,6 +166,7 @@ public class UIManagerLogin : MonoBehaviour
     #endregion
 
     #region ExecuteLoginRegister
+    [Obsolete]
     IEnumerator PostLogin(string userNameLogin, string passwordLogin)
     {
         // Crear formulario con los datos, todo en minusculas , porque va predefinido el formulario y username esta vez en minuscula
@@ -195,6 +198,7 @@ public class UIManagerLogin : MonoBehaviour
 
     }
 
+    [Obsolete]
     IEnumerator PostRegister(string userNameRegister, string company, string email, string firstName, string lastName, int age, string passwordRegister, string confirmPasswordRegister)
     {
 
@@ -430,5 +434,7 @@ public class JsonResponseData
     public int status_code;
     //token de login para ver que loggea bien
     public string access_token;
+    //para coger strings concretos de posibles fallos
+    public string detail;
 
 }

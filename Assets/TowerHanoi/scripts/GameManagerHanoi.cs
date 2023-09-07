@@ -67,7 +67,9 @@ public class GameManagerHanoi : MonoBehaviour
     private Animator[] animacionPalosOpacidad;
 
     //booleano que dice si ultimo disco colocado en un palo o no
+    #pragma warning disable CS0414
     private bool ultimoDiscoColocado = true;
+    #pragma warning restore CS0414
 
     [HideInInspector]
     public string combinacionGanadora = "";

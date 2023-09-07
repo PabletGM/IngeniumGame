@@ -18,7 +18,9 @@ public class ConfianzaManager : MonoBehaviour
 
     #region resultadoPruebaConfianza1
     private string resultadoPruebaConfianza1 = "";
-    private int resultadoNumPruebaConfianza1 = 0;
+        #pragma warning disable CS0414
+        private int resultadoNumPruebaConfianza1 = 0;
+        #pragma warning restore CS0414
     #endregion
 
     #region panelesJerarquiaConfianza2
@@ -33,7 +35,9 @@ public class ConfianzaManager : MonoBehaviour
 
     #region resultadoPruebaConfianza2
     private string resultadoPruebaConfianza2 = "";
-    private int resultadoNumPruebaConfianza2 = 0;
+        #pragma warning disable CS0414
+        private int resultadoNumPruebaConfianza2 = 0;
+        #pragma warning restore CS0414
     #endregion
 
 

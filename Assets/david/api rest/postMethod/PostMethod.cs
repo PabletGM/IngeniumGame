@@ -13,13 +13,15 @@ public class PostMethod : MonoBehaviour
 
 
     // Start is called before the first frame update
+    [System.Obsolete]
     void Start()
     {
         outputArea = GameObject.Find("OutputArea").GetComponent<InputField>();
         GameObject.Find("ButtonA").GetComponent<Button>().onClick.AddListener(PostData);
     
     }
-    
+
+    [System.Obsolete]
     void PostData() => StartCoroutine(PostData_Coroutine());
 
     /*
@@ -31,7 +33,8 @@ public class PostMethod : MonoBehaviour
     }
     */
 
-    
+
+    [System.Obsolete]
     IEnumerator PostData_Coroutine()
     {
         Debug.Log("Hola");

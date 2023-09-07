@@ -8,15 +8,18 @@ using UnityEngine.Networking;
 public class PutMethod : MonoBehaviour
 {
     InputField outputArea;
-    
+
+    [System.Obsolete]
     void Start()
     {
         outputArea = GameObject.Find("OutputArea").GetComponent<InputField>();
         GameObject.Find("ButtonA").GetComponent<Button>().onClick.AddListener(PutData);
     }
-    
+
+    [System.Obsolete]
     void PutData() => StartCoroutine(PutData_Coroutine());
 
+    [System.Obsolete]
     IEnumerator PutData_Coroutine()
     {
         Debug.Log("Hola");
