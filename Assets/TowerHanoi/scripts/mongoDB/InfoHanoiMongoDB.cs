@@ -21,7 +21,7 @@ public class InfoHanoiMongoDB : MonoBehaviour
     }
 
     [System.Obsolete]
-    public void RecolectarArgumentosHanoi()
+    public void RecolectarArgumentosHanoiI()
     {
         int TotalTime = _myGameManagerHanoi.GetTiempoTotalHanoiRegistrado();
         int numJugadas = _myGameManagerHanoi.GetnumJugadasTotalHanoiRegistrado();
