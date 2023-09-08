@@ -40,5 +40,12 @@ public class GameManagerTareaBengalas : MonoBehaviour
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().PrepararPropulsion();
     }
 
+    public void ExplosionCohete()
+    {
+        //Explota Cohete
+        bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().ExplosionCohete();
     
+    }
+
+
 }

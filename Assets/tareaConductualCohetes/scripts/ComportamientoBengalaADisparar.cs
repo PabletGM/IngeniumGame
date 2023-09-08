@@ -17,6 +17,8 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
     [SerializeField]
     private GameObject vfxAcelerar;
     #endregion
+
+    #region DespegueAceleracionCohete
     public void DespegarCohete()
     {
         permisoParaDespegar = true;
@@ -24,7 +26,7 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
 
     private void Update()
     {
-        if(permisoParaDespegar)
+        if(permisoParaDespegar && this.gameObject!=null)
         {
             //le aplicamos velocidad y lo movemos en una direccion
             transform.Translate(Vector2.up * velocidad * Time.deltaTime);
@@ -59,4 +61,15 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
         vfxAcelerar.SetActive(true);
         vfxAcelerar.GetComponent<ParticleSystem>().Play();
     }
+
+    #endregion
+
+    #region ExplosionCohete
+    //destruimos el cohete
+    public void ExplosionCohete()
+    {
+        Destroy(this.gameObject);
+    }
+
+    #endregion
 }
