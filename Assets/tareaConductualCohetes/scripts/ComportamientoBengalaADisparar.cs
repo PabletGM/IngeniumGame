@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,10 +14,14 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
 
     GameManagerTareaBengalas _myGameManagerBengalas;
 
+    private SpriteRenderer spriteRenderer;
+
 
     void Start()
     {
         _myGameManagerBengalas = GameManagerTareaBengalas.GetInstanceGM();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     #region vfx
@@ -24,6 +29,10 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
     private GameObject vfxDespegue;
     [SerializeField]
     private GameObject vfxAcelerar;
+    [SerializeField]
+    private GameObject vfxExplosion;
+    [SerializeField]
+    private GameObject vfxExplosion2;
     #endregion
 
     #region DespegueAceleracionCohete
@@ -78,6 +87,30 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
     {
         //Destroy(this.gameObject);
 
+        //quitamos vfx de cohete
+        vfxAcelerar.SetActive(false);
+        vfxDespegue.SetActive(false);
+        //quitar opacidad
+        spriteRenderer.DOFade(0f, 0.2f);
+        //quitamos
+        //explosion
+        ExplosionCoheteVFX();
+        //repetir jugada
+        Invoke("RepetirLanzada", 0.5f);
+        
+    }
+
+    public void ExplosionCoheteVFX()
+    {
+        vfxExplosion.SetActive(true);
+        vfxExplosion.GetComponent<ParticleSystem>().Play();
+        vfxExplosion2.SetActive(true);
+        vfxExplosion2.GetComponent<ParticleSystem>().Play();
+
+    }
+
+    public void RepetirLanzada()
+    {
         //por ahora en vez de destruir el objeto simplemente lo desactivamos
         this.gameObject.SetActive(false);
 

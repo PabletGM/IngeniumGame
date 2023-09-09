@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -61,6 +62,8 @@ public class GameManagerTareaBengalas : MonoBehaviour
     //metodo que pone en pos inicial la bengala y la activa de nuevo
     public void SiguienteLanzamiento()
     {
+        //lo ponemos visible
+        bengalaParaDespegar.GetComponent<SpriteRenderer>().DOFade(1f, 0.1f);
         //Activa bengala
         bengalaParaDespegar.SetActive(true);
         //la pone en pos inicial
