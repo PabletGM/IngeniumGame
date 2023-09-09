@@ -1,15 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ComportamientoBotonStart : MonoBehaviour
+public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     GameManagerTareaBengalas _myGameManagerBengalas;
-
-    private float restante;
+    //tiempo que lleva el timer de bengala desde que despega
+    private float restante=0;
+    //permiso para volar la bengala
     private bool enMarcha = false;
+    //para ver si boton presionado
+    private bool estaPresionado = false;
     //5 segundos es lo que tarda el cohete en llegar a las nubes
-    private int tiempoMaximo= 5;
+    private int tiempoMaximo= 4;
 
     // Start is called before the first frame update
     void Start()
@@ -18,91 +21,84 @@ public class ComportamientoBotonStart : MonoBehaviour
     }
 
     #region Pulsar boton
-    //si se pulsa boton se inicia timer
-    public void BotonPulsado()
-    {
-        //iniciamos timer
-        enMarcha = true;
-        //lanzamos cohete
-        LanzamientoCohete();
-    }
 
-    #endregion
-
-
-    #region Soltar boton
-    //si se suelta el boton se para el timer
-    public void BotonSoltado()
-    {
-        //timer para
-        enMarcha = false;
-        //explotamos cohete
-        ExplosionCohete();
-    }
-
-    #endregion
-
-    //mira todo el rato si el boton se ha pulsado o soltado
-    void Update()
-    {
-        //si se pulsa boton click izq raton
-        if (Input.GetMouseButtonDown(0))
+        //accion cuando se presiona boton
+        public void OnPointerDown(PointerEventData eventData)
         {
+            estaPresionado = true;
+            // Acción cuando se presiona el botón
             BotonPulsado();
         }
 
-        
-
-
-
-        //cuando se pulse boton se inicia timer
-        if (enMarcha)
+        //si se pulsa boton se inicia timer
+        public void BotonPulsado()
         {
-            //va sumando segundos
-            restante += Time.deltaTime;
+            //iniciamos timer
+            enMarcha = true;
+            //lanzamos cohete
+            LanzamientoCohete();
+        }
 
-            //si ha superado el tiempo minimo de 1 segundo y suelta boton
-            if(restante >= 1 && Input.GetMouseButtonUp(0))
+    #endregion
+
+    #region EfectoPulsarBoton
+        public void LanzamientoCohete()
+        {
+            //inicialmente queremos que el cohete suba al pulsar el boton
+            _myGameManagerBengalas.LanzamientoCohete();
+
+            //aplicamos esa fuerza al cohete y a la explosion de este
+        }
+    #endregion
+
+    #region Soltar boton
+
+    //accion cuando se suelta boton
+    public void OnPointerUp(PointerEventData eventData)
             {
-                //ya puede explotar el cohete
+                estaPresionado = false;
+                // Acción cuando se suelta el botón
                 BotonSoltado();
             }
-            
-            //en caso de superar el tiempo maximo (uno que se establezca) o
-            //sino ha superado el tiempo minimo y suelta el boton
-            if (restante > tiempoMaximo || restante < 1 && Input.GetMouseButtonUp(0))
+            //si se suelta el boton se para el timer
+            public void BotonSoltado()
             {
-               
+                //timer para
+                enMarcha = false;
                 //reiniciamos timer
                 restante = 0;
-                //ya puede explotar el cohete
-                BotonSoltado();
-
+                //explotamos cohete
+                ExplosionCohete();
             }
-            Debug.Log("Button pressed: " + restante);
+
+    #endregion
+
+    #region EfectoSoltarBoton
+
+        public void ExplosionCohete()
+        {
+            //inicialmente queremos que el cohete suba al pulsar el boton
+            _myGameManagerBengalas.ExplosionCohete();
+
+            //vemos cuanto tiempo se ha pulsado el botón
+
+            //aplicamos esa fuerza al cohete y a la explosion de este
         }
-    }
+    #endregion
 
-
-    public void LanzamientoCohete()
-    {
-        //inicialmente queremos que el cohete suba al pulsar el boton
-        _myGameManagerBengalas.LanzamientoCohete();
-
-        //vemos cuanto tiempo se ha pulsado el botón
-
-        //aplicamos esa fuerza al cohete y a la explosion de este
-    }
-
-
-
-    public void ExplosionCohete()
-    {
-        //inicialmente queremos que el cohete suba al pulsar el boton
-        _myGameManagerBengalas.ExplosionCohete();
-
-        //vemos cuanto tiempo se ha pulsado el botón
-
-        //aplicamos esa fuerza al cohete y a la explosion de este
+    //comprueba el timer y limite de tiempo
+    void Update()
+    { 
+            #region timer
+            //si se ha pulsado boton se inicia timer
+            if (enMarcha)
+            {
+                //va sumando segundos
+                restante += Time.deltaTime;
+                Debug.Log("Button pressed: " + restante);
+                //explosion automatica
+                if (restante > tiempoMaximo) { BotonSoltado(); }
+            }
+            #endregion
     }
 }

@@ -12,6 +12,11 @@ public class GameManagerTareaBengalas : MonoBehaviour
     [SerializeField]
     private GameObject bengalaParaDespegar;
 
+    //transform inicial bengala
+    [SerializeField]
+    private Transform transformBengala;
+    private Vector3 posInicialBengala;
+
     private void Awake()
     {
 
@@ -25,6 +30,12 @@ public class GameManagerTareaBengalas : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void Start()
+    {
+        //ponemos pos inicial bengala
+        posInicialBengala = transformBengala.position;
     }
 
     static public GameManagerTareaBengalas GetInstanceGM()
@@ -45,6 +56,15 @@ public class GameManagerTareaBengalas : MonoBehaviour
         //Explota Cohete
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().ExplosionCohete();
     
+    }
+
+    //metodo que pone en pos inicial la bengala y la activa de nuevo
+    public void SiguienteLanzamiento()
+    {
+        //Activa bengala
+        bengalaParaDespegar.SetActive(true);
+        //la pone en pos inicial
+        bengalaParaDespegar.transform.position = posInicialBengala;
     }
 
 

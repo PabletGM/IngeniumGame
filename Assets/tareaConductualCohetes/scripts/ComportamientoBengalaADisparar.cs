@@ -5,11 +5,19 @@ using UnityEngine;
 public class ComportamientoBengalaADisparar : MonoBehaviour
 {
     private float velocidad = 1f;
+    private float velocidadInicial = 1f;
     private float aceleracion = 0.25f;
     private bool permisoParaDespegar = false;
     private float tiempoParaAcelerar = 0f;
     private float tiempoMaxParaAcelerar = 0.5f;
 
+    GameManagerTareaBengalas _myGameManagerBengalas;
+
+
+    void Start()
+    {
+        _myGameManagerBengalas = GameManagerTareaBengalas.GetInstanceGM();
+    }
 
     #region vfx
     [SerializeField]
@@ -68,7 +76,19 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
     //destruimos el cohete
     public void ExplosionCohete()
     {
-        Destroy(this.gameObject);
+        //Destroy(this.gameObject);
+
+        //por ahora en vez de destruir el objeto simplemente lo desactivamos
+        this.gameObject.SetActive(false);
+
+        //le quitamos permiso para despegar
+        permisoParaDespegar = false;
+
+        //ponemos velocidad a velocidadInicial
+        velocidad = velocidadInicial;
+
+        //llamaremos a metodo del GameManager que se llamará Siguiente lanzamiento
+        _myGameManagerBengalas.SiguienteLanzamiento();
     }
 
     #endregion
