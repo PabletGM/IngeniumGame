@@ -37,6 +37,7 @@ public class GameManagerTareaBengalas : MonoBehaviour
     {
         //ponemos pos inicial bengala
         posInicialBengala = transformBengala.position;
+        UITareaBengalas = UIManagerTareaBengalas.GetInstanceUI();
     }
 
     static public GameManagerTareaBengalas GetInstanceGM()
@@ -54,6 +55,8 @@ public class GameManagerTareaBengalas : MonoBehaviour
 
     public void ExplosionCohete()
     {
+        //desactivamos boton mientras la explosion para no poder pulsar boton
+        UITareaBengalas.SetBoton(false);
         //Explota Cohete
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().ExplosionCohete();
     
@@ -68,6 +71,8 @@ public class GameManagerTareaBengalas : MonoBehaviour
         bengalaParaDespegar.SetActive(true);
         //la pone en pos inicial
         bengalaParaDespegar.transform.position = posInicialBengala;
+        //activamos boton de nuevo para poder jugar otra vez
+        UITareaBengalas.SetBoton(true);
     }
 
 
