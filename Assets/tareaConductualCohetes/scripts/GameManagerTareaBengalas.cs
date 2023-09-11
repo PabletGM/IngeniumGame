@@ -18,6 +18,9 @@ public class GameManagerTareaBengalas : MonoBehaviour
     private Transform transformBengala;
     private Vector3 posInicialBengala;
 
+    [SerializeField]
+    private GameObject astronautaEscena;
+
     private void Awake()
     {
 
@@ -47,6 +50,9 @@ public class GameManagerTareaBengalas : MonoBehaviour
 
     public void LanzamientoCohete()
     {
+        //hacemos animacion encender cohete
+        astronautaEscena.GetComponent<ComportamientoAstronauta>().AnimacionEncenderBengala();
+
         //llama a la funcion del cohete que lo propulsa para arriba
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().DespegarCohete();
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().DespegueVFX();
