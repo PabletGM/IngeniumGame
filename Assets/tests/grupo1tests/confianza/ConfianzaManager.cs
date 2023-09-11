@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class ConfianzaManager : MonoBehaviour
 {
+    static private ConfianzaManager _instanceConfianzaManager;
+
     #region panelesJerarquiaConfianza1
 
     [SerializeField]
@@ -16,12 +18,28 @@ public class ConfianzaManager : MonoBehaviour
 
     #endregion
 
-    #region resultadoPruebaConfianza1
-    private string resultadoPruebaConfianza1 = "";
-        #pragma warning disable CS0414
-        private int resultadoNumPruebaConfianza1 = 0;
-        #pragma warning restore CS0414
+    #region argumentos confianza1
+        #region resultadoPruebaConfianza1
+        private string resultadoPruebaConfianza1 = "";
+            #pragma warning disable CS0414
+            private int resultadoNumPruebaConfianza1 = 0;
+            #pragma warning restore CS0414
+        #endregion
+
+        private string itemNameConf_1 = "CONF_1";
+        
+        //cantidad de softskills que mide y nombres
+        private string[] softSkillConf_1;
+
+        //tipo de test que es, si imagenes, preguntas escritas, etc
+        private int type = 1;
+
+        //cantidad de puntuaciones de todas las softskills que recoge
+        private float[] puntuacionConf_1;
+
+
     #endregion
+
 
     #region panelesJerarquiaConfianza2
 
@@ -33,12 +51,48 @@ public class ConfianzaManager : MonoBehaviour
 
     #endregion
 
-    #region resultadoPruebaConfianza2
+    #region argumentos confianza2
+
+        #region resultadoPruebaConfianza2
     private string resultadoPruebaConfianza2 = "";
         #pragma warning disable CS0414
         private int resultadoNumPruebaConfianza2 = 0;
-        #pragma warning restore CS0414
+#pragma warning restore CS0414
     #endregion
+
+        private string itemNameConf_2 = "CONF_2";
+
+        //cantidad de softskills que mide y nombres
+        private string[] softSkillConf_2;
+
+        //tipo de test que es, si imagenes, preguntas escritas, etc
+        private int type2 = 1;
+
+        //cantidad de puntuaciones de todas las softskills que recoge
+        private float[] puntuacionConf_2;
+    #endregion
+
+
+
+    static public ConfianzaManager GetInstanceConfianzaManager()
+    {
+        return _instanceConfianzaManager;
+    }
+
+    private void Awake()
+    {
+    
+        //si la instancia no existe se hace este script la instancia
+        if (_instanceConfianzaManager == null)
+        {
+            _instanceConfianzaManager = this;
+        }
+        //si la instancia existe , destruimos la copia
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
 
     #region TestEntero
@@ -48,7 +102,6 @@ public class ConfianzaManager : MonoBehaviour
     [SerializeField]
     private GameObject test2Confianza;
     #endregion
-
 
 
     #region methods Confianza1
@@ -93,6 +146,66 @@ public class ConfianzaManager : MonoBehaviour
         test1Confianza.SetActive(false);
         test2Confianza.SetActive(true);
     }
+
+    #endregion
+
+    #region ArgumentosConfianza1
+
+    public string itemNameCONF_1()
+    {
+        return itemNameConf_1;
+    }
+
+    public string[] softskillCONF_1()
+    {
+        softSkillConf_1 = new string[1];
+        softSkillConf_1[0] = "confianza";
+        return softSkillConf_1;
+    }
+
+    public int typeCONF_1()
+    {
+
+        return type;
+    }
+
+    public float[] puntuacionCONF_1()
+    {
+        puntuacionConf_1 = new float[1];
+        puntuacionConf_1[0] = resultadoNumPruebaConfianza1;
+        return puntuacionConf_1;
+    }
+
+
+    #endregion
+
+    #region ArgumentosConfianza1
+
+    public string itemNameCONF_2()
+    {
+        return itemNameConf_2;
+    }
+
+    public string[] softskillCONF_2()
+    {
+        softSkillConf_2 = new string[1];
+        softSkillConf_2[0] = "confianza";
+        return softSkillConf_2;
+    }
+
+    public int typeCONF_2()
+    {
+
+        return type2;
+    }
+
+    public float[] puntuacionCONF_2()
+    {
+        puntuacionConf_2 = new float[1];
+        puntuacionConf_2[0] = resultadoNumPruebaConfianza2;
+        return puntuacionConf_2;
+    }
+
 
     #endregion
 

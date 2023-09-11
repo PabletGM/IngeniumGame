@@ -191,7 +191,7 @@ public class UIManagerLogin : MonoBehaviour
                 ComprobacionAccessTokenLoginCorrect(request.downloadHandler.text);
                 Debug.Log("BIEN");
                 //en caso de que sea correcto nos movemos a escena hoyos
-                SceneManager.LoadScene("hoyos");
+                SceneManager.LoadScene("confianza");
             }
         }
 

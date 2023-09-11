@@ -185,8 +185,8 @@ MonoBehaviour:
     lo que ha hecho y aunque mantenerle con nosotros implique un alto riesgo, conf\xEDo
     en el potencial de cambio de las personas."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -456,8 +456,8 @@ MonoBehaviour:
   m_text: " \xA1Sin miedo a lo desconocido! Prefiero probar un nuevo reto aunque
     pueda exigir habilidades que a\xFAn no tengo y no sepa la recompensa \r\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1227,8 +1227,8 @@ MonoBehaviour:
   m_text: "\xA1Partida igualada! Juega contra un oponente asequible con un 65% de
     posibilidades de victoria. \xA1Recompensa garantizada de 20 recursos si vences!"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1502,6 +1502,18 @@ MonoBehaviour:
       - m_Target: {fileID: 617543314}
         m_TargetAssemblyTypeName: ConfianzaManager, Assembly-CSharp
         m_MethodName: ContinueNextQuestionConfianza2
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1373155390}
+        m_TargetAssemblyTypeName: InfoTestsMongoDB, Assembly-CSharp
+        m_MethodName: RecolectarArgumentosCONF_2
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1905,8 +1917,8 @@ MonoBehaviour:
     con  un 35% de posibilidades de victoria.  \nGana una recompensa de 30 recursos
     si triunfas!\n"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -3693,6 +3705,50 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1373155388
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1373155389}
+  - component: {fileID: 1373155390}
+  m_Layer: 0
+  m_Name: mongoDB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1373155389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373155388}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.474525, y: -1.9671042, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1373155390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373155388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2be037e22a94f6f4ba17d7e0b2beb1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1410243637
 GameObject:
   m_ObjectHideFlags: 0
@@ -4087,6 +4143,18 @@ MonoBehaviour:
       - m_Target: {fileID: 617543314}
         m_TargetAssemblyTypeName: ConfianzaManager, Assembly-CSharp
         m_MethodName: ContinueNextQuestionConfianza
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1373155390}
+        m_TargetAssemblyTypeName: InfoTestsMongoDB, Assembly-CSharp
+        m_MethodName: RecolectarArgumentosCONF_1
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5027,8 +5095,8 @@ MonoBehaviour:
     que tiene conocimientos t\xE9cnicos muy valiosos, lo mejor ser\xEDa encerrarlo
     en la nave y utilizarlo en caso de que surja alg\xFAn problema en el futuro."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -5164,8 +5232,8 @@ MonoBehaviour:
     rotunda ha traspasado los l\xEDmites, creo que solucionar el problema de ra\xEDz
     es lo mejor para la seguridad de todos."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: c429bf5011492dd4ebb6e6229035496a, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
