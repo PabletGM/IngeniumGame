@@ -321,6 +321,7 @@ GameObject:
   m_Component:
   - component: {fileID: 452499779}
   - component: {fileID: 452499780}
+  - component: {fileID: 452499781}
   m_Layer: 0
   m_Name: nubes2 (2)
   m_TagString: Untagged
@@ -395,6 +396,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &452499781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452499778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726a95d6932a64145bc6e78820769f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleAumento: {x: 1.3, y: 1.3, z: 2}
+  duracionAumento: 1
+  intervaloRepeticion: 2
 --- !u!1 &463944401
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 463944402}
   - component: {fileID: 463944403}
+  - component: {fileID: 463944404}
   m_Layer: 0
   m_Name: nubes1
   m_TagString: Untagged
@@ -479,6 +496,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &463944404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 463944401}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726a95d6932a64145bc6e78820769f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleAumento: {x: 1.5, y: 1.5, z: 1}
+  duracionAumento: 3
+  intervaloRepeticion: 3
 --- !u!1 &486562850
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,6 +521,7 @@ GameObject:
   m_Component:
   - component: {fileID: 486562851}
   - component: {fileID: 486562852}
+  - component: {fileID: 486562853}
   m_Layer: 0
   m_Name: nubes4
   m_TagString: Untagged
@@ -563,6 +596,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &486562853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486562850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726a95d6932a64145bc6e78820769f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleAumento: {x: 2, y: 2, z: 2}
+  duracionAumento: 4
+  intervaloRepeticion: 4
 --- !u!1 &519724916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1249,6 +1297,7 @@ GameObject:
   m_Component:
   - component: {fileID: 856932030}
   - component: {fileID: 856932031}
+  - component: {fileID: 856932032}
   m_Layer: 0
   m_Name: nubes2 (3)
   m_TagString: Untagged
@@ -1266,7 +1315,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 7.21, y: 7.72, z: -9.03}
   m_LocalScale: {x: 1.3049082, y: 1.1409882, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1727369384}
   m_RootOrder: -1
@@ -1323,6 +1372,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &856932032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856932029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726a95d6932a64145bc6e78820769f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleAumento: {x: 1.35, y: 1.3, z: 1}
+  duracionAumento: 2
+  intervaloRepeticion: 2
 --- !u!1 &1001737308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1535,6 +1599,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1080318902}
   - component: {fileID: 1080318903}
+  - component: {fileID: 1080318904}
   m_Layer: 0
   m_Name: nubes5
   m_TagString: Untagged
@@ -1609,6 +1674,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1080318904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080318901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726a95d6932a64145bc6e78820769f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleAumento: {x: 2, y: 2, z: 1}
+  duracionAumento: 3
+  intervaloRepeticion: 3
 --- !u!1 &1161379092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1755,6 +1835,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1228988923}
   - component: {fileID: 1228988924}
+  - component: {fileID: 1228988925}
   m_Layer: 0
   m_Name: nubes2 (1)
   m_TagString: Untagged
@@ -1770,7 +1851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1228988922}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.12, y: 8.14, z: -4.4194794}
+  m_LocalPosition: {x: 9.12, y: 8.14, z: -5.4}
   m_LocalScale: {x: 1.3049082, y: 1.1409882, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1829,6 +1910,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1228988925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1228988922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726a95d6932a64145bc6e78820769f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleAumento: {x: 1.5, y: 1.5, z: 1.5}
+  duracionAumento: 2
+  intervaloRepeticion: 1.5
 --- !u!1 &1249631270
 GameObject:
   m_ObjectHideFlags: 0
@@ -2781,6 +2877,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2049736842}
   - component: {fileID: 2049736843}
+  - component: {fileID: 2049736844}
   m_Layer: 0
   m_Name: nubes2
   m_TagString: Untagged
@@ -2855,6 +2952,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2049736844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049736841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 726a95d6932a64145bc6e78820769f4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scaleAumento: {x: 1.4, y: 1.4, z: 2}
+  duracionAumento: 2
+  intervaloRepeticion: 2
 --- !u!1 &2085805405
 GameObject:
   m_ObjectHideFlags: 0
