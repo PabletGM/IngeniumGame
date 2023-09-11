@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class CapacidadAdaptacionManager : MonoBehaviour
 {
+    static private CapacidadAdaptacionManager _instanceCapacidad;
+
     #region panelesJerarquiaCapacidad1
     [SerializeField]
     private GameObject menuPrincipal;
@@ -30,11 +32,24 @@ public class CapacidadAdaptacionManager : MonoBehaviour
 
     #endregion
 
-    #region resultadoPruebaCapacidad1
-    private string resultadoPruebaCapacidad1 = "";
-        #pragma warning disable CS0414
-        private int resultadoNumPruebaCapacidad1 = 0;
-        #pragma warning restore CS0414
+    #region argumentos Capacidad 1
+        #region resultadoPruebaCapacidad1
+        private string resultadoPruebaCapacidad1 = "";
+            #pragma warning disable CS0414
+            private int resultadoNumPruebaCapacidad1 = 0;
+#pragma warning restore CS0414
+    #endregion
+
+        private string itemNameCapac_1 = "CAP_1";
+
+        //cantidad de softskills que mide y nombres
+        private string[] softSkillCapac_1;
+
+        //tipo de test que es, si imagenes, preguntas escritas, etc
+        private int typeCapac1 = 1;
+
+        //cantidad de puntuaciones de todas las softskills que recoge
+        private float[] puntuacionCapac_1;
     #endregion
 
     #region panelesJerarquiaCapacidad2
@@ -61,11 +76,25 @@ public class CapacidadAdaptacionManager : MonoBehaviour
 
     #endregion
 
-    #region resultadoPruebaCapacidad1
-    private string resultadoPruebaCapacidad2 = "";
-        #pragma warning disable CS0414
-        private int resultadoNumPruebaCapacidad2 = 0;
-        #pragma warning restore CS0414
+    #region argumentos Capacidad 2
+        #region resultadoPruebaCapacidad2
+        private string resultadoPruebaCapacidad2 = "";
+            #pragma warning disable CS0414
+            private int resultadoNumPruebaCapacidad2 = 0;
+            #pragma warning restore CS0414
+        #endregion
+        
+
+        private string itemNameCapac_2 = "CAP_2";
+
+        //cantidad de softskills que mide y nombres
+        private string[] softSkillCapac_2;
+
+        //tipo de test que es, si imagenes, preguntas escritas, etc
+        private int typeCapac2 = 1;
+
+        //cantidad de puntuaciones de todas las softskills que recoge
+        private float[] puntuacionCapac_2;
     #endregion
 
     [SerializeField]
@@ -74,7 +103,25 @@ public class CapacidadAdaptacionManager : MonoBehaviour
     [SerializeField]
     private GameObject test2Capacidad;
 
+    static public CapacidadAdaptacionManager GetInstanceCapacidadAdaptacionManager()
+    {
+        return _instanceCapacidad;
+    }
 
+    private void Awake()
+    {
+
+        //si la instancia no existe se hace este script la instancia
+        if (_instanceCapacidad == null)
+        {
+            _instanceCapacidad = this;
+        }
+        //si la instancia existe , destruimos la copia
+        else
+        {
+            Destroy(this.gameObject);
+        }
+    }
 
     #region methods Capacidad1
 
@@ -263,5 +310,61 @@ public class CapacidadAdaptacionManager : MonoBehaviour
         SceneManager.LoadScene("finalTest1");
     }
 
+    #endregion
+
+    #region ArgumentosCapacidad1
+
+        public string itemNameCAPAC_1()
+        {
+            return itemNameCapac_1;
+        }
+
+        public string[] softskillCAPAC_1()
+        {
+            softSkillCapac_1 = new string[1];
+            softSkillCapac_1[0] = "capacidad de adaptacion";
+            return softSkillCapac_1;
+        }
+
+        public int typeCapac_1()
+        {
+
+            return typeCapac1;
+        }
+
+        public float[] puntuacionCAPAC_1()
+        {
+            puntuacionCapac_1 = new float[1];
+            puntuacionCapac_1[0] = resultadoNumPruebaCapacidad1;
+            return puntuacionCapac_1;
+        }
+    #endregion
+
+    #region ArgumentosCapacidad2
+
+        public string itemNameCAPAC_2()
+        {
+            return itemNameCapac_2;
+        }
+
+        public string[] softskillCAPAC_2()
+        {
+            softSkillCapac_2 = new string[1];
+            softSkillCapac_2[0] = "capacidad de adaptacion";
+            return softSkillCapac_2;
+        }
+
+        public int typeCapac_2()
+        {
+
+            return typeCapac2;
+        }
+
+        public float[] puntuacionCAPAC_2()
+        {
+            puntuacionCapac_2 = new float[1];
+            puntuacionCapac_2[0] = resultadoNumPruebaCapacidad2;
+            return puntuacionCapac_2;
+        }
     #endregion
 }

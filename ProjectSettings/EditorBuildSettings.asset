@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/tests/grupo1tests/confianza/confianza.unity
     guid: 665faa436996d6a478ce29f84a1bc6b3
+  - enabled: 1
+    path: Assets/tests/grupo1tests/capacidad/capacidadDeAdaptacion.unity
+    guid: e159e4ead05010747aa3087a36aed598
   m_configObjects: {}

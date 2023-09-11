@@ -179,7 +179,7 @@ public class ConfianzaManager : MonoBehaviour
 
     #endregion
 
-    #region ArgumentosConfianza1
+    #region ArgumentosConfianza2
 
     public string itemNameCONF_2()
     {
