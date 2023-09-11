@@ -53,8 +53,8 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
 
     #region Soltar boton
 
-    //accion cuando se suelta boton
-    public void OnPointerUp(PointerEventData eventData)
+            //accion cuando se suelta boton
+            public void OnPointerUp(PointerEventData eventData)
             {
                 estaPresionado = false;
                 // Acción cuando se suelta el botón
@@ -79,9 +79,6 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
         {
             //inicialmente queremos que el cohete suba al pulsar el boton
             _myGameManagerBengalas.ExplosionCohete();
-
-            //vemos cuanto tiempo se ha pulsado el botón
-
             //aplicamos esa fuerza al cohete y a la explosion de este
         }
     #endregion
