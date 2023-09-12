@@ -404,7 +404,7 @@ public class UIManagerLogin : MonoBehaviour
                 //error en creacion de usuario y solicutud register
                 case "HTTP/1.1 422 Unprocessable Entity":
                     Debug.Log("Error en creacion de usuario, que todo tenga 3 caracteres minimo");
-                    ErrorCreacionUsuarioRegister("Error en creacion de usuario, que todo tenga 3 caracteres minimo");
+                    ErrorCreacionUsuarioRegister("Error, que todo tenga 3 caracteres minimo");
                     break;
 
                 case "Status Code: 201":
@@ -429,13 +429,13 @@ public class UIManagerLogin : MonoBehaviour
         //metodo que escribe por pantalla usuario incorrecta
         public void ErrorCreacionUsuarioRegister(string mensaje)
         {
-            CambiarMensajeLogin(mensaje);
+            CambiarMensajeRegister(mensaje);
         }
 
         //metodo que escribe por pantalla login correcto
         public void RegisterCorrecto(string mensaje)
         {
-            CambiarMensajeLogin(mensaje);
+            CambiarMensajeRegister(mensaje);
         }
 
     #endregion
