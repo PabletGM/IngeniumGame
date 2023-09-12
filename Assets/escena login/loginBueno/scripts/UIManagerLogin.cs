@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using TMPro;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.SceneManagement;
@@ -291,7 +292,7 @@ public class UIManagerLogin : MonoBehaviour
             if(detail==null)
             {
                 Debug.Log("El login es correcto, cargando...");
-                LoginCorrecto();
+                LoginCorrecto(detail);
             }
 
             //Segun el detail lo clasificamos de 3 maneras
@@ -301,13 +302,13 @@ public class UIManagerLogin : MonoBehaviour
                 //significa que la contraseña es incorrecta
                 case "Incorrect password":
                     Debug.Log("La contraseña es incorrecta, pruebe otra vez...");
-                    ContraseñaIncorrecta();
+                    ContraseñaIncorrecta(detail);
                     break;
 
                 //significa que el usuario está mal escrito, si pones contraseña y usuario mal, te salta este
                 case "User not found":
                     Debug.Log("El usuario está mal escrito...");
-                    UsuarioIncorrecto();
+                    UsuarioIncorrecto(detail);
                     break;
 
                 default:
@@ -318,22 +319,22 @@ public class UIManagerLogin : MonoBehaviour
         }
 
         //metodo que escribe por pantalla contraseña incorrecta
-        public void ContraseñaIncorrecta()
+        public void ContraseñaIncorrecta(string mensaje)
         {
-            
+            CambiarMensajeLogin(mensaje);
             
         }
 
         //metodo que escribe por pantalla usuario incorrecta
-        public void UsuarioIncorrecto()
+        public void UsuarioIncorrecto(string mensaje)
         {
-            
+            CambiarMensajeLogin(mensaje);
         }
 
         //metodo que escribe por pantalla login correcto
-        public void LoginCorrecto()
+        public void LoginCorrecto(string mensaje)
         {
-            
+            CambiarMensajeLogin(mensaje);
         }
 
         //switch con tipos de fallo, ahora con numeros, como comprobacion extra
@@ -344,13 +345,12 @@ public class UIManagerLogin : MonoBehaviour
             switch (errorDevuelto)
             {
                 case "HTTP/1.1 401 Unauthorized":
-                    Debug.Log("Contraseña incorrecta");
+                    ContraseñaIncorrecta("Contraseña incorrecta");
                     break;
 
                 case "HTTP/1.1 404 Not Found":
-                    Debug.Log("Usuario incorrecto");
+                    UsuarioIncorrecto("Usuario incorrecto");
                     break;
-
 
                 default:
                     Console.WriteLine("It's something else.");
@@ -449,6 +449,7 @@ public class UIManagerLogin : MonoBehaviour
         //Cambiar popUpLogin Mensaje
         public void CambiarMensajeLogin(string newMessage)
         {
+            SetPopUpLogin(true);
             popUpLoginFallo.GetComponentInChildren<TextMeshProUGUI>().text = newMessage;
             Invoke("DesactivarPopUpLogin", 1.5f);
         }
