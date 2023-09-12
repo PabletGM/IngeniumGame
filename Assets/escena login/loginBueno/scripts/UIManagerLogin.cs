@@ -206,31 +206,28 @@ public class UIManagerLogin : MonoBehaviour
             using (UnityWebRequest request = UnityWebRequest.Post(uriRegisterBackend, body, "application/json"))
             {
                 yield return request.SendWebRequest();
+              
+
+                //primera barrera de seguridad para ver fallo
+                TipoFalloDetailRegister(request.downloadHandler.text);
 
                 //si es incorrecto, esto es si solicitud no llega a base de datos
                 if (request.isNetworkError || request.isHttpError)
                 {  
                     //ponemos errorCode
                     errorCode = request.error;
-                    Debug.Log(errorCode);
+                    TiposFalloRegisterNumerico(errorCode);
                     Debug.Log("ERRORRRRR");
                 }
                 //si la solicitud llega a base de datos vemos el texto que devuelve
                 else
                 {
-                    //si contraseña es invalida
-                    if (!LongitudContraseñaValida(passwordRegister))
-                    {
-                        //cambiamos error code
-                        errorCode = "Contraseña muy corta, porfavor, que tenga mas de 4 caracteres";
-                    }
+                    
                     //comprobamos si es correcto el register
                     Comprobacion201RegisterCorrect(request.downloadHandler.text);
-                    TiposFalloRegister(errorCode);
-                    //Todo lo que te devuelve el backend
-                    Debug.Log(request.downloadHandler.text);
                     //vamos al login
-                    OpenLoginPanel();
+                    Invoke("OpenLoginPanel", 1f);
+                    
                 }
             }
 
@@ -278,8 +275,6 @@ public class UIManagerLogin : MonoBehaviour
 
 
     #region TiposLoginIncorrecto
-
-
         //metodo que mira a ver si lo que ha devuelto el register es un codigo 201, esto es register correct
         public void TipoFalloDetailLogin(string detailText)
         {
@@ -360,32 +355,61 @@ public class UIManagerLogin : MonoBehaviour
     #endregion
 
     #region TiposRegisterIncorrecto
-        public void TiposFalloRegister(string errorCode)
+
+
+        public void TipoFalloDetailRegister(string detailText)
+        {
+            // Deserializar el JSON usando JsonUtility
+            JsonResponseData response = JsonUtility.FromJson<JsonResponseData>(detailText);
+            // Acceder al valor del campo detail
+            string detail = response.detail;
+            //Segun el detail lo clasificamos de 3 maneras
+            switch (detail)
+            {
+
+                //el usuario ya existe y está cogido
+                case "The username is already taken":
+                    Debug.Log("Usuario ya existe...");
+                    UsuarioYaExiste(detail);
+                    break;
+
+               
+                //cualquier error de creacion del body para hacer solicitud register(por ejemplo username muy corto)
+                case "":
+                    Debug.Log("error en creacion del usuario, todo minimo 3 caracteres...");
+                    ErrorCreacionUsuarioRegister("error en creacion del usuario, todo minimo 3 caracteres...");
+                    break;
+
+
+                //el usuario se ha creado con exito
+                case "The user has been created successfully":
+                    Debug.Log("The user has been created successfully");
+                    RegisterCorrecto(detail);
+                    break;
+            }
+
+        }
+        public void TiposFalloRegisterNumerico(string errorCode)
         {
             
             switch (errorCode)
             {
-                case "HTTP/1.1 502 Bad Gateway":
+                //usuario ya existe
+                case "HTTP/1.1 409 Conflict":
                     //fallo de register porque usuario ya existente
-                
-                    Debug.Log("Formato de register mal enviado");
+                    Debug.Log("Usuario ya existe");
+                    UsuarioYaExiste("Usuario ya existe");
                     break;
 
-                case "Contraseña muy corta, porfavor, que tenga mas de 4 caracteres":
-                    //fallo de register porque usuario ya existente
-
-                    Debug.Log("Pon una contraseña bien hombre!");
-                    break;
-
+                //error en creacion de usuario y solicutud register
                 case "HTTP/1.1 422 Unprocessable Entity":
-                    //fallo de register porque usuario ya existente,
-                    //COMPANY MAS DE 3 CARACTERES
-
-                    Debug.Log("Desconocido...");
+                    Debug.Log("Error en creacion de usuario, que todo tenga 3 caracteres minimo");
+                    ErrorCreacionUsuarioRegister("Error en creacion de usuario, que todo tenga 3 caracteres minimo");
                     break;
 
                 case "Status Code: 201":
                     Debug.Log("BIEN...el register se ha hecho correctamente, ahora login...");
+                    RegisterCorrecto("el register se ha hecho correctamente");
                     break;
 
                 
@@ -394,25 +418,26 @@ public class UIManagerLogin : MonoBehaviour
                         break;
             }
         }
-        
-        //comprobar si ya existe usuario, reutilizamos metodo de login UsuarioExistente
 
-        //ver si la contraseña no tiene minimo 4 caracteres
-        public bool LongitudContraseñaValida(string passwordRegister)
+        //metodo que escribe por pantalla contraseña incorrecta
+        public void UsuarioYaExiste(string mensaje)
         {
-            if(passwordRegister.Length < numeroCaracteresMinContraseñaRegister)
-            {
-                //aparece aviso pop-Up por pantalla
-                SetPopUpRegister(true);
-                //cambia mensaje
-                CambiarMensajeRegister("**** Fallo Register: Contraseña muy corta, minimo 4 caracteres ****");
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            CambiarMensajeRegister(mensaje);
+            
         }
+
+        //metodo que escribe por pantalla usuario incorrecta
+        public void ErrorCreacionUsuarioRegister(string mensaje)
+        {
+            CambiarMensajeLogin(mensaje);
+        }
+
+        //metodo que escribe por pantalla login correcto
+        public void RegisterCorrecto(string mensaje)
+        {
+            CambiarMensajeLogin(mensaje);
+        }
+
     #endregion
 
     #region PopUpRegister
@@ -430,6 +455,7 @@ public class UIManagerLogin : MonoBehaviour
         //Cambiar popUpLogin Mensaje
         public void CambiarMensajeRegister(string newMessage)
         {
+            SetPopUpRegister(true);
             popUpRegisterFallo.GetComponentInChildren<TextMeshProUGUI>().text = newMessage;
             Invoke("DesactivarPopUpRegister", 1.5f);
         }
