@@ -132,120 +132,108 @@ public class UIManagerLogin : MonoBehaviour
     #endregion
 
     #region DebugLoginRegister
-    //metodo que escribe parametros de Login
-    [Obsolete]
-    public void DebugLoginParameters()
-    {
-        //Debug.Log(userNameLogin.text);
-        //Debug.Log(passwordLogin.text);
 
-        //metodo que envia a la base de datos un post del Login
-        StartCoroutine(PostLogin(userNameLogin.text, passwordLogin.text));
-    }
+        //metodo que escribe parametros de Login
+        [Obsolete]
+        public void DebugLoginParameters()
+        {
+            //metodo que envia a la base de datos un post del Login
+            StartCoroutine(PostLogin(userNameLogin.text, passwordLogin.text));
+        }
 
-    //metodo que escribe parametros de Registers
-    [Obsolete]
-    public void DebugRegisterParameters()
-    {
-        //Debug.Log(userNameRegister.text);
-        //Debug.Log(company.text);
-        //Debug.Log(email.text);
-        //Debug.Log(firstName.text);
-        //Debug.Log(lastName.text);
-        //Debug.Log(age.text);
-        //Debug.Log(passwordRegister.text);
-        //Debug.Log(confirmPasswordRegister.text);
+        //metodo que escribe parametros de Registers
+        [Obsolete]
+        public void DebugRegisterParameters()
+        {
+            string ageLetter = age.text;
+            int ageNumber = int.Parse(ageLetter);
 
-        string ageLetter = age.text;
-        int ageNumber = int.Parse(ageLetter);
+            StartCoroutine(PostRegister(userNameRegister.text, company.text, email.text, firstName.text, lastName.text, ageNumber, passwordRegister.text, confirmPasswordRegister.text));
+        }
 
-        StartCoroutine(PostRegister(userNameRegister.text, company.text, email.text, firstName.text, lastName.text, ageNumber, passwordRegister.text, confirmPasswordRegister.text));
-
-    }
     #endregion
 
     #region ExecuteLoginRegister
-    [Obsolete]
-    IEnumerator PostLogin(string userNameLogin, string passwordLogin)
-    {
-        // Crear formulario con los datos, todo en minusculas , porque va predefinido el formulario y username esta vez en minuscula
-        WWWForm form = new WWWForm();
-        form.AddField("username", userNameLogin);
-        form.AddField("password", passwordLogin);
-
-        using (UnityWebRequest request = UnityWebRequest.Post(uriLoginBackend, form))
+    
+        [Obsolete]
+        IEnumerator PostLogin(string userNameLogin, string passwordLogin)
         {
-            yield return request.SendWebRequest();
-           
-            if (request.isNetworkError || request.isHttpError)
+            // Crear formulario con los datos, todo en minusculas , porque va predefinido el formulario y username esta vez en minuscula
+            WWWForm form = new WWWForm();
+            form.AddField("username", userNameLogin);
+            form.AddField("password", passwordLogin);
+
+            using (UnityWebRequest request = UnityWebRequest.Post(uriLoginBackend, form))
             {
-                errorCode = request.error;
-                Debug.Log(errorCode);
-                //metodo que segun el error me devuelva una cosa u otra
-                TiposFalloLogin(errorCode);
-                Debug.Log("ERRORRRRR");
-            }
-            else
-            {
-                Debug.Log( request.downloadHandler.text);
-                ComprobacionAccessTokenLoginCorrect(request.downloadHandler.text);
-                Debug.Log("BIEN");
-                //en caso de que sea correcto nos movemos a escena hoyos
-                SceneManager.LoadScene("confianza");
-            }
-        }
+                yield return request.SendWebRequest();
 
-    }
+                //primera barrera de seguridad, para ver fallo
+                TipoFalloDetailLogin(request.downloadHandler.text);
 
-    [Obsolete]
-    IEnumerator PostRegister(string userNameRegister, string company, string email, string firstName, string lastName, int age, string passwordRegister, string confirmPasswordRegister)
-    {
-
-        // Cambia esto al valor adecuado de la edad
-        string body;
-        
-             body = $@"{{
-                ""userName"": ""{userNameRegister}"",
-                ""company"": ""{company}"",
-                ""email"": ""{email}"",
-                ""firstName"": ""{firstName}"",
-                ""lastName"": ""{lastName}"",
-                ""age"": {age},
-                ""password"": ""{passwordRegister}""
-            }}";
-
-        using (UnityWebRequest request = UnityWebRequest.Post(uriRegisterBackend, body, "application/json"))
-        {
-            yield return request.SendWebRequest();
-
-            //si es incorrecto, esto es si solicitud no llega a base de datos
-            if (request.isNetworkError || request.isHttpError)
-            {  
-                //ponemos errorCode
-                errorCode = request.error;
-                Debug.Log(errorCode);
-                Debug.Log("ERRORRRRR");
-            }
-            //si la solicitud llega a base de datos vemos el texto que devuelve
-            else
-            {
-                //si contraseña es invalida
-                if (!LongitudContraseñaValida(passwordRegister))
+                if (request.isNetworkError || request.isHttpError)
                 {
-                    //cambiamos error code
-                    errorCode = "Contraseña muy corta, porfavor, que tenga mas de 4 caracteres";
+                    errorCode = request.error;
+                    //segunda barrera de seguridad, fallo numerico
+                    TiposFalloLoginNumero(errorCode);
                 }
-                //comprobamos si es correcto el register
-                Comprobacion201RegisterCorrect(request.downloadHandler.text);
-                TiposFalloRegister(errorCode);
-                //Todo lo que te devuelve el backend
-                Debug.Log(request.downloadHandler.text);
-                //vamos al login
-                OpenLoginPanel();
+                else
+                { 
+                    ComprobacionAccessTokenLoginCorrect(request.downloadHandler.text);
+                    //en caso de que sea correcto nos movemos a escena hoyos
+                    SceneManager.LoadScene("confianza");
+                }
             }
         }
 
-    }
+        [Obsolete]
+        IEnumerator PostRegister(string userNameRegister, string company, string email, string firstName, string lastName, int age, string passwordRegister, string confirmPasswordRegister)
+        {
+
+            // Cambia esto al valor adecuado de la edad
+            string body;
+        
+                 body = $@"{{
+                    ""userName"": ""{userNameRegister}"",
+                    ""company"": ""{company}"",
+                    ""email"": ""{email}"",
+                    ""firstName"": ""{firstName}"",
+                    ""lastName"": ""{lastName}"",
+                    ""age"": {age},
+                    ""password"": ""{passwordRegister}""
+                }}";
+
+            using (UnityWebRequest request = UnityWebRequest.Post(uriRegisterBackend, body, "application/json"))
+            {
+                yield return request.SendWebRequest();
+
+                //si es incorrecto, esto es si solicitud no llega a base de datos
+                if (request.isNetworkError || request.isHttpError)
+                {  
+                    //ponemos errorCode
+                    errorCode = request.error;
+                    Debug.Log(errorCode);
+                    Debug.Log("ERRORRRRR");
+                }
+                //si la solicitud llega a base de datos vemos el texto que devuelve
+                else
+                {
+                    //si contraseña es invalida
+                    if (!LongitudContraseñaValida(passwordRegister))
+                    {
+                        //cambiamos error code
+                        errorCode = "Contraseña muy corta, porfavor, que tenga mas de 4 caracteres";
+                    }
+                    //comprobamos si es correcto el register
+                    Comprobacion201RegisterCorrect(request.downloadHandler.text);
+                    TiposFalloRegister(errorCode);
+                    //Todo lo que te devuelve el backend
+                    Debug.Log(request.downloadHandler.text);
+                    //vamos al login
+                    OpenLoginPanel();
+                }
+            }
+
+        }
 
     #endregion
 
@@ -283,33 +271,87 @@ public class UIManagerLogin : MonoBehaviour
         Debug.Log("Access token: " + "" + token + "");
 
     }
+
+
     #endregion
 
 
     #region TiposLoginIncorrecto
-        //metodo para comprobar contraseña a ver si existe en la base de datos.
-        public bool ComprobarContraseñaCorrecta(string password)
+
+
+        //metodo que mira a ver si lo que ha devuelto el register es un codigo 201, esto es register correct
+        public void TipoFalloDetailLogin(string detailText)
         {
-            return false;
+            // Deserializar el JSON usando JsonUtility
+            JsonResponseData response = JsonUtility.FromJson<JsonResponseData>(detailText);
+            // Acceder al valor del campo detail
+            string detail = response.detail;
+
+            //es que es correcto el login
+            if(detail==null)
+            {
+                Debug.Log("El login es correcto, cargando...");
+                LoginCorrecto();
+            }
+
+            //Segun el detail lo clasificamos de 3 maneras
+            switch (detail)
+            {
+
+                //significa que la contraseña es incorrecta
+                case "Incorrect password":
+                    Debug.Log("La contraseña es incorrecta, pruebe otra vez...");
+                    ContraseñaIncorrecta();
+                    break;
+
+                //significa que el usuario está mal escrito, si pones contraseña y usuario mal, te salta este
+                case "User not found":
+                    Debug.Log("El usuario está mal escrito...");
+                    UsuarioIncorrecto();
+                    break;
+
+                default:
+                    Console.WriteLine("It's something else.");
+                    break;
+            }
+
+        }
+
+        //metodo que escribe por pantalla contraseña incorrecta
+        public void ContraseñaIncorrecta()
+        {
+            
             
         }
 
-        //comprobar si usuario existe,lo tiene que mirar en base de datos
-        public bool UsuarioExistente(string username)
+        //metodo que escribe por pantalla usuario incorrecta
+        public void UsuarioIncorrecto()
         {
-            return false;
+            
         }
 
-        //switch con tipos de fallo, segun lo que devuelva hacemos una cosa u otra
-        public void TiposFalloLogin(string errorDevuelto)
+        //metodo que escribe por pantalla login correcto
+        public void LoginCorrecto()
         {
+            
+        }
+
+        //switch con tipos de fallo, ahora con numeros, como comprobacion extra
+        public void TiposFalloLoginNumero(string errorDevuelto)
+        {
+                //HTTP / 1.1 401 Unauthorized     contraseña incorrecta
+                //HTTP/1.1 404 Not Found          user incorrecto(si ambos estan mal sale este
             switch (errorDevuelto)
             {
-                case "HTTP/1.1 400 Bad Request":
-                    //fallo de login porque usuario o contraseña está mal escrita
-                    //deberia devolver fallo diferente si usuario está mal o si contraseña está mal
-                    Debug.Log("Contraseña o Usuario está mal escrito");
+                case "HTTP/1.1 401 Unauthorized":
+                    Debug.Log("Contraseña incorrecta");
                     break;
+
+                case "HTTP/1.1 404 Not Found":
+                    Debug.Log("Usuario incorrecto");
+                    break;
+
+
                 default:
                     Console.WriteLine("It's something else.");
                     break;
