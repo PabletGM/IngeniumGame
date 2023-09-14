@@ -146,10 +146,7 @@ public class UIManagerLogin : MonoBehaviour
         [Obsolete]
         public void DebugRegisterParameters()
         {
-            string ageLetter = age.text;
-            int ageNumber = int.Parse(ageLetter);
-
-            StartCoroutine(PostRegister(userNameRegister.text, company.text, email.text, firstName.text, lastName.text, ageNumber, passwordRegister.text, confirmPasswordRegister.text));
+            StartCoroutine(PostRegister(userNameRegister.text, email.text, passwordRegister.text));
         }
 
     #endregion
@@ -187,7 +184,7 @@ public class UIManagerLogin : MonoBehaviour
         }
 
         [Obsolete]
-        IEnumerator PostRegister(string userNameRegister, string company, string email, string firstName, string lastName, int age, string passwordRegister, string confirmPasswordRegister)
+        IEnumerator PostRegister(string userNameRegister, string email, string passwordRegister)
         {
 
             // Cambia esto al valor adecuado de la edad
@@ -195,11 +192,7 @@ public class UIManagerLogin : MonoBehaviour
         
                  body = $@"{{
                     ""userName"": ""{userNameRegister}"",
-                    ""company"": ""{company}"",
                     ""email"": ""{email}"",
-                    ""firstName"": ""{firstName}"",
-                    ""lastName"": ""{lastName}"",
-                    ""age"": {age},
                     ""password"": ""{passwordRegister}""
                 }}";
 
