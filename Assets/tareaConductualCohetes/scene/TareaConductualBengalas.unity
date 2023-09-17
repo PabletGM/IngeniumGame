@@ -2885,6 +2885,7 @@ MonoBehaviour:
   bengalaParaDespegar: {fileID: 1911273254}
   transformBengala: {fileID: 1911273256}
   astronautaEscena: {fileID: 233635733}
+  botonStart: {fileID: 1249631270}
 --- !u!1 &2049736841
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,13 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
     private float tiempoParaAcelerar = 0f;
     private float tiempoMaxParaAcelerar = 0.5f;
 
+    //tiempo en que el cohete subirá hasta explotar
+    private float LifeTime=0;
+    //tiempo maximo de vida del cohete
+    private float LifeTimeMax = 4f;
+    //tiempo que lleva vivo el cohete
+    private float SegundosVidaCohete = 0;
+
     GameManagerTareaBengalas _myGameManagerBengalas;
 
     private SpriteRenderer spriteRenderer;
@@ -36,9 +43,12 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
     #endregion
 
     #region DespegueAceleracionCohete
-    public void DespegarCohete()
+    public void DespegarCohete(float lifetimeToExplote)
     {
+        //ponemos permiso para despegar
         permisoParaDespegar = true;
+        //ponemos tiempo de vida del cohete
+        LifeTime = lifetimeToExplote;
     }
 
     private void Update()
@@ -48,7 +58,21 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
             //le aplicamos velocidad y lo movemos en una direccion
             transform.Translate(Vector2.up * velocidad * Time.deltaTime);
 
+            //sumamos tiempo para acelerar cada cierto tiempo
             tiempoParaAcelerar += Time.deltaTime;
+            //sumamos tiempo hasta que contador llegue a lifeTimeToExplote
+            SegundosVidaCohete += Time.deltaTime;
+
+            //comprobacion a ver si segundosVidaCohete > LifeTime
+            if(SegundosVidaCohete > LifeTime || SegundosVidaCohete > LifeTimeMax)
+            {
+                //Destruimos cohete
+                ExplosionCohete();
+                //reiniciamos contadores
+                LifeTime = 0;
+                SegundosVidaCohete = 0;
+            }
+
             //cada cierto tiempo aceleramos, si llega al limite de la variable se acelera
             if(tiempoParaAcelerar>tiempoMaxParaAcelerar)
             {

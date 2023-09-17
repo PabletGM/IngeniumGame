@@ -25,7 +25,6 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
         //accion cuando se presiona boton
         public void OnPointerDown(PointerEventData eventData)
         {
-            estaPresionado = true;
             // Acción cuando se presiona el botón
             BotonPulsado();
         }
@@ -35,8 +34,7 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
         {
             //iniciamos timer
             enMarcha = true;
-            //lanzamos cohete
-            LanzamientoCohete();
+           
         }
 
     #endregion
@@ -45,9 +43,8 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
         public void LanzamientoCohete()
         {
             //inicialmente queremos que el cohete suba al pulsar el boton
-            _myGameManagerBengalas.LanzamientoCohete();
+            _myGameManagerBengalas.LanzamientoCohete(restante);
 
-            //aplicamos esa fuerza al cohete y a la explosion de este
         }
     #endregion
 
@@ -56,7 +53,6 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
             //accion cuando se suelta boton
             public void OnPointerUp(PointerEventData eventData)
             {
-                estaPresionado = false;
                 // Acción cuando se suelta el botón
                 BotonSoltado();
             }
@@ -65,10 +61,10 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
             {
                 //timer para
                 enMarcha = false;
+                //lanzamos cohete
+                LanzamientoCohete();
                 //reiniciamos timer
                 restante = 0;
-                //explotamos cohete
-                ExplosionCohete();
             }
 
     #endregion
@@ -94,7 +90,7 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
                 restante += Time.deltaTime;
                 Debug.Log("Button pressed: " + restante);
                 //explosion automatica
-                if (restante > tiempoMaximo) { BotonSoltado(); }
+                //if (restante > tiempoMaximo) { BotonSoltado(); }
             }
             #endregion
     }

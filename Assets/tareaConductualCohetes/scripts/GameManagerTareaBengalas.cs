@@ -21,6 +21,11 @@ public class GameManagerTareaBengalas : MonoBehaviour
     [SerializeField]
     private GameObject astronautaEscena;
 
+    [SerializeField]
+    private GameObject botonStart;
+
+    private float timeBengalaVida = 0;
+
     private void Awake()
     {
 
@@ -48,21 +53,38 @@ public class GameManagerTareaBengalas : MonoBehaviour
         return _instanceGMTareaBengalas;
     }
 
-    public void LanzamientoCohete()
+    //el cohete aguanta sin explotar el tiempo que se deje pulsado el boton
+    public void LanzamientoCohete(float timeToExplote)
+    {
+        timeBengalaVida = timeToExplote;
+        //hacemos impulsable boton hasta nueva tirada
+        UITareaBengalas.SetBoton(false);
+        EncenderCohete();
+        Invoke("MecanicaCohete",1.5f);
+    }
+
+    public void EncenderCohete()
     {
         //hacemos animacion encender cohete
         astronautaEscena.GetComponent<ComportamientoAstronauta>().AnimacionEncenderBengala();
+    }
 
+    public void MecanicaCohete()
+    {
         //llama a la funcion del cohete que lo propulsa para arriba
-        bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().DespegarCohete();
+
+        //permiso para despegar cohete
+        //preguntamos a boton que tiempo vivirá el cohete
+        bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().DespegarCohete(timeBengalaVida);
+        //efectosVFX despegue
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().DespegueVFX();
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().PrepararPropulsion();
     }
 
     public void ExplosionCohete()
     {
-        //desactivamos boton mientras la explosion para no poder pulsar boton
-        UITareaBengalas.SetBoton(false);
+        ////desactivamos boton mientras la explosion para no poder pulsar boton
+        //UITareaBengalas.SetBoton(false);
         //Explota Cohete
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().ExplosionCohete();
     
