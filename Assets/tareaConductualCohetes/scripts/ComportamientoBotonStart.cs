@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using DG.Tweening;
 
 public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -9,15 +10,21 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
     private float restante=0;
     //permiso para volar la bengala
     private bool enMarcha = false;
-    //para ver si boton presionado
-    private bool estaPresionado = false;
-    //5 segundos es lo que tarda el cohete en llegar a las nubes
-    private int tiempoMaximo= 4;
+
+
+    public Image imagenParaAgrandar; // Referencia a la imagen que quieres agrandar
+    private float escalaFinal = 1.35f; // Tamaño final al que se agrandará la imagen
+    private float duracionTween = 2f; // Duración de la animación de agrandamiento
+
+    private Vector3 escalaOriginal; // Tamaño original de la imagen
+
 
     // Start is called before the first frame update
     void Start()
     {
         _myGameManagerBengalas = GameManagerTareaBengalas.GetInstanceGM();
+        // Guardamos el tamaño original de la imagen
+        escalaOriginal = imagenParaAgrandar.transform.localScale;
     }
 
     #region Pulsar boton
@@ -27,6 +34,9 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
         {
             // Acción cuando se presiona el botón
             BotonPulsado();
+
+            // Realizamos el tween para agrandar la imagen
+            imagenParaAgrandar.transform.DOScale(escalaFinal, duracionTween);
         }
 
         //si se pulsa boton se inicia timer
@@ -39,7 +49,7 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
 
     #endregion
 
-    #region EfectoPulsarBoton
+    #region EfectoSoltarBoton
         public void LanzamientoCohete()
         {
             //inicialmente queremos que el cohete suba al pulsar el boton
@@ -55,6 +65,10 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
             {
                 // Acción cuando se suelta el botón
                 BotonSoltado();
+
+                // Volver al tamaño original con otro tween
+                imagenParaAgrandar.transform.DOScale(escalaOriginal, duracionTween);
+                
             }
             //si se suelta el boton se para el timer
             public void BotonSoltado()
@@ -69,7 +83,7 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
 
     #endregion
 
-    #region EfectoSoltarBoton
+    #region ExplosionBengala
 
         public void ExplosionCohete()
         {
@@ -82,7 +96,7 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
     //comprueba el timer y limite de tiempo
     void Update()
     { 
-            #region timer
+        #region timer
             //si se ha pulsado boton se inicia timer
             if (enMarcha)
             {
@@ -92,6 +106,7 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
                 //explosion automatica
                 //if (restante > tiempoMaximo) { BotonSoltado(); }
             }
-            #endregion
+        #endregion
+
     }
 }
