@@ -29,10 +29,10 @@ public class GameManagerTareaBengalas : MonoBehaviour
 
 
     #region Marcador
-    //habrá 5 de 0 a 4
+    //habrá 3 de prueba de 0 a 2
     private int contadorNumeroTiradas = 0;
     //numero de tiradas totales
-    private int numeroTiradasTotal = 4;
+    private int numeroTiradasTotal = 3;
     //array de GameObjects marcadores
     [SerializeField]
     private Marcador[] marcadoresTiradas;
@@ -105,6 +105,14 @@ public class GameManagerTareaBengalas : MonoBehaviour
         bengalaParaDespegar.transform.position = posInicialBengala;
         //activamos boton de nuevo para poder jugar otra vez
         UITareaBengalas.SetBoton(true);
+
+        //se quita una en el UIManager para que aparezca en pantalla
+        UITareaBengalas.ActualizarTextoBengalasLeft((numeroTiradasTotal - contadorNumeroTiradas).ToString());
+        //vemos si se ha acabado ya, esto es si lanzadas de prueba se han acabado
+        if (contadorNumeroTiradas>=numeroTiradasTotal)
+        {
+            Debug.Log("YOU WIN!");
+        }
     }
 
 

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,9 +25,19 @@ public class UIManagerTareaBengalas : MonoBehaviour
     [SerializeField]
     private GameObject panelText;
 
+    [SerializeField]
+    private GameObject TestPanel;
+
+    [SerializeField]
+    private GameObject IntentosPanel;
+
     //carpeta generica con todo el boton, imagen y boton
     [SerializeField]
     private GameObject boton;
+
+    //texto Bengalas Left
+    [SerializeField]
+    private TMP_Text bengalasTexto;
 
     private void Awake()
     {
@@ -72,11 +83,7 @@ public class UIManagerTareaBengalas : MonoBehaviour
     public void EmpezarJuegoBengalas()
     {
         panelText.SetActive(false);
-
-        boton.SetActive(true);
         Interfaz.SetActive(true);
-        SetBoton(true);
-
     }
 
     //quitamos jugabilidad ocultando el boton y quitando interfaz y poniendo panelText
@@ -87,6 +94,20 @@ public class UIManagerTareaBengalas : MonoBehaviour
         panelText.SetActive(true);
         SetBoton(false);
 
+    }
+
+    //al cerrar este panel, se activa intentos panel y juego normal con boton
+    public void CloseTestPanel()
+    {
+        boton.SetActive(true);
+        SetBoton(true);
+        TestPanel.SetActive(false);
+        IntentosPanel.SetActive(true);
+    }
+
+    public void ActualizarTextoBengalasLeft(string newBengalasLeft)
+    {
+        bengalasTexto.text = newBengalasLeft;
     }
 
 
