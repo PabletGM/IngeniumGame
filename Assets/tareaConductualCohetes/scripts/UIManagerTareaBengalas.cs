@@ -31,6 +31,9 @@ public class UIManagerTareaBengalas : MonoBehaviour
     [SerializeField]
     private GameObject IntentosPanel;
 
+    [SerializeField]
+    private GameObject panelPasarModoJuego;
+
     //carpeta generica con todo el boton, imagen y boton
     [SerializeField]
     private GameObject boton;
@@ -110,5 +113,14 @@ public class UIManagerTareaBengalas : MonoBehaviour
         bengalasTexto.text = newBengalasLeft;
     }
 
+    public void QuitarInterfaz()
+    {
+        Interfaz.SetActive(false);
+    }
+
+    public void ActivarPanelPasarModoJuego()
+    {
+        panelPasarModoJuego.SetActive(true);
+    }
 
 }

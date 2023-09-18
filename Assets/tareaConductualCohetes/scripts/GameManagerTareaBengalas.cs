@@ -2,6 +2,7 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerTareaBengalas : MonoBehaviour
 {
@@ -29,10 +30,10 @@ public class GameManagerTareaBengalas : MonoBehaviour
 
 
     #region Marcador
-    //habrá 3 de prueba de 0 a 2
+    //habrá 2 de prueba de 0 a 2
     private int contadorNumeroTiradas = 0;
     //numero de tiradas totales
-    private int numeroTiradasTotal = 3;
+    private int numeroTiradasTotal = 2;
     //array de GameObjects marcadores
     [SerializeField]
     private Marcador[] marcadoresTiradas;
@@ -112,6 +113,8 @@ public class GameManagerTareaBengalas : MonoBehaviour
         if (contadorNumeroTiradas>=numeroTiradasTotal)
         {
             Debug.Log("YOU WIN!");
+            //llama a metodo que desactiva jugabilidad
+            DesactivarJugabilidadFinPractica();
         }
     }
 
@@ -126,6 +129,23 @@ public class GameManagerTareaBengalas : MonoBehaviour
         marcadoresTiradas[contadorNumeroTiradas].RegisterUltimaPosBengala(lastPosBengala);
         //sumamos una tirada mas hecha
         contadorNumeroTiradas++;
+    }
+
+    public void DesactivarJugabilidadFinPractica()
+    {
+        //desactivamos boton start y cohete
+        botonStart.SetActive(false);
+        bengalaParaDespegar.SetActive(false);
+        //quitamos interfaz
+        UITareaBengalas.QuitarInterfaz();
+        //activamos panel de pasar a modo juego de verdad
+        UITareaBengalas.ActivarPanelPasarModoJuego();
+    }
+
+
+    public void PasarEscenaBengalasJuego()
+    {
+        SceneManager.LoadScene("TareaConductualBengalas_buena");
     }
 
 
