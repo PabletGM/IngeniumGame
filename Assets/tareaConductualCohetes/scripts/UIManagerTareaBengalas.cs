@@ -17,6 +17,17 @@ public class UIManagerTareaBengalas : MonoBehaviour
     [SerializeField]
     private Image imagenBoton;
 
+
+    [SerializeField]
+    private GameObject Interfaz;
+
+    [SerializeField]
+    private GameObject panelText;
+
+    //carpeta generica con todo el boton, imagen y boton
+    [SerializeField]
+    private GameObject boton;
+
     private void Awake()
     {
        
@@ -56,5 +67,27 @@ public class UIManagerTareaBengalas : MonoBehaviour
         }
     }
 
-    
+    //metodo que activa la funcionalidad del boton
+    //activa interfaz y quitaPaneltext
+    public void EmpezarJuegoBengalas()
+    {
+        panelText.SetActive(false);
+
+        boton.SetActive(true);
+        Interfaz.SetActive(true);
+        SetBoton(true);
+
+    }
+
+    //quitamos jugabilidad ocultando el boton y quitando interfaz y poniendo panelText
+    public void PanelJuegoBengalas()
+    {
+        boton.SetActive(false);
+        Interfaz.SetActive(false);
+        panelText.SetActive(true);
+        SetBoton(false);
+
+    }
+
+
 }
