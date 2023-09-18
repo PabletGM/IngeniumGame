@@ -67,7 +67,7 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
             if(SegundosVidaCohete > LifeTime || SegundosVidaCohete > LifeTimeMax)
             {
                 //Destruimos cohete
-                ExplosionCohete();
+                ExplosionCoheteBengala();
                 //reiniciamos contadores
                 LifeTime = 0;
                 SegundosVidaCohete = 0;
@@ -107,10 +107,12 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
 
     #region ExplosionCohete
     //destruimos el cohete
-    public void ExplosionCohete()
+    public void ExplosionCoheteBengala()
     {
-        //Destroy(this.gameObject);
-
+        //le quitamos permiso para despegar para que no entre en bucle de update 
+        permisoParaDespegar = false;
+        //Antes de destruir la bengala guardamos su ultima posicion registrada y la compartimos con GameManager
+        _myGameManagerBengalas.GuardarUltimaPosicionBengalaDisparada(this.transform.position);
         //quitamos vfx de cohete
         vfxAcelerar.SetActive(false);
         vfxDespegue.SetActive(false);

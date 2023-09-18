@@ -26,6 +26,19 @@ public class GameManagerTareaBengalas : MonoBehaviour
 
     private float timeBengalaVida = 0;
 
+
+
+    #region Marcador
+    //habrá 5 de 0 a 4
+    private int contadorNumeroTiradas = 0;
+    //numero de tiradas totales
+    private int numeroTiradasTotal = 4;
+    //array de GameObjects marcadores
+    [SerializeField]
+    private Marcador[] marcadoresTiradas;
+
+    #endregion
+
     private void Awake()
     {
 
@@ -81,15 +94,6 @@ public class GameManagerTareaBengalas : MonoBehaviour
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().PrepararPropulsion();
     }
 
-    public void ExplosionCohete()
-    {
-        ////desactivamos boton mientras la explosion para no poder pulsar boton
-        //UITareaBengalas.SetBoton(false);
-        //Explota Cohete
-        bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().ExplosionCohete();
-    
-    }
-
     //metodo que pone en pos inicial la bengala y la activa de nuevo
     public void SiguienteLanzamiento()
     {
@@ -101,6 +105,19 @@ public class GameManagerTareaBengalas : MonoBehaviour
         bengalaParaDespegar.transform.position = posInicialBengala;
         //activamos boton de nuevo para poder jugar otra vez
         UITareaBengalas.SetBoton(true);
+    }
+
+
+    public void GuardarUltimaPosicionBengalaDisparada(Vector3 posicion)
+    {
+        //guardamos ultima posicion bengala
+        Vector3 lastPosBengala = posicion;
+        //activamos gameObject marcador adecuado
+        marcadoresTiradas[contadorNumeroTiradas].gameObject.SetActive(true);
+        //conectamos con marcador adecuado segun tirada y le pasamos la info de lastPosBengala
+        marcadoresTiradas[contadorNumeroTiradas].RegisterUltimaPosBengala(lastPosBengala);
+        //sumamos una tirada mas hecha
+        contadorNumeroTiradas++;
     }
 
 

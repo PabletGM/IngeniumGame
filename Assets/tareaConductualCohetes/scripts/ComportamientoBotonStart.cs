@@ -83,15 +83,7 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
 
     #endregion
 
-    #region ExplosionBengala
-
-        public void ExplosionCohete()
-        {
-            //inicialmente queremos que el cohete suba al pulsar el boton
-            _myGameManagerBengalas.ExplosionCohete();
-            //aplicamos esa fuerza al cohete y a la explosion de este
-        }
-    #endregion
+   
 
     //comprueba el timer y limite de tiempo
     void Update()
@@ -103,8 +95,7 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
                 //va sumando segundos
                 restante += Time.deltaTime;
                 Debug.Log("Button pressed: " + restante);
-                //explosion automatica
-                //if (restante > tiempoMaximo) { BotonSoltado(); }
+                
             }
         #endregion
 
