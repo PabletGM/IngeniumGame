@@ -25,6 +25,10 @@ public class GameManagerTareaBengalas : MonoBehaviour
     [SerializeField]
     private GameObject botonStart;
 
+    [SerializeField]
+    private GameObject marcadores;
+
+
     private float timeBengalaVida = 0;
 
 
@@ -60,6 +64,12 @@ public class GameManagerTareaBengalas : MonoBehaviour
         //ponemos pos inicial bengala
         posInicialBengala = transformBengala.position;
         UITareaBengalas = UIManagerTareaBengalas.GetInstanceUI();
+
+        //depende del nombre de la escena ponemos mecanica de 3 cohetes o 2
+        if (SceneManager.GetActiveScene().name == "TareaBengalasGame")
+        {
+            numeroTiradasTotal = 3;
+        }
     }
 
     static public GameManagerTareaBengalas GetInstanceGM()
@@ -138,14 +148,26 @@ public class GameManagerTareaBengalas : MonoBehaviour
         bengalaParaDespegar.SetActive(false);
         //quitamos interfaz
         UITareaBengalas.QuitarInterfaz();
+        //quitamos marcadores
+        marcadores.SetActive(false);
         //activamos panel de pasar a modo juego de verdad
-        UITareaBengalas.ActivarPanelPasarModoJuego();
+        //si la escena es la de bengalas prueba se puede pasar
+        if(SceneManager.GetActiveScene().name == "BengalasPrueba")
+        {
+            UITareaBengalas.ActivarPanelPasarModoJuego();
+        }
+        //sino ponemos felicidades has ganado
+        else
+        {
+            UITareaBengalas.SetEnd(true);
+        }
+        
     }
 
 
     public void PasarEscenaBengalasJuego()
     {
-        SceneManager.LoadScene("TareaConductualBengalas_buena");
+        SceneManager.LoadScene("TareaBengalasGame");
     }
 
 

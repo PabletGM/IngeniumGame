@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManagerTareaBengalas : MonoBehaviour
@@ -41,6 +42,24 @@ public class UIManagerTareaBengalas : MonoBehaviour
     //texto Bengalas Left
     [SerializeField]
     private TMP_Text bengalasTexto;
+
+    //carpeta generica con todo el boton, imagen y boton
+    [SerializeField]
+    private GameObject playPanel;
+
+
+    [SerializeField]
+    private GameObject testModeParpadeo;
+
+
+    [SerializeField]
+    private GameObject end;
+
+    private void Start()
+    {
+        
+        
+    }
 
     private void Awake()
     {
@@ -87,6 +106,7 @@ public class UIManagerTareaBengalas : MonoBehaviour
     {
         panelText.SetActive(false);
         Interfaz.SetActive(true);
+        
     }
 
     //quitamos jugabilidad ocultando el boton y quitando interfaz y poniendo panelText
@@ -106,6 +126,21 @@ public class UIManagerTareaBengalas : MonoBehaviour
         SetBoton(true);
         TestPanel.SetActive(false);
         IntentosPanel.SetActive(true);
+        //si estamos en escena prueba activamos parpadeo
+        if (SceneManager.GetActiveScene().name == "BengalasPrueba")
+        {
+            SetTestModeParpadeo(true);
+        }
+    }
+
+    //quita panel play e indica juego
+    public void Play()
+    {
+        //boton.SetActive(true);
+        //SetBoton(true);
+        Interfaz.SetActive(true);
+        //Play indica inicio juego
+        playPanel.SetActive(false);
     }
 
     public void ActualizarTextoBengalasLeft(string newBengalasLeft)
@@ -121,6 +156,18 @@ public class UIManagerTareaBengalas : MonoBehaviour
     public void ActivarPanelPasarModoJuego()
     {
         panelPasarModoJuego.SetActive(true);
+    }
+
+    //parpadeo testMode
+    public void SetTestModeParpadeo(bool set)
+    {
+        //activas GameObject Parpadeo
+        testModeParpadeo.SetActive(set);
+    }
+
+    public void SetEnd(bool set)
+    {
+        end.SetActive(set);
     }
 
 }
