@@ -32,6 +32,10 @@ public class GameManagerTareaBengalas : MonoBehaviour
     private float timeBengalaVida = 0;
 
 
+    [SerializeField]
+    private GameObject AudioManagerObject;
+
+
 
     #region Marcador
     //habrá 2 de prueba de 0 a 2
@@ -68,6 +72,7 @@ public class GameManagerTareaBengalas : MonoBehaviour
         //depende del nombre de la escena ponemos mecanica de 3 cohetes o 2
         if (SceneManager.GetActiveScene().name == "TareaBengalasGame")
         {
+           
             numeroTiradasTotal = 3;
         }
     }
@@ -167,7 +172,9 @@ public class GameManagerTareaBengalas : MonoBehaviour
 
     public void PasarEscenaBengalasJuego()
     {
-        SceneManager.LoadScene("TareaBengalasGame");
+        // Cargamos la escena aditiva
+        SceneManager.LoadScene("TareaBengalasGame");      
+
     }
 
 
