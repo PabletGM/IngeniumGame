@@ -5,16 +5,16 @@ using UnityEngine;
 
 public class AudioManagerBengalas : MonoBehaviour
 {
-    public static AudioManagerBengalas Instance;
+    public static AudioManagerBengalas instance;
     public SoundBengalas[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
     private void Awake()
     {
-        if (Instance == null)
+        if (instance == null)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
+            instance = this;
+            //DontDestroyOnLoad(gameObject);
         }
         else
         {
@@ -22,6 +22,7 @@ public class AudioManagerBengalas : MonoBehaviour
         }
     }
 
+    
 
     private void Start()
     {
@@ -64,6 +65,11 @@ public class AudioManagerBengalas : MonoBehaviour
         {
             sfxSource.PlayOneShot(s.clip);
         }
+    }
+
+    public void StopSFX()
+    {
+        sfxSource.Stop();      
     }
 
 

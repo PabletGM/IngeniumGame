@@ -108,6 +108,8 @@ public class GameManagerTareaBengalas : MonoBehaviour
         //efectosVFX despegue
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().DespegueVFX();
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().PrepararPropulsion();
+        //sonido vuelo despegue
+        AudioManagerBengalas.instance.PlaySFX("vueloDespegue");
     }
 
     //metodo que pone en pos inicial la bengala y la activa de nuevo

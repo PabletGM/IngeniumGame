@@ -40,6 +40,8 @@ public class ComportamientoAstronauta : MonoBehaviour
 
     private void RestaurarEstadoOriginal()
     {
+        //sonido mechero y mecha
+        AudioManagerBengalas.instance.PlaySFX("mecheroMecha");
         // Restaura la posición y rotación original del sprite usando Tween inversos
         var movimientoTween = transform.DOMove(posicionInicial, duracionMovimiento);
         var rotacionTween = transform.DORotate(rotacionInicial.eulerAngles, duracionRotacion);

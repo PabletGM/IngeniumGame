@@ -109,6 +109,9 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
     //destruimos el cohete
     public void ExplosionCoheteBengala()
     {
+        //paramos sonido
+        AudioManagerBengalas.instance.StopSFX();
+        AudioManagerBengalas.instance.PlaySFX("explosion");
         //le quitamos permiso para despegar para que no entre en bucle de update 
         permisoParaDespegar = false;
         //Antes de destruir la bengala guardamos su ultima posicion registrada y la compartimos con GameManager
