@@ -78,7 +78,7 @@ public class AudioManagerBengalas : MonoBehaviour
     public void PulsarBotonSound()
     {
         //sonido pala golpe al acabar animacion
-        PlaySFX("boton");
+        PlaySFX("clickButton");
     }
 
     public void ToggleMusic()

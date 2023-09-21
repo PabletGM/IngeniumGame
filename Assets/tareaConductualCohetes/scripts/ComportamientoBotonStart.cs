@@ -44,6 +44,9 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
         {
             //iniciamos timer
             enMarcha = true;
+
+            //sonido boton
+            AudioManagerBengalas.instance.PulsarBotonSound();
            
         }
 
