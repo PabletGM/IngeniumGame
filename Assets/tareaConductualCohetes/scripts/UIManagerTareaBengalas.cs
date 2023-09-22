@@ -193,7 +193,7 @@ public class UIManagerTareaBengalas : MonoBehaviour
 
     public void DesactivarRobot()
     {
-        Invoke("DesactivarRobotoTrasAnimacion",1.5f);
+        Invoke("DesactivarRobotoTrasAnimacion",1.4f);
     }
 
     public void DesactivarRobotoTrasAnimacion()
