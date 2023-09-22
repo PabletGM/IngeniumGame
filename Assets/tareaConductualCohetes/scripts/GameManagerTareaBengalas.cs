@@ -131,8 +131,13 @@ public class GameManagerTareaBengalas : MonoBehaviour
         {
             Debug.Log("YOU WIN!");
             //llama a metodo que desactiva jugabilidad
-            DesactivarJugabilidadFinPractica();
+            Invoke("DesactivarJugabilidad", 0.25f);
         }
+    }
+
+    public void DesactivarJugabilidad()
+    {
+        DesactivarJugabilidadFinPractica();
     }
 
 
