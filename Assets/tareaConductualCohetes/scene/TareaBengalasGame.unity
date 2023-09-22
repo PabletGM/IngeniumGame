@@ -1525,7 +1525,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519724916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7049804, y: -0.6469655, z: 5.148433}
+  m_LocalPosition: {x: -1.7049804, y: -0.22, z: 5.148433}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5008,7 +5008,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1759920042
 Transform:
   m_ObjectHideFlags: 0
@@ -5687,6 +5687,10 @@ MonoBehaviour:
   - {fileID: 254136500}
   - {fileID: 31982316}
   - {fileID: 2066579134}
+  listaBengalasLeft:
+  - {fileID: 1553361321}
+  - {fileID: 1393486076}
+  - {fileID: 1364689510}
 --- !u!1 &2010651795
 GameObject:
   m_ObjectHideFlags: 0

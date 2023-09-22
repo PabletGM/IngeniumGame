@@ -1663,7 +1663,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519724916}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7049804, y: -0.6469655, z: 5.148433}
+  m_LocalPosition: {x: -1.7049804, y: -0.24, z: 5.148433}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6018,6 +6018,10 @@ MonoBehaviour:
   marcadoresTiradas:
   - {fileID: 254136500}
   - {fileID: 31982316}
+  listaBengalasLeft:
+  - {fileID: 1553361321}
+  - {fileID: 1393486076}
+  - {fileID: 1364689510}
 --- !u!1 &2039508472
 GameObject:
   m_ObjectHideFlags: 0

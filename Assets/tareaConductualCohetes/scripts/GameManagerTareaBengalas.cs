@@ -46,6 +46,9 @@ public class GameManagerTareaBengalas : MonoBehaviour
     [SerializeField]
     private Marcador[] marcadoresTiradas;
 
+    [SerializeField]
+    private GameObject[] listaBengalasLeft;
+
     #endregion
 
     private void Awake()
@@ -149,6 +152,8 @@ public class GameManagerTareaBengalas : MonoBehaviour
         //marcadoresTiradas[contadorNumeroTiradas].gameObject.SetActive(true);
         //conectamos con marcador adecuado segun tirada y le pasamos la info de lastPosBengala
         marcadoresTiradas[contadorNumeroTiradas].RegisterUltimaPosBengala(lastPosBengala);
+        //quitamos 1 bengala del suelo al haberse utilizado
+        listaBengalasLeft[contadorNumeroTiradas].SetActive(false);
         //sumamos una tirada mas hecha
         contadorNumeroTiradas++;
     }
