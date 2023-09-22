@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class ComportamientoBengalaADisparar : MonoBehaviour
 {
-    private float velocidad = 1f;
-    private float velocidadInicial = 1f;
-    private float aceleracion = 0.25f;
+    private float velocidad = 1.25f;
+    private float velocidadInicial = 1.25f;
+    private float aceleracion = 0.5f;
     private bool permisoParaDespegar = false;
     private float tiempoParaAcelerar = 0f;
     private float tiempoMaxParaAcelerar = 0.5f;
@@ -15,7 +15,7 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
     //tiempo en que el cohete subirá hasta explotar
     private float LifeTime=0;
     //tiempo maximo de vida del cohete
-    private float LifeTimeMax = 4f;
+    private float LifeTimeMax = 3f;
     //tiempo que lleva vivo el cohete
     private float SegundosVidaCohete = 0;
 
@@ -66,8 +66,18 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
             //comprobacion a ver si segundosVidaCohete > LifeTime
             if(SegundosVidaCohete > LifeTime || SegundosVidaCohete > LifeTimeMax)
             {
+                //por defecto no se ha pasado de distancia
+                bool seHaPasadoDistancia = false;
+                //si se ha pasado de distancia
+                if(SegundosVidaCohete > LifeTimeMax)
+                {
+                    //aparece dialogo robot y hacemos desaparecer el cohete sin explosion
+                    _myGameManagerBengalas.ApareceDialogoRobotAlejadoAviso();
+                    //se ha pasado de distancia
+                    seHaPasadoDistancia = true;
+                }
                 //Destruimos cohete
-                ExplosionCoheteBengala();
+                ExplosionCoheteBengala(seHaPasadoDistancia);
                 //reiniciamos contadores
                 LifeTime = 0;
                 SegundosVidaCohete = 0;
@@ -107,7 +117,7 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
 
     #region ExplosionCohete
     //destruimos el cohete
-    public void ExplosionCoheteBengala()
+    public void ExplosionCoheteBengala(bool seHaPasadoDistanciaLimite)
     {
         //paramos sonido
         AudioManagerBengalas.instance.StopSFX();
@@ -123,7 +133,11 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
         spriteRenderer.DOFade(0f, 0.2f);
         //quitamos
         //explosion
-        ExplosionCoheteVFX();
+        //sino se ha pasado de dstancia hacemos explosion, si se ha pasado no hacemos explosion
+        if(!seHaPasadoDistanciaLimite)
+        {
+            ExplosionCoheteVFX();
+        } 
         //repetir jugada
         Invoke("RepetirLanzada", 0.5f);
         

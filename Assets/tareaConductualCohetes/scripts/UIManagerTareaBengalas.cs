@@ -64,6 +64,9 @@ public class UIManagerTareaBengalas : MonoBehaviour
     [SerializeField]
     private GameObject testPanel;
 
+    [SerializeField]
+    private GameObject dialogoRobotAlejado;
+
     private void Start()
     {
         
@@ -183,7 +186,7 @@ public class UIManagerTareaBengalas : MonoBehaviour
     {
         robotPanel.SetActive(true);
         //tras animacion entrada robot aparece dialogo
-        Invoke("DialogoAppearAfterAnimation", 1f);
+        Invoke("DialogoAppearAfterAnimation", 1.1f);
     }
 
     public void DialogoAppearAfterAnimation()
@@ -193,7 +196,7 @@ public class UIManagerTareaBengalas : MonoBehaviour
 
     public void DesactivarRobot()
     {
-        Invoke("DesactivarRobotoTrasAnimacion",1.4f);
+        Invoke("DesactivarRobotoTrasAnimacion",1.3f);
     }
 
     public void DesactivarRobotoTrasAnimacion()
@@ -202,5 +205,19 @@ public class UIManagerTareaBengalas : MonoBehaviour
         //activar robot en pradera al final
         robotPocaPequeño.SetActive(true);
     }
+
+
+    public void ApareceDialogoRobotAlejadoAviso()
+    {
+        dialogoRobotAlejado.SetActive(true);
+        //dejas la notificacion 1.5 segundos
+        Invoke("QuitarDialogoRobotAlejadoAviso", 2f);
+    }
+    public void QuitarDialogoRobotAlejadoAviso()
+    {
+        dialogoRobotAlejado.SetActive(false);
+    }
+
+
 
 }

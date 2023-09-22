@@ -179,5 +179,10 @@ public class GameManagerTareaBengalas : MonoBehaviour
 
     }
 
+    public void ApareceDialogoRobotAlejadoAviso()
+    {
+        UITareaBengalas.ApareceDialogoRobotAlejadoAviso();
+    }
+
 
 }
