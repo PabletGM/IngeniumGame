@@ -15,7 +15,7 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
     //tiempo en que el cohete subirá hasta explotar
     private float LifeTime=0;
     //tiempo maximo de vida del cohete
-    private float LifeTimeMax = 2.65f;
+    private float LifeTimeMax = 2.5f;
     //tiempo que lleva vivo el cohete
     private float SegundosVidaCohete = 0;
 
