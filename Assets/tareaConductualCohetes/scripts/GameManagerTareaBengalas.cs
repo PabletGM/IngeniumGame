@@ -146,7 +146,7 @@ public class GameManagerTareaBengalas : MonoBehaviour
         //guardamos ultima posicion bengala
         Vector3 lastPosBengala = posicion;
         //activamos gameObject marcador adecuado
-        marcadoresTiradas[contadorNumeroTiradas].gameObject.SetActive(true);
+        //marcadoresTiradas[contadorNumeroTiradas].gameObject.SetActive(true);
         //conectamos con marcador adecuado segun tirada y le pasamos la info de lastPosBengala
         marcadoresTiradas[contadorNumeroTiradas].RegisterUltimaPosBengala(lastPosBengala);
         //sumamos una tirada mas hecha
