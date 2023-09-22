@@ -55,6 +55,15 @@ public class UIManagerTareaBengalas : MonoBehaviour
     [SerializeField]
     private GameObject end;
 
+    [SerializeField]
+    private GameObject robotPanel;
+
+    [SerializeField]
+    private GameObject robotPocaPequeño;
+
+    [SerializeField]
+    private GameObject testPanel;
+
     private void Start()
     {
         
@@ -168,6 +177,30 @@ public class UIManagerTareaBengalas : MonoBehaviour
     public void SetEnd(bool set)
     {
         end.SetActive(set);
+    }
+
+    public void ApareceRobotHablando()
+    {
+        robotPanel.SetActive(true);
+        //tras animacion entrada robot aparece dialogo
+        Invoke("DialogoAppearAfterAnimation", 1f);
+    }
+
+    public void DialogoAppearAfterAnimation()
+    {
+        TestPanel.SetActive(true);
+    }
+
+    public void DesactivarRobot()
+    {
+        Invoke("DesactivarRobotoTrasAnimacion",1.5f);
+    }
+
+    public void DesactivarRobotoTrasAnimacion()
+    {
+        robotPanel.SetActive(false);
+        //activar robot en pradera al final
+        robotPocaPequeño.SetActive(true);
     }
 
 }
