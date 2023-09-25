@@ -91,6 +91,6 @@ public class Explosion : MonoBehaviour
 
     public void NextScene()
     {
-        SceneManager.LoadScene("LlegadaPlaneta");
+        SceneManager.LoadScene("viajeGalaxia");
     }
 }
