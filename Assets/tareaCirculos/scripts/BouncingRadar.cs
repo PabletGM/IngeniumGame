@@ -10,7 +10,15 @@ public class BouncingRadar : MonoBehaviour
     public float minY = -0.2f; // Límite inferior de la pantalla
     public float maxY = 0.2f;  // Límite superior de la pantalla
 
-    private Vector2 direction = Vector2.right; // Dirección inicial del movimiento
+    private Vector2 direction; // Dirección inicial del movimiento
+
+
+
+    private void Start()
+    {
+        //direccion inicial del movimiento, arriba derecha
+        direction = new Vector2(1, 1);
+    }
 
     void Update()
     {
