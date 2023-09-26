@@ -34,29 +34,61 @@ public class DragAndDropCirculos : MonoBehaviour
     {
         if (isDragging)
         {
-            Vector3 newPosition = GetMouseWorldPosition() + mousePositionOffset;
+            EstaDentroArea();
+        }
+    }
 
-            // Verifica si la nueva posición está dentro del círculo del collider
-            Vector2 circleCenter = circleCollider.bounds.center;
-            float circleRadius = circleCollider.radius;
 
-            float distanciaPosicionCentroCirculo = Vector2.Distance(newPosition, circleCenter);
-            if (distanciaPosicionCentroCirculo <= circleRadius)
-            {
-                // La nueva posición está dentro del círculo, permite el movimiento
-                transform.position = newPosition;
-                lastValidPosition = newPosition;
-            }
-            else
-            {
-                // La nueva posición está fuera del círculo, mantén la última posición válida
-                transform.position = new Vector3(circleCenter.x, circleCenter.y,0);
-            }
+    //metodo para saber si está dentro del area cuando se hace drag
+    public void EstaDentroArea()
+    {
+        Vector3 newPosition = GetMouseWorldPosition() + mousePositionOffset;
+
+        // Verifica si la nueva posición está dentro del círculo del collider
+        Vector2 circleCenter = circleCollider.bounds.center;
+        float circleRadius = circleCollider.radius;
+
+        float distanciaPosicionCentroCirculo = Vector2.Distance(newPosition, circleCenter);
+        if (distanciaPosicionCentroCirculo <= circleRadius)
+        {
+            // La nueva posición está dentro del círculo, permite el movimiento
+            transform.position = newPosition;
+            lastValidPosition = newPosition;
+        }
+        else
+        {
+            // La nueva posición está fuera del círculo, mantén la última posición válida
+            transform.position = new Vector3(circleCenter.x, circleCenter.y, 0);
+        }
+    }
+
+
+    //metodo para saber si está dentro del area cuando cuando no se hace drag
+    public void EstaDentroAreaEspecial()
+    {
+        //posicion de la nave
+        Vector3 newPosition = transform.position;
+
+        // Verifica si la posicion está dentro del círculo del collider
+        Vector2 circleCenter = circleCollider.bounds.center;
+        float circleRadius = circleCollider.radius;
+
+        float distanciaPosicionCentroCirculo = Vector2.Distance(newPosition, circleCenter);
+        if (distanciaPosicionCentroCirculo > circleRadius)
+        {
+            // La nueva posición está fuera del círculo, al centro del circulo
+            transform.position = new Vector3(circleCenter.x, circleCenter.y, 0);
         }
     }
 
     private void OnMouseUp()
     {
         isDragging = false;
+    }
+
+    private void Update()
+    {
+        //comprobamos todo el rato si se ha salido del area aunque no sea Drag para que ponga en la pos central
+        EstaDentroAreaEspecial();
     }
 }
