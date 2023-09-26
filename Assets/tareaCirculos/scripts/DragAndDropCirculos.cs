@@ -1,41 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class DragAndDropCirculos : MonoBehaviour, IDragHandler, IBeginDragHandler, IEndDragHandler  
+public class DragAndDropCirculos : MonoBehaviour
 {
-    private RectTransform rectTransform;
-    private Image image;
+    //para que se pueda clickar en el objeto con un area no solo un punto
+    Vector3 mousePositionoffset;
 
-    public void OnBeginDrag(PointerEventData eventData)
+    private Vector3 GetMouseWorldPosition()
     {
-        image.color = new Color32(255, 255, 255, 170);
+        //capture mouse Position & return world point
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    public void OnDrag(PointerEventData eventData)
+    //primer metodo que se llame
+    private void OnMouseDown()
     {
-        rectTransform.anchoredPosition += eventData.delta;
-
-        //transform.position = Input.mousePosition;
+        //capture the mouse offset
+        mousePositionoffset= gameObject.transform.position - GetMouseWorldPosition();
     }
 
-    public void OnEndDrag(PointerEventData eventData)
+    //segundo metodo que se llame mientras se deja pulsado
+    private void OnMouseDrag()
     {
-        image.color = new Color(255, 255, 255, 170);
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        rectTransform = GetComponent<RectTransform>();
-        image = GetComponent<Image>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        transform.position = GetMouseWorldPosition() + mousePositionoffset;
     }
 }
