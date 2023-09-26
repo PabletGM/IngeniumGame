@@ -7,25 +7,57 @@ using UnityEngine.EventSystems;
 
 public class DragAndDropCirculos : MonoBehaviour
 {
-    //para que se pueda clickar en el objeto con un area no solo un punto
-    Vector3 mousePositionoffset;
+    private Vector3 mousePositionOffset;//area para coger objeto
+    private Vector3 lastValidPosition; // Guarda la última posición válida del objeto
+    private bool isDragging = false;
+
+    // Para el límite de movimiento
+    [SerializeField]
+    private CircleCollider2D circleCollider;
 
     private Vector3 GetMouseWorldPosition()
     {
-        //capture mouse Position & return world point
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
-    //primer metodo que se llame
-    private void OnMouseDown()
+    private void Start()
     {
-        //capture the mouse offset
-        mousePositionoffset= gameObject.transform.position - GetMouseWorldPosition();
+        
     }
 
-    //segundo metodo que se llame mientras se deja pulsado
+    private void OnMouseDown()
+    {
+        mousePositionOffset = gameObject.transform.position - GetMouseWorldPosition();
+        isDragging = true;
+    }
+
     private void OnMouseDrag()
     {
-        transform.position = GetMouseWorldPosition() + mousePositionoffset;
+        if (isDragging)
+        {
+            Vector3 newPosition = GetMouseWorldPosition() + mousePositionOffset;
+
+            // Verifica si la nueva posición está dentro del círculo del collider
+            Vector2 circleCenter = circleCollider.bounds.center;
+            float circleRadius = circleCollider.radius;
+
+            float distanciaPosicionCentroCirculo = Vector2.Distance(newPosition, circleCenter);
+            if (distanciaPosicionCentroCirculo <= circleRadius)
+            {
+                // La nueva posición está dentro del círculo, permite el movimiento
+                transform.position = newPosition;
+                lastValidPosition = newPosition;
+            }
+            else
+            {
+                // La nueva posición está fuera del círculo, mantén la última posición válida
+                transform.position = lastValidPosition;
+            }
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        isDragging = false;
     }
 }
