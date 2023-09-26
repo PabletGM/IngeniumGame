@@ -10,6 +10,7 @@ public class DragAndDropCirculos : MonoBehaviour
     private Vector3 mousePositionOffset;//area para coger objeto
     private Vector3 lastValidPosition; // Guarda la última posición válida del objeto
     private bool isDragging = false;
+    private bool puntuacionBajada = false;
 
     // Para el límite de movimiento
     [SerializeField]
@@ -57,9 +58,16 @@ public class DragAndDropCirculos : MonoBehaviour
         }
         else
         {
+
             // La nueva posición está fuera del círculo, mantén la última posición válida
             transform.position = new Vector3(circleCenter.x, circleCenter.y, 0);
-            GameManagerCirculos.GetInstanceGM().PerderPuntuacion();
+            //hacemos que solo lo llame una vez
+            if(!puntuacionBajada)
+            {
+                GameManagerCirculos.GetInstanceGM().PerderPuntuacion();
+                puntuacionBajada = true;
+            }
+            
         }
     }
 
@@ -79,13 +87,16 @@ public class DragAndDropCirculos : MonoBehaviour
         {
             // La nueva posición está fuera del círculo, al centro del circulo
             transform.position = new Vector3(circleCenter.x, circleCenter.y, 0);
-            GameManagerCirculos.GetInstanceGM().PerderPuntuacion();
+            
+                GameManagerCirculos.GetInstanceGM().PerderPuntuacion();
+            
         }
     }
 
     private void OnMouseUp()
     {
         isDragging = false;
+        puntuacionBajada = false;
     }
 
     private void Update()
