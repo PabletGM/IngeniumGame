@@ -59,6 +59,7 @@ public class DragAndDropCirculos : MonoBehaviour
         {
             // La nueva posición está fuera del círculo, mantén la última posición válida
             transform.position = new Vector3(circleCenter.x, circleCenter.y, 0);
+            GameManagerCirculos.GetInstanceGM().PerderPuntuacion();
         }
     }
 
@@ -78,6 +79,7 @@ public class DragAndDropCirculos : MonoBehaviour
         {
             // La nueva posición está fuera del círculo, al centro del circulo
             transform.position = new Vector3(circleCenter.x, circleCenter.y, 0);
+            GameManagerCirculos.GetInstanceGM().PerderPuntuacion();
         }
     }
 
