@@ -22,7 +22,6 @@ public class DragAndDropCirculos : MonoBehaviour
 
     private void Start()
     {
-        
     }
 
     private void OnMouseDown()
@@ -51,7 +50,7 @@ public class DragAndDropCirculos : MonoBehaviour
             else
             {
                 // La nueva posición está fuera del círculo, mantén la última posición válida
-                transform.position = lastValidPosition;
+                transform.position = new Vector3(circleCenter.x, circleCenter.y,0);
             }
         }
     }
