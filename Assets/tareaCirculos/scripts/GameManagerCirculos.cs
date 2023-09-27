@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManagerCirculos : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class GameManagerCirculos : MonoBehaviour
 
     private int puntuacionInicial = 100;
 
-    private int puntuacionActual = 100;
+
+    //esta puntuacion estará en cada escena pasando
+    private int puntuacionActual;
 
     private int golpeChoqueNivel1 = 2;
 
@@ -22,6 +25,7 @@ public class GameManagerCirculos : MonoBehaviour
         if (_instanceGMCirculos == null)
         {
             _instanceGMCirculos = this;
+            DontDestroyOnLoad(gameObject);
         }
         //si la instancia existe , destruimos la copia
         else
@@ -37,10 +41,18 @@ public class GameManagerCirculos : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
+    //ponemos puntuacion actual por pantalla, solo se llama una vez en la primera escena, ya que este script luego se reutiliza
     void Start()
     {
-        
+
+        //si es la escena 1 y la primera vez ponemos que la puntuacion actual sea la puntuacion Inicial
+        if (SceneManager.GetActiveScene().name == "circulosNave")
+        {
+            puntuacionActual = puntuacionInicial;
+        }
+
+        string puntuacionActualString = puntuacionActual.ToString();
+        UIManagerCirculos.GetInstanceUI().CambiarPuntuacion(puntuacionActualString);
     }
 
     // Update is called once per frame
@@ -58,5 +70,10 @@ public class GameManagerCirculos : MonoBehaviour
         string puntuacionActualString = puntuacionActual.ToString();
         //lo ponemos en el UIManager
         UIManagerCirculos.GetInstanceUI().CambiarPuntuacion(puntuacionActualString);
+    }
+
+    public int DevolverPuntuacionActual()
+    {
+        return puntuacionActual;
     }
 }

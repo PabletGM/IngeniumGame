@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManagerCirculos : MonoBehaviour
@@ -33,10 +34,11 @@ public class UIManagerCirculos : MonoBehaviour
     {
         return _instanceUICirculos;
     }
-    // Start is called before the first frame update
+    //se llama cada vez que se recarga escena
     void Start()
     {
-        
+        int puntuacionActual = GameManagerCirculos.GetInstanceGM().DevolverPuntuacionActual();
+        CambiarPuntuacion(puntuacionActual.ToString());
     }
 
     // Update is called once per frame
@@ -50,5 +52,22 @@ public class UIManagerCirculos : MonoBehaviour
     {
         //Modificar el texto del objeto
         puntuacionNumero.text = nuevaPuntuacion;
+    }
+
+
+
+    public void PasarLevel1()
+    {
+        SceneManager.LoadScene("circulosNave");
+    }
+
+    public void PasarLevel2()
+    {
+        SceneManager.LoadScene("circulosNaveNivel2");
+    }
+
+    public void PasarLevel3()
+    {
+        SceneManager.LoadScene("circulosNaveNivel3");
     }
 }
