@@ -14,6 +14,7 @@ public class UIManagerCirculos : MonoBehaviour
     GameManagerCirculos GMCirculos;
 
     public TextMeshProUGUI puntuacionNumero;
+    public TextMeshProUGUI puntuacionNumeroPanelRadar;
 
     [SerializeField]
     private GameObject panelGame;
@@ -64,6 +65,9 @@ public class UIManagerCirculos : MonoBehaviour
     {
         //Modificar el texto del objeto
         puntuacionNumero.text = nuevaPuntuacion;
+
+        //cambiamos ya que estamos la puntuacion que aparecerá en el panel ronda
+        puntuacionNumeroPanelRadar.text = puntuacionNumero.text;
     }
 
 
