@@ -53,14 +53,15 @@ public class DragAndDropCirculos : MonoBehaviour
         if (distanciaPosicionCentroCirculo <= circleRadius)
         {
             // La nueva posición está dentro del círculo, permite el movimiento
-            transform.position = newPosition;
-            lastValidPosition = newPosition;
+            Vector3 nuevaPosicionZCorrecta = new Vector3(newPosition.x, newPosition.y, -1.39f);
+            transform.position = nuevaPosicionZCorrecta;
+            lastValidPosition = nuevaPosicionZCorrecta;
         }
         else
         {
 
             // La nueva posición está fuera del círculo, mantén la última posición válida
-            transform.position = new Vector3(circleCenter.x, circleCenter.y, 0);
+            transform.position = new Vector3(circleCenter.x, circleCenter.y, -1.39f);
             //hacemos que solo lo llame una vez
             if(!puntuacionBajada)
             {
@@ -86,7 +87,7 @@ public class DragAndDropCirculos : MonoBehaviour
         if (distanciaPosicionCentroCirculo > circleRadius)
         {
             // La nueva posición está fuera del círculo, al centro del circulo
-            transform.position = new Vector3(circleCenter.x, circleCenter.y, 0);
+            transform.position = new Vector3(circleCenter.x, circleCenter.y, -1.39f);
             
                 GameManagerCirculos.GetInstanceGM().PerderPuntuacion();
             
