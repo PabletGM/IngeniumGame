@@ -35,6 +35,7 @@ public class CirculosFadeIn : MonoBehaviour
         Invoke("ActivarGameManager", 1.5f);
         Invoke("DesactivarTransitionCanvas", 1.5f); 
 
+
     }
 
     //mostrar progresivamente una imagen

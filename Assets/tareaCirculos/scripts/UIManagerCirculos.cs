@@ -15,6 +15,12 @@ public class UIManagerCirculos : MonoBehaviour
 
     public TextMeshProUGUI puntuacionNumero;
 
+    [SerializeField]
+    private GameObject panelGame;
+
+    [SerializeField]
+    private GameObject panelRonda;
+
     private void Awake()
     {
 
@@ -69,5 +75,31 @@ public class UIManagerCirculos : MonoBehaviour
     public void PasarLevel3()
     {
         SceneManager.LoadScene("circulosNaveNivel3");
+    }
+
+    //se ha acabado la ronda y activas menu para ver a que nivel pasas
+    public void ActivarPanelRonda()
+    {
+        //quitas panel game de canvas
+        panelGame.SetActive(false);
+        //activas panel ronda
+        panelRonda.SetActive(true);
+    }
+
+    //quitar panel ronda para pasar de nivel
+    public void DesactivarPanelRonda()
+    {
+        //pones panel game de canvas
+        panelGame.SetActive(true);
+        //quitas panel ronda
+        panelRonda.SetActive(false);
+    }
+
+    //cuando se pulse al boton iniciar ronda se comienza el juego
+    public void IniciarRonda()
+    {
+        GameManagerCirculos.GetInstanceGM().CronometroRonda();
+        //activa game y desactiva panel ronda
+        DesactivarPanelRonda();
     }
 }

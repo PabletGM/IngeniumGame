@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BouncingRadar : MonoBehaviour
 {
-    public float speed = 5f; // Velocidad de movimiento del sprite
-    public float minX = -1.5f; // Límite izquierdo de la pantalla
-    public float maxX = 1.5f;  // Límite derecho de la pantalla
-    public float minY = -0.2f; // Límite inferior de la pantalla
-    public float maxY = 0.2f;  // Límite superior de la pantalla
+    public float speed; // Velocidad de movimiento del sprite
+    public float minX; // Límite izquierdo de la pantalla
+    public float maxX;  // Límite derecho de la pantalla
+    public float minY; // Límite inferior de la pantalla
+    public float maxY;  // Límite superior de la pantalla
 
     private Vector2 direction; // Dirección inicial del movimiento
 
@@ -18,6 +18,8 @@ public class BouncingRadar : MonoBehaviour
     {
         //direccion inicial del movimiento, arriba derecha
         direction = new Vector2(1, 1);
+        //quita la velocidad hasta que empiece la ronda
+        ChangeSpeedSin();
     }
 
     void Update()
@@ -40,5 +42,15 @@ public class BouncingRadar : MonoBehaviour
 
         // Actualiza la posición del sprite
         transform.position = newPosition;
+    }
+
+    public void ChangeSpeedSin()
+    {
+        speed = 0;
+    }
+
+    public void ChangeSpeed(float newSpeed)
+    {
+        speed = newSpeed;
     }
 }
