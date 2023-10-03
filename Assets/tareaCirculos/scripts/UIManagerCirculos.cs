@@ -21,6 +21,9 @@ public class UIManagerCirculos : MonoBehaviour
     [SerializeField]
     private GameObject panelRonda;
 
+    [SerializeField]
+    private GameObject objetos;
+
     private void Awake()
     {
 
@@ -45,6 +48,9 @@ public class UIManagerCirculos : MonoBehaviour
     {
         int puntuacionActual = GameManagerCirculos.GetInstanceGM().DevolverPuntuacionActual();
         CambiarPuntuacion(puntuacionActual.ToString());
+
+        //antes de darle a start quita la jugabilidad por estetica
+        SetObjetosJugabilidad(false);
     }
 
     // Update is called once per frame
@@ -84,6 +90,8 @@ public class UIManagerCirculos : MonoBehaviour
         panelGame.SetActive(false);
         //activas panel ronda
         panelRonda.SetActive(true);
+        //desactivas objetos para quitar asi la jugabilidad
+        objetos.SetActive(false);
     }
 
     //quitar panel ronda para pasar de nivel
@@ -101,5 +109,11 @@ public class UIManagerCirculos : MonoBehaviour
         GameManagerCirculos.GetInstanceGM().CronometroRonda();
         //activa game y desactiva panel ronda
         DesactivarPanelRonda();
+    }
+
+    public void SetObjetosJugabilidad(bool set)
+    {
+        //te permite jugabilidad activando o desactivando los objetos
+        objetos.SetActive(set);
     }
 }

@@ -127,8 +127,16 @@ public class GameManagerCirculos : MonoBehaviour
     public void CronometroRonda()
     {
         Debug.Log("Empieza  la ronda");
+
+        //activamos objetos y jugabilidad en GameManager
+        UIManagerCirculos.GetInstanceUI().SetObjetosJugabilidad(true);
+
+
         //vemos en que escena estamos y ponemos velocidad del bouncing radar a la que sea diferente de 0
         GameObject radar = GameObject.Find("radar");
+
+        
+
         if (SceneManager.GetActiveScene().name == "circulosNave")
         {
             radar.GetComponent<BouncingRadar>().ChangeSpeed(0.4f);//0.4
