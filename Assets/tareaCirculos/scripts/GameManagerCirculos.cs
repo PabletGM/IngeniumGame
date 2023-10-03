@@ -17,6 +17,8 @@ public class GameManagerCirculos : MonoBehaviour
     private int puntuacionActual;
 
     private int golpeChoqueNivel1 = 2;
+    private int golpeChoqueNivel2 = 5;
+    private int golpeChoqueNivel3 = 8;
 
     private void Awake()
     {
@@ -65,8 +67,24 @@ public class GameManagerCirculos : MonoBehaviour
     //se ha salido fuera del circulo
     public void PerderPuntuacion()
     {
+
         //si estamos en primera escena al chocarnos perdemos 2 puntos
-        puntuacionActual -= golpeChoqueNivel1;
+        if (SceneManager.GetActiveScene().name == "circulosNave")
+        {
+            puntuacionActual -= golpeChoqueNivel1;
+        }
+        //si estamos en primera escena al chocarnos perdemos 2 puntos
+        else if (SceneManager.GetActiveScene().name == "circulosNaveNivel2")
+        {
+            puntuacionActual -= golpeChoqueNivel2;
+        }
+
+        //si estamos en primera escena al chocarnos perdemos 2 puntos
+        else if (SceneManager.GetActiveScene().name == "circulosNaveNivel3")
+        {
+            puntuacionActual -= golpeChoqueNivel3;
+        }
+
         string puntuacionActualString = puntuacionActual.ToString();
         //lo ponemos en el UIManager
         UIManagerCirculos.GetInstanceUI().CambiarPuntuacion(puntuacionActualString);
