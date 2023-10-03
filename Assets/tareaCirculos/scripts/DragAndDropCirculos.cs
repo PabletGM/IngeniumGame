@@ -16,6 +16,7 @@ public class DragAndDropCirculos : MonoBehaviour
     [SerializeField]
     private CircleCollider2D circleCollider;
 
+
     private Vector3 GetMouseWorldPosition()
     {
         return Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -59,12 +60,13 @@ public class DragAndDropCirculos : MonoBehaviour
         }
         else
         {
-
+            
             // La nueva posición está fuera del círculo, mantén la última posición válida
             transform.position = new Vector3(circleCenter.x, circleCenter.y, -1.39f);
             //hacemos que solo lo llame una vez
             if(!puntuacionBajada)
             {
+                
                 GameManagerCirculos.GetInstanceGM().PerderPuntuacion();
                 puntuacionBajada = true;
             }

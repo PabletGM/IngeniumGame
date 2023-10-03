@@ -95,27 +95,32 @@ public class GameManagerCirculos : MonoBehaviour
     //se ha salido fuera del circulo
     public void PerderPuntuacion()
     {
-
+        GameObject nave = GameObject.Find("nave");
         //si estamos en primera escena al chocarnos perdemos 2 puntos
         if (SceneManager.GetActiveScene().name == "circulosNave")
         {
             puntuacionActual -= golpeChoqueNivel1;
+            //buscamos en jerarquia objeto nave y llamamos a su metodo ShowDamageNotification(int damageAmount)
+            nave.GetComponent<DamageNotification>().ShowDamageNotification();
         }
         //si estamos en primera escena al chocarnos perdemos 2 puntos
         else if (SceneManager.GetActiveScene().name == "circulosNaveNivel2")
         {
             puntuacionActual -= golpeChoqueNivel2;
+            nave.GetComponent<DamageNotification>().ShowDamageNotification();
         }
 
         //si estamos en primera escena al chocarnos perdemos 2 puntos
         else if (SceneManager.GetActiveScene().name == "circulosNaveNivel3")
         {
             puntuacionActual -= golpeChoqueNivel3;
+            nave.GetComponent<DamageNotification>().ShowDamageNotification();
         }
 
         string puntuacionActualString = puntuacionActual.ToString();
         //lo ponemos en el UIManager
         UIManagerCirculos.GetInstanceUI().CambiarPuntuacion(puntuacionActualString);
+        
     }
 
     public int DevolverPuntuacionActual()
