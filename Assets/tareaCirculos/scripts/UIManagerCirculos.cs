@@ -90,6 +90,8 @@ public class UIManagerCirculos : MonoBehaviour
     //se ha acabado la ronda y activas menu para ver a que nivel pasas
     public void ActivarPanelRonda()
     {
+        //sonido panel ronda
+        AudioManagerCirculos.instance.PlaySFX("panelRonda");
         //quitas panel game de canvas
         panelGame.SetActive(false);
         //activas panel ronda
