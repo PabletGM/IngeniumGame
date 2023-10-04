@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class SceneTransition : MonoBehaviour
 {
-    public float transitionDuration = 1.5f; // Duración de la transición en segundos
+    public float transitionDuration; // Duración de la transición en segundos
     private Image transitionImage;
 
     private void Start()
@@ -16,6 +16,7 @@ public class SceneTransition : MonoBehaviour
 
     public void TransitionToScene(string sceneName)
     {
+        AudioManagerCirculos.instance.PlaySFX("fadeIn");
         StartCoroutine(FadeOut(sceneName));
        
     }
@@ -28,7 +29,7 @@ public class SceneTransition : MonoBehaviour
         float elapsedTime = 0f;
         Color startColor = transitionImage.color;
         Color endColor = new Color(startColor.r, startColor.g, startColor.b, 1f);
-
+        
         while (elapsedTime < transitionDuration)
         {
             transitionImage.color = Color.Lerp(startColor, endColor, elapsedTime / transitionDuration);

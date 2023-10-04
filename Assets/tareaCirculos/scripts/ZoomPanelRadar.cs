@@ -24,12 +24,16 @@ public class ZoomPanelRadar : MonoBehaviour
         cam = Camera.main;
         originalPosition = cam.transform.position;
         zoomPosition = zoomTarget.position;
+        ZoomIn();
     }
 
     public void ZoomIn()
     {
         ZoomActive = true;
         zoomStartTime = Time.time;
+
+        //activas musica zoom
+        AudioManagerCirculos.instance.PlaySFX("zoom");
     }
 
     public void ZoomOut()
@@ -63,6 +67,7 @@ public class ZoomPanelRadar : MonoBehaviour
 
     public void PasarEscenaJuego()
     {
+
         SceneManager.LoadScene("circulosNave");
     }
 }

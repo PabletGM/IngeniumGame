@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CirculosFadeIn : MonoBehaviour
 {
-    public float transitionDuration = 1.5f; // Duración de la transición en segundos
+    public float transitionDuration; // Duración de la transición en segundos
     private Image transitionImage;
 
     [SerializeField]
@@ -30,6 +30,7 @@ public class CirculosFadeIn : MonoBehaviour
 
     public void StartCoroutineFadeIn()
     {
+        AudioManagerCirculos.instance.PlaySFX("fadeOut");
         StartCoroutine(FadeIn());
         Invoke("ActivarCanvas", 1.5f);
         Invoke("ActivarGameManager", 1.5f);
