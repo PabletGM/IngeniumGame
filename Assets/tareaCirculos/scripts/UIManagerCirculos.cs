@@ -148,6 +148,6 @@ public class UIManagerCirculos : MonoBehaviour
 
     public void PasarEscenaFinalCirculos()
     {
-        SceneManager.LoadScene("escenaFinalCirculos");
+        SceneManager.LoadScene("escenaFinal");
     }
 }
