@@ -26,6 +26,9 @@ public class UIManagerCirculos : MonoBehaviour
     private GameObject objetos;
 
     [SerializeField]
+    private GameObject finalPartida;
+
+    [SerializeField]
     private TextMeshProUGUI cronometroCanvas;
 
     private void Awake()
@@ -129,5 +132,22 @@ public class UIManagerCirculos : MonoBehaviour
     public void ActualizarCronometroCanvas(float tiempoRestante)
     {
         cronometroCanvas.text = tiempoRestante.ToString("F2");
+    }
+
+    public void LimiteRondas()
+    {
+        //en caso de que las haya superado debemos:
+        //-Quitar jugabilidad, esto es desactivar objetos
+        objetos.SetActive(false);
+        //dentro del canvas desactivar todo el game, panelRonda y Start
+        panelGame.SetActive(false);
+        panelRonda.SetActive(false);
+        //activar el panel de Canvas que diga finalPartida
+        finalPartida.SetActive(true);
+    }
+
+    public void PasarEscenaFinalCirculos()
+    {
+        SceneManager.LoadScene("escenaFinalCirculos");
     }
 }

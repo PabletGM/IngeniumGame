@@ -25,6 +25,9 @@ public class GameManagerCirculos : MonoBehaviour
     private float tiempoInicial;
     private float tiempoEspera = 15f;
 
+    private float numeroRondasHechas = 0;
+    private float numeroMaxRondas= 3;
+
     private void Awake()
     {
 
@@ -39,6 +42,11 @@ public class GameManagerCirculos : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void AumentarNumeroRondasHechas()
+    {
+        numeroRondasHechas++;
     }
 
     static public GameManagerCirculos GetInstanceGM()
@@ -90,8 +98,13 @@ public class GameManagerCirculos : MonoBehaviour
             tiempoInicial = Time.time;
             //como ha acabado la ronda activamos panel ronda para ver a que nivel pasamos
             UIManagerCirculos.GetInstanceUI().ActivarPanelRonda();
+            
 
             UIManagerCirculos.GetInstanceUI().ActualizarCronometroCanvas(tiempoRestante);
+            //aumentamos numero de rondas
+            AumentarNumeroRondasHechas();
+            //comprobamos limite rondas
+            LimiteRondas();
         }
         //sino ha acabado la ronda actualizamos cronometro en pantalla
         else
@@ -101,6 +114,18 @@ public class GameManagerCirculos : MonoBehaviour
         }
 
     }
+
+
+    //comprueba sino has pasado ya las 3 rondas
+    public void LimiteRondas()
+    {
+        if(numeroRondasHechas>= numeroMaxRondas)
+        {
+            UIManagerCirculos.GetInstanceUI().LimiteRondas();
+        }
+    }
+
+    
 
 
     //se ha salido fuera del circulo
