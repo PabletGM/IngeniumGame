@@ -74,6 +74,9 @@ public class GameManagerCirculos : MonoBehaviour
 
     private void CronometroTime()
     {
+        // Calcula el tiempo restante hasta el próximo ciclo.
+        float tiempoRestante = tiempoEspera - (Time.time - tiempoInicial);
+
         // Comprueba si han pasado 15 segundos desde el tiempo inicial.
         if (Time.time - tiempoInicial >= tiempoEspera)
         {
@@ -87,8 +90,16 @@ public class GameManagerCirculos : MonoBehaviour
             tiempoInicial = Time.time;
             //como ha acabado la ronda activamos panel ronda para ver a que nivel pasamos
             UIManagerCirculos.GetInstanceUI().ActivarPanelRonda();
+
+            UIManagerCirculos.GetInstanceUI().ActualizarCronometroCanvas(tiempoRestante);
         }
-        
+        //sino ha acabado la ronda actualizamos cronometro en pantalla
+        else
+        {
+            // Muestra el tiempo restante en un mensaje de depuración (puedes ajustar esto según tus necesidades).
+            UIManagerCirculos.GetInstanceUI().ActualizarCronometroCanvas(tiempoRestante);
+        }
+
     }
 
 

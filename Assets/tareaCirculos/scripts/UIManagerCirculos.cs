@@ -25,6 +25,9 @@ public class UIManagerCirculos : MonoBehaviour
     [SerializeField]
     private GameObject objetos;
 
+    [SerializeField]
+    private TextMeshProUGUI cronometroCanvas;
+
     private void Awake()
     {
 
@@ -121,5 +124,10 @@ public class UIManagerCirculos : MonoBehaviour
     {
         //te permite jugabilidad activando o desactivando los objetos
         objetos.SetActive(set);
+    }
+
+    public void ActualizarCronometroCanvas(float tiempoRestante)
+    {
+        cronometroCanvas.text = tiempoRestante.ToString("F2");
     }
 }
