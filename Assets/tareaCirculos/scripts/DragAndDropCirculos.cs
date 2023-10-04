@@ -69,6 +69,9 @@ public class DragAndDropCirculos : MonoBehaviour
                 
                 GameManagerCirculos.GetInstanceGM().PerderPuntuacion();
                 puntuacionBajada = true;
+
+                //sonido quitar puntuacion
+                AudioManagerCirculos.instance.PlaySFX("quitarPuntuacion");
             }
             
         }
@@ -92,7 +95,9 @@ public class DragAndDropCirculos : MonoBehaviour
             transform.position = new Vector3(circleCenter.x, circleCenter.y, -1.39f);
             
                 GameManagerCirculos.GetInstanceGM().PerderPuntuacion();
-            
+            //sonido quitar puntuacion
+            AudioManagerCirculos.instance.PlaySFX("quitarPuntuacion");
+
         }
     }
 
