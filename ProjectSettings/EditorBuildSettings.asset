@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/tareaCirculos/scene/escenaIntro.unity
+    guid: 82c3e69e53d4aca4abcb29f2e5350c5a
+  - enabled: 1
     path: Assets/tareaCirculos/scene/PanelRadar.unity
     guid: 547e299867a188f44891cf3ba1d95085
   - enabled: 1
