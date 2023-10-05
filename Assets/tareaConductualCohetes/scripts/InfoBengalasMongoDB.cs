@@ -37,13 +37,14 @@ public class InfoBengalasMongoDB : MonoBehaviour
         string uri = $"{baseUrl + "Users/gameData/bengalas"}";
 
         // Convierte el arreglo de enteros a una cadena JSON válida
-        string alturaCohete = JsonUtility.ToJson(new { alturaCohetes });
+        string alturaCohete = string.Join(",", alturaCohetes);
 
-        string body2 = $"{{ \"alturaCohete\": {alturaCohete} }}";
+        // Construye el cuerpo JSON con la estructura deseada
+        string body = $"{{ \"alturaCohete\": [{alturaCohete}] }}";
 
-        Debug.Log(body2);
+        Debug.Log(alturaCohete);
 
-        using (UnityWebRequest request = UnityWebRequest.Put(uri, body2))
+        using (UnityWebRequest request = UnityWebRequest.Put(uri, body))
         {
             request.SetRequestHeader("Authorization", "Bearer " + access_token);
             request.SetRequestHeader("Content-Type", "application/json");

@@ -130,13 +130,12 @@ public class GameManagerTareaBengalas : MonoBehaviour
                 int timeBengalaVidas = Convert.ToInt32(timeBengalaVida);
                 alturaCohetes[numeroAlturaCohetesRegistradas] = timeBengalaVidas;
                 numeroAlturaCohetesRegistradas++;
+
+                if(numeroAlturaCohetesRegistradas == numeroTiradasTotal)
+                {
+                    mongoDB.GetComponent<InfoBengalasMongoDB>().RecolectarArgumentosBengalas();
+                }         
             }
-            //cuando se han registrado las 3 tiradas lo conectamos con mongoDB
-            else
-            {
-                mongoDB.GetComponent<InfoBengalasMongoDB>().RecolectarArgumentosBengalas();
-            }
-            
         }
         //efectosVFX despegue
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().DespegueVFX();
