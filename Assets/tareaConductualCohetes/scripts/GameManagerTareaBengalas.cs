@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -36,6 +37,16 @@ public class GameManagerTareaBengalas : MonoBehaviour
     private GameObject AudioManagerObject;
 
 
+    #region MongoDB
+    private int[] alturaCohetes;
+
+    private int numeroAlturaCohetesRegistradas = 0;
+
+    [SerializeField]
+    private GameObject mongoDB;
+    #endregion
+
+
 
     #region Marcador
     //habrá 2 de prueba de 0 a 2
@@ -71,6 +82,7 @@ public class GameManagerTareaBengalas : MonoBehaviour
         //ponemos pos inicial bengala
         posInicialBengala = transformBengala.position;
         UITareaBengalas = UIManagerTareaBengalas.GetInstanceUI();
+        alturaCohetes = new int[3];
 
         //depende del nombre de la escena ponemos mecanica de 3 cohetes o 2
         if (SceneManager.GetActiveScene().name == "TareaBengalasGame")
@@ -101,6 +113,7 @@ public class GameManagerTareaBengalas : MonoBehaviour
         astronautaEscena.GetComponent<ComportamientoAstronauta>().AnimacionEncenderBengala();
     }
 
+    [Obsolete]
     public void MecanicaCohete()
     {
         //llama a la funcion del cohete que lo propulsa para arriba
@@ -108,6 +121,23 @@ public class GameManagerTareaBengalas : MonoBehaviour
         //permiso para despegar cohete
         //preguntamos a boton que tiempo vivirá el cohete
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().DespegarCohete(timeBengalaVida);
+        //si estamos en escena de bengalas buena, no la de prueba registramos las alturas de los cohetes
+        if(SceneManager.GetActiveScene().name == "TareaBengalasGame")
+        {
+            //mientras que no supere numero de tiradas maximas
+            if(numeroAlturaCohetesRegistradas<= numeroTiradasTotal)
+            {
+                int timeBengalaVidas = Convert.ToInt32(timeBengalaVida);
+                alturaCohetes[numeroAlturaCohetesRegistradas] = timeBengalaVidas;
+                numeroAlturaCohetesRegistradas++;
+            }
+            //cuando se han registrado las 3 tiradas lo conectamos con mongoDB
+            else
+            {
+                mongoDB.GetComponent<InfoBengalasMongoDB>().RecolectarArgumentosBengalas();
+            }
+            
+        }
         //efectosVFX despegue
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().DespegueVFX();
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().PrepararPropulsion();
@@ -156,6 +186,13 @@ public class GameManagerTareaBengalas : MonoBehaviour
         listaBengalasLeft[contadorNumeroTiradas].SetActive(false);
         //sumamos una tirada mas hecha
         contadorNumeroTiradas++;
+    }
+
+
+    //devuelve tiempo de vida o altura que llegará el cohete
+    public int[] AlturasCohetes()
+    {
+        return alturaCohetes;
     }
 
     public void DesactivarJugabilidadFinPractica()
