@@ -28,13 +28,13 @@ public class BouncingRadar : MonoBehaviour
         Vector2 newPosition = (Vector2)transform.position + direction * speed * Time.deltaTime;
 
         // Verifica si el sprite ha alcanzado los límites de la pantalla
-        if (newPosition.x < minX || newPosition.x > maxX)
+        if (newPosition.x <= minX || newPosition.x >= maxX)
         {
             // Cambia la dirección horizontal para invertir el movimiento
             direction.x *= -1;
         }
 
-        if (newPosition.y < minY || newPosition.y > maxY)
+        if (newPosition.y <= minY || newPosition.y >= maxY)
         {
             // Cambia la dirección vertical para invertir el movimiento
             direction.y *= -1;
