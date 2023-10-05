@@ -24,7 +24,7 @@ public class InfoBengalasMongoDB : MonoBehaviour
     public void RecolectarArgumentosBengalas()
     {
         //recolectar parametros, altura tipo int
-        int[] alturaCohetes = _myGameManagerBengalas.AlturasCohetes();
+        float[] alturaCohetes = _myGameManagerBengalas.AlturasCohetes();
         //recolectar token de script login register
         access_token = _myUIManagerLogin.GetAccessToken();
         //se empieza corrutina hoyosMongoDB
@@ -32,7 +32,7 @@ public class InfoBengalasMongoDB : MonoBehaviour
     }
 
     [System.Obsolete]
-    IEnumerator PutBengalasMongoDB(int[] alturaCohetes)
+    IEnumerator PutBengalasMongoDB(float[] alturaCohetes)
     {
         string uri = $"{baseUrl + "Users/gameData/bengalas"}";
 

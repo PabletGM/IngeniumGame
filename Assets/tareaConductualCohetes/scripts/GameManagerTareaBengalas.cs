@@ -38,7 +38,7 @@ public class GameManagerTareaBengalas : MonoBehaviour
 
 
     #region MongoDB
-    private int[] alturaCohetes;
+    private float[] alturaCohetes;
 
     private int numeroAlturaCohetesRegistradas = 0;
 
@@ -82,7 +82,7 @@ public class GameManagerTareaBengalas : MonoBehaviour
         //ponemos pos inicial bengala
         posInicialBengala = transformBengala.position;
         UITareaBengalas = UIManagerTareaBengalas.GetInstanceUI();
-        alturaCohetes = new int[3];
+        alturaCohetes = new float[3];
 
         //depende del nombre de la escena ponemos mecanica de 3 cohetes o 2
         if (SceneManager.GetActiveScene().name == "TareaBengalasGame")
@@ -127,8 +127,8 @@ public class GameManagerTareaBengalas : MonoBehaviour
             //mientras que no supere numero de tiradas maximas
             if(numeroAlturaCohetesRegistradas<= numeroTiradasTotal)
             {
-                int timeBengalaVidas = Convert.ToInt32(timeBengalaVida);
-                alturaCohetes[numeroAlturaCohetesRegistradas] = timeBengalaVidas;
+                
+                alturaCohetes[numeroAlturaCohetesRegistradas] = timeBengalaVida;
                 numeroAlturaCohetesRegistradas++;
 
                 if(numeroAlturaCohetesRegistradas == numeroTiradasTotal)
@@ -189,7 +189,7 @@ public class GameManagerTareaBengalas : MonoBehaviour
 
 
     //devuelve tiempo de vida o altura que llegará el cohete
-    public int[] AlturasCohetes()
+    public float[] AlturasCohetes()
     {
         return alturaCohetes;
     }
