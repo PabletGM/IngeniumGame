@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,11 @@ public class GameManagerCirculos : MonoBehaviour
     private float numeroRondasHechas = 0;
     private float numeroMaxRondas= 3;
 
+
+    #region MongoDB
+    private int[] patronRondasJugador;
+    #endregion
+
     private void Awake()
     {
 
@@ -46,7 +52,39 @@ public class GameManagerCirculos : MonoBehaviour
 
     private void AumentarNumeroRondasHechas()
     {
+        //ponemos tambien en el nivel que estamos en cada ronda en nuestro array
+        PonerNivelRonda();
         numeroRondasHechas++;
+    }
+
+    private void PonerNivelRonda()
+    {
+        //si esta dentro de los limites del array
+        if(numeroRondasHechas < numeroMaxRondas)
+        {
+            //si es nivel 1
+            if (SceneManager.GetActiveScene().name == "circulosNave")
+            {
+                patronRondasJugador[Convert.ToInt32(numeroRondasHechas)] = 1;
+            }
+            //si estamos en primera escena al chocarnos perdemos 2 puntos
+            else if (SceneManager.GetActiveScene().name == "circulosNaveNivel2")
+            {
+                patronRondasJugador[Convert.ToInt32(numeroRondasHechas)] = 2;
+            }
+
+            //si estamos en primera escena al chocarnos perdemos 2 puntos
+            else if (SceneManager.GetActiveScene().name == "circulosNaveNivel3")
+            {
+                patronRondasJugador[Convert.ToInt32(numeroRondasHechas)] = 3;
+            }
+        }
+        
+    }
+
+    public int[] DevolverRondasJugador()
+    {
+        return patronRondasJugador;
     }
 
     static public GameManagerCirculos GetInstanceGM()
@@ -59,7 +97,8 @@ public class GameManagerCirculos : MonoBehaviour
     //ponemos puntuacion actual por pantalla, solo se llama una vez en la primera escena, ya que este script luego se reutiliza
     void Start()
     {
-
+        //tamaño de array con numero de Rondas
+        patronRondasJugador = new int[3];
         //si es la escena 1 y la primera vez ponemos que la puntuacion actual sea la puntuacion Inicial
         if (SceneManager.GetActiveScene().name == "circulosNave")
         {

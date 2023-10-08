@@ -127,8 +127,8 @@ public class GameManagerTareaBengalas : MonoBehaviour
             //mientras que no supere numero de tiradas maximas
             if(numeroAlturaCohetesRegistradas<= numeroTiradasTotal)
             {
-                
-                alturaCohetes[numeroAlturaCohetesRegistradas] = timeBengalaVida;
+                float timeBengalaVidaRedondeado = Mathf.Round(timeBengalaVida * 10) / 10.0f;
+                alturaCohetes[numeroAlturaCohetesRegistradas] = timeBengalaVidaRedondeado;
                 numeroAlturaCohetesRegistradas++;
 
                 if(numeroAlturaCohetesRegistradas == numeroTiradasTotal)

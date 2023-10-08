@@ -1,58 +1,53 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
-public class InfoBengalasMongoDB : MonoBehaviour
+public class InfoCirculosMongoDB : MonoBehaviour
 {
+    //numero de picadas en cada hoyo
+    private int[] patronRondas;
     //conexion con GameManager
-    GameManagerTareaBengalas _myGameManagerBengalas;
+    GameManagerCirculos _myGameManagerCirculos;
     UIManagerLogin _myUIManagerLogin;
     string baseUrl = "https://simplebackendingenuity.onrender.com/";
     //por defecto uno puesto a mano
     private string access_token = "";
 
-    private float[] alturaCohetes;
-
     private void Start()
     {
-        alturaCohetes = new float[3];
         //gameManager
-        _myGameManagerBengalas = GameManagerTareaBengalas.GetInstanceGM();
+        _myGameManagerCirculos = GameManagerCirculos.GetInstanceGM();
         //para recolectar el token
         _myUIManagerLogin = UIManagerLogin.GetInstanceUI();
     }
 
+    //este metodo se llame desde la escena final o cuando sale el panelRonda
     [System.Obsolete]
-    public void RecolectarArgumentosBengalas()
+    public void RecolectarArgumentosCirculos()
     {
-        //recolectar parametros, altura tipo int
-        alturaCohetes = _myGameManagerBengalas.AlturasCohetes();
+        //recoger argumentos
+        patronRondas = _myGameManagerCirculos.DevolverRondasJugador();
         //recolectar token de script login register
         access_token = _myUIManagerLogin.GetAccessToken();
         //se empieza corrutina hoyosMongoDB
-        StartCoroutine(PutBengalasMongoDB(alturaCohetes));
+        StartCoroutine(PutCirculosMongoDB());
+
+
     }
 
     [System.Obsolete]
-    IEnumerator PutBengalasMongoDB(float[] alturaCohetes)
+    IEnumerator PutCirculosMongoDB()
     {
-        string uri = $"{baseUrl + "Users/gameData/bengalas"}";
+        string patronRondasString = string.Join(",", patronRondas);
 
-        // Convierte el arreglo de enteros a una cadena JSON válida
-        //esto para float [] y que no te separe todo en comas, parte decimal y entera
-        string alturaCohete = string.Join(" , ", alturaCohetes.Select(f => f.ToString("0.0", CultureInfo.InvariantCulture)));
-        //string alturaCohete = string.Join(",", alturaCohetes);
+        string uri = $"{baseUrl + "Users/gameData/circulos"}";
 
-        // Construye el cuerpo JSON con la estructura deseada
-        string body = $"{{ \"alturaCohete\": [{alturaCohete}] }}";
+        string body2 = $"{{ \"nivel\": [{patronRondasString}]}}";
 
-        Debug.Log(alturaCohete);
+        Debug.Log(body2);
 
-        using (UnityWebRequest request = UnityWebRequest.Put(uri, body))
+        using (UnityWebRequest request = UnityWebRequest.Put(uri, body2))
         {
             request.SetRequestHeader("Authorization", "Bearer " + access_token);
             request.SetRequestHeader("Content-Type", "application/json");
@@ -75,5 +70,5 @@ public class InfoBengalasMongoDB : MonoBehaviour
             }
         }
     }
-
 }
+
