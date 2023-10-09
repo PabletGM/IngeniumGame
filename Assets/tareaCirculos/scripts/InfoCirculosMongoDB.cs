@@ -23,6 +23,7 @@ public class InfoCirculosMongoDB : MonoBehaviour
     }
 
     //este metodo se llame desde la escena final o cuando sale el panelRonda
+
     [System.Obsolete]
     public void RecolectarArgumentosCirculos()
     {
