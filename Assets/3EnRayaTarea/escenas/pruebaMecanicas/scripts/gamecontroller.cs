@@ -115,6 +115,17 @@ public class gamecontroller : MonoBehaviour
 
 
 
+        //turno del enemigo
+        ElegirFichaEnemigoAutomatico();
+    }
+
+
+    //ves las fichas restantes y como es dificultad alta 
+    public void  ElegirFichaEnemigoAutomatico()
+    {
+        //ves si hay algun duo de fichas, si es así colocas en la tercera posicion para ganar
+
+        //si hay solo fichas sueltas y no duos pues lo pones en una posicion aleatoria de sus fichas vecinas
     }
 
     public void Combinacion200XX()
