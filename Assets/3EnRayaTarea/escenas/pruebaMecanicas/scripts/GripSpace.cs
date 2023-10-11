@@ -14,8 +14,11 @@ public class GripSpace : MonoBehaviour
 
     public void SetSpace()
     {
-        buttonText.text = GameController.GetPlayerSide();
+        buttonText.text = GameController.GetGameSide();
         button.interactable = false;
+        //metodo para buscar combinacion de 2 de 2 00 o 2 XX
+        GameController.Combinacion200XX();
+        //para ver si el juego se ha acabado
         GameController.EndTurn();
     }
 
