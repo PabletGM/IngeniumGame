@@ -19,6 +19,8 @@ public class gamecontroller : MonoBehaviour
     public GameObject gameover;
     public TMP_Text gameoverText;
 
+    public GameObject win;
+
     private int moveCount;
 
     public GameObject restartButton;
@@ -33,13 +35,8 @@ public class gamecontroller : MonoBehaviour
 
     int contadorPosicionesVictoriaEnemy = 0;
 
+    private bool endPartida = false;
 
-    private void Start()
-    {
-        
-
-        
-    }
 
 
     public void EnemyTurnInicial()
@@ -61,17 +58,28 @@ public class gamecontroller : MonoBehaviour
     }
     private void Awake()
     {
-        gameover.SetActive(false);
         SetGameControllerReferenceOnButtons();
+
+        InicializarJuego();
+
+        //turno inicial del enemigo
+        EnemyTurnInicial();
+    }
+
+
+    public void InicializarJuego()
+    {
+        gameover.SetActive(false);
+        win.SetActive(false);
         gameSide = playerSide;
         moveCount = 0;
         //tamaño 8
         posicionesVictoriaEnemy = new int[8];
-        //turno inicial del enemigo
-        EnemyTurnInicial();
+    }
 
-
-
+    public void NewMovePlayer()
+    {
+        moveCount++;
     }
 
     void SetGameControllerReferenceOnButtons()
@@ -84,7 +92,12 @@ public class gamecontroller : MonoBehaviour
 
     private void Update()
     {
-        
+        //comprobamos todo el rato si se ha ganado
+        if(!endPartida)
+        {
+            Posibles3EnRaya();
+        }
+       
     }
 
     public string GetGameSide()
@@ -94,69 +107,142 @@ public class gamecontroller : MonoBehaviour
 
     public void EndTurn()
     {
-
-        Posibles3EnRaya();
-
         //turno enemigo
         EnemyTurn();
 
     }
 
-    public void Posibles3EnRaya()
+    public void ComprobacionJugadas3EnRayaPlayer()
     {
-        moveCount++;
-        //diferentes maneras de acabar juego o lineas para hacer 3 en raya
-
         //1 ---
-        if (buttonList[0].text == gameSide && buttonList[1].text == gameSide && buttonList[2].text == gameSide)
+        if (buttonList[0].text == playerSide && buttonList[1].text == playerSide && buttonList[2].text == playerSide)
         {
-            GameOver();
+            Win();
+            endPartida = true;
         }
 
         //2 ---
-        if (buttonList[3].text == gameSide && buttonList[4].text == gameSide && buttonList[5].text == gameSide)
+        if (buttonList[3].text == playerSide && buttonList[4].text == playerSide && buttonList[5].text == playerSide)
         {
-            GameOver();
+            Win();
+            endPartida = true;
         }
 
         //3 ---
-        if (buttonList[6].text == gameSide && buttonList[7].text == gameSide && buttonList[8].text == gameSide)
+        if (buttonList[6].text == playerSide && buttonList[7].text == playerSide && buttonList[8].text == playerSide)
         {
-            GameOver();
+            Win();
+            endPartida = true;
         }
 
         //4 ---
-        if (buttonList[0].text == gameSide && buttonList[3].text == gameSide && buttonList[6].text == gameSide)
+        if (buttonList[0].text == playerSide && buttonList[3].text == playerSide && buttonList[6].text == playerSide)
         {
-            GameOver();
+            Win();
+            endPartida = true;
         }
 
         //5 ---
-        if (buttonList[1].text == gameSide && buttonList[4].text == gameSide && buttonList[7].text == gameSide)
+        if (buttonList[1].text == playerSide && buttonList[4].text == playerSide && buttonList[7].text == playerSide)
         {
-            GameOver();
+            Win();
+            endPartida = true;
         }
 
         //6 ---
-        if (buttonList[2].text == gameSide && buttonList[5].text == gameSide && buttonList[8].text == gameSide)
+        if (buttonList[2].text == playerSide && buttonList[5].text == playerSide && buttonList[8].text == playerSide)
         {
-            GameOver();
+            Win();
+            endPartida = true;
         }
 
         //7 
-        if (buttonList[0].text == gameSide && buttonList[4].text == gameSide && buttonList[8].text == gameSide)
+        if (buttonList[0].text == playerSide && buttonList[4].text == playerSide && buttonList[8].text == playerSide)
         {
-            GameOver();
+            Win();
+            endPartida = true;
         }
 
         //8
-        if (buttonList[2].text == gameSide && buttonList[4].text == gameSide && buttonList[6].text == gameSide)
+        if (buttonList[2].text == playerSide && buttonList[4].text == playerSide && buttonList[6].text == playerSide)
+        {
+            Win();
+            endPartida = true;
+        }
+    }
+
+    public void ComprobacionJugadas3EnRayaEnemy()
+    {
+        //1 ---
+        if (buttonList[0].text == enemySide && buttonList[1].text == enemySide && buttonList[2].text == enemySide)
         {
             GameOver();
+            endPartida = true;
         }
 
-        if (moveCount >= 9)
+        //2 ---
+        if (buttonList[3].text == enemySide && buttonList[4].text == enemySide && buttonList[5].text ==enemySide)
         {
+            GameOver();
+            endPartida = true;
+        }
+
+        //3 ---
+        if (buttonList[6].text == enemySide && buttonList[7].text == enemySide && buttonList[8].text == enemySide)
+        {
+            GameOver();
+            endPartida = true;
+        }
+
+        //4 ---
+        if (buttonList[0].text == enemySide && buttonList[3].text == enemySide && buttonList[6].text == enemySide)
+        {
+            GameOver();
+            endPartida = true;
+        }
+
+        //5 ---
+        if (buttonList[1].text == enemySide && buttonList[4].text == enemySide && buttonList[7].text == enemySide)
+        {
+            GameOver();
+            endPartida = true;
+        }
+
+        //6 ---
+        if (buttonList[2].text == enemySide && buttonList[5].text == enemySide && buttonList[8].text == enemySide)
+        {
+            GameOver();
+            endPartida = true;
+        }
+
+        //7 
+        if (buttonList[0].text == enemySide && buttonList[4].text == enemySide && buttonList[8].text == enemySide)
+        {
+            GameOver();
+            endPartida = true;
+        }
+
+        //8
+        if (buttonList[2].text == enemySide && buttonList[4].text == enemySide && buttonList[6].text == enemySide)
+        {
+            GameOver();
+            endPartida = true;
+        }
+    }
+
+    public void Posibles3EnRaya()
+    {
+        
+        //diferentes maneras de acabar juego o lineas para hacer 3 en raya
+
+        ComprobacionJugadas3EnRayaPlayer();
+
+        ComprobacionJugadas3EnRayaEnemy();
+
+        //sino ha ganado alguien antes
+        if (moveCount >= 9 && !endPartida)
+        {
+            endPartida = true;
             gameover.SetActive(true);
             gameoverText.text = "Empate";
         }
@@ -172,17 +258,17 @@ public class gamecontroller : MonoBehaviour
         {
             //ves si hay algun duo de fichas, si es así colocas en la tercera posicion para ganar
             ColocarFichaEnemyCombinacion3();
-            //ganas
-            EndTurn();
+
         }
         //sino hay posibilidad de posicionVictoria la pones al lado de la ficha haciendo una pareja
         else
         {
-           
+            //buscamos una ficha enemy aleatoria en el tablero y le hacemos una pareja
+            string nameFichaEnemyTablero = DevolverFichaEnemyColocadaEnTablero();
             //miramos si hay alguna ficha enemySide
-            if (DevolverFichaEnemyColocadaEnTablero() != null)
+            if (nameFichaEnemyTablero != null)
             {
-                CrearParejaFichasEnemyEnTablero();
+                CrearParejaFichasEnemyEnTablero(DevuelveBotonConNombre(nameFichaEnemyTablero));
             }
             //si no hay fichas la pones en el centro
             else
@@ -191,16 +277,43 @@ public class gamecontroller : MonoBehaviour
             }
         }
         
-        
-
-       
     }
 
-    public void CrearParejaFichasEnemyEnTablero()
+
+    //metodo que por nombre te busque el GameObject de el boton que tiene ficha enemy
+    public GameObject DevuelveBotonConNombre(string name)
+    {
+        switch (name)
+        {
+            case "boton0":
+                return buttonList[0].transform.parent.gameObject;
+            case "boton1":
+                return buttonList[1].transform.parent.gameObject;
+            case "boton2":
+                return buttonList[2].transform.parent.gameObject;
+            case "boton3":
+                return buttonList[3].transform.parent.gameObject;
+            case "boton4":
+                return buttonList[4].transform.parent.gameObject;
+            case "boton5":
+                return buttonList[5].transform.parent.gameObject;
+            case "boton6":
+                return buttonList[6].transform.parent.gameObject;
+            case "boton7":
+                return buttonList[7].transform.parent.gameObject;
+            case "boton8":
+                return buttonList[8].transform.parent.gameObject;
+            default:
+                break;
+        }
+        return null;
+    }
+
+    public void CrearParejaFichasEnemyEnTablero(GameObject botonElegido)
     {
         //buscas en tablero una ficha con enemySide, la primera que encuentre
         //miras que vecinos tiene como fichas y colocas en un vecino otra ficha enemySide
-        Poner0EnFichaVecina(DevolverFichaEnemyColocadaEnTablero());
+        Poner0EnFichaVecina(botonElegido);
         
 
     }
@@ -692,7 +805,7 @@ public class gamecontroller : MonoBehaviour
 
     }
 
-    public GameObject DevolverFichaEnemyColocadaEnTablero()
+    public string DevolverFichaEnemyColocadaEnTablero()
     {
         System.Random random = new System.Random();
         int intentos = 0;
@@ -709,7 +822,7 @@ public class gamecontroller : MonoBehaviour
 
                 if (buttonList[posicionAleatoria].text == enemySide)
                 {
-                    return buttonList[posicionAleatoria].transform.parent.gameObject;
+                    return buttonList[posicionAleatoria].transform.parent.gameObject.name;
                 }
 
                 intentos++;
@@ -1037,13 +1150,22 @@ public class gamecontroller : MonoBehaviour
 
     #endregion
 
-    //para decir si ha ganado
+    //para decir si ha ganado enemy
     void GameOver()
     {
         SetBoardInteractable(false);
 
         gameover.SetActive(true);
-        gameoverText.text = gameSide + " has ganado";
+        gameoverText.text = "O has ganado";
+    }
+
+    //para decir si ha ganado enemy
+    void Win()
+    {
+        SetBoardInteractable(false);
+
+        win.SetActive(true);
+        gameoverText.text ="X has ganado";
     }
 
     void ChangeSides()
@@ -1077,6 +1199,7 @@ public class gamecontroller : MonoBehaviour
         gameSide = enemySide;
         moveCount = 0;
         gameover.SetActive(false);
+        win.SetActive(false);
 
         SetBoardInteractable(true);
 
@@ -1084,8 +1207,13 @@ public class gamecontroller : MonoBehaviour
         {
             buttonList[i].text = "";
         }
-        
 
+        TurnoEnemigoInicial();
+        
+    }
+
+    public void TurnoEnemigoInicial()
+    {
         //TURNO ENEMIGO
 
         //turno inicial del enemigo

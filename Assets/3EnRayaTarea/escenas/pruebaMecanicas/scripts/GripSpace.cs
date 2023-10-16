@@ -19,6 +19,8 @@ public class GripSpace : MonoBehaviour
         {
             //siempre ponemos la X de player ya que solo se pulsa boton en nuestro turno
             buttonText.text = "X";
+            //hacemos jugada con player
+            GameController.NewMovePlayer();
             //ya no es accesible
             this.gameObject.GetComponent<Button>().interactable = false;
             //metodo para buscar combinacion de 2 de 2 00 o 2 XX, para añadir posibles posiciones de victoria
@@ -27,7 +29,7 @@ public class GripSpace : MonoBehaviour
             GameController.ReiniciarContador();
 
 
-            //para ver si el juego se ha acabado
+            //turno enemy
             GameController.EndTurn();
 
         }
