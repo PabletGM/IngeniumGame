@@ -21,6 +21,8 @@ public class GripSpace : MonoBehaviour
             buttonText.text = "X";
             //hacemos jugada con player
             GameController.NewMovePlayer();
+            //ponemos posicion como ocupada
+            GameController.PosicionBotonPulsadoOcupada(this.gameObject);
             //ya no es accesible
             this.gameObject.GetComponent<Button>().interactable = false;
             //metodo para buscar combinacion de 2 de 2 00 o 2 XX, para añadir posibles posiciones de victoria

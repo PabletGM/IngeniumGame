@@ -33,6 +33,9 @@ public class gamecontroller : MonoBehaviour
     //se actualiza en cada turno
     int[] posicionesVictoriaEnemy;
 
+    //para saber que casillas se van ocupando con alguna ficha
+    bool[] posicionesLibresSinFicha;
+
     int contadorPosicionesVictoriaEnemy = 0;
 
     private bool endPartida = false;
@@ -75,6 +78,59 @@ public class gamecontroller : MonoBehaviour
         moveCount = 0;
         //tamaño 8
         posicionesVictoriaEnemy = new int[8];
+        posicionesLibresSinFicha = new bool[9];
+        //poner todas las posiciones a true por defecto
+    }
+
+    public void TodasPosicionesLibres()
+    {
+        for(int i=0; i<posicionesLibresSinFicha.Length;i++)
+        {
+            posicionesLibresSinFicha[i] = true;
+        }
+    }
+
+
+    //pasas argumento de boton que se ha pulsado y lo marca en el array
+    public void PosicionBotonPulsadoOcupada(GameObject botonpulsado)
+    {
+        //vemos que numero es el botonPulsado
+        int numero = devolverNumeroConBoton(botonpulsado);
+        if(numero!=-1)
+        {
+            switch (numero)
+            {
+                case 0 :
+                    posicionesLibresSinFicha[0] = true;
+                    break;
+                case 1 :
+                    posicionesLibresSinFicha[1] = true;
+                    break;
+                case 2:
+                    posicionesLibresSinFicha[2] = true;
+                    break;
+                case 3:
+                    posicionesLibresSinFicha[3] = true;
+                    break;
+                case 4:
+                    posicionesLibresSinFicha[4] = true;
+                    break; 
+                case 5:
+                    posicionesLibresSinFicha[5] = true;
+                    break;
+                case 6:
+                    posicionesLibresSinFicha[6] = true;
+                    break;
+                case 7:
+                    posicionesLibresSinFicha[7] = true;
+                    break;
+                case 8:
+                    posicionesLibresSinFicha[8] = true;
+                    break;
+                default:
+                    break;
+            }        
+        }
     }
 
     public void NewMovePlayer()
@@ -872,6 +928,35 @@ public class gamecontroller : MonoBehaviour
         return null;
     }
 
+
+    public int devolverNumeroConBoton(GameObject boton)
+    {
+        switch (boton.name)
+        {
+            case "boton0":
+                return 0;
+            case "boton1":
+                return 1;
+            case "boton2":
+                return 2;
+            case "boton3":
+                return 3;
+            case "boton4":
+                return 4;
+            case "boton5":
+                return 5;
+            case "boton6":
+                return 6;
+            case "boton7":
+                return 7;
+            case "boton8":
+                return 8;
+            default:
+                break;
+        }
+        return -1;
+    }
+
     //buscar pareja enemies 2s 00
     public void Combinacion200()
     {
@@ -1201,6 +1286,7 @@ public class gamecontroller : MonoBehaviour
         gameover.SetActive(false);
         win.SetActive(false);
 
+        TodasPosicionesLibres();
         SetBoardInteractable(true);
 
         for (int i = 0; i < buttonList.Length; i++)
