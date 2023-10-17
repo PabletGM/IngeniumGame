@@ -23,6 +23,9 @@ public class gamecontroller : MonoBehaviour
 
     private int moveCount;
 
+    //maximo numero de rondas en caso de empate es siempre 4
+    private int maxRounds = 4;
+
     public GameObject restartButton;
 
     public GameObject playerX;
@@ -67,6 +70,11 @@ public class gamecontroller : MonoBehaviour
 
         //turno inicial del enemigo
         EnemyTurnInicial();
+    }
+
+    public void ReturnTotalRounds()
+    {
+        Debug.Log(moveCount);
     }
 
 
@@ -167,6 +175,10 @@ public class gamecontroller : MonoBehaviour
     {
         //turno enemigo
         EnemyTurn();
+        //se suma un movimiento mas o ronda mas
+        NewMovePlayer();
+        //devuelve moveCount
+        ReturnTotalRounds();
 
     }
 
@@ -298,7 +310,7 @@ public class gamecontroller : MonoBehaviour
         ComprobacionJugadas3EnRayaEnemy();
 
         //sino ha ganado alguien antes
-        if (moveCount >= 9 && !endPartida)
+        if (moveCount >= maxRounds && !endPartida)
         {
             endPartida = true;
             gameover.SetActive(true);
@@ -1004,15 +1016,6 @@ public class gamecontroller : MonoBehaviour
         
     }
 
-    public void TurnoEnemigoInicial()
-    {
-        //TURNO ENEMIGO
-
-        //turno inicial del enemigo
-        EnemyTurnInicial();
-        //cambiamos a turno jugador y ya pulsas boton
-        ChangeSides();
-    }
 
     void SetBoardInteractable(bool toggle)
     {

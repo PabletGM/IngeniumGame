@@ -19,8 +19,7 @@ public class GripSpace : MonoBehaviour
         {
             //siempre ponemos la X de player ya que solo se pulsa boton en nuestro turno
             buttonText.text = "X";
-            //hacemos jugada con player
-            GameController.NewMovePlayer();
+            
             //ponemos posicion como ocupada
             GameController.PosicionBotonPulsadoOcupada(this.gameObject);
             //ya no es accesible
