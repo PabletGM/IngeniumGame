@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using static UnityEditor.Progress;
 
 public class gamecontroller : MonoBehaviour
 {
@@ -322,7 +322,7 @@ public class gamecontroller : MonoBehaviour
             //buscamos una ficha enemy aleatoria en el tablero y le hacemos una pareja
             string nameFichaEnemyTablero = DevolverFichaEnemyColocadaEnTablero();
             //miramos si hay alguna ficha enemySide
-            if (nameFichaEnemyTablero != null)
+                if (nameFichaEnemyTablero != null)
             {
                 CrearParejaFichasEnemyEnTablero(DevuelveBotonConNombre(nameFichaEnemyTablero));
             }
@@ -330,6 +330,8 @@ public class gamecontroller : MonoBehaviour
             else
             {
                 buttonList[4].text = enemySide;
+                //lo marcas como pulsado
+                PosicionBotonPulsadoOcupada(buttonList[4].transform.parent.gameObject);
             }
         }
         
@@ -377,487 +379,100 @@ public class gamecontroller : MonoBehaviour
     //buscamos fichas vecinas, cogemos una al azar y le ponemos una ficha enemy
     public void Poner0EnFichaVecina(GameObject botonConFichaEnemy)
     {
-        int randomValue =0;
-
-        //segun que boton sea devuelve unas fichas vecinas y dentro de esas fichas vecinas pone ficha enemy
-        if (botonConFichaEnemy.name == "boton0")
-        {
+        
+            
             System.Random random = new System.Random();
 
-            int maxAttempts = 3; // Número máximo de intentos
+        
+            //lista de fichas vecinas con cada boton
+            List<int> fichasVecinas = new List<int>();
+            //lista de posiciones 
+            List<int> posicionesDisponibles = new List<int>();
 
-            //vecinas fichas
-            int fichaVecina1 = 1;
-            int fichaVecina4 = 4;
-            int fichaVecina3 = 3;
-
-            bool asignado = false;
-
-            do
+            if (botonConFichaEnemy.name == "boton0")
             {
-                // Genera un valor aleatorio entre 0 y 2
-                randomValue = random.Next(0, 3);
-
-                switch (randomValue)
-                {
-                    case 0:
-                        if (buttonList[fichaVecina1].text == "")
-                        {
-                            buttonList[fichaVecina1].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 1:
-                        if (buttonList[fichaVecina4].text == "")
-                        {
-                            buttonList[fichaVecina4].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 2:
-                        if (buttonList[fichaVecina3].text == "")
-                        {
-                            buttonList[fichaVecina3].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                }
-
-                maxAttempts--;
-
-            } while (!asignado && maxAttempts > 0);
-        }
-        else if (botonConFichaEnemy.name == "boton1")
-        {
-
-            System.Random random = new System.Random();
-
-            int maxAttempts = 3; // Número máximo de intentos
-
-            //vecinas fichas
-            int fichaVecina0 = 0;
-            int fichaVecina4 = 4;
-            int fichaVecina2 = 2;
-
-            bool asignado = false;
-
-            do
-            {
-                // Genera un valor aleatorio entre 0 y 2
-                randomValue = random.Next(0, 3);
-
-                switch (randomValue)
-                {
-                    case 0:
-                        if (buttonList[fichaVecina0].text == "")
-                        {
-                            buttonList[fichaVecina0].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 1:
-                        if (buttonList[fichaVecina4].text == "")
-                        {
-                            buttonList[fichaVecina4].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 2:
-                        if (buttonList[fichaVecina2].text == "")
-                        {
-                            buttonList[fichaVecina2].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                }
-
-                maxAttempts--;
-
-            } while (!asignado && maxAttempts > 0);
-        }
-        else if (botonConFichaEnemy.name == "boton2")
-        {
-
-            System.Random random = new System.Random();
-
-            int maxAttempts = 3; // Número máximo de intentos
-
-            //vecinas fichas
-            int fichaVecina1 = 1;
-            int fichaVecina4 = 4;
-            int fichaVecina5 = 5;
-
-            bool asignado = false;
-
-            do
-            {
-                // Genera un valor aleatorio entre 0 y 2
-                randomValue = random.Next(0, 3);
-
-                switch (randomValue)
-                {
-                    case 0:
-                        if (buttonList[fichaVecina1].text == "")
-                        {
-                            buttonList[fichaVecina1].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 1:
-                        if (buttonList[fichaVecina4].text == "")
-                        {
-                            buttonList[fichaVecina4].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 2:
-                        if (buttonList[fichaVecina5].text == "")
-                        {
-                            buttonList[fichaVecina5].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                }
-
-                maxAttempts--;
-
-            } while (!asignado && maxAttempts > 0);
-        }
-        else if (botonConFichaEnemy.name == "boton3")
-        {
-
-            System.Random random = new System.Random();
-
-            int maxAttempts = 3; // Número máximo de intentos
-
-            //vecinas fichas
-            int fichaVecina0 = 0;
-            int fichaVecina4 = 4;
-            int fichaVecina6 = 6;
-
-            bool asignado = false;
-
-            do
-            {
-                // Genera un valor aleatorio entre 0 y 2
-                randomValue = random.Next(0, 3);
-
-                switch (randomValue)
-                {
-                    case 0:
-                        if (buttonList[fichaVecina0].text == "")
-                        {
-                            buttonList[fichaVecina0].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 1:
-                        if (buttonList[fichaVecina4].text == "")
-                        {
-                            buttonList[fichaVecina4].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 2:
-                        if (buttonList[fichaVecina6].text == "")
-                        {
-                            buttonList[fichaVecina6].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                }
-
-                maxAttempts--;
-
-            } while (!asignado && maxAttempts > 0);
-        }
-        else if (botonConFichaEnemy.name == "boton4")
-        {
-            System.Random random = new System.Random();
-
-            int maxAttempts = 3; // Número máximo de intentos
-
-            //fichas vecinas 0,1,2,3,5,6,7,8
-            int fichaVecina0 = 0;
-            int fichaVecina1 = 1;
-            int fichaVecina2 = 2;
-            int fichaVecina3 = 3;
-            int fichaVecina5 = 5;
-            int fichaVecina6 = 6;
-            int fichaVecina7 = 7;
-            int fichaVecina8 = 8;
-
-
-            bool asignado = false;
-            //como son 8 posibilidades
-            randomValue = random.Next(0, 9);
-
-            //el valor que haya salido es el boton al que haremos ficha enemySide
-            switch (randomValue)
-            {
-                //fichaVecina0
-                case 0:
-                    if (buttonList[fichaVecina0].text == "")
-                    {
-                        buttonList[fichaVecina0].text = enemySide;
-                        asignado = true;
-                    }
-                    break;
-
-                //fichaVecina1
-                case 1:
-                    if (buttonList[fichaVecina1].text == "")
-                    {
-                        buttonList[fichaVecina1].text = enemySide;
-                        asignado = true;
-                    }
-                    break;
-
-                //fichaVecina2
-                case 2:
-                    if (buttonList[fichaVecina2].text == "")
-                    {
-                        buttonList[fichaVecina2].text = enemySide;
-                        asignado = true;
-                    }
-                    break;
-
-                //fichaVecina3
-                case 3:
-                    if (buttonList[fichaVecina3].text == "")
-                    {
-                        buttonList[fichaVecina3].text = enemySide;
-                        asignado = true;
-                    }
-                    break;
-
-                //fichaVecina5
-                case 5:
-                    if (buttonList[fichaVecina5].text == "")
-                    {
-                        buttonList[fichaVecina5].text = enemySide;
-                        asignado = true;
-                    }
-                    break;
-
-                //fichaVecina6
-                case 6:
-                    if (buttonList[fichaVecina6].text == "")
-                    {
-                        buttonList[fichaVecina6].text = enemySide;
-                        asignado = true;
-                    }
-                    break;
-
-                //fichaVecina7
-                case 7:
-                    if (buttonList[fichaVecina7].text == "")
-                    {
-                        buttonList[fichaVecina7].text = enemySide;
-                        asignado = true;
-                    }
-                    break;
-
-                //fichaVecina8
-                case 8:
-                    if (buttonList[fichaVecina8].text == "")
-                    {
-                        buttonList[fichaVecina8].text = enemySide;
-                        asignado = true;
-                    }
-                    break;
-
+                fichasVecinas.AddRange(new int[] { 1, 4, 3 });
             }
-        }
-        else if (botonConFichaEnemy.name == "boton5")
-        {
-            System.Random random = new System.Random();
-
-            int maxAttempts = 3; // Número máximo de intentos
-
-            //vecinas fichas
-            int fichaVecina2 = 2;
-            int fichaVecina4 = 4;
-            int fichaVecina8 = 8;
-
-            bool asignado = false;
-
-            do
+            else if (botonConFichaEnemy.name == "boton1")
             {
-                // Genera un valor aleatorio entre 0 y 2
-                randomValue = random.Next(0, 3);
-
-                switch (randomValue)
-                {
-                    case 0:
-                        if (buttonList[fichaVecina2].text == "")
-                        {
-                            buttonList[fichaVecina2].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 1:
-                        if (buttonList[fichaVecina4].text == "")
-                        {
-                            buttonList[fichaVecina4].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 2:
-                        if (buttonList[fichaVecina8].text == "")
-                        {
-                            buttonList[fichaVecina8].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                }
-
-                maxAttempts--;
-
-            } while (!asignado && maxAttempts > 0);
-
-        }
-        else if (botonConFichaEnemy.name == "boton6")
-        {
-            System.Random random = new System.Random();
-
-            int maxAttempts = 3; // Número máximo de intentos
-
-            //vecinas fichas
-            int fichaVecina3 = 3;
-            int fichaVecina4 = 4;
-            int fichaVecina7 = 7;
-
-            bool asignado = false;
-
-            do
+                fichasVecinas.AddRange(new int[] { 0,4,2 });
+            }
+            else if (botonConFichaEnemy.name == "boton2")
             {
-                // Genera un valor aleatorio entre 0 y 2
-                randomValue = random.Next(0, 3);
-
-                switch (randomValue)
-                {
-                    case 0:
-                        if (buttonList[fichaVecina3].text == "")
-                        {
-                            buttonList[fichaVecina3].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 1:
-                        if (buttonList[fichaVecina4].text == "")
-                        {
-                            buttonList[fichaVecina4].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 2:
-                        if (buttonList[fichaVecina7].text == "")
-                        {
-                            buttonList[fichaVecina7].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                }
-
-                maxAttempts--;
-
-            } while (!asignado && maxAttempts > 0);
-        }
-        else if (botonConFichaEnemy.name == "boton7")
-        {
-            System.Random random = new System.Random();
-
-            int maxAttempts = 3; // Número máximo de intentos
-
-            //vecinas fichas
-            int fichaVecina6 = 6;
-            int fichaVecina4 = 4;
-            int fichaVecina8 = 8;
-
-            bool asignado = false;
-
-            do
+                fichasVecinas.AddRange(new int[] { 1, 4, 5 });
+            }
+            else if (botonConFichaEnemy.name == "boton3")
             {
-                // Genera un valor aleatorio entre 0 y 2
-                randomValue = random.Next(0, 3);
-
-                switch (randomValue)
-                {
-                    case 0:
-                        if (buttonList[fichaVecina6].text == "")
-                        {
-                            buttonList[fichaVecina6].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 1:
-                        if (buttonList[fichaVecina4].text == "")
-                        {
-                            buttonList[fichaVecina4].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 2:
-                        if (buttonList[fichaVecina8].text == "")
-                        {
-                            buttonList[fichaVecina8].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                }
-
-                maxAttempts--;
-
-            } while (!asignado && maxAttempts > 0);
-        }
-        else if (botonConFichaEnemy.name == "boton8")
-        {
-            System.Random random = new System.Random();
-
-            int maxAttempts = 3; // Número máximo de intentos
-
-            //vecinas fichas
-            int fichaVecina4 = 4;
-            int fichaVecina5 = 5;
-            int fichaVecina7 = 7;
-
-            bool asignado = false;
-
-            do
+                fichasVecinas.AddRange(new int[] { 0,4,6 });
+            }
+            else if (botonConFichaEnemy.name == "boton4")
             {
-                // Genera un valor aleatorio entre 0 y 2
-                randomValue = random.Next(0, 3);
+                fichasVecinas.AddRange(new int[] { 0,1,2,3,4,5,6,7,8 });
+            }
+            else if (botonConFichaEnemy.name == "boton5")
+            {
+                fichasVecinas.AddRange(new int[] { 2,4,8 });
+            }
+            else if (botonConFichaEnemy.name == "boton6")
+            {
+                fichasVecinas.AddRange(new int[] { 3,4,7 });
+            }
+            else if (botonConFichaEnemy.name == "boton7")
+            {
+                fichasVecinas.AddRange(new int[] {6,4,8 });
+            }
+            else if (botonConFichaEnemy.name == "boton8")
+            {
+                fichasVecinas.AddRange(new int[] { 4,5,7 });
+            }
 
-                switch (randomValue)
+            //añadimos las fichas vecinas del boton a posicionesDisponibles
+            foreach (int fichaVecina in fichasVecinas)
+            {
+                if (buttonList[fichaVecina].text == "")
                 {
-                    case 0:
-                        if (buttonList[fichaVecina4].text == "")
-                        {
-                            buttonList[fichaVecina4].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 1:
-                        if (buttonList[fichaVecina5].text == "")
-                        {
-                            buttonList[fichaVecina5].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
-                    case 2:
-                        if (buttonList[fichaVecina7].text == "")
-                        {
-                            buttonList[fichaVecina7].text = enemySide;
-                            asignado = true;
-                        }
-                        break;
+                    posicionesDisponibles.Add(fichaVecina);
                 }
+            }
 
-                maxAttempts--;
+            //numero maximo de intentos a ver si encontramos posicion para hacer pareja es el numero de posiciones Disponibles
+            int maxAttempts = posicionesDisponibles.Count;
 
-            } while (!asignado && maxAttempts > 0);
-        }
+            //orden de acabar y salir si es true
+            bool acabado = false;
+            int asignado = -1;
+            //vamos mirando entre los vecinos elegimos uno aleatorio hasta que no queden
+            while (!acabado)
+            {
+                if(maxAttempts > 0 && asignado == -1)
+                {
+                    //se elige pos aleatoria
+                    int randomValue = random.Next(0, posicionesDisponibles.Count);
+                    //pones la posicion disponible que ha salido a la variable asignado
+                    asignado = posicionesDisponibles[randomValue];
+
+                    //ves si está vacia y posicionesLibresSinFicha[asignado] == false => se puede poner "0"
+                    if (buttonList[asignado].text == "" && posicionesLibresSinFicha[asignado] == false)
+                    {
+                        buttonList[asignado].text = enemySide;
+                        //marcar como pulsado
+                        PosicionBotonPulsadoOcupada(buttonList[asignado].transform.parent.gameObject);
+                        acabado = true;
+                    }
+                    //si ya hay text = "X" o no esta vacio
+                    else
+                    {
+                        acabado = false;
+                    }
+
+                    //se quita de la lista
+                    posicionesDisponibles.Remove(asignado);
+                    maxAttempts--;
+                    //si se han hecho todos los intentos y no se ha salido se fuerza salir
+                    if(maxAttempts == 0) { acabado = true; }
+                }
+            }
+        
 
     }
 
@@ -895,6 +510,8 @@ public class gamecontroller : MonoBehaviour
 
             //ya tenemos numero de boton 
             int botonElegido = posicionesVictoriaEnemy[contadorPosicionesVictoriaEnemy] - 1;
+            //marcar como pulsado
+            PosicionBotonPulsadoOcupada(devolverBotonConNumero(botonElegido));
             //metodo que al pasarle un numero te devuelva el GameObject boton donde cambias el texto del hijo con enemySide
             devolverBotonConNumero(botonElegido).GetComponentInChildren<TMP_Text>().text = enemySide;
 
@@ -1281,20 +898,8 @@ public class gamecontroller : MonoBehaviour
 
     public void RestartGame()
     {
-        gameSide = enemySide;
-        moveCount = 0;
-        gameover.SetActive(false);
-        win.SetActive(false);
-
-        TodasPosicionesLibres();
-        SetBoardInteractable(true);
-
-        for (int i = 0; i < buttonList.Length; i++)
-        {
-            buttonList[i].text = "";
-        }
-
-        TurnoEnemigoInicial();
+        //reinicia escena
+        SceneManager.LoadScene("mecanicas3EnRaya");
         
     }
 
