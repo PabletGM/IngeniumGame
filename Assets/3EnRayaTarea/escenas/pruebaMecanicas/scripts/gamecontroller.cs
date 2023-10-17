@@ -32,14 +32,16 @@ public class gamecontroller : MonoBehaviour
 
     public GameObject player0;
 
-    //creamos array tamaño 4 para poner ahí posiciones donde el enemigo si mueve ficha puede ganar
+    //creamos array tamaño 8 para poner ahí posiciones donde el enemigo si mueve ficha puede ganar
     //se actualiza en cada turno
     int[] posicionesVictoriaEnemy;
+    int[] posicionesVictoriaPlayer;
 
     //para saber que casillas se van ocupando con alguna ficha
     bool[] posicionesLibresSinFicha;
 
     int contadorPosicionesVictoriaEnemy = 0;
+    int contadorPosicionesVictoriaPlayer = 0;
 
     private bool endPartida = false;
 
@@ -86,6 +88,8 @@ public class gamecontroller : MonoBehaviour
         moveCount = 0;
         //tamaño 8
         posicionesVictoriaEnemy = new int[8];
+        posicionesVictoriaPlayer = new int[8];
+        //tablero
         posicionesLibresSinFicha = new bool[9];
         //poner todas las posiciones a true por defecto
     }
@@ -178,7 +182,7 @@ public class gamecontroller : MonoBehaviour
         //se suma un movimiento mas o ronda mas
         NewMovePlayer();
         //devuelve moveCount
-        ReturnTotalRounds();
+        //ReturnTotalRounds();
 
     }
 
@@ -323,33 +327,62 @@ public class gamecontroller : MonoBehaviour
     public void  ElegirFichaEnemigoAutomatico()
     {
 
-        //miramos si ha habido algun posible posicionVictoria, esto es parejas de XX o 00
+        //miramos si ha habido algun posible posicionVictoria, esto es parejas de XX o 00 para ganar tu
         if (posicionesVictoriaEnemy[contadorPosicionesVictoriaEnemy] != 0)
         {
             //ves si hay algun duo de fichas, si es así colocas en la tercera posicion para ganar
             ColocarFichaEnemyCombinacion3();
 
         }
-        //sino hay posibilidad de posicionVictoria la pones al lado de la ficha haciendo una pareja
+        //sino hay posibilidad de posicionVictoria vemos si el jugador puede ganar para tapar ese hueco y sino la pones al lado de la ficha haciendo una pareja
         else
         {
-            //buscamos una ficha enemy aleatoria en el tablero que sepamos que tiene vecinos vacios y le hacemos una pareja
-            string nameFichaEnemyTablero = DevolverFichaEnemyColocadaEnTableroConVecinosVacios();
-            
-            //miramos si hay alguna ficha enemySide
-                if (nameFichaEnemyTablero != null)
-            {
-                CrearParejaFichasEnemyEnTablero(DevuelveBotonConNombre(nameFichaEnemyTablero));
-            }
-            //si no hay fichas la pones en el centro
-            else
-            {
-                buttonList[4].text = enemySide;
-                //lo marcas como pulsado
-                PosicionBotonPulsadoOcupada(buttonList[4].transform.parent.gameObject);
-            }
+
+                //PLAYER
+                //comprobamos si hay posibilidad de victoria por parte del player para tapar el hueco, si hay alguna
+                if (posicionesVictoriaPlayer[contadorPosicionesVictoriaPlayer] != 0)
+                {
+                    TaparHuecoEvitarVictoriaPlayer();
+                }
+                //si el jugador no tiene ninguna posibilidad de ganar
+                else
+                {
+                    //PAREJA de 00
+                    #region PAREJA 00
+                        //buscamos una ficha enemy aleatoria en el tablero que sepamos que tiene vecinos vacios y le hacemos una pareja
+                        string nameFichaEnemyTablero = DevolverFichaEnemyColocadaEnTableroConVecinosVacios();
+                            //miramos si hay alguna ficha enemySide
+                            if (nameFichaEnemyTablero != null)
+                            {
+                                CrearParejaFichasEnemyEnTablero(DevuelveBotonConNombre(nameFichaEnemyTablero));
+                            }
+                #endregion
+
+                    //FICHA SOLA
+                    #region FICHA SOLA
+                        //si no hay fichas la pones en el centro
+                        else
+                        {
+                                    buttonList[4].text = enemySide;
+                                    //lo marcas como pulsado
+                                    PosicionBotonPulsadoOcupada(buttonList[4].transform.parent.gameObject);
+                        }
+                    #endregion
+                }    
         }
         
+    }
+
+    //se llama a este si se ha detectado alguna jugada que el player podría hacer o boton que rellenar para ganar
+    public void TaparHuecoEvitarVictoriaPlayer()
+    {
+        //vemos cual es el boton con posibleVictoriaPlayer
+        //ya tenemos numero de boton 
+        int botonElegido = posicionesVictoriaPlayer[contadorPosicionesVictoriaPlayer] - 1;
+        //marcar como pulsado ese boton
+        PosicionBotonPulsadoOcupada(devolverBotonConNumero(botonElegido));
+        //metodo que al pasarle un numero te devuelva el GameObject boton donde cambias el texto del hijo con enemySide
+        devolverBotonConNumero(botonElegido).GetComponentInChildren<TMP_Text>().text = enemySide;
     }
 
 
@@ -688,25 +721,23 @@ public class gamecontroller : MonoBehaviour
     }
 
     //buscar pareja enemies 2s 00
-    public void Combinacion200()
+    public void Combinacion200XX()
     {
         //comprobamos el buttonList para ver cuales no estan vacios o sin jugar
         for (int i = 0; i < buttonList.Length; i++)
         {
-            //por cada boton que no esté vacio y tenga 0 buscamos en sus laterales o diagonales
-            if (buttonList[i].text != "" && buttonList[i].text == "0")
+            //por cada boton que no esté vacio y tenga 0 o X buscamos en sus laterales o diagonales
+            if (buttonList[i].text != "")
             {
                 BuscarParejaCombinacion(buttonList[i]);
             }
         }
-
-        //ponemos en cada ronda los botones donde al ponerlo habría combinacion ganadora
-        Debug.Log("Posiciones Victoria Ronda " + moveCount + ": " + posicionesVictoriaEnemy[0] + posicionesVictoriaEnemy[1] + posicionesVictoriaEnemy[2] + posicionesVictoriaEnemy[3] + posicionesVictoriaEnemy[4] + posicionesVictoriaEnemy[5] + posicionesVictoriaEnemy[6] + posicionesVictoriaEnemy[7]);
     }
 
     public void ReiniciarContador()
     {
         contadorPosicionesVictoriaEnemy = 0;
+        contadorPosicionesVictoriaPlayer = 0;
     }
 
     //mira en laterales,diagonales y todo
@@ -714,71 +745,134 @@ public class gamecontroller : MonoBehaviour
     {
         //miramos si es buttonList[0] ya que sus casillas vecinas serán unas
         if(botonElegido == buttonList[0])
-        {          
+        {
+            if (buttonList[0].text == "0")
+            {
                 //metodo que mira si en las casillas vecinas hay 2 fichas iguales y te dice donde deberías colocar la tercera
                 MirarCasillasAdyacentesYColocarTerceraEnemy(1, 3, 4, 2, 6, 8, botonElegido);
-            
+            }
+            else if (buttonList[0].text == "X")
+            {
+                //metodo que mira si en las casillas vecinas hay 2 fichas iguales y te dice donde deberías colocar la tercera
+                MirarCasillasAdyacentesYColocarTerceraPlayer(1, 3, 4, 2, 6, 8, botonElegido);
+            } 
         }
         //miramos si es buttonList[1] ya que sus casillas vecinas serán unas
         else if (botonElegido == buttonList[1])
         {
-            
+            if (buttonList[1].text == "0")
+            {
                 //metodo que mira si en las casillas vecinas hay 2 fichas iguales y te dice donde deberías colocar la tercera
                 MirarCasillasAdyacentesYColocarTerceraEnemy(0, 2, 4, 2, 0, 7, botonElegido);
+            }
+            else if (buttonList[1].text == "X")
+            {
+                //metodo que mira si en las casillas vecinas hay 2 fichas iguales y te dice donde deberías colocar la tercera
+                MirarCasillasAdyacentesYColocarTerceraPlayer(0, 2, 4, 2, 0, 7, botonElegido);
+            }
         }
         //miramos si es buttonList[2] ya que sus casillas vecinas serán unas
         else if (botonElegido == buttonList[2])
         {
-           
+            if (buttonList[2].text == "0")
+            {
                 //metodo que mira si en las casillas vecinas hay 2 fichas iguales y te dice donde deberías colocar la tercera
                 MirarCasillasAdyacentesYColocarTerceraEnemy(1, 4, 5, 0, 6, 8, botonElegido);
+            }
+            else if (buttonList[2].text == "X")
+            {
+
+                //metodo que mira si en las casillas vecinas hay 2 fichas iguales y te dice donde deberías colocar la tercera
+                MirarCasillasAdyacentesYColocarTerceraPlayer(1, 4, 5, 0, 6, 8, botonElegido);
+            }
 
         }
         //miramos si es buttonList[3] ya que sus casillas vecinas serán unas
         else if (botonElegido == buttonList[3])
         {
-            
+            if (buttonList[3].text == "0")
+            {
                 //metodo que mira si en las casillas vecinas hay 2 fichas iguales y te dice donde deberías colocar la tercera
                 MirarCasillasAdyacentesYColocarTerceraEnemy(0, 4, 6, 6, 5, 0, botonElegido);
+            }
+            else if (buttonList[3].text == "X")
+            {
+                //metodo que mira si en las casillas vecinas hay 2 fichas iguales y te dice donde deberías colocar la tercera
+                MirarCasillasAdyacentesYColocarTerceraPlayer(0, 4, 6, 6, 5, 0, botonElegido);
+            }
 
         }
         //miramos si es buttonList[4] ya que sus casillas vecinas serán unas
         else if (botonElegido == buttonList[4])
         {
-            
+            if (buttonList[4].text == "0")
+            {
                 MirarCasillasAdyacentes8YColocarTerceraEnemy(botonElegido);
+            }
+            else if (buttonList[4].text == "X")
+            {
+
+                MirarCasillasAdyacentes8YColocarTerceraPlayer(botonElegido);
+
+            }
 
         }
         //miramos si es buttonList[5] ya que sus casillas vecinas serán unas
         else if (botonElegido == buttonList[5])
         {
-           
+            if (buttonList[5].text == "0")
+            {
                 //metodo que mira si en las casillas vecinas hay 2 fichas iguales y te dice donde deberías colocar la tercera
                 MirarCasillasAdyacentesYColocarTerceraEnemy(2, 4, 8, 8, 3, 2, botonElegido);
+            }
+            else if (buttonList[5].text == "X")
+            {
+                //metodo que mira si en las casillas vecinas hay 2 fichas iguales y te dice donde deberías colocar la tercera
+                MirarCasillasAdyacentesYColocarTerceraPlayer(2, 4, 8, 8, 3, 2, botonElegido);
+            }
         }
         //miramos si es buttonList[6] ya que sus casillas vecinas serán unas
         else if (botonElegido == buttonList[6])
-        {  
+        {
+            if (buttonList[6].text == "0")
+            {
                 MirarCasillasAdyacentesYColocarTerceraEnemy(3, 4, 7, 0, 2, 8, botonElegido);
+            }
+            else if (buttonList[6].text == "X")
+            {
+                MirarCasillasAdyacentesYColocarTerceraPlayer(3, 4, 7, 0, 2, 8, botonElegido);
+            }
 
         }
         //miramos si es buttonList[7] ya que sus casillas vecinas serán unas
         else if (botonElegido == buttonList[7])
         {
-           
+            if (buttonList[7].text == "0")
+            {
                 MirarCasillasAdyacentesYColocarTerceraEnemy(6, 4, 8, 8, 1, 6, botonElegido);
+            }
+            else if (buttonList[7].text == "X")
+            {
+                MirarCasillasAdyacentesYColocarTerceraPlayer(6, 4, 8, 8, 1, 6, botonElegido);
+            }
         }
         //miramos si es buttonList[8] ya que sus casillas vecinas serán unas
         else if (botonElegido == buttonList[8])
         {
-           
+            if (buttonList[8].text == "0")
+            {
                 MirarCasillasAdyacentesYColocarTerceraEnemy(7, 4, 5, 6, 0, 2, botonElegido);
+            }
+            else if (buttonList[8].text == "X")
+            {
+                MirarCasillasAdyacentesYColocarTerceraPlayer(7, 4, 5, 6, 0, 2, botonElegido);
+            }
         }
        
     }
 
 
-    #region AveriguarPosicionVictoria
+    #region AveriguarPosicionVictoriaEnemy
 
     //para resto de botones, sabiendo la combinacion de 00 y en qje botones estan devuelve el boton que tendría la ficha ganadora
     public void MirarCasillasAdyacentesYColocarTerceraEnemy(int vecino1, int vecino2, int vecino3, int ultimaCasillaTriovecino1, int ultimaCasillaTriovecino2, int ultimaCasillaTriovecino3, TMP_Text botonElegido)
@@ -959,10 +1053,183 @@ public class gamecontroller : MonoBehaviour
         for(int i=0; i<posicionesVictoriaEnemy.Length; i++)
         {
             posicionesVictoriaEnemy[contadorPosicionesVictoriaEnemy] = 0;
+            posicionesVictoriaPlayer[contadorPosicionesVictoriaEnemy] = 0;
         }
         contadorPosicionesVictoriaEnemy = 0;
     }
 
+    #endregion
+
+    #region AveriguarPosicionVictoriaPlayer
+    //para resto de botones, sabiendo la combinacion de XX y en qje botones estan devuelve el boton que tendría la ficha ganadora
+    public void MirarCasillasAdyacentesYColocarTerceraPlayer(int vecino1, int vecino2, int vecino3, int ultimaCasillaTriovecino1, int ultimaCasillaTriovecino2, int ultimaCasillaTriovecino3, TMP_Text botonElegido)
+    {
+        //comprobamos si las fichas vecina 1 tiene misma X y si la ultimacasillaTriovecino1 esto es (donde hay que colocar para ganar está vacía)
+        if (botonElegido.text == "X" && buttonList[vecino1].text == "X" && botonElegido.text == buttonList[vecino1].text && buttonList[ultimaCasillaTriovecino1].text == "")
+        {
+            
+            //añadimos posicion victoria enemy
+            NuevaPosicionVictoriaPlayer(buttonList[ultimaCasillaTriovecino1].transform.parent.gameObject.name);
+        }
+
+        //comprobamos si las fichas vecina 1 tiene misma X y si la ultimacasillaTriovecino1 esto es (donde hay que colocar para ganar está vacía)
+        else if (botonElegido.text == "X" && buttonList[vecino2].text == "X" && botonElegido.text == buttonList[vecino2].text && buttonList[ultimaCasillaTriovecino2].text == "")
+        {
+            
+
+            //añadimos posicion victoria enemy
+            NuevaPosicionVictoriaPlayer(buttonList[ultimaCasillaTriovecino2].transform.parent.gameObject.name);
+        }
+
+        //comprobamos si las fichas vecina 1 tiene misma X y si la ultimacasillaTriovecino1 esto es (donde hay que colocar para ganar está vacía)
+        else if (botonElegido.text == "X" && buttonList[vecino3].text == "X" && botonElegido.text == buttonList[vecino3].text && buttonList[ultimaCasillaTriovecino3].text == "")
+        {
+            //Debug.Log("Si colocas la ficha " + enemySide + " en " + buttonList[ultimaCasillaTriovecino3].transform.parent.gameObject.name + " ganas, y haces trio");
+
+            //añadimos posicion victoria enemy
+            NuevaPosicionVictoriaPlayer(buttonList[ultimaCasillaTriovecino3].transform.parent.gameObject.name);
+        }
+    }
+
+
+
+    //para el boton 4 con todas las casillas vecinas y colocar la ficha vencedora
+    public void MirarCasillasAdyacentes8YColocarTerceraPlayer(TMP_Text botonElegido4)
+    {
+
+        //vemos si hay un duo entre el boton 4 y el boton 0 con X y comprobamos espacio vacio de la casilla que seria la victoria
+        //en este caso la casilla de victoria entre 0 y 4 seria 8
+        if (botonElegido4.text == "X" && buttonList[0].text == "X0" && botonElegido4.text == buttonList[0].text && buttonList[8].text == "")
+        {
+            //Debug.Log("Si colocas la ficha en " + buttonList[8].transform.parent.gameObject.name + " ganas, y haces trio");
+
+            //añadimos posicion victoria enemy
+            NuevaPosicionVictoriaPlayer(buttonList[8].transform.parent.gameObject.name);
+        }
+
+        //vemos si hay un duo entre el boton 4 y el boton 1 con X y comprobamos espacio vacio de la casilla que seria la victoria
+        //en este caso la casilla de victoria entre 1 y 4 seria 7
+        else if (botonElegido4.text == "X" && buttonList[1].text == "X" && botonElegido4.text == buttonList[1].text && buttonList[7].text == "")
+        {
+            //Debug.Log("Si colocas la ficha en " + buttonList[7].transform.parent.gameObject.name + " ganas, y haces trio");
+
+
+            //añadimos posicion victoria enemy
+            NuevaPosicionVictoriaPlayer(buttonList[7].transform.parent.gameObject.name);
+        }
+
+        //vemos si hay un duo entre el boton 4 y el boton 2 con X y comprobamos espacio vacio de la casilla que seria la victoria
+        //en este caso la casilla de victoria entre 2 y 4 seria 6
+        else if (botonElegido4.text == "X" && buttonList[2].text == "X" && botonElegido4.text == buttonList[2].text && buttonList[6].text == "")
+        {
+            //Debug.Log("Si colocas la ficha en " + buttonList[6].transform.parent.gameObject.name + " ganas, y haces trio");
+
+
+            //añadimos posicion victoria enemy
+            NuevaPosicionVictoriaPlayer(buttonList[6].transform.parent.gameObject.name);
+        }
+
+        //vemos si hay un duo entre el boton 4 y el boton 3 con X y comprobamos espacio vacio de la casilla que seria la victoria
+        //en este caso la casilla de victoria entre 3 y 4 seria 5
+        else if (botonElegido4.text == "X" && buttonList[3].text == "X" && botonElegido4.text == buttonList[3].text && buttonList[5].text == "")
+        {
+            //Debug.Log("Si colocas la ficha en " + buttonList[5].transform.parent.gameObject.name + " ganas, y haces trio");
+
+
+            //añadimos posicion victoria enemy
+            NuevaPosicionVictoriaPlayer(buttonList[5].transform.parent.gameObject.name);
+        }
+
+        //vemos si hay un duo entre el boton 4 y el boton 5 con X y comprobamos espacio vacio de la casilla que seria la victoria
+        //en este caso la casilla de victoria entre 5 y 4 seria 3
+        else if (botonElegido4.text == "X" && buttonList[5].text == "X" && botonElegido4.text == buttonList[5].text && buttonList[3].text == "")
+        {
+            //Debug.Log("Si colocas la ficha en " + buttonList[7].transform.parent.gameObject.name + " ganas, y haces trio");
+
+
+            //añadimos posicion victoria enemy
+            NuevaPosicionVictoriaPlayer(buttonList[3].transform.parent.gameObject.name);
+        }
+
+        //vemos si hay un duo entre el boton 4 y el boton 6 con X y comprobamos espacio vacio de la casilla que seria la victoria
+        //en este caso la casilla de victoria entre 6 y 4 seria 2
+        else if (botonElegido4.text == "X" && buttonList[6].text == "X" && botonElegido4.text == buttonList[6].text && buttonList[2].text == "")
+        {
+            //Debug.Log("Si colocas la ficha en " + buttonList[2].transform.parent.gameObject.name + " ganas, y haces trio");
+
+
+            //añadimos posicion victoria enemy
+            NuevaPosicionVictoriaPlayer(buttonList[2].transform.parent.gameObject.name);
+        }
+
+        //vemos si hay un duo entre el boton 4 y el boton 7 con X y comprobamos espacio vacio de la casilla que seria la victoria
+        //en este caso la casilla de victoria entre 7 y 4 seria 1
+        else if (botonElegido4.text == "X" && buttonList[7].text == "X" && botonElegido4.text == buttonList[7].text && buttonList[1].text == "")
+        {
+            //Debug.Log("Si colocas la ficha en " + buttonList[1].transform.parent.gameObject.name + " ganas, y haces trio");
+
+
+            //añadimos posicion victoria enemy
+            NuevaPosicionVictoriaPlayer(buttonList[1].transform.parent.gameObject.name);
+        }
+
+        //vemos si hay un duo entre el boton 4 y el boton 8 con X y comprobamos espacio vacio de la casilla que seria la victoria
+        //en este caso la casilla de victoria entre 8 y 4 seria 0
+        else if (botonElegido4.text == "X" && buttonList[8].text == "X" && botonElegido4.text == buttonList[8].text && buttonList[0].text == "")
+        {
+            //Debug.Log("Si colocas la ficha en " + buttonList[0].transform.parent.gameObject.name + " ganas, y haces trio");
+
+
+            //añadimos posicion victoria enemy
+            NuevaPosicionVictoriaPlayer(buttonList[0].transform.parent.gameObject.name);
+        }
+
+    }
+    #endregion
+
+    #region PosicionVictoriaPlayer
+    //añadir nueva Posicion Victoria Player del 1 al 9, ya que 0 significará elemento vacio
+    public void NuevaPosicionVictoriaPlayer(string nombreBoton)
+    {
+        int posicionVictoria = 0;
+        //segun el gameObject que pasemos será una posicion u otra
+        switch (nombreBoton)
+        {
+            case "boton0":
+                posicionVictoria = 1;
+                break;
+            case "boton1":
+                posicionVictoria = 2;
+                break;
+            case "boton2":
+                posicionVictoria = 3;
+                break;
+            case "boton3":
+                posicionVictoria = 4;
+                break;
+            case "boton4":
+                posicionVictoria = 5;
+                break;
+            case "boton5":
+                posicionVictoria = 6;
+                break;
+            case "boton6":
+                posicionVictoria = 7;
+                break;
+            case "boton7":
+                posicionVictoria = 8;
+                break;
+            case "boton8":
+                posicionVictoria = 9;
+                break;
+            default:
+                break;
+        }
+        //añadimos la posicion al array que seria el numero el boton +1
+        posicionesVictoriaPlayer[contadorPosicionesVictoriaPlayer] = posicionVictoria;
+        contadorPosicionesVictoriaPlayer++;
+
+    }
     #endregion
 
     //para decir si ha ganado enemy

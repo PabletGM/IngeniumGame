@@ -25,7 +25,7 @@ public class GripSpace : MonoBehaviour
             //ya no es accesible
             this.gameObject.GetComponent<Button>().interactable = false;
             //metodo para buscar combinacion de 2 de 2 00 o 2 XX, para añadir posibles posiciones de victoria
-            GameController.Combinacion200();
+            GameController.Combinacion200XX();
             //despues de eso se reinicia el contador
             GameController.ReiniciarContador();
 
