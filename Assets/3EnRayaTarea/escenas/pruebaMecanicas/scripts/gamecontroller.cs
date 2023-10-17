@@ -94,6 +94,8 @@ public class gamecontroller : MonoBehaviour
     //pasas argumento de boton que se ha pulsado y lo marca en el array
     public void PosicionBotonPulsadoOcupada(GameObject botonpulsado)
     {
+        //hacemos el botonPulsado no interactuable
+        botonpulsado.GetComponent<Button>().interactable = false;
         //vemos que numero es el botonPulsado
         int numero = devolverNumeroConBoton(botonpulsado);
         if(numero!=-1)
@@ -319,8 +321,9 @@ public class gamecontroller : MonoBehaviour
         //sino hay posibilidad de posicionVictoria la pones al lado de la ficha haciendo una pareja
         else
         {
-            //buscamos una ficha enemy aleatoria en el tablero y le hacemos una pareja
-            string nameFichaEnemyTablero = DevolverFichaEnemyColocadaEnTablero();
+            //buscamos una ficha enemy aleatoria en el tablero que sepamos que tiene vecinos vacios y le hacemos una pareja
+            string nameFichaEnemyTablero = DevolverFichaEnemyColocadaEnTableroConVecinosVacios();
+            
             //miramos si hay alguna ficha enemySide
                 if (nameFichaEnemyTablero != null)
             {
@@ -476,22 +479,29 @@ public class gamecontroller : MonoBehaviour
 
     }
 
-    public string DevolverFichaEnemyColocadaEnTablero()
+    public string DevolverFichaEnemyColocadaEnTableroConVecinosVacios()
     {
         System.Random random = new System.Random();
         int intentos = 0;
+        //posibles botones que puede devolver, todos
         int cantidadPosiciones = buttonList.Length;
+        //posiciones usadas
         bool[] posicionesUsadas = new bool[cantidadPosiciones];
 
+        //hasta que no se haya probado todos los botones
         while (intentos < cantidadPosiciones)
         {
+            //probamos boton aleatorio
             int posicionAleatoria = random.Next(0, cantidadPosiciones);
 
+            //si la posicion de ese boton no está pillada
             if (!posicionesUsadas[posicionAleatoria])
             {
+                //la ponemos como vista o comprobada
                 posicionesUsadas[posicionAleatoria] = true;
 
-                if (buttonList[posicionAleatoria].text == enemySide)
+                //si posee el enemySide "0" lo devolvemos, debemos ver tambien si tiene vecinos libres el boton
+                if (buttonList[posicionAleatoria].text == enemySide && ComprobarSiBotonTieneVecinosLibres(buttonList[posicionAleatoria].transform.parent.gameObject))
                 {
                     return buttonList[posicionAleatoria].transform.parent.gameObject.name;
                 }
@@ -501,6 +511,97 @@ public class gamecontroller : MonoBehaviour
         }
 
         return null;
+    }
+
+    //te devuelve y te dice si el boton como argumento tiene algun vecino libre o no
+    public bool ComprobarSiBotonTieneVecinosLibres(GameObject boton)
+    {
+        //miramos que boton es, segun cual sea comprobamos cada vecino
+        switch (boton.name)
+        {
+            //vecinos 1, 4, 3
+            case "boton0":
+                if (buttonList[1].text == "") { return true; }
+                else if (buttonList[4].text == "") { return true; }
+                else if (buttonList[3].text == "") { return true; }
+                //si ningun vecino está libre
+                else { return false; }
+
+            //vecinos 0,4,2
+            case "boton1":
+                if (buttonList[0].text == "") { return true; }
+                else if (buttonList[4].text == "") { return true; }
+                else if (buttonList[2].text == "") { return true; }
+                //si ningun vecino está libre
+                else { return false; }
+
+            //vecinos 1, 4, 5
+            case "boton2":
+                if (buttonList[1].text == "") { return true; }
+                else if (buttonList[4].text == "") { return true; }
+                else if (buttonList[5].text == "") { return true; }
+                //si ningun vecino está libre
+                else { return false; }
+
+            //vecinos 0,4,6
+            case "boton3":
+                if (buttonList[0].text == "") { return true; }
+                else if (buttonList[4].text == "") { return true; }
+                else if (buttonList[6].text == "") { return true; }
+                //si ningun vecino está libre
+                else { return false; }
+
+            //0,1,2,3,4,5,6,7,8
+            case "boton4":
+                if (buttonList[0].text == "") { return true; }
+                else if (buttonList[1].text == "") { return true; }
+                else if (buttonList[2].text == "") { return true; }
+                else if (buttonList[3].text == "") { return true; }
+                else if (buttonList[4].text == "") { return true; }
+                else if (buttonList[5].text == "") { return true; }
+                else if (buttonList[6].text == "") { return true; }
+                else if (buttonList[7].text == "") { return true; }
+                else if (buttonList[8].text == "") { return true; }
+                //si ningun vecino está libre
+                else { return false; }
+
+            //vecinos 2,4,8
+            case "boton5":
+                if (buttonList[2].text == "") { return true; }
+                else if (buttonList[4].text == "") { return true; }
+                else if (buttonList[8].text == "") { return true; }
+                //si ningun vecino está libre
+                else { return false; }
+
+            //vecinos 3,4,7
+            case "boton6":
+                if (buttonList[3].text == "") { return true; }
+                else if (buttonList[4].text == "") { return true; }
+                else if (buttonList[7].text == "") { return true; }
+                //si ningun vecino está libre
+                else { return false; }
+
+            //vecinos 6,4,8
+            case "boton7":
+                if (buttonList[1].text == "") { return true; }
+                else if (buttonList[4].text == "") { return true; }
+                else if (buttonList[3].text == "") { return true; }
+                //si ningun vecino está libre
+                else { return false; }
+
+            // vecinos 4,5,7
+            case "boton8":
+                if (buttonList[4].text == "") { return true; }
+                else if (buttonList[5].text == "") { return true; }
+                else if (buttonList[7].text == "") { return true; }
+                //si ningun vecino está libre
+                else { return false; }
+            default:
+                break;
+        }
+
+        return false;
+        
     }
 
     //colocar ficha en la primera posicion del array posicionVictoriaEnemy
