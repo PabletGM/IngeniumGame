@@ -32,6 +32,9 @@ public class gamecontroller : MonoBehaviour
 
     public GameObject player0;
 
+    [SerializeField]
+    private GameObject panelEnemyWaiting;
+
     //creamos array tamaño 8 para poner ahí posiciones donde el enemigo si mueve ficha puede ganar
     //se actualiza en cada turno
     int[] posicionesVictoriaEnemy;
@@ -67,6 +70,18 @@ public class gamecontroller : MonoBehaviour
         //ahora toca jugador al acabar enemigo
         EmpezarTurnoJugador();
 
+    }
+
+    //activa panel enemy waiting durante la duracion del turno del enemigo
+    public void SetPanelEnemyWaiting()
+    {
+        panelEnemyWaiting.SetActive(true);
+        //desactivar em un segundo al acabar el turno del enemigo
+        Invoke("DesactivarPanelWaiting", 1.4f);
+    }
+    void DesactivarPanelWaiting()
+    {
+        panelEnemyWaiting.SetActive(false);
     }
 
     //cuando termina de mover el enemigo

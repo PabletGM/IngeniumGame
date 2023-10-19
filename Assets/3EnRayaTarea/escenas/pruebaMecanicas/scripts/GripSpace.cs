@@ -35,13 +35,15 @@ public class GripSpace : MonoBehaviour
             GameController.ReiniciarContador();
 
 
-            Invoke("TurnoEnemy", 1f);
+            GameController.SetPanelEnemyWaiting();
+            Invoke("TurnoEnemy", 1.5f);
 
         }
     }
 
     void TurnoEnemy()
     {
+        
         //turno enemy
         GameController.EndTurn();
     }
