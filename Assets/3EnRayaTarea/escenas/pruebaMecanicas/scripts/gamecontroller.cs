@@ -35,6 +35,9 @@ public class gamecontroller : MonoBehaviour
     [SerializeField]
     private GameObject panelEnemyWaiting;
 
+    //booleano que permite que durante el modo de dificultad medio se haga la comprobacion 1 vez para taponar jugada player de victoria
+    private bool modoMedioTaponarPrimeraJugadaVictoria = true;
+
     //creamos array tamaño 8 para poner ahí posiciones donde el enemigo si mueve ficha puede ganar
     //se actualiza en cada turno
     int[] posicionesVictoriaEnemy;
@@ -365,6 +368,10 @@ public class gamecontroller : MonoBehaviour
     public void  ElegirFichaEnemigoAutomatico()
     {
 
+        //en modo facil solo intent ganar el, no para al jugador de intentar ganar y en modo facil el enemigo no empieza en el medio
+        //en modo medio el enemigo no empieza en el medio y tapona jugada player 1 sola vez
+        //en modo dificil intent ganar el y tapona jugadas player, el enemigo empieza en el medio
+
         //miramos si ha habido algun posible posicionVictoria, esto es parejas de XX o 00 para ganar tu
         if (posicionesVictoriaEnemy[contadorPosicionesVictoriaEnemy] != 0)
         {
@@ -375,12 +382,10 @@ public class gamecontroller : MonoBehaviour
         //sino hay posibilidad de posicionVictoria vemos si el jugador puede ganar para tapar ese hueco y sino la pones al lado de la ficha haciendo una pareja
         else
         {
-                //en modo facil solo intent ganar el, no para al jugador de intentar ganar y en modo facil el enemigo no empieza en el medio
 
-
-                //PLAYER, comprobacion que solo hace en modo dificil, no modo facil
+                //PLAYER, comprobacion que solo hace en modo dificil y 1 vez en medio, no modo facil
                 //comprobamos si hay posibilidad de victoria por parte del player para tapar el hueco, si hay alguna
-                if (posicionesVictoriaPlayer[contadorPosicionesVictoriaPlayer] != 0 && SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoDificil")
+                if ((posicionesVictoriaPlayer[contadorPosicionesVictoriaPlayer] != 0 && SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoDificil") || (posicionesVictoriaPlayer[contadorPosicionesVictoriaPlayer] != 0 && SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoMedio") && modoMedioTaponarPrimeraJugadaVictoria)
                 {
                     TaparHuecoEvitarVictoriaPlayer();
                 }
@@ -412,7 +417,7 @@ public class gamecontroller : MonoBehaviour
                                     PosicionBotonPulsadoOcupada(buttonList[1].transform.parent.gameObject);
                                 }
                                 //si esta en modo dificil si pone la primera pos en el medio
-                                else if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoDificil")
+                                else if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoDificil" || SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoMedio")
                                 {
                                     //si está en el modo dificil si pone la primera posicion en el medio
                                     buttonList[4].text = enemySide;
@@ -429,6 +434,11 @@ public class gamecontroller : MonoBehaviour
     //se llama a este si se ha detectado alguna jugada que el player podría hacer o boton que rellenar para ganar
     public void TaparHuecoEvitarVictoriaPlayer()
     {
+        //si estamos en modo medio impedimos que repita proceso
+        if(SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoMedio")
+        {
+            modoMedioTaponarPrimeraJugadaVictoria = false;
+        }
         //vemos cual es el boton con posibleVictoriaPlayer
         //ya tenemos numero de boton 
         int botonElegido = posicionesVictoriaPlayer[contadorPosicionesVictoriaPlayer] - 1;
@@ -1516,12 +1526,18 @@ public class gamecontroller : MonoBehaviour
         //si estas en nivel facil pasas a nivel dificil
         if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoFacil")
         {
-            SceneManager.LoadScene("mecanicas3EnRayaModoDificil");
+            SceneManager.LoadScene("mecanicas3EnRayaModoMedio");
         }
         //si esta en modo dificil pasas a modo facil
         else if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoDificil")
         {
             SceneManager.LoadScene("mecanicas3EnRayaModoFacil");
+        }
+
+        //si esta en modo dificil pasas a modo facil
+        else if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoMedio")
+        {
+            SceneManager.LoadScene("mecanicas3EnRayaModoDificil");
         }
     }
 
