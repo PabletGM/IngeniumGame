@@ -375,7 +375,7 @@ public class gamecontroller : MonoBehaviour
         //sino hay posibilidad de posicionVictoria vemos si el jugador puede ganar para tapar ese hueco y sino la pones al lado de la ficha haciendo una pareja
         else
         {
-                //en modo facil solo intent ganar el, no para al jugador de intentar ganar
+                //en modo facil solo intent ganar el, no para al jugador de intentar ganar y en modo facil el enemigo no empieza en el medio
 
 
                 //PLAYER, comprobacion que solo hace en modo dificil, no modo facil
@@ -418,9 +418,7 @@ public class gamecontroller : MonoBehaviour
                                     buttonList[4].text = enemySide;
                                     //lo marcas como pulsado
                                     PosicionBotonPulsadoOcupada(buttonList[4].transform.parent.gameObject);
-                                }
-
-                                
+                                }      
                         }
                     #endregion
                 }    
@@ -1510,6 +1508,21 @@ public class gamecontroller : MonoBehaviour
 
         win.SetActive(true);
         gameoverText.text ="X has ganado";
+    }
+
+    //segun en que nivel estés pasas a uno u otro
+    public void NextLevel()
+    {
+        //si estas en nivel facil pasas a nivel dificil
+        if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoFacil")
+        {
+            SceneManager.LoadScene("mecanicas3EnRayaModoDificil");
+        }
+        //si esta en modo dificil pasas a modo facil
+        else if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoDificil")
+        {
+            SceneManager.LoadScene("mecanicas3EnRayaModoFacil");
+        }
     }
 
     public void ChangeSides(string gameSide)
