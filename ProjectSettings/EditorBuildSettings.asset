@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/mecanicas3EnRaya.unity
+    path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/mecanicas3EnRayaModoDificil.unity
     guid: 46e7be7fffaf0044fa905a237585de1e
   m_configObjects: {}

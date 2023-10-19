@@ -49,6 +49,8 @@ public class gamecontroller : MonoBehaviour
 
     public void EnemyTurnInicial()
     {
+        //turno enemy
+        ChangeSides("0");
         //turno del enemigo, sabiendo lugares que poner ficha para ganar
         ElegirFichaEnemigoAutomatico();
         //eliminamos para en siguiente ronda volver a poner posicionesVictoriaEnemy
@@ -56,14 +58,29 @@ public class gamecontroller : MonoBehaviour
     }
     public void EnemyTurn()
     {
+        ChangeSides("0");
         //turno del enemigo, sabiendo lugares que poner ficha para ganar
         ElegirFichaEnemigoAutomatico();
         //eliminamos para en siguiente ronda volver a poner posicionesVictoriaEnemy
         LimpiarPosicionesVictoriaRondaAnterior();
-       
-        //ChangeSides();
+
+        //ahora toca jugador al acabar enemigo
+        EmpezarTurnoJugador();
 
     }
+
+    //cuando termina de mover el enemigo
+    void EmpezarTurnoJugador()
+    {
+        ChangeSides("X");
+    }
+
+    //cuando termina de mover el JUGADOR
+    public void EmpezarTurnoEnemigo()
+    {
+        ChangeSides("0");
+    }
+
     private void Awake()
     {
         SetGameControllerReferenceOnButtons();
@@ -337,10 +354,12 @@ public class gamecontroller : MonoBehaviour
         //sino hay posibilidad de posicionVictoria vemos si el jugador puede ganar para tapar ese hueco y sino la pones al lado de la ficha haciendo una pareja
         else
         {
+                //en modo facil solo intent ganar el, no para al jugador de intentar ganar
 
-                //PLAYER
+
+                //PLAYER, comprobacion que solo hace en modo dificil, no modo facil
                 //comprobamos si hay posibilidad de victoria por parte del player para tapar el hueco, si hay alguna
-                if (posicionesVictoriaPlayer[contadorPosicionesVictoriaPlayer] != 0)
+                if (posicionesVictoriaPlayer[contadorPosicionesVictoriaPlayer] != 0 && SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoDificil")
                 {
                     TaparHuecoEvitarVictoriaPlayer();
                 }
@@ -1457,14 +1476,15 @@ public class gamecontroller : MonoBehaviour
         gameoverText.text ="X has ganado";
     }
 
-    void ChangeSides()
+    public void ChangeSides(string gameSide)
     {
         //paneles canvas
-        TurnoJugadorCanvas();
+        TurnoJugadorCanvas(gameSide);
     }
 
-    void TurnoJugadorCanvas()
+    void TurnoJugadorCanvas(string gameSides)
     {
+        gameSide = gameSides;
         //si playerSide es "X" activamos playerX en pantalla
         if (gameSide == "X")
         {

@@ -14,12 +14,17 @@ public class GripSpace : MonoBehaviour
 
     public void SetSpace()
     {
+         //aqui empieza turno jugador desde que tienes posibilidad de pulsar algun boton
+
         //si el boton es interactivo
-        if(this.gameObject.GetComponent<Button>().interactable)
+        if (this.gameObject.GetComponent<Button>().interactable)
         {
+           
+            
             //siempre ponemos la X de player ya que solo se pulsa boton en nuestro turno
             buttonText.text = "X";
-            
+            //al acabar de pulsarse el boton, acaba el turno del jugador y empieza el del enemigo
+            GameController.EmpezarTurnoEnemigo();
             //ponemos posicion como ocupada
             GameController.PosicionBotonPulsadoOcupada(this.gameObject);
             //ya no es accesible
@@ -30,10 +35,15 @@ public class GripSpace : MonoBehaviour
             GameController.ReiniciarContador();
 
 
-            //turno enemy
-            GameController.EndTurn();
+            Invoke("TurnoEnemy", 1f);
 
         }
+    }
+
+    void TurnoEnemy()
+    {
+        //turno enemy
+        GameController.EndTurn();
     }
 
     public void SetGameControllerReference(gamecontroller controller)
