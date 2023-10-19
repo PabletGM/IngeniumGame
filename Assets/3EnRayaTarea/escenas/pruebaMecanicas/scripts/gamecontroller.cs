@@ -61,14 +61,20 @@ public class gamecontroller : MonoBehaviour
     }
     public void EnemyTurn()
     {
-        ChangeSides("0");
-        //turno del enemigo, sabiendo lugares que poner ficha para ganar
-        ElegirFichaEnemigoAutomatico();
-        //eliminamos para en siguiente ronda volver a poner posicionesVictoriaEnemy
-        LimpiarPosicionesVictoriaRondaAnterior();
+        //sino ha ganado el jugador se hace, esto es si endPartida = false && gameOver.text != "X has ganado"
+        //si ha ganado el jugador el enemigo no pone jugada ya
+        if (!endPartida && gameoverText.text != "X has ganado")
+        {
+            ChangeSides("0");
+            //turno del enemigo, sabiendo lugares que poner ficha para ganar
+            ElegirFichaEnemigoAutomatico();
+            //eliminamos para en siguiente ronda volver a poner posicionesVictoriaEnemy
+            LimpiarPosicionesVictoriaRondaAnterior();
 
-        //ahora toca jugador al acabar enemigo
-        EmpezarTurnoJugador();
+            //ahora toca jugador al acabar enemigo
+            EmpezarTurnoJugador();
+        }
+        
 
     }
 
@@ -397,9 +403,24 @@ public class gamecontroller : MonoBehaviour
                         //si no hay fichas la pones en el centro
                         else
                         {
+                                //si está en modo facil no pone la primera posicion en el medio
+                                if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoFacil")
+                                {
+                                    //si está en el modo dificil si pone la primera posicion en el medio
+                                    buttonList[1].text = enemySide;
+                                    //lo marcas como pulsado
+                                    PosicionBotonPulsadoOcupada(buttonList[1].transform.parent.gameObject);
+                                }
+                                //si esta en modo dificil si pone la primera pos en el medio
+                                else if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoDificil")
+                                {
+                                    //si está en el modo dificil si pone la primera posicion en el medio
                                     buttonList[4].text = enemySide;
                                     //lo marcas como pulsado
                                     PosicionBotonPulsadoOcupada(buttonList[4].transform.parent.gameObject);
+                                }
+
+                                
                         }
                     #endregion
                 }    
@@ -1521,7 +1542,7 @@ public class gamecontroller : MonoBehaviour
     public void RestartGame()
     {
         //reinicia escena
-        SceneManager.LoadScene("mecanicas3EnRaya");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
     }
 
