@@ -55,6 +55,7 @@ public class gamecontroller : MonoBehaviour
 
     private bool endPartida = false;
 
+    private bool evitarDobleJugadaPlayer = false;
 
     static public gamecontroller GetInstanceGameController()
     {
@@ -569,45 +570,99 @@ public class gamecontroller : MonoBehaviour
                 }
             }
 
-            //numero maximo de intentos a ver si encontramos posicion para hacer pareja es el numero de posiciones Disponibles
-            int maxAttempts = posicionesDisponibles.Count;
 
-            //orden de acabar y salir si es true
-            bool acabado = false;
-            int asignado = -1;
-            //vamos mirando entre los vecinos elegimos uno aleatorio hasta que no queden
-            while (!acabado)
+            //si es doble jugada player o si solo queda una ficha libre en todo el tablero
+            if(evitarDobleJugadaPlayer || CuantosHuecoslibres() == 1)
             {
-                if(maxAttempts > 0 && asignado == -1)
+                if (CuantosHuecoslibres() == 1)
                 {
-                    //se elige pos aleatoria
-                    int randomValue = random.Next(0, posicionesDisponibles.Count);
-                    //pones la posicion disponible que ha salido a la variable asignado
-                    asignado = posicionesDisponibles[randomValue];
+                    //vemos cual es
+                    DevolverUnicoHuecoLibre().GetComponent<TMP_Text>().text = enemySide;
+                    GameObject boton = DevolverUnicoHuecoLibre();
+                    PosicionBotonPulsadoOcupada(buttonList[devolverNumeroConBoton(boton)].transform.parent.gameObject);
+                }
+                else
+                {
+                     buttonList[devolverNumeroConBoton(botonConFichaEnemy)].text = enemySide;
+                    //marcar como pulsado
+                    PosicionBotonPulsadoOcupada(buttonList[devolverNumeroConBoton(botonConFichaEnemy)].transform.parent.gameObject); 
+                }
+                evitarDobleJugadaPlayer = false;
+               
+            }
+            else
+            {
+                     //numero maximo de intentos a ver si encontramos posicion para hacer pareja es el numero de posiciones Disponibles
+                int maxAttempts = posicionesDisponibles.Count;
 
-                    //ves si está vacia y posicionesLibresSinFicha[asignado] == false => se puede poner "0"
-                    if (buttonList[asignado].text == "" && posicionesLibresSinFicha[asignado] == false)
+                //orden de acabar y salir si es true
+                bool acabado = false;
+                int asignado = -1;
+                //vamos mirando entre los vecinos elegimos uno aleatorio hasta que no queden
+                while (!acabado)
+                {
+                    if(maxAttempts > 0 && asignado == -1)
                     {
-                        buttonList[asignado].text = enemySide;
-                        //marcar como pulsado
-                        PosicionBotonPulsadoOcupada(buttonList[asignado].transform.parent.gameObject);
-                        acabado = true;
-                    }
-                    //si ya hay text = "X" o no esta vacio
-                    else
-                    {
-                        acabado = false;
-                    }
+                        //se elige pos aleatoria
+                        int randomValue = random.Next(0, posicionesDisponibles.Count);
+                        //pones la posicion disponible que ha salido a la variable asignado
+                        asignado = posicionesDisponibles[randomValue];
 
-                    //se quita de la lista
-                    posicionesDisponibles.Remove(asignado);
-                    maxAttempts--;
-                    //si se han hecho todos los intentos y no se ha salido se fuerza salir
-                    if(maxAttempts == 0) { acabado = true; }
+                        //ves si está vacia y posicionesLibresSinFicha[asignado] == false => se puede poner "0"
+                        if (buttonList[asignado].text == "" && posicionesLibresSinFicha[asignado] == false)
+                        {
+                            buttonList[asignado].text = enemySide;
+                            //marcar como pulsado
+                            PosicionBotonPulsadoOcupada(buttonList[asignado].transform.parent.gameObject);
+                            acabado = true;
+                        }
+                        //si ya hay text = "X" o no esta vacio
+                        else
+                        {
+                            acabado = false;
+                        }
+
+                        //se quita de la lista
+                        posicionesDisponibles.Remove(asignado);
+                        maxAttempts--;
+                        //si se han hecho todos los intentos y no se ha salido se fuerza salir
+                        if(maxAttempts == 0) { acabado = true; }
+                    }
                 }
             }
+           
         
 
+    }
+
+    public int CuantosHuecoslibres()
+    {
+        int numeroVeces = 0;
+
+        for (int i = 0; i < buttonList.Length; i++)
+        {
+            if(buttonList[i].text == "")
+            {
+                numeroVeces++;
+            }
+            
+        }
+        return numeroVeces;
+    }
+
+    public GameObject DevolverUnicoHuecoLibre()
+    {
+        
+
+        for (int i = 0; i < buttonList.Length; i++)
+        {
+            if (buttonList[i].text == "")
+            {
+                return buttonList[i].gameObject;
+            }
+
+        }
+        return null;
     }
 
     public string DevolverFichaEnemyColocadaEnTableroConVecinosVacios()
@@ -625,6 +680,7 @@ public class gamecontroller : MonoBehaviour
             //antes de probar boton aleatorio vemos si alguna de las esquinas enemigas tiene como vecinos al lado a 2 XX para tapar jugada doble
             if(TaparJugadaDoblePlayer()!=null)
             {
+                evitarDobleJugadaPlayer = true;
                 return TaparJugadaDoblePlayer().name;
             }
             else
@@ -658,25 +714,25 @@ public class gamecontroller : MonoBehaviour
         //esquinas son 0,2,6,8
 
             //para evitar doble jugada de player en boton 0
-                if (buttonList[1].text == "X" && buttonList[3].text == "X" && buttonList[0].text == "X")
+                if (buttonList[1].text == "X" && buttonList[3].text == "X" && buttonList[0].text == "")
                 {
                     return  buttonList[0].transform.parent.gameObject;
                 }
 
                 //para evitar doble jugada de player en boton 2
-                if (buttonList[1].text == "X" && buttonList[5].text == "X" && buttonList[0].text == "X")
+                if (buttonList[1].text == "X" && buttonList[5].text == "X" && buttonList[2].text == "")
                 {
                     return buttonList[2].transform.parent.gameObject;
                 }
 
                 //para evitar doble jugada de player en boton 6
-                if (buttonList[7].text == "X" && buttonList[3].text == "X" && buttonList[0].text == "X")
+                if (buttonList[7].text == "X" && buttonList[3].text == "X" && buttonList[6].text == "")
                 {
                     return buttonList[6].transform.parent.gameObject;
                 }
 
                 //para evitar doble jugada de player en boton 8
-                if (buttonList[7].text == "X" && buttonList[3].text == "X" && buttonList[0].text == "X")
+                if (buttonList[7].text == "X" && buttonList[5].text == "X" && buttonList[8].text == "")
                 {
                      return buttonList[8].transform.parent.gameObject;
                 }
