@@ -622,26 +622,68 @@ public class gamecontroller : MonoBehaviour
         //hasta que no se haya probado todos los botones
         while (intentos < cantidadPosiciones)
         {
-            //probamos boton aleatorio
-            int posicionAleatoria = random.Next(0, cantidadPosiciones);
-
-            //si la posicion de ese boton no está pillada
-            if (!posicionesUsadas[posicionAleatoria])
+            //antes de probar boton aleatorio vemos si alguna de las esquinas enemigas tiene como vecinos al lado a 2 XX para tapar jugada doble
+            if(TaparJugadaDoblePlayer()!=null)
             {
-                //la ponemos como vista o comprobada
-                posicionesUsadas[posicionAleatoria] = true;
-
-                //si posee el enemySide "0" lo devolvemos, debemos ver tambien si tiene vecinos libres el boton
-                if (buttonList[posicionAleatoria].text == enemySide && ComprobarSiBotonTieneVecinosLibres(buttonList[posicionAleatoria].transform.parent.gameObject))
-                {
-                    return buttonList[posicionAleatoria].transform.parent.gameObject.name;
-                }
-
-                intentos++;
+                return TaparJugadaDoblePlayer().name;
             }
+            else
+            {
+                //probamos boton aleatorio
+                int posicionAleatoria = random.Next(0, cantidadPosiciones);
+
+                //si la posicion de ese boton no está pillada
+                if (!posicionesUsadas[posicionAleatoria])
+                {
+                    //la ponemos como vista o comprobada
+                    posicionesUsadas[posicionAleatoria] = true;
+
+                    //si posee el enemySide "0" lo devolvemos, debemos ver tambien si tiene vecinos libres el boton
+                    if (buttonList[posicionAleatoria].text == enemySide && ComprobarSiBotonTieneVecinosLibres(buttonList[posicionAleatoria].transform.parent.gameObject))
+                    {
+                        return buttonList[posicionAleatoria].transform.parent.gameObject.name;
+                    }
+
+                    intentos++;
+                }
+            }
+           
         }
 
         return null;
+    }
+
+    public GameObject TaparJugadaDoblePlayer()
+    {
+        //esquinas son 0,2,6,8
+
+            //para evitar doble jugada de player en boton 0
+                if (buttonList[1].text == "X" && buttonList[3].text == "X" && buttonList[0].text == "X")
+                {
+                    return  buttonList[0].transform.parent.gameObject;
+                }
+
+                //para evitar doble jugada de player en boton 2
+                if (buttonList[1].text == "X" && buttonList[5].text == "X" && buttonList[0].text == "X")
+                {
+                    return buttonList[2].transform.parent.gameObject;
+                }
+
+                //para evitar doble jugada de player en boton 6
+                if (buttonList[7].text == "X" && buttonList[3].text == "X" && buttonList[0].text == "X")
+                {
+                    return buttonList[6].transform.parent.gameObject;
+                }
+
+                //para evitar doble jugada de player en boton 8
+                if (buttonList[7].text == "X" && buttonList[3].text == "X" && buttonList[0].text == "X")
+                {
+                     return buttonList[8].transform.parent.gameObject;
+                }
+
+
+        return null;
+           
     }
 
     //te devuelve y te dice si el boton como argumento tiene algun vecino libre o no
@@ -655,6 +697,9 @@ public class gamecontroller : MonoBehaviour
                 if (buttonList[1].text == "") { return true; }
                 else if (buttonList[4].text == "") { return true; }
                 else if (buttonList[3].text == "") { return true; }
+                else if (buttonList[3].text == "") { return true; }
+                //para evitar doble jugada de player
+                else if (buttonList[1].text == "X" && buttonList[3].text == "X") { return true; }
                 //si ningun vecino está libre
                 else { return false; }
 
@@ -663,6 +708,7 @@ public class gamecontroller : MonoBehaviour
                 if (buttonList[0].text == "") { return true; }
                 else if (buttonList[4].text == "") { return true; }
                 else if (buttonList[2].text == "") { return true; }
+               
                 //si ningun vecino está libre
                 else { return false; }
 
@@ -671,6 +717,8 @@ public class gamecontroller : MonoBehaviour
                 if (buttonList[1].text == "") { return true; }
                 else if (buttonList[4].text == "") { return true; }
                 else if (buttonList[5].text == "") { return true; }
+                //para evitar doble jugada de player
+                else if (buttonList[1].text == "X" && buttonList[5].text == "X") { return true; }
                 //si ningun vecino está libre
                 else { return false; }
 
@@ -709,6 +757,8 @@ public class gamecontroller : MonoBehaviour
                 if (buttonList[3].text == "") { return true; }
                 else if (buttonList[4].text == "") { return true; }
                 else if (buttonList[7].text == "") { return true; }
+                //para evitar doble jugada de player
+                else if (buttonList[3].text == "X" && buttonList[7].text == "X") { return true; }
                 //si ningun vecino está libre
                 else { return false; }
 
@@ -725,6 +775,8 @@ public class gamecontroller : MonoBehaviour
                 if (buttonList[4].text == "") { return true; }
                 else if (buttonList[5].text == "") { return true; }
                 else if (buttonList[7].text == "") { return true; }
+                //para evitar doble jugada de player
+                else if (buttonList[5].text == "X" && buttonList[7].text == "X") { return true; }
                 //si ningun vecino está libre
                 else { return false; }
             default:
