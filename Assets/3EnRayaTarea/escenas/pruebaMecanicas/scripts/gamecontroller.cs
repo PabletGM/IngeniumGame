@@ -9,6 +9,10 @@ using UnityEngine.UI;
 
 public class gamecontroller : MonoBehaviour
 {
+
+
+    static private gamecontroller _instanceGameController;
+
     public TMP_Text[] buttonList;
 
     private string playerSide = "X";
@@ -50,6 +54,13 @@ public class gamecontroller : MonoBehaviour
     int contadorPosicionesVictoriaPlayer = 0;
 
     private bool endPartida = false;
+
+
+    static public gamecontroller GetInstanceGameController()
+    {
+        return _instanceGameController;
+    }
+
 
 
 
@@ -107,7 +118,19 @@ public class gamecontroller : MonoBehaviour
 
     private void Awake()
     {
-        SetGameControllerReferenceOnButtons();
+
+        //si la instancia no existe se hace este script la instancia
+        if (_instanceGameController == null)
+        {
+            _instanceGameController = this;
+        }
+        //si la instancia existe , destruimos la copia
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
+        //SetGameControllerReferenceOnButtons();
 
         InicializarJuego();
 

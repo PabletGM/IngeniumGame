@@ -9,7 +9,7 @@ public class GripSpace : MonoBehaviour
     public Button button;
     public TMP_Text buttonText;
     public string playerSide;
-
+    [SerializeField]
     private gamecontroller GameController;
 
     public void SetSpace()
@@ -24,18 +24,18 @@ public class GripSpace : MonoBehaviour
             //siempre ponemos la X de player ya que solo se pulsa boton en nuestro turno
             buttonText.text = "X";
             //al acabar de pulsarse el boton, acaba el turno del jugador y empieza el del enemigo
-            GameController.EmpezarTurnoEnemigo();
+            gamecontroller.GetInstanceGameController().EmpezarTurnoEnemigo();
             //ponemos posicion como ocupada
-            GameController.PosicionBotonPulsadoOcupada(this.gameObject);
+            gamecontroller.GetInstanceGameController().PosicionBotonPulsadoOcupada(this.gameObject);
             //ya no es accesible
             this.gameObject.GetComponent<Button>().interactable = false;
             //metodo para buscar combinacion de 2 de 2 00 o 2 XX, para añadir posibles posiciones de victoria
-            GameController.Combinacion200XX();
+            gamecontroller.GetInstanceGameController().Combinacion200XX();
             //despues de eso se reinicia el contador
-            GameController.ReiniciarContador();
+            gamecontroller.GetInstanceGameController().ReiniciarContador();
 
 
-            GameController.SetPanelEnemyWaiting();
+            gamecontroller.GetInstanceGameController().SetPanelEnemyWaiting();
             Invoke("TurnoEnemy", 1.5f);
 
         }
@@ -43,9 +43,9 @@ public class GripSpace : MonoBehaviour
 
     void TurnoEnemy()
     {
-        
+
         //turno enemy
-        GameController.EndTurn();
+        gamecontroller.GetInstanceGameController().EndTurn();
     }
 
     public void SetGameControllerReference(gamecontroller controller)
