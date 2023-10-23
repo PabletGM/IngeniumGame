@@ -514,9 +514,35 @@ public class gamecontroller : MonoBehaviour
     //buscamos fichas vecinas, cogemos una al azar y le ponemos una ficha enemy
     public void Poner0EnFichaVecina(GameObject botonConFichaEnemy)
     {
-        
+        //orden de acabar y salir si es true
+        bool acabado = false;
+        //si hay un hueco solo o jugada doble player
+
+        if (CuantosHuecoslibres() == 1)
+        {
+            //se coge numero boton libre
+            int numeroBoton = devolverNumeroConBoton(DevolverUnicoHuecoLibre());
+            //se le pone la ficha enemy
+            buttonList[numeroBoton].GetComponent<TMP_Text>().text = enemySide;
             
-            System.Random random = new System.Random();
+            PosicionBotonPulsadoOcupada(buttonList[numeroBoton].transform.parent.gameObject);
+            acabado = true;
+
+        }
+
+        //si es doble jugada player o si solo queda una ficha libre en todo el tablero
+        else if (evitarDobleJugadaPlayer)
+        {
+            buttonList[devolverNumeroConBoton(botonConFichaEnemy)].text = enemySide;
+            //marcar como pulsado
+            PosicionBotonPulsadoOcupada(buttonList[devolverNumeroConBoton(botonConFichaEnemy)].transform.parent.gameObject);
+            evitarDobleJugadaPlayer = false;
+            acabado = true;
+        }
+
+
+
+        System.Random random = new System.Random();
 
         
             //lista de fichas vecinas con cada boton
@@ -569,37 +595,14 @@ public class gamecontroller : MonoBehaviour
                     posicionesDisponibles.Add(fichaVecina);
                 }
             }
-
-
-            //si es doble jugada player o si solo queda una ficha libre en todo el tablero
-            if(evitarDobleJugadaPlayer || CuantosHuecoslibres() == 1)
-            {
-                if (CuantosHuecoslibres() == 1)
-                {
-                    //vemos cual es
-                    DevolverUnicoHuecoLibre().GetComponent<TMP_Text>().text = enemySide;
-                    GameObject boton = DevolverUnicoHuecoLibre();
-                    PosicionBotonPulsadoOcupada(buttonList[devolverNumeroConBoton(boton)].transform.parent.gameObject);
-                }
-                else
-                {
-                     buttonList[devolverNumeroConBoton(botonConFichaEnemy)].text = enemySide;
-                    //marcar como pulsado
-                    PosicionBotonPulsadoOcupada(buttonList[devolverNumeroConBoton(botonConFichaEnemy)].transform.parent.gameObject); 
-                }
-                evitarDobleJugadaPlayer = false;
-               
-            }
-            else
-            {
-                     //numero maximo de intentos a ver si encontramos posicion para hacer pareja es el numero de posiciones Disponibles
+            
+                //numero maximo de intentos a ver si encontramos posicion para hacer pareja es el numero de posiciones Disponibles
                 int maxAttempts = posicionesDisponibles.Count;
 
-                //orden de acabar y salir si es true
-                bool acabado = false;
+                
                 int asignado = -1;
                 //vamos mirando entre los vecinos elegimos uno aleatorio hasta que no queden
-                while (!acabado)
+                while (!acabado && maxAttempts>0)
                 {
                     if(maxAttempts > 0 && asignado == -1)
                     {
@@ -629,9 +632,6 @@ public class gamecontroller : MonoBehaviour
                         if(maxAttempts == 0) { acabado = true; }
                     }
                 }
-            }
-           
-        
 
     }
 
@@ -658,7 +658,7 @@ public class gamecontroller : MonoBehaviour
         {
             if (buttonList[i].text == "")
             {
-                return buttonList[i].gameObject;
+                return buttonList[i].transform.parent.gameObject;
             }
 
         }
