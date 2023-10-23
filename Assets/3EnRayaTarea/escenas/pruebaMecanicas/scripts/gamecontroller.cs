@@ -57,6 +57,8 @@ public class gamecontroller : MonoBehaviour
 
     private bool evitarDobleJugadaPlayer = false;
 
+
+
     static public gamecontroller GetInstanceGameController()
     {
         return _instanceGameController;
@@ -515,6 +517,7 @@ public class gamecontroller : MonoBehaviour
     public void Poner0EnFichaVecina(GameObject botonConFichaEnemy)
     {
         //orden de acabar y salir si es true
+        //booleano para salir del bucle infinito while de Poner0EnFichaVecina(botonElegido)
         bool acabado = false;
         //si hay un hueco solo o jugada doble player
 
@@ -674,6 +677,8 @@ public class gamecontroller : MonoBehaviour
         //posiciones usadas
         bool[] posicionesUsadas = new bool[cantidadPosiciones];
 
+        int posicionActual = 0;
+
         //hasta que no se haya probado todos los botones
         while (intentos < cantidadPosiciones)
         {
@@ -685,22 +690,22 @@ public class gamecontroller : MonoBehaviour
             }
             else
             {
-                //probamos boton aleatorio
-                int posicionAleatoria = random.Next(0, cantidadPosiciones);
+                
 
                 //si la posicion de ese boton no está pillada
-                if (!posicionesUsadas[posicionAleatoria])
+                if (!posicionesUsadas[posicionActual])
                 {
                     //la ponemos como vista o comprobada
-                    posicionesUsadas[posicionAleatoria] = true;
+                    posicionesUsadas[posicionActual] = true;
 
                     //si posee el enemySide "0" lo devolvemos, debemos ver tambien si tiene vecinos libres el boton
-                    if (buttonList[posicionAleatoria].text == enemySide && ComprobarSiBotonTieneVecinosLibres(buttonList[posicionAleatoria].transform.parent.gameObject))
+                    if (buttonList[posicionActual].text == enemySide && ComprobarSiBotonTieneVecinosLibres(buttonList[posicionActual].transform.parent.gameObject))
                     {
-                        return buttonList[posicionAleatoria].transform.parent.gameObject.name;
+                        return buttonList[posicionActual].transform.parent.gameObject.name;
                     }
 
                     intentos++;
+                    posicionActual++;
                 }
             }
            
@@ -755,7 +760,7 @@ public class gamecontroller : MonoBehaviour
                 else if (buttonList[3].text == "") { return true; }
                 else if (buttonList[3].text == "") { return true; }
                 //para evitar doble jugada de player
-                else if (buttonList[1].text == "X" && buttonList[3].text == "X") { return true; }
+                //else if (buttonList[1].text == "X" && buttonList[3].text == "X") { return true; }
                 //si ningun vecino está libre
                 else { return false; }
 
@@ -774,7 +779,7 @@ public class gamecontroller : MonoBehaviour
                 else if (buttonList[4].text == "") { return true; }
                 else if (buttonList[5].text == "") { return true; }
                 //para evitar doble jugada de player
-                else if (buttonList[1].text == "X" && buttonList[5].text == "X") { return true; }
+                //else if (buttonList[1].text == "X" && buttonList[5].text == "X") { return true; }
                 //si ningun vecino está libre
                 else { return false; }
 
@@ -814,7 +819,7 @@ public class gamecontroller : MonoBehaviour
                 else if (buttonList[4].text == "") { return true; }
                 else if (buttonList[7].text == "") { return true; }
                 //para evitar doble jugada de player
-                else if (buttonList[3].text == "X" && buttonList[7].text == "X") { return true; }
+                //else if (buttonList[3].text == "X" && buttonList[7].text == "X") { return true; }
                 //si ningun vecino está libre
                 else { return false; }
 
@@ -832,7 +837,7 @@ public class gamecontroller : MonoBehaviour
                 else if (buttonList[5].text == "") { return true; }
                 else if (buttonList[7].text == "") { return true; }
                 //para evitar doble jugada de player
-                else if (buttonList[5].text == "X" && buttonList[7].text == "X") { return true; }
+                //else if (buttonList[5].text == "X" && buttonList[7].text == "X") { return true; }
                 //si ningun vecino está libre
                 else { return false; }
             default:
