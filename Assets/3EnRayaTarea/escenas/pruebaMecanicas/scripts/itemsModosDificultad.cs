@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -28,6 +29,27 @@ public class itemsModosDificultad : MonoBehaviour
 
     public void QuitarItemModoFacil()
     {
+        TweenDesaparecerItem();
+        
+    }
+
+    public void TweenDesaparecerItem()
+    {
+        //1 segundo de tween 
+        panelModoFacil.transform.DOScale(new Vector3(0.01f,0.01f,0.01f), 1f);
+        Invoke("DesaparecerItem", 1f);
+    }
+
+    public void TweenAparecerItem()
+    {
+        //1 segundo de tween 
+        panelModoFacil.transform.DOScale(new Vector3(1,1,1), 1f);
+       
+    }
+
+    //DesaparecerItem
+    public void DesaparecerItem()
+    {
         panelModoFacil.SetActive(false);
         SetFuncionalidadJuegoModo(true);
     }
@@ -45,7 +67,8 @@ public class itemsModosDificultad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //aparece
+        TweenAparecerItem();
     }
 
     // Update is called once per frame
