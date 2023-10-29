@@ -10,6 +10,8 @@ public class EscenaInicial3EnRayaMecanicas : MonoBehaviour
 
     [SerializeField] private GameObject imagenPuerta;
     [SerializeField] private GameObject animacionPuerta;
+
+    [SerializeField] private GameObject clicking;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,7 @@ public class EscenaInicial3EnRayaMecanicas : MonoBehaviour
     //al pulsar el boton abrir puerta
     public void BotonAbrirPuerta()
     {
+        SetClicking(false);
         //quitamos imagen puertaImagen
         imagenPuerta.SetActive(false);
         //ponemos G0 puertaAnimacion y comenzará esta animacion que dura 3 segundos
@@ -35,5 +38,10 @@ public class EscenaInicial3EnRayaMecanicas : MonoBehaviour
         imagenPuerta.SetActive(false);
         //ponemos G0 puertaAnimacion y comenzará esta animacion que dura 3 segundos
         animacionPuerta.SetActive(false);
+    }
+
+    private void SetClicking(bool set)
+    {
+        clicking.SetActive(set);
     }
 }
