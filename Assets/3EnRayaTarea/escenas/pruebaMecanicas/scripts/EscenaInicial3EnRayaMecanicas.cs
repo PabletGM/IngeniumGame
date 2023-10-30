@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EscenaInicial3EnRayaMecanicas : MonoBehaviour
 {
@@ -38,6 +39,13 @@ public class EscenaInicial3EnRayaMecanicas : MonoBehaviour
         imagenPuerta.SetActive(false);
         //ponemos G0 puertaAnimacion y comenzará esta animacion que dura 3 segundos
         animacionPuerta.SetActive(false);
+        //cargar siguiente escena
+        NextScene();
+    }
+
+    public void NextScene()
+    {
+        SceneManager.LoadScene("EscenaSalaInvitados");
     }
 
     private void SetClicking(bool set)
