@@ -63,7 +63,11 @@ public class AudioManager3EnRaya : MonoBehaviour
 
         else
         {
+            //bajamos volumen de musica normal
+            musicSource.volume = 0.5f;
             sfxSource.PlayOneShot(s.clip);
+            //subimos volumen de musica normal
+            musicSource.volume = 1f;
         }
     }
 

@@ -1146,7 +1146,9 @@ MonoBehaviour:
   musicSounds:
   - name: musicFondo
     clip: {fileID: 8300000, guid: a31ae47b2d1ee4241b4d3277aed87b39, type: 3}
-  sfxSounds: []
+  sfxSounds:
+  - name: doorSpace
+    clip: {fileID: 8300000, guid: a6afcf73781915b4c9c2d227af1772ee, type: 3}
   musicSource: {fileID: 1539453103}
   sfxSource: {fileID: 772898361}
 --- !u!4 &953365940

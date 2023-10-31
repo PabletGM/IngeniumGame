@@ -28,8 +28,15 @@ public class EscenaInicial3EnRayaMecanicas : MonoBehaviour
         imagenPuerta.SetActive(false);
         //ponemos G0 puertaAnimacion y comenzará esta animacion que dura 3 segundos
         animacionPuerta.SetActive(true);
+        //sonido abrir puerta
+        SonidoAbrirPuerta();
         //inovocamos metodo DejarPuertaAbierta en 3f
         Invoke("DejarPuertaAbierta", 2.9f);
+    }
+
+    private void SonidoAbrirPuerta()
+    {
+        AudioManager3EnRaya.instance.PlaySFX("doorSpace");
     }
 
     //metodo dejar puerta abierta, forzamos el cambio de animacion dentro del animator
