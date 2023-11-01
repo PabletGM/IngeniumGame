@@ -39,6 +39,16 @@ public class gamecontroller : MonoBehaviour
     [SerializeField]
     private GameObject panelEnemyWaiting;
 
+    [SerializeField]
+    private GameObject board;
+
+    [SerializeField]
+    private GameObject lineas;
+
+    [SerializeField]
+    private GameObject botones;
+
+
     //booleano que permite que durante el modo de dificultad medio se haga la comprobacion 1 vez para taponar jugada player de victoria
     private bool modoMedioTaponarPrimeraJugadaVictoria = true;
 
@@ -386,6 +396,7 @@ public class gamecontroller : MonoBehaviour
             endPartida = true;
             gameover.SetActive(true);
             gameoverText.text = "Empate";
+            DesactivarTableroAlGanarOPerder();
         }
     }
 
@@ -636,6 +647,22 @@ public class gamecontroller : MonoBehaviour
                     }
                 }
 
+    }
+
+    public void DesactivarTableroAlGanarOPerder()
+    {
+
+        Invoke("DesactivarJugabilidad", 1.5f);
+    }
+
+    private void DesactivarJugabilidad()
+    {
+        //desactivar board,lineas,botones,playerX y player0
+        board.SetActive(false);
+        lineas.SetActive(false);
+        botones.SetActive(false);
+        player0.SetActive(false);
+        playerX.SetActive(false);
     }
 
     public int CuantosHuecoslibres()
@@ -1641,7 +1668,9 @@ public class gamecontroller : MonoBehaviour
     //para decir si ha ganado enemy
     void GameOver()
     {
+        
         SetBoardInteractable(false);
+        DesactivarTableroAlGanarOPerder();
 
         gameover.SetActive(true);
         gameoverText.text = "O has ganado";
@@ -1650,7 +1679,9 @@ public class gamecontroller : MonoBehaviour
     //para decir si ha ganado enemy
     void Win()
     {
+        
         SetBoardInteractable(false);
+        DesactivarTableroAlGanarOPerder();
 
         win.SetActive(true);
         gameoverText.text ="X has ganado";
