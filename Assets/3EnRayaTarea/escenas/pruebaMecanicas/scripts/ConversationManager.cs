@@ -112,13 +112,17 @@ public class ConversationManager : MonoBehaviour
 
     public void IniciarPartida()
     {
+        AudioManager3EnRaya.instance.PlaySFXDuracion("IniciarPartida",0.5f);
         //activas objeto decoracion Board y hace animacion que dura 2.5f
         Board.SetActive(true);
+        AudioManager3EnRaya.instance.PlaySFXDuracion("Unlocked", 2f);
         //desactivamos resto
         DesactivarEscena();
         //tras 2.4f pasas al nivel
         Invoke("Iniciar3EnRaya", 1.8f);
     }
+
+    
 
     private void DesactivarEscena()
     {

@@ -636,7 +636,7 @@ SpriteRenderer:
   m_Size: {x: 27.95006, y: 11.150001}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &442986948
@@ -1151,6 +1151,18 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a6afcf73781915b4c9c2d227af1772ee, type: 3}
   - name: conversation
     clip: {fileID: 8300000, guid: 3a81319c6077db44cbb4bde45531b961, type: 3}
+  - name: IniciarPartida
+    clip: {fileID: 8300000, guid: 04a57e9524d6e524db665785a61e0155, type: 3}
+  - name: Unlocked
+    clip: {fileID: 8300000, guid: c4a03e2c87d53ca4591f17998ada38dd, type: 3}
+  - name: FichaPlayer
+    clip: {fileID: 8300000, guid: 6914dd7d5fdc4b841b0895350a4fde9c, type: 3}
+  - name: FichaEnemy
+    clip: {fileID: 8300000, guid: 8432e83a5f26a3f4a99fc97da584d11e, type: 3}
+  - name: Perder
+    clip: {fileID: 8300000, guid: f53414bef99881e4e880486a7702ff71, type: 3}
+  - name: Ganar
+    clip: {fileID: 8300000, guid: 2710a3f9350c2bd4ca05f2c918b8ea43, type: 3}
   musicSource: {fileID: 1539453103}
   sfxSource: {fileID: 772898361}
 --- !u!4 &953365940

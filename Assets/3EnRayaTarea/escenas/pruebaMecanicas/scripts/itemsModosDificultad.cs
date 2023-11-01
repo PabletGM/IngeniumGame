@@ -76,4 +76,9 @@ public class itemsModosDificultad : MonoBehaviour
     {
         
     }
+
+    public void Botonn()
+    {
+        AudioManager3EnRaya.instance.PlaySFXDuracion("IniciarPartida", 1f);
+    }
 }

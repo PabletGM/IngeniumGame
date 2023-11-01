@@ -400,6 +400,11 @@ public class gamecontroller : MonoBehaviour
         }
     }
 
+    public void Botonn()
+    {
+        AudioManager3EnRaya.instance.PlaySFXDuracion("IniciarPartida", 1f);
+    }
+
 
     //ves las fichas restantes y como es dificultad alta 
     public void  ElegirFichaEnemigoAutomatico()

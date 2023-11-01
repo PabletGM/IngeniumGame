@@ -334,6 +334,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 295588902}
+        m_TargetAssemblyTypeName: itemsModosDificultad, Assembly-CSharp
+        m_MethodName: Botonn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &77443239
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,6 +609,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1744998443}
         m_TargetAssemblyTypeName: gamecontroller, Assembly-CSharp
         m_MethodName: RestartGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1744998443}
+        m_TargetAssemblyTypeName: gamecontroller, Assembly-CSharp
+        m_MethodName: Botonn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1500,6 +1524,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 295588902}
+        m_TargetAssemblyTypeName: itemsModosDificultad, Assembly-CSharp
+        m_MethodName: Botonn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &426410544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2233,6 +2269,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 295588902}
+        m_TargetAssemblyTypeName: itemsModosDificultad, Assembly-CSharp
+        m_MethodName: Botonn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &683451710
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2805,6 +2853,18 @@ MonoBehaviour:
       - m_Target: {fileID: 295588902}
         m_TargetAssemblyTypeName: itemsModosDificultad, Assembly-CSharp
         m_MethodName: ActivarBotonQuitarItemModoFacil
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 295588902}
+        m_TargetAssemblyTypeName: itemsModosDificultad, Assembly-CSharp
+        m_MethodName: Botonn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4148,6 +4208,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1744998443}
         m_TargetAssemblyTypeName: gamecontroller, Assembly-CSharp
         m_MethodName: NextLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1744998443}
+        m_TargetAssemblyTypeName: gamecontroller, Assembly-CSharp
+        m_MethodName: Botonn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
