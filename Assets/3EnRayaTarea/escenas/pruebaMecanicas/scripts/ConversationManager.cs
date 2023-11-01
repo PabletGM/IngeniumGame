@@ -6,6 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class ConversationManager : MonoBehaviour
 {
+    //para que se llame una vez a cada conversacion
+    private bool conversacionAcabada = false;
+
+    [SerializeField]
+    private GameObject Board;
 
     [SerializeField]
     private GameObject WaitingDialogueAstronauta1;
@@ -23,6 +28,12 @@ public class ConversationManager : MonoBehaviour
     private TMP_Text DialogueAstronauta1Text;
     [SerializeField]
     private TMP_Text DialogueAstronauta2Text;
+
+    [SerializeField]
+    private GameObject personajes;
+
+    [SerializeField]
+    private GameObject clicking;
 
 
     //segun numero de clicks ponemos un texto u otro
@@ -42,6 +53,12 @@ public class ConversationManager : MonoBehaviour
         DialogueAstronauta1.SetActive(true);
         //Ponemos texto en pantalla
         DialogueAstronauta1Text.text = "Bua no veas que partidaza al 3 en raya...";
+        SonidoHablar();
+    }
+
+    public void SonidoHablar()
+    {
+        AudioManager3EnRaya.instance.PlaySFX("conversation");
     }
 
     //metodo tras pulsar pantalla segunda vez
@@ -55,6 +72,7 @@ public class ConversationManager : MonoBehaviour
         DialogueAstronauta1.SetActive(false);
         //Ponemos texto en pantalla
         DialogueAstronauta2Text.text = "Calla, que te estoy pegando una paliza...";
+        SonidoHablar();
     }
 
     //metodo tras pulsar pantalla tercera vez
@@ -68,6 +86,7 @@ public class ConversationManager : MonoBehaviour
         DialogueAstronauta2.SetActive(false);
         //Ponemos texto en pantalla
         DialogueAstronauta1Text.text = "Ostras, mira quien acaba de entrar, ¿Te echas una partida, novato? ...";
+        SonidoHablar();
     }
 
     //metodo tras pulsar pantalla primera vez
@@ -81,14 +100,40 @@ public class ConversationManager : MonoBehaviour
         DialogueAstronauta1.SetActive(false);
 
         ButtonIniciarPartida.SetActive(true);
+        clicking.SetActive(false);
     }
 
     public void NumeroClicks()
     {
         numeroClicks++;
+        //permite llamar a otra conversacion
+        conversacionAcabada = false;
     }
 
     public void IniciarPartida()
+    {
+        //activas objeto decoracion Board y hace animacion que dura 2.5f
+        Board.SetActive(true);
+        //desactivamos resto
+        DesactivarEscena();
+        //tras 2.4f pasas al nivel
+        Invoke("Iniciar3EnRaya", 1.8f);
+    }
+
+    private void DesactivarEscena()
+    {
+        DialogueAstronauta1Text.text = "";
+        DialogueAstronauta2Text.text = "";
+        //activamos conversacion1
+        DialogueAstronauta1.SetActive(false);
+        //desactivamos conversacion2
+        DialogueAstronauta2.SetActive(false);
+        ButtonIniciarPartida.SetActive(false);
+        personajes.SetActive(false);
+        clicking.SetActive(false);
+    }
+
+    public void Iniciar3EnRaya()
     {
         SceneManager.LoadScene("mecanicas3EnRayaModoDificil");
     }
@@ -99,25 +144,34 @@ public class ConversationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //primer texto
-        if(numeroClicks == 1) 
+        //sino se ha repetido la conversacion
+        if(!conversacionAcabada)
         {
-            EmpezarConversation();
+            //primer texto
+            if (numeroClicks == 1)
+            {
+                conversacionAcabada = true;
+                EmpezarConversation();
+            }
+            //segundo texto
+            else if (numeroClicks == 2)
+            {
+                conversacionAcabada = true;
+                EmpezarConversation2();
+            }
+            //tercer texto
+            else if (numeroClicks == 3)
+            {
+                conversacionAcabada = true;
+                EmpezarConversation3();
+            }
+            //activa boton
+            else if (numeroClicks == 4)
+            {
+                conversacionAcabada = true;
+                ActivarBotonNextLevel();
+            }
         }
-        //segundo texto
-        else if (numeroClicks == 2)
-        {
-            EmpezarConversation2();
-        }
-        //tercer texto
-        else if (numeroClicks == 3)
-        {
-            EmpezarConversation3();
-        }
-        //activa boton
-        else if (numeroClicks == 4)
-        {
-            ActivarBotonNextLevel();
-        }
+        
     }
 }
