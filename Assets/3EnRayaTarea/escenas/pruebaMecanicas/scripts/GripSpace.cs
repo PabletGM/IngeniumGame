@@ -23,6 +23,7 @@ public class GripSpace : MonoBehaviour
             
             //siempre ponemos la X de player ya que solo se pulsa boton en nuestro turno
             buttonText.text = "X";
+            FichaPlayerSound();
             //al acabar de pulsarse el boton, acaba el turno del jugador y empieza el del enemigo
             gamecontroller.GetInstanceGameController().EmpezarTurnoEnemigo();
             //ponemos posicion como ocupada
@@ -39,6 +40,11 @@ public class GripSpace : MonoBehaviour
             Invoke("TurnoEnemy", 1.5f);
 
         }
+    }
+
+    public void FichaPlayerSound()
+    {
+        AudioManager3EnRaya.instance.PlaySFXDuracion("FichaPlayer", 1f);
     }
 
     void TurnoEnemy()

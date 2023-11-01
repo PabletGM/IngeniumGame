@@ -85,6 +85,7 @@ public class gamecontroller : MonoBehaviour
         ElegirFichaEnemigoAutomatico();
         //eliminamos para en siguiente ronda volver a poner posicionesVictoriaEnemy
         LimpiarPosicionesVictoriaRondaAnterior();
+        FichaEnemySound();
     }
     public void EnemyTurn()
     {
@@ -100,6 +101,7 @@ public class gamecontroller : MonoBehaviour
 
             //ahora toca jugador al acabar enemigo
             EmpezarTurnoJugador();
+            FichaEnemySound();
         }
         
 
@@ -149,6 +151,11 @@ public class gamecontroller : MonoBehaviour
 
         //turno inicial del enemigo
         EnemyTurnInicial();
+    }
+
+    public void FichaEnemySound()
+    {
+        AudioManager3EnRaya.instance.PlaySFXDuracion("FichaEnemy", 1f);
     }
 
     public void ReturnTotalRounds()
@@ -404,6 +411,8 @@ public class gamecontroller : MonoBehaviour
     {
         AudioManager3EnRaya.instance.PlaySFXDuracion("IniciarPartida", 1f);
     }
+
+    
 
 
     //ves las fichas restantes y como es dificultad alta 
@@ -1673,7 +1682,7 @@ public class gamecontroller : MonoBehaviour
     //para decir si ha ganado enemy
     void GameOver()
     {
-        
+        AudioManager3EnRaya.instance.PlaySFXDuracion("Perder", 1f);
         SetBoardInteractable(false);
         DesactivarTableroAlGanarOPerder();
 
@@ -1684,7 +1693,7 @@ public class gamecontroller : MonoBehaviour
     //para decir si ha ganado enemy
     void Win()
     {
-        
+        AudioManager3EnRaya.instance.PlaySFXDuracion("Ganar", 1f);
         SetBoardInteractable(false);
         DesactivarTableroAlGanarOPerder();
 
