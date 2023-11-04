@@ -52,7 +52,7 @@ public class ConversationManager : MonoBehaviour
         //activamos conversacion1
         DialogueAstronauta1.SetActive(true);
         //Ponemos texto en pantalla
-        DialogueAstronauta1Text.text = "Bua no veas que partidaza al 3 en raya...";
+        DialogueAstronauta1Text.text = "Bua no veas que partidaza...";
         SonidoHablar();
     }
 

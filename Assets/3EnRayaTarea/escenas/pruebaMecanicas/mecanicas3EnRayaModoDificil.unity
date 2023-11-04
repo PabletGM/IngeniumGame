@@ -3514,8 +3514,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: ' Aumento la cantidad de recursos que invierto en la tarea, quiero demostrar
-    mi confianza en mis habilidades y capacidades a pesar de mi fracaso anterior'
+  m_text: "Apuestas 10 recursos. (S\xE9 que es arriesgado, pero conf\xEDo en mis
+    habilidades y lo que venga ser\xE1 bienvenido)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -4154,8 +4154,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Mantengo la misma cantidad de recursos que invierto en la tarea, conf\xEDo
-    en mis habilidades y capacidades a pesar de mi fracaso anterior."
+  m_text: "Apuestas 5 recursos. (Probar\xE9 suerte, quiz\xE1s puedo plantar cara
+    a mi adversario y qui\xE9n sabe, hasta ganar)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
@@ -4630,7 +4630,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xBFQue quieres hacer?"
+  m_text: "\xBFCuanto apuestas?"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: f2dcf029949142e28b974630369c8b4e, type: 2}
@@ -6133,8 +6133,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Reduzco la cantidad de recursos que invierto en la tarea, no quiero arriesgar
-    tanto despu\xE9s de mi fracaso anterior."
+  m_text: "Apuestas 2 recursos. (Es lo m\xE1s seguro, todav\xEDa no s\xE9 de qu\xE9
+    juego se trata ni qu\xE9 nivel tienen mis compa\xF1eros)"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
