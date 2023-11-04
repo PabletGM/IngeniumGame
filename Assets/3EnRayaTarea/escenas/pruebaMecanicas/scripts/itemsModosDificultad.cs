@@ -6,6 +6,12 @@ using UnityEngine;
 public class itemsModosDificultad : MonoBehaviour
 {
 
+
+
+    private float valorTestModoDificil = -1;
+    private float valorTestModoFacil = -1;
+    private float valorTestModoMedio = -1;
+
     #region parametros item Modo facil
     [SerializeField]
     private GameObject buttonItemModoFacil;
@@ -81,4 +87,101 @@ public class itemsModosDificultad : MonoBehaviour
     {
         AudioManager3EnRaya.instance.PlaySFXDuracion("IniciarPartida", 1f);
     }
+
+    #region TestModoDificil
+
+    public void OpcionAModoDificil()
+    {
+        //ponemos puntuacion primer valor a array segun opcion
+        valorTestModoDificil = 0f;
+        
+    }
+
+    public void OpcionBModoDificil()
+    {
+        //ponemos puntuacion primer valor a array segun opcion
+        valorTestModoDificil = 0.50f;
+        
+    }
+
+    public void OpcionCModoDificil()
+    {
+        //ponemos puntuacion primer valor a array segun opcion
+        valorTestModoDificil = 1;
+        
+    }
+
+    //al darle a continue
+    public void OpcionElegidaModoDificil()
+    {
+        
+        //pasamos valor
+        PuntuacionTest3EnRaya.GetInstanceGM().RellenarPrimerValorArrayPrimerTest(valorTestModoDificil);
+    }
+
+    #endregion
+
+    #region TestModoFacil
+
+    public void OpcionAModoFacil()
+    {
+        //ponemos puntuacion primer valor a array segun opcion
+        valorTestModoFacil = 0f;
+       
+    }
+
+    public void OpcionBModoFacil()
+    {
+        //ponemos puntuacion primer valor a array segun opcion
+        valorTestModoFacil = 0.50f;
+       
+    }
+
+    public void OpcionCModoFacil()
+    {
+        //ponemos puntuacion primer valor a array segun opcion
+        valorTestModoFacil = 1;
+        
+    }
+
+    //al darle a continue
+    public void OpcionElegidaModoFacil()
+    {
+        //pasamos valor
+        PuntuacionTest3EnRaya.GetInstanceGM().RellenarSegundorValorArraySegundoTest(valorTestModoFacil);
+    }
+
+    #endregion
+
+    #region TestModoMedio
+
+    public void OpcionAModoMedio()
+    {
+        //ponemos puntuacion primer valor a array segun opcion
+        valorTestModoMedio = 0f;
+        
+    }
+
+    public void OpcionBModoMedio()
+    {
+        //ponemos puntuacion primer valor a array segun opcion
+        valorTestModoMedio = 0.50f;
+        
+    }
+
+    public void OpcionCModoMedio()
+    {
+        //ponemos puntuacion primer valor a array segun opcion
+        valorTestModoMedio = 1;
+       
+    }
+
+    //al darle a continue
+    public void OpcionElegidaModoMedio()
+    {
+        //pasamos valor
+        PuntuacionTest3EnRaya.GetInstanceGM().RellenarTercerValorArrayTercerTest(valorTestModoMedio);
+    }
+
+    #endregion
 }

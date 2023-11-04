@@ -6,6 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/escena login/loginBueno/IntroLoginRegister.unity
+    guid: 85ebeac3d3132f844ab7f683342a2a9e
+  - enabled: 1
+    path: Assets/escena login/loginBueno/loginCorrect.unity
+    guid: 010056056ec8ecd4f9ac1e88af1cdd02
+  - enabled: 1
     path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/EscenaInicial3EnRaya.unity
     guid: 208fa17093e6d884c865ee365ec04562
   - enabled: 1

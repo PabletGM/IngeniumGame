@@ -177,7 +177,7 @@ public class UIManagerLogin : MonoBehaviour
                 { 
                     ComprobacionAccessTokenLoginCorrect(request.downloadHandler.text);
                     //en caso de que sea correcto nos movemos a escena hoyos
-                    SceneManager.LoadScene("escenaIntro");
+                    SceneManager.LoadScene("EscenaInicial3EnRaya");
                 }
             }
         }
