@@ -472,7 +472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &144104689
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4793,7 +4793,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1728501834
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5390,6 +5390,7 @@ MonoBehaviour:
   board: {fileID: 951019516}
   lineas: {fileID: 736656122}
   botones: {fileID: 316208064}
+  nextLevel: {fileID: 1728501833}
 --- !u!1 &1801710257
 GameObject:
   m_ObjectHideFlags: 0

@@ -48,6 +48,9 @@ public class gamecontroller : MonoBehaviour
     [SerializeField]
     private GameObject botones;
 
+    [SerializeField]
+    private GameObject nextLevel;
+
 
     //booleano que permite que durante el modo de dificultad medio se haga la comprobacion 1 vez para taponar jugada player de victoria
     private bool modoMedioTaponarPrimeraJugadaVictoria = true;
@@ -251,7 +254,17 @@ public class gamecontroller : MonoBehaviour
         {
             Posibles3EnRaya();
         }
+        //si la partida ha acabado ponemos next level
+        else
+        {
+            ActivarNextLevel();
+        }
        
+    }
+
+    public void ActivarNextLevel()
+    {
+        nextLevel.SetActive(true);
     }
 
     public string GetGameSide()
