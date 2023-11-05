@@ -71,4 +71,42 @@ public class Info3EnRayaMongoDB : MonoBehaviour
             }
         }
     }
+
+    IEnumerator PutPuntuacion3EnRayaMongoDB2()
+    {
+        string uri = $"{baseUrl}/Users/gameData/tresEnRaya";
+
+        // Convierte el arreglo de flotantes a una lista de números formateados como cadena
+        List<string> victoriaList = puntuacionTest3EnRaya.Select(f => f.ToString("0.0", CultureInfo.InvariantCulture)).ToList();
+
+        // Crea un objeto personalizado para representar la estructura JSON deseada
+        Puntuacion3EnRaya puntuacion = new Puntuacion3EnRaya { victorias = victoriaList };
+        string jsonBody = JsonUtility.ToJson(puntuacion);
+
+        Debug.Log(jsonBody);
+
+        using (UnityWebRequest request = UnityWebRequest.Put(uri, jsonBody))
+        {
+            request.SetRequestHeader("Authorization", "Bearer " + access_token);
+            request.SetRequestHeader("Content-Type", "application/json");
+
+            yield return request.SendWebRequest();
+
+            if (request.isNetworkError || request.isHttpError)
+            {
+                Debug.Log("Error: " + request.error);
+            }
+            else
+            {
+                Debug.Log("Solicitud exitosa");
+            }
+        }
+    }
+
+    // Clase para representar la estructura JSON deseada
+    [System.Serializable]
+    public class Puntuacion3EnRaya
+    {
+        public List<string> victorias;
+    }
 }
