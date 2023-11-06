@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/escena login/loginBueno/loginCorrect.unity
     guid: 010056056ec8ecd4f9ac1e88af1cdd02
   - enabled: 1
+    path: Assets/PantallaCarga/PantallaCarga.unity
+    guid: 15e7014e04917dd4cb980c1275613c9f
+  - enabled: 1
     path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/EscenaInicial3EnRaya.unity
     guid: 208fa17093e6d884c865ee365ec04562
   - enabled: 1
