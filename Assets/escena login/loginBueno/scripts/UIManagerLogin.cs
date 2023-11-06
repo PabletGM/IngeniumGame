@@ -72,6 +72,9 @@ public class UIManagerLogin : MonoBehaviour
     [SerializeField]
     private TMP_InputField passwordLogin;
 
+    [SerializeField]
+    private GameObject loading;
+
     #endregion
 
     #region Pop-UpsLoginRegisterGO
@@ -174,13 +177,21 @@ public class UIManagerLogin : MonoBehaviour
                     TiposFalloLoginNumero(errorCode);
                 }
                 else
-                { 
+                {
+                    
                     ComprobacionAccessTokenLoginCorrect(request.downloadHandler.text);
                     //en caso de que sea correcto nos movemos a escena hoyos
                     //SceneManager.LoadScene("EscenaInicial3EnRaya");
                     LevelLoader.LoadLevel("EscenaInicial3EnRaya");
                 }
             }
+        }
+
+
+        public void Loading()
+        {
+            //activamos loading
+            loading.SetActive(true);
         }
 
         [Obsolete]
