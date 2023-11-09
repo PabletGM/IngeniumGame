@@ -100,14 +100,14 @@ public class itemsModosDificultad : MonoBehaviour
     public void OpcionBModoDificil()
     {
         //ponemos puntuacion primer valor a array segun opcion
-        valorTestModoDificil = 0.50f;
+        valorTestModoDificil = 1f;
         
     }
 
     public void OpcionCModoDificil()
     {
         //ponemos puntuacion primer valor a array segun opcion
-        valorTestModoDificil = 1;
+        valorTestModoDificil = 2;
         
     }
 
@@ -133,14 +133,14 @@ public class itemsModosDificultad : MonoBehaviour
     public void OpcionBModoFacil()
     {
         //ponemos puntuacion primer valor a array segun opcion
-        valorTestModoFacil = 0.50f;
+        valorTestModoFacil = 1f;
        
     }
 
     public void OpcionCModoFacil()
     {
         //ponemos puntuacion primer valor a array segun opcion
-        valorTestModoFacil = 1;
+        valorTestModoFacil = 2;
         
     }
 
@@ -165,14 +165,14 @@ public class itemsModosDificultad : MonoBehaviour
     public void OpcionBModoMedio()
     {
         //ponemos puntuacion primer valor a array segun opcion
-        valorTestModoMedio = 0.50f;
+        valorTestModoMedio = 1f;
         
     }
 
     public void OpcionCModoMedio()
     {
         //ponemos puntuacion primer valor a array segun opcion
-        valorTestModoMedio = 1;
+        valorTestModoMedio = 2;
        
     }
 
