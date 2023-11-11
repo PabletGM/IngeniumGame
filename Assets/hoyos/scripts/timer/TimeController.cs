@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TimeController : MonoBehaviour
@@ -17,6 +18,13 @@ public class TimeController : MonoBehaviour
 
     GameManager _myGameManager;
 
+    CapacidadAdaptacionManager _myCapacidadAdaptacionManager;
+
+    ConfianzaManager _myConfianzaManager;
+
+    private string testActualCapacidadAdaptacion = "test1";
+    private string testActualConfianza = "test1";
+
     private void Awake()
     {
         restante = 0;
@@ -24,6 +32,13 @@ public class TimeController : MonoBehaviour
     private void Start()
     {
         _myGameManager = GameManager.GetInstance();
+        //si la escena activa es CapacidadAdaptacion o confianza se llama al timer inmediatamente
+        if(SceneManager.GetActiveScene().name =="capacidadDeAdaptacion" || SceneManager.GetActiveScene().name == "confianza")
+        {
+            _myCapacidadAdaptacionManager = CapacidadAdaptacionManager.GetInstanceCapacidadAdaptacionManager();
+            _myConfianzaManager = ConfianzaManager.GetInstanceConfianzaManager();
+            ActivarTimer();
+        }
     }
 
     public void ActivarTimer()
@@ -57,6 +72,65 @@ public class TimeController : MonoBehaviour
 
     public void InformarTimeGameManager()
     {
-        _myGameManager.NumSecsPartida((int)restante);
+        if(SceneManager.GetActiveScene().name == "hoyos")
+        {
+            _myGameManager.NumSecsPartida((int)restante);
+        }
+        else if(SceneManager.GetActiveScene().name == "capacidadDeAdaptacion")
+        {
+            //test1 Capacidad adaptacion
+            if(TestActualCapacidadAdaptacion() == "test1")
+            {
+                
+                //test1 capacidad adaptacion
+                _myCapacidadAdaptacionManager.NumSecsPartidaCapacidad1((int)restante);
+            }
+            else if(TestActualCapacidadAdaptacion() == "test2")
+            {
+                //test2 capacidad adaptacion
+                _myCapacidadAdaptacionManager.NumSecsPartidaCapacidad2((int)restante);
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == "confianza")
+        {
+            //test1 Capacidad adaptacion
+            if (TestActualConfianza() == "test1")
+            {
+                //test1 capacidad adaptacion
+                _myConfianzaManager.NumSecsPartidaConfianza1((int)restante);
+            }
+            else if (TestActualConfianza() == "test2")
+            {
+                //test2 capacidad adaptacion
+                _myConfianzaManager.NumSecsPartidaConfianza2((int)restante);
+            }
+            
+        }
+
+    }
+
+    public void CambiarDeTest1CapACap2(string testActual)
+    {
+        testActualCapacidadAdaptacion = testActual;
+    }
+    //devuelve el nombre del testActual CapacidadAdaptacion
+    public string TestActualCapacidadAdaptacion()
+    {
+        return testActualCapacidadAdaptacion;
+    }
+
+    public void CambiarDeTest1ConfAConf2(string testActual)
+    {
+        testActualConfianza = testActual;
+    }
+    //devuelve el nombre del testActual CapacidadAdaptacion
+    public string TestActualConfianza()
+    {
+        return testActualConfianza;
+    }
+
+    public void ReiniciarContador()
+    {
+        restante = 0;
     }
 }

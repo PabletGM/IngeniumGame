@@ -1638,7 +1638,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 412072228}
         m_TargetAssemblyTypeName: Quit, Assembly-CSharp
-        m_MethodName: QuitarApp
+        m_MethodName: ChangeNextScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4280,7 +4280,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Quit
+  m_text: Next
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}

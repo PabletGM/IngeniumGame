@@ -50,6 +50,9 @@ public class CapacidadAdaptacionManager : MonoBehaviour
 
         //cantidad de puntuaciones de todas las softskills que recoge
         private float[] puntuacionCapac_1;
+
+    //numero de segundos por partida
+    private int numSecsPartidaCap1;
     #endregion
 
     #region panelesJerarquiaCapacidad2
@@ -95,6 +98,8 @@ public class CapacidadAdaptacionManager : MonoBehaviour
 
         //cantidad de puntuaciones de todas las softskills que recoge
         private float[] puntuacionCapac_2;
+    //numero de segundos por partida
+    private int numSecsPartidaCap2;
     #endregion
 
     [SerializeField]
@@ -102,6 +107,9 @@ public class CapacidadAdaptacionManager : MonoBehaviour
 
     [SerializeField]
     private GameObject test2Capacidad;
+
+    [SerializeField]
+    private GameObject timer;
 
     static public CapacidadAdaptacionManager GetInstanceCapacidadAdaptacionManager()
     {
@@ -214,6 +222,21 @@ public class CapacidadAdaptacionManager : MonoBehaviour
         //pasa al siguiente test
         test1Capacidad.SetActive(false);
         test2Capacidad.SetActive(true);
+        //informamos al timer que ahora es test2Capacidad
+        timer.GetComponent<TimeController>().CambiarDeTest1CapACap2("test2");
+        //reiniciamos contador
+        timer.GetComponent<TimeController>().ReiniciarContador();
+    }
+
+    //metodo que guardará el numero de segundos totales de partida que lleva
+    public void NumSecsPartidaCapacidad1(int secsPartida)
+    {
+        numSecsPartidaCap1 = secsPartida;
+    }
+
+    public int TiempoPartidaCapacidad1()
+    {
+        return numSecsPartidaCap1;
     }
 
     #endregion
@@ -310,9 +333,20 @@ public class CapacidadAdaptacionManager : MonoBehaviour
         SceneManager.LoadScene("finalTest1");
     }
 
-    #endregion
+    //metodo que guardará el numero de segundos totales de partida que lleva
+    public void NumSecsPartidaCapacidad2(int secsPartida)
+    {
+        numSecsPartidaCap2 = secsPartida;
+    }
 
-    #region ArgumentosCapacidad1
+    public int TiempoPartidaCapacidad2()
+    {
+        return numSecsPartidaCap2;
+    }
+
+        #endregion
+
+        #region ArgumentosCapacidad1
 
         public string itemNameCAPAC_1()
         {
@@ -367,4 +401,6 @@ public class CapacidadAdaptacionManager : MonoBehaviour
             return puntuacionCapac_2;
         }
     #endregion
+
+    
 }

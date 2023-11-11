@@ -36,6 +36,8 @@ public class ConfianzaManager : MonoBehaviour
 
         //cantidad de puntuaciones de todas las softskills que recoge
         private float[] puntuacionConf_1;
+    //numero de segundos por partida
+    private int numSecsPartidaConf1 = 0;
 
 
     #endregion
@@ -70,7 +72,12 @@ public class ConfianzaManager : MonoBehaviour
 
         //cantidad de puntuaciones de todas las softskills que recoge
         private float[] puntuacionConf_2;
+    //numero de segundos por partida
+    private int numSecsPartidaConf2 = 0;
     #endregion
+
+    [SerializeField]
+    private GameObject timer;
 
 
 
@@ -145,6 +152,21 @@ public class ConfianzaManager : MonoBehaviour
         //pasa al siguiente test
         test1Confianza.SetActive(false);
         test2Confianza.SetActive(true);
+        //informamos al timer que ahora es test2Capacidad
+        timer.GetComponent<TimeController>().CambiarDeTest1ConfAConf2("test2");
+        //reiniciamos contador
+        timer.GetComponent<TimeController>().ReiniciarContador();
+    }
+
+    //metodo que guardará el numero de segundos totales de partida que lleva
+    public void NumSecsPartidaConfianza1(int secsPartida)
+    {
+        numSecsPartidaConf1 = secsPartida;
+    }
+
+    public int TiempoPartidaConfianza1()
+    {
+        return numSecsPartidaConf1;
     }
 
     #endregion
@@ -248,6 +270,17 @@ public class ConfianzaManager : MonoBehaviour
 
         //pasa al siguiente test o escena capacidad
         SceneManager.LoadScene("capacidadDeAdaptacion");
+    }
+
+    //metodo que guardará el numero de segundos totales de partida que lleva
+    public void NumSecsPartidaConfianza2(int secsPartida)
+    {
+        numSecsPartidaConf2 = secsPartida;
+    }
+
+    public int TiempoPartidaConfianza2()
+    {
+        return numSecsPartidaConf2;
     }
     #endregion
 }

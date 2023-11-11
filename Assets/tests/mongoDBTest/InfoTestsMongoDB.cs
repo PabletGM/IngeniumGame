@@ -49,6 +49,7 @@ public class InfoTestsMongoDB : MonoBehaviour
         _myUIManagerLogin = UIManagerLogin.GetInstanceUI();
         _myconfianzaManager = ConfianzaManager.GetInstanceConfianzaManager();
 
+        int totalTime = _myconfianzaManager.TiempoPartidaConfianza1();
         string itemNameConfianza1 = _myconfianzaManager.itemNameCONF_1();
         string[] softskillConfianza1 = _myconfianzaManager.softskillCONF_1();
         int type = _myconfianzaManager.typeCONF_1();
@@ -57,7 +58,7 @@ public class InfoTestsMongoDB : MonoBehaviour
         //recolectar token de script login register
         access_token = _myUIManagerLogin.GetAccessToken();
         //se empieza corrutina hoyosMongoDB
-        StartCoroutine(PutTestConfianza1MongoDB(itemNameConfianza1, softskillConfianza1, type, puntuacionConfianza1));
+        StartCoroutine(PutTestConfianza1MongoDB(itemNameConfianza1, softskillConfianza1, type, puntuacionConfianza1, totalTime));
     }
 
     [System.Obsolete]
@@ -67,6 +68,7 @@ public class InfoTestsMongoDB : MonoBehaviour
         _myUIManagerLogin = UIManagerLogin.GetInstanceUI();
         _myconfianzaManager = ConfianzaManager.GetInstanceConfianzaManager();
 
+        int totalTime = _myconfianzaManager.TiempoPartidaConfianza2();
         string itemNameConfianza2 = _myconfianzaManager.itemNameCONF_2();
         string[] softskillConfianza2 = _myconfianzaManager.softskillCONF_2();
         int type2 = _myconfianzaManager.typeCONF_2();
@@ -75,7 +77,7 @@ public class InfoTestsMongoDB : MonoBehaviour
         ////recolectar token de script login register
         //access_token = _myUIManagerLogin.GetAccessToken();
         //se empieza corrutina hoyosMongoDB
-        StartCoroutine(PutTestConfianza1MongoDB(itemNameConfianza2, softskillConfianza2, type2, puntuacionConfianza2));
+        StartCoroutine(PutTestConfianza1MongoDB(itemNameConfianza2, softskillConfianza2, type2, puntuacionConfianza2,totalTime));
     }
 
     
@@ -85,6 +87,7 @@ public class InfoTestsMongoDB : MonoBehaviour
         _myUIManagerLogin = UIManagerLogin.GetInstanceUI();
         _mycapacidadAdaptacionManager = CapacidadAdaptacionManager.GetInstanceCapacidadAdaptacionManager();
 
+        int totalTime = _mycapacidadAdaptacionManager.TiempoPartidaCapacidad1();
         string itemNameCapac1 = _mycapacidadAdaptacionManager.itemNameCAPAC_1();
         string[] softskillCapac1 = _mycapacidadAdaptacionManager.softskillCAPAC_1();
         int typeCapac1 = _mycapacidadAdaptacionManager.typeCapac_1();
@@ -94,7 +97,7 @@ public class InfoTestsMongoDB : MonoBehaviour
         access_token = _myUIManagerLogin.GetAccessToken();
         
         //se empieza corrutina MongoDB reutilizada
-        StartCoroutine(PutTestConfianza1MongoDB(itemNameCapac1, softskillCapac1, typeCapac1, puntuacionCapac1));
+        StartCoroutine(PutTestConfianza1MongoDB(itemNameCapac1, softskillCapac1, typeCapac1, puntuacionCapac1,totalTime));
     }
 
    
@@ -104,6 +107,7 @@ public class InfoTestsMongoDB : MonoBehaviour
         _myUIManagerLogin = UIManagerLogin.GetInstanceUI();
         _mycapacidadAdaptacionManager = CapacidadAdaptacionManager.GetInstanceCapacidadAdaptacionManager();
 
+        int totalTime = _mycapacidadAdaptacionManager.TiempoPartidaCapacidad2();
         string itemNameCapac2 = _mycapacidadAdaptacionManager.itemNameCAPAC_2();
         string[] softskillCapac2 = _mycapacidadAdaptacionManager.softskillCAPAC_2();
         int typeCapac2 = _mycapacidadAdaptacionManager.typeCapac_2();
@@ -112,11 +116,11 @@ public class InfoTestsMongoDB : MonoBehaviour
         ////recolectar token de script login register
         //access_token = _myUIManagerLogin.GetAccessToken();
         //se empieza corrutina MongoDB reutilizada
-        StartCoroutine(PutTestConfianza1MongoDB(itemNameCapac2, softskillCapac2, typeCapac2, puntuacionCapac2));
+        StartCoroutine(PutTestConfianza1MongoDB(itemNameCapac2, softskillCapac2, typeCapac2, puntuacionCapac2,totalTime));
     }
 
     [System.Obsolete]
-    IEnumerator PutTestConfianza1MongoDB(string itemNameConfianza1, string[] softskillConfianza1, int type, float[] puntuacionConfianza1)
+    IEnumerator PutTestConfianza1MongoDB(string itemNameConfianza1, string[] softskillConfianza1, int type, float[] puntuacionConfianza1,int totalTime)
     {
 
 
@@ -131,7 +135,7 @@ public class InfoTestsMongoDB : MonoBehaviour
         string softskillConfianza1join = string.Join(",", softskillConfianza1);
         string puntuacionConfianza1join = puntuacionConfianza1[0].ToString("0.0", CultureInfo.InvariantCulture);
 
-        string body2 = $"{{ \"itemName\": \"{itemNameConfianza1}\", \"softSkill\": [\"{softskillConfianza1join}\"], \"type\": {type}, \"puntuacion\": [{puntuacionConfianza1join}] }}";
+        string body2 = $"{{ \"itemName\": \"{itemNameConfianza1}\", \"softSkill\": [\"{softskillConfianza1join}\"], \"type\": {type}, \"puntuacion\": [{puntuacionConfianza1join}], \"totalTime\": \"{totalTime}\" }}";
 
         Debug.Log(body2);
 
