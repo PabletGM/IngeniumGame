@@ -59,4 +59,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/tareaCirculos/scene/escenaFinal.unity
     guid: 19bf6e703faed8145bef21ff6b8130b3
+  - enabled: 1
+    path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/EscenaInicial3EnRaya.unity
+    guid: 208fa17093e6d884c865ee365ec04562
+  - enabled: 1
+    path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/EscenaSalaInvitados.unity
+    guid: 6bcaa0df1b34cc14fb4c1ccf665d95f9
+  - enabled: 1
+    path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/mecanicas3EnRayaModoDificil.unity
+    guid: 46e7be7fffaf0044fa905a237585de1e
+  - enabled: 1
+    path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/mecanicas3EnRayaModoFacil.unity
+    guid: f263ed0e158da604ea4d9127eda2b875
+  - enabled: 1
+    path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/mecanicas3EnRayaModoMedio.unity
+    guid: eca7365f5cc7f8349a4e45a31c4460fe
   m_configObjects: {}

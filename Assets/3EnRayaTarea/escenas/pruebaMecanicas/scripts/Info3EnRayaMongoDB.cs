@@ -31,18 +31,19 @@ public class Info3EnRayaMongoDB : MonoBehaviour
 
     public void RecolectarArgumentos3EnRaya()
     {
+        int totalTime = _myPuntuacionTest3EnRaya.TiempoPartida3EnRaya();
         //recoger argumentos de 3 en Raya en pregunta final de ultimo test en modo normal 
         puntuacionTest3EnRaya = _myPuntuacionTest3EnRaya.DevolverArrayRespuestas3EnRaya();
         //recolectar token de script login register
         access_token = _myUIManagerLogin.GetAccessToken();
         //se empieza corrutina hoyosMongoDB
-        StartCoroutine(PutPuntuacion3EnRayaMongoDB());
+        StartCoroutine(PutPuntuacion3EnRayaMongoDB(totalTime));
 
 
     }
 
     [System.Obsolete]
-    IEnumerator PutPuntuacion3EnRayaMongoDB()
+    IEnumerator PutPuntuacion3EnRayaMongoDB(int totalTime)
     {
         string uri = $"{baseUrl}Users/gameData/tresEnRaya";
 
@@ -50,7 +51,7 @@ public class Info3EnRayaMongoDB : MonoBehaviour
         string victoria = string.Join(", ", puntuacionTest3EnRaya.Select(f => f.ToString("0.0", CultureInfo.InvariantCulture)));
 
         // Construye el cuerpo JSON con la estructura deseada
-        string body = $"{{ \"victorias\": [{victoria}] }}";
+        string body = $"{{ \"victorias\": [{victoria}], \"totalTime\": \"{totalTime}\" }}";
 
         Debug.Log(victoria);
 

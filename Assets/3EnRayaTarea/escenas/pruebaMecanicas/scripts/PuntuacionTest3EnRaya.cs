@@ -11,6 +11,8 @@ public class PuntuacionTest3EnRaya : MonoBehaviour
 
     private float numeroPregunta = 0;
 
+    private int numSecsPartida3EnRaya = 0;
+
 
     private void Awake()
     {
@@ -63,6 +65,21 @@ public class PuntuacionTest3EnRaya : MonoBehaviour
     {
         puntuacionTest3EnRaya[2] = valor;
         Debug.Log(puntuacionTest3EnRaya[2]);
+    }
+
+
+
+
+
+
+    public void NumSecsPartida3EnRaya(int secsPartida)
+    {
+        numSecsPartida3EnRaya = secsPartida;
+    }
+
+    public int TiempoPartida3EnRaya()
+    {
+        return numSecsPartida3EnRaya;
     }
 
 

@@ -29,12 +29,19 @@ public class TimeController : MonoBehaviour
 
     GameManagerCirculos _myGameManagerCirculos;
 
+    PuntuacionTest3EnRaya _myGameController3EnRaya;
+
     private void Awake()
     {
         restante = 0;
 
         //si es en escena circulosNave,circulosNaveNivel2,circulosNaveNivel3 o escenaFinal no se destruye
-        if (SceneManager.GetActiveScene().name == "circulosNave" || SceneManager.GetActiveScene().name == "circulosNaveNivel2" || SceneManager.GetActiveScene().name == "circulosNaveNivel3" || SceneManager.GetActiveScene().name == "escenaFinal")
+        if (SceneManager.GetActiveScene().name == "circulosNave" || SceneManager.GetActiveScene().name == "circulosNaveNivel2" || SceneManager.GetActiveScene().name == "circulosNaveNivel3")
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
+        //o si el 3EnRaya
+        else if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoDificil" || SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoFacil" || SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoMedio")
         {
             DontDestroyOnLoad(this.gameObject);
         }
@@ -56,6 +63,12 @@ public class TimeController : MonoBehaviour
         {
             ActivarTimer();
         }
+        //si es en 3EnRaya
+        else if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoDificil")
+        {
+            ActivarTimer();
+        }
+
     }
 
     public void ActivarTimer()
@@ -137,6 +150,17 @@ public class TimeController : MonoBehaviour
                 _myGameManagerCirculos.NumSecsPartidaCirculos((int)restante);
             }
            
+        }
+        else if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoDificil")
+        {
+            //se vuelve a unir la instancia
+            _myGameController3EnRaya = PuntuacionTest3EnRaya.GetInstanceGM();
+
+            if (_myGameController3EnRaya != null)
+            {
+                _myGameController3EnRaya.NumSecsPartida3EnRaya((int)restante);
+            }
+
         }
 
     }
