@@ -27,24 +27,25 @@ public class InfoCirculosMongoDB : MonoBehaviour
     [System.Obsolete]
     public void RecolectarArgumentosCirculos()
     {
+        int totalTime = _myGameManagerCirculos.TiempoPartidaCirculos();
         //recoger argumentos
         patronRondas = _myGameManagerCirculos.DevolverRondasJugador();
         //recolectar token de script login register
         access_token = _myUIManagerLogin.GetAccessToken();
         //se empieza corrutina hoyosMongoDB
-        StartCoroutine(PutCirculosMongoDB());
+        StartCoroutine(PutCirculosMongoDB(totalTime));
 
 
     }
 
     [System.Obsolete]
-    IEnumerator PutCirculosMongoDB()
+    IEnumerator PutCirculosMongoDB(int totalTime)
     {
         string patronRondasString = string.Join(",", patronRondas);
 
         string uri = $"{baseUrl + "Users/gameData/circulos"}";
 
-        string body2 = $"{{ \"nivel\": [{patronRondasString}]}}";
+        string body2 = $"{{ \"nivel\": [{patronRondasString}], \"totalTime\": \"{totalTime}\" }}";
 
         Debug.Log(body2);
 

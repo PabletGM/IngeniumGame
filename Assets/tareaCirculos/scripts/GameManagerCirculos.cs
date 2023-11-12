@@ -29,6 +29,8 @@ public class GameManagerCirculos : MonoBehaviour
     private float numeroRondasHechas = 0;
     private float numeroMaxRondas= 3;
 
+    private int numSecsPartidaCirculos = 0;
+
 
     #region MongoDB
     private int[] patronRondasJugador;
@@ -235,5 +237,15 @@ public class GameManagerCirculos : MonoBehaviour
         permitirCronometroRonda = true;
     }
 
-    
+    public void NumSecsPartidaCirculos(int secsPartida)
+    {
+        numSecsPartidaCirculos = secsPartida;
+    }
+
+    public int TiempoPartidaCirculos()
+    {
+        return numSecsPartidaCirculos;
+    }
+
+
 }

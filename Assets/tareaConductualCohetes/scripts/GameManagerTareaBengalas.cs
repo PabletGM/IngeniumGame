@@ -46,6 +46,8 @@ public class GameManagerTareaBengalas : MonoBehaviour
     private GameObject mongoDB;
     #endregion
 
+    private int numSecsPartidaBengalas;
+
 
 
     #region Marcador
@@ -228,6 +230,23 @@ public class GameManagerTareaBengalas : MonoBehaviour
     public void ApareceDialogoRobotAlejadoAviso()
     {
         UITareaBengalas.ApareceDialogoRobotAlejadoAviso();
+    }
+
+    //metodo que guardará el numero de segundos totales de partida que lleva
+    public void NumSecsPartidaBengalas(int secsPartida)
+    {
+        numSecsPartidaBengalas = secsPartida;
+    }
+
+    //tiempo de duracion de partida bengalas
+    public int TiempoPartidaBengalas()
+    {
+        return numSecsPartidaBengalas;
+    }
+
+    public void PasarSiguienteEscena()
+    {
+        LevelLoader.LoadLevel("escenaIntro");
     }
 
 

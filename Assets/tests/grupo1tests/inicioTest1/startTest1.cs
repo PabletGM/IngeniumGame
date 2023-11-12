@@ -7,10 +7,12 @@ public class startTest1 : MonoBehaviour
 {
     public void StartTest()
     {
-        SceneManager.LoadScene("confianza");
+        LevelLoader.LoadLevel("confianza");
+        //SceneManager.LoadScene("confianza");
     }
     public void FinishTest()
     {
-        Application.Quit();
+        LevelLoader.LoadLevel("BengalasPrueba");
+        //Application.Quit();
     }
 }

@@ -29,16 +29,18 @@ public class InfoBengalasMongoDB : MonoBehaviour
     [System.Obsolete]
     public void RecolectarArgumentosBengalas()
     {
+        //tiempo que tarda en hacer la tarea
+        int totalTime = _myGameManagerBengalas.TiempoPartidaBengalas();
         //recolectar parametros, altura tipo int
         alturaCohetes = _myGameManagerBengalas.AlturasCohetes();
         //recolectar token de script login register
         access_token = _myUIManagerLogin.GetAccessToken();
         //se empieza corrutina hoyosMongoDB
-        StartCoroutine(PutBengalasMongoDB(alturaCohetes));
+        StartCoroutine(PutBengalasMongoDB(alturaCohetes,totalTime));
     }
 
     [System.Obsolete]
-    IEnumerator PutBengalasMongoDB(float[] alturaCohetes)
+    IEnumerator PutBengalasMongoDB(float[] alturaCohetes,int totalTime)
     {
         string uri = $"{baseUrl + "Users/gameData/bengalas"}";
 
@@ -48,7 +50,7 @@ public class InfoBengalasMongoDB : MonoBehaviour
         //string alturaCohete = string.Join(",", alturaCohetes);
 
         // Construye el cuerpo JSON con la estructura deseada
-        string body = $"{{ \"alturaCohete\": [{alturaCohete}] }}";
+        string body = $"{{ \"alturaCohete\": [{alturaCohete}], \"totalTime\": \"{totalTime}\" }}";
 
         Debug.Log(alturaCohete);
 

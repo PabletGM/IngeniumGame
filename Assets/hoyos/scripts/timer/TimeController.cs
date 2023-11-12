@@ -25,18 +25,35 @@ public class TimeController : MonoBehaviour
     private string testActualCapacidadAdaptacion = "test1";
     private string testActualConfianza = "test1";
 
+    GameManagerTareaBengalas _myGameManagerBengalas;
+
+    GameManagerCirculos _myGameManagerCirculos;
+
     private void Awake()
     {
         restante = 0;
+
+        //si es en escena circulosNave,circulosNaveNivel2,circulosNaveNivel3 o escenaFinal no se destruye
+        if (SceneManager.GetActiveScene().name == "circulosNave" || SceneManager.GetActiveScene().name == "circulosNaveNivel2" || SceneManager.GetActiveScene().name == "circulosNaveNivel3" || SceneManager.GetActiveScene().name == "escenaFinal")
+        {
+            DontDestroyOnLoad(this.gameObject);
+        }
     }
     private void Start()
     {
+        
+        _myGameManagerBengalas = GameManagerTareaBengalas.GetInstanceGM();
         _myGameManager = GameManager.GetInstance();
         //si la escena activa es CapacidadAdaptacion o confianza se llama al timer inmediatamente
         if(SceneManager.GetActiveScene().name =="capacidadDeAdaptacion" || SceneManager.GetActiveScene().name == "confianza")
         {
             _myCapacidadAdaptacionManager = CapacidadAdaptacionManager.GetInstanceCapacidadAdaptacionManager();
             _myConfianzaManager = ConfianzaManager.GetInstanceConfianzaManager();
+            ActivarTimer();
+        }
+        //si es en circulos
+        else if(SceneManager.GetActiveScene().name == "circulosNave")
+        {
             ActivarTimer();
         }
     }
@@ -105,6 +122,21 @@ public class TimeController : MonoBehaviour
                 _myConfianzaManager.NumSecsPartidaConfianza2((int)restante);
             }
             
+        }
+        else if(SceneManager.GetActiveScene().name == "TareaBengalasGame")
+        {
+            _myGameManagerBengalas.NumSecsPartidaBengalas((int)restante);
+        }
+        else if (SceneManager.GetActiveScene().name == "circulosNave" )
+        {
+            //se vuelve a unir la instancia
+            _myGameManagerCirculos = GameManagerCirculos.GetInstanceGM();
+
+            if(_myGameManagerCirculos != null)
+            {
+                _myGameManagerCirculos.NumSecsPartidaCirculos((int)restante);
+            }
+           
         }
 
     }
