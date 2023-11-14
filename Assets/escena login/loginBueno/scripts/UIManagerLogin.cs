@@ -148,7 +148,7 @@ public class UIManagerLogin : MonoBehaviour
         [Obsolete]
         public void DebugRegisterParameters()
         {
-            StartCoroutine(PostRegister(userNameRegister.text, email.text, passwordRegister.text));
+            StartCoroutine(PostRegister(userNameRegister.text, email.text, passwordRegister.text, company.text));
         }
 
     #endregion
@@ -195,14 +195,15 @@ public class UIManagerLogin : MonoBehaviour
         }
 
         [Obsolete]
-        IEnumerator PostRegister(string userNameRegister, string email, string passwordRegister)
+        IEnumerator PostRegister(string userNameRegister, string email, string passwordRegister, string company)
         {
 
             // Cambia esto al valor adecuado de la edad
             string body;
-        
+        //""company"": ""{company}"",
                  body = $@"{{
                     ""userName"": ""{userNameRegister}"",
+                    
                     ""email"": ""{email}"",
                     ""password"": ""{passwordRegister}""
                 }}";

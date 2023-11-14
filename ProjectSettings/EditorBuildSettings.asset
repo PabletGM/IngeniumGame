@@ -74,4 +74,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/mecanicas3EnRayaModoMedio.unity
     guid: eca7365f5cc7f8349a4e45a31c4460fe
+  - enabled: 1
+    path: Assets/Samples/Yarn Spinner/2.3.1/Visual Novel/Visual Novel.unity
+    guid: 141e0d5203fa75745894e9e4945e7743
   m_configObjects: {}
