@@ -200,10 +200,10 @@ public class UIManagerLogin : MonoBehaviour
 
             // Cambia esto al valor adecuado de la edad
             string body;
-        //""company"": ""{company}"",
+        //
                  body = $@"{{
                     ""userName"": ""{userNameRegister}"",
-                    
+                    ""company"": ""{company}"",
                     ""email"": ""{email}"",
                     ""password"": ""{passwordRegister}""
                 }}";
