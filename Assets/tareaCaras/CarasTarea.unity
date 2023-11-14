@@ -482,8 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90eaab9d4859d1e4db60bca311c4c217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lineView: {fileID: 2753718017712236228}
-  optionsListView: {fileID: 2753718017712236228}
+  dialogue: {fileID: 2753718017712236228}
 --- !u!4 &224084848918329439
 Transform:
   m_ObjectHideFlags: 0

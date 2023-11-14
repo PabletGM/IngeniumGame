@@ -5,15 +5,14 @@ using Yarn.Unity;
 
 public class DialogueTrigger : MonoBehaviour
 {
-    public GameObject lineView;
-    public GameObject optionsListView;
+    public GameObject dialogue;
 
 
    
 
     public void ActivarDialogo()
     {
-        lineView.SetActive(true);
-        optionsListView.SetActive(true);
+        dialogue.SetActive(true);
+
     }
 }
