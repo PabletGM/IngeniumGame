@@ -56,7 +56,9 @@ namespace Yarn.Unity.Example {
 
 			runner.AddCommandHandler<string,string,string,float>("Move", MoveSprite );
 			runner.AddCommandHandler<string,string>("Flip", FlipSprite );
-			runner.AddCommandHandler<string,float>("Shake", ShakeSprite );
+			//metodo añadido por mi para poder escalar
+            runner.AddCommandHandler<string, float>("Size", ScaleSprite);
+            runner.AddCommandHandler<string,float>("Shake", ShakeSprite );
 
 			runner.AddCommandHandler<string,float,string>("PlayAudio", PlayAudio );
 			runner.AddCommandHandler<string>("StopAudio", StopAudio );
@@ -209,7 +211,8 @@ namespace Yarn.Unity.Example {
 		// screenPosY=0.5, moveTime=1.0>> screenPosX and screenPosY are
 		// normalized screen coordinates (0.0 - 1.0) moveTime is the time
 		// in seconds it will take to reach that position
-		public void MoveSprite(string actorOrSpriteName, string screenPosX="0.5", string screenPosY="0.5", float moveTime = 1) {
+		public void MoveSprite(string actorOrSpriteName, string screenPosX="0.5", string screenPosY="0.5", float moveTime = 1)
+		{
 			
 			var image = FindActorOrSprite( actorOrSpriteName );
 
@@ -248,8 +251,16 @@ namespace Yarn.Unity.Example {
             );
 		}
 
-		/// <summary>Shake(actorName or spriteName, strength=0.5)</summary>
-		public void ShakeSprite(string actorOrSpriteName, float shakeStrength = 0.5f) {
+        public void ScaleSprite(string actorOrSpriteName, float scaleSize = 1.5f)
+        {
+
+            var image = FindActorOrSprite(actorOrSpriteName);
+
+            image.rectTransform.localScale = new Vector3(image.rectTransform.localScale.x *scaleSize, image.rectTransform.localScale.y * scaleSize, image.rectTransform.localScale.z * scaleSize);
+        }
+
+        /// <summary>Shake(actorName or spriteName, strength=0.5)</summary>
+        public void ShakeSprite(string actorOrSpriteName, float shakeStrength = 0.5f) {
 			
 			var findShakeTarget = FindActorOrSprite( actorOrSpriteName );
 			if ( findShakeTarget != null ) {
