@@ -1,0 +1,31 @@
+﻿title: PudgyCat
+tags:
+position: 0,0
+---
+Cat: I wanna know how do you feel looking at this photos
+    <<jump PositiveResponse>>
+-> That sounds good?
+    <<jump NegativeResponse>>
+-> Yeiyeiyei?
+    <<jump ConfusedResponse>>
+===
+
+
+title: PositiveResponse
+position: 418,-80
+---
+Do you look impress?
+===
+
+title: NegativeResponse
+position: 41,202
+---
+No, It´s a piece of shit.
+===
+
+title: ConfusedResponse
+position: 322,141
+---
+I don´t know, you decide.
+===
+

@@ -1,0 +1,32 @@
+﻿title: PudgyCat
+tags:
+position: 0,0
+---
+Cat: let´s talk about my hunger. I´m feeling quite bad. How about you go get me some food, eh?
+-> Sure thing, what do you want to eat?
+    <<jump PositiveResponse>>
+-> That sounds good?
+    <<jump NegativeResponse>>
+-> Yeiyeiyei?
+    <<jump ConfusedResponse>>
+===
+
+
+title: PositiveResponse
+position: 418,-80
+---
+tuna would be delightful. Make it a big can, will ya?
+===
+
+title: NegativeResponse
+position: 41,202
+---
+No, It´s a piece of shit.
+===
+
+title: ConfusedResponse
+position: 322,141
+---
+I don´t know, you decide.
+===
+
