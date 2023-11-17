@@ -75,6 +75,9 @@ EditorBuildSettings:
     path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/mecanicas3EnRayaModoMedio.unity
     guid: eca7365f5cc7f8349a4e45a31c4460fe
   - enabled: 1
-    path: Assets/Samples/Yarn Spinner/2.3.1/Visual Novel/Visual Novel.unity
+    path: Assets/Samples/Yarn Spinner/2.3.1/Visual Novel/tareacaras/scenes/tareacaras1.unity
     guid: 141e0d5203fa75745894e9e4945e7743
+  - enabled: 1
+    path: Assets/Samples/Yarn Spinner/2.3.1/Visual Novel/tareacaras/scenes/tareaCaras2.unity
+    guid: b08ea6df38c3b5343bb908ae502249e2
   m_configObjects: {}

@@ -15,7 +15,7 @@ A VISUAL NOVEL EXAMPLE
 <<Act Player astronauta left center green>>
 
 
-Player: Finally, a quiet day at the office. Maybe I'll be able to get some work done.
+Player: Uff...el criosueño me ha dejado reventado.
 
 // adds actor "Robocop" with sprite "robotBueno" off-screen right, with blue-ish text label
 <<Act Robocop robotBueno 1.25 center #226677>>
@@ -28,39 +28,39 @@ Player: Finally, a quiet day at the office. Maybe I'll be able to get some work 
 <<Size Robocop>>
 <<PlayAudio music_funny 1.0 loop>>
 
-Robocop: Hey Player! I have a question!
-Player: Oh no...
+Robocop: Hey jugador, tengo una prueba para ti!
+Player: De que tratará la prueba?
 
 // horizontally flips Eve actor to face Adam
 <<Flip Player>>
 
 // Yarn shortcut choices, an easy way to make branching options
--> Player gets upset with Adam
+-> Test Psicologico...
 	<<Shake Player 1.0>>
-	Player: WHAT DO YOU WANT???
-	Robocop: I just wanted to see if you liked using Yarn Spinner.
-	Player: ... It's fine. Thanks. Now leave me alone.
--> Robocop asks Player a question
-	Robocop: Do you think Yarn Spinner is easy to use?
-	Player: Not when you're bothering me.
-	Robocop: Oh, I didn't realize you were busy. Sorry.
+	Player: ¿Qué esperas de mi? tengo curiosidad ahora.
+	Robocop: Solo quería hacete un último test.
+	Player: ... Bueno, vamos a ello.
+-> Test Fisico
+	Robocop: La prueba es de reconocimiento facial de emociones
+	Player:¿Reconocimiento de que?.
+	Robocop: Nada, tranquilo, es muy sencillo, ya lo verás.
 
 // hide Adam actor and remove from the scene
 <<Hide Robocop>>
 // Stop all sound playback
 <<StopAudioAll>>
 
-Player: Ok, now to finally write that visual novel.
+Player: vale, vamos con ello.
 <<Flip Player>>
 <<PlayAudio music_romantic>>
-Player: I can finally write my epic romance about -
+Player:Espera, el robot donde se ha metido?
 <<StopAudioAll>>
 <<Flip Player>>
 <<wait 1.5>>
 <<Flip Player>>
-Player: Wait... where's my laptop? It's not here.
+Player: ...
 <<Shake Player>>
-Player: Robocop! Have you seen my laptop???
+Player: ...
 
 <<PlayAudio music_funny>>
 <<Flip Player>>
@@ -69,6 +69,7 @@ Player: ROBOOOT!!!
 
 // fade to black, from 0% opacity to 100% opacity, in 2.0 seconds
 <<Fade black 0.0 1.0 2.0>>
+<<SceneChange tareaCaras2>>
 THE END.
 
 ===

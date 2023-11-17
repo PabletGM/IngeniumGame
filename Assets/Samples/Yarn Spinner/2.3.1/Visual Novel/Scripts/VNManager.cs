@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using UnityEngine.SceneManagement;
 
 namespace Yarn.Unity.Example {
 	/// <summary>
@@ -47,7 +48,8 @@ namespace Yarn.Unity.Example {
 			// have to type out game object names in Yarn scripts (also
 			// gives us a performance increase by avoiding GameObject.Find)
 			runner.AddCommandHandler<string>("Scene", DoSceneChange );
-			runner.AddCommandHandler<string,string,string,string,string>("Act", SetActor );
+            runner.AddCommandHandler<string>("SceneChange", ChangeScene);
+            runner.AddCommandHandler<string,string,string,string,string>("Act", SetActor );
 			runner.AddCommandHandler<string,string,string>("Draw", SetSpriteYarn );
 
 			runner.AddCommandHandler<string>("Hide", HideSprite );
@@ -87,10 +89,15 @@ namespace Yarn.Unity.Example {
 			bgImage.sprite = FetchAsset<Sprite>( spriteName );
 		}
 
-		/// <summary>
-		/// SetActor(actorName,spriteName,positionX,positionY,color) main
-		/// function for moving / adjusting characters</summary>
-		public void SetActor(string actorName, string spriteName, string positionX = "", string positionY = "", string colorHex = "" ) {
+        public void ChangeScene(string sceneName)
+        {
+			SceneManager.LoadScene("tareaCaras2");
+        }
+
+        /// <summary>
+        /// SetActor(actorName,spriteName,positionX,positionY,color) main
+        /// function for moving / adjusting characters</summary>
+        public void SetActor(string actorName, string spriteName, string positionX = "", string positionY = "", string colorHex = "" ) {
 
 			// have to use SetSprite() because par[2] and par[3] might be
 			// keywords (e.g. "left", "right")
