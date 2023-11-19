@@ -19,10 +19,13 @@ public class GameControllerCaras : MonoBehaviour
     private GameObject foto1;
 
     [SerializeField]
-    private GameObject foto2;
-
+    private GameObject botonRespuesta1;
     [SerializeField]
-    private GameObject foto3;
+    private GameObject botonRespuesta2;
+    [SerializeField]
+    private GameObject botonRespuesta3;
+    [SerializeField]
+    private GameObject botonRespuesta4;
 
     [SerializeField]
     private GameObject botonContinue;
@@ -55,11 +58,21 @@ public class GameControllerCaras : MonoBehaviour
         //comprobamos que es la escena tareaCaras2
         if (SceneManager.GetActiveScene().name == "tareaCaras2" && (Mathf.Abs(mainCamera.orthographicSize - targetZoom) <= 1f))
         {
-            //ponemos texto de pregunta
+            //ponemos imagen  ajustamos tamaño 
             foto1.SetActive(true);
-            foto2.SetActive(true);
-            foto3.SetActive(true);
-           
+            foto1.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
+            //y botones de respuesta
+            botonRespuesta1.SetActive(true);
+            //botonRespuesta1.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
+
+            botonRespuesta2.SetActive(true);
+            //botonRespuesta2.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
+
+            botonRespuesta3.SetActive(true);
+            //botonRespuesta3.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
+
+            botonRespuesta4.SetActive(true);
+            //botonRespuesta4.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
         }
     }
 
