@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/escenasNarrativas/IntroContexto/scenes/ExplosionTierra.unity
     guid: c004c3afad3370142ac8f454182cadee
+  - enabled: 1
+    path: Assets/escenasNarrativas/IntroContexto/scenes/viajeGalaxia.unity
+    guid: 2e5d2ae13f1a25c49a789941b35c4391
   m_configObjects: {}

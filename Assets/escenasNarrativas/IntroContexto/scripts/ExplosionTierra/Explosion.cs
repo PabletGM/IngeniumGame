@@ -23,7 +23,7 @@ public class Explosion : MonoBehaviour
 
     public SpriteRenderer planeta;
 
-    [SerializeField] private GameObject NextScenebutton;
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +51,7 @@ public class Explosion : MonoBehaviour
 
     public void ExplosionAsteroides()
     {
-        DestroyAsteroides();
+        //DestroyAsteroides();
         //vfx
         explosionTierra.SetActive(true);
         explosionTierra.GetComponent<ParticleSystem>().Play();
@@ -71,22 +71,23 @@ public class Explosion : MonoBehaviour
     {
         cenizasFuego.SetActive(true);
         cenizasFuego.GetComponent<ParticleSystem>().Play();
-        NextScenebutton.SetActive(true);
+
     }
 
     public void CambiarImagenPlaneta()
     {
         //cambiamos imagen de planeta
         planeta.sprite = planetaQuemado;
+        Invoke("NextScene", 1f);
     }
 
 
 
     public void Play()
     {
-        AppearAsteroides();
+        //AppearAsteroides();
         //en 2.5 segundos que es lo que tarda la animacion de los asteroides los explotamos
-        Invoke("ExplosionAsteroides", 2.5f);
+        Invoke("ExplosionAsteroides", 1f);
     }
 
     public void NextScene()

@@ -6,11 +6,13 @@ public class ZoomOut : MonoBehaviour
     private float aumentoMaximo = 12.0f; // Tamaño máximo al que quieres aumentar la cámara
     private float velocidadAumento = 0.5f; // Velocidad a la que aumenta el tamaño de la cámara
 
-    [SerializeField] private GameObject button;
 
     
 
     private bool able = true;
+
+    [SerializeField]
+    private GameObject explosion;
 
 
     private void Update()
@@ -26,16 +28,13 @@ public class ZoomOut : MonoBehaviour
             //si ha alcanzado el limite
             if (camara.orthographicSize > 8)
             {
-                //se activa boton
-                button.SetActive(true);
                 able = false;
+                //se activa boton
+                //llamamos a play para iniciar animacion
+                explosion.GetComponent<Explosion>().Play();
             }
         }
        
     }
 
-    public void QuitarButton()
-    {
-        button.SetActive(false);
-    }
 }

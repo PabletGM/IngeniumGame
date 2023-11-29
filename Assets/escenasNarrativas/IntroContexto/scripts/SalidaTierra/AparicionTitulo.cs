@@ -68,6 +68,7 @@ public class AparicionTitulo : MonoBehaviour
     {
         //mover naves hacia arriba que suban, activarlas
         nave.SetActive(true);
+
         //ruido cohete despegando
         AudioManagerIntro.instance.PlaySFX("cohete");
         //tras acabar animacion
