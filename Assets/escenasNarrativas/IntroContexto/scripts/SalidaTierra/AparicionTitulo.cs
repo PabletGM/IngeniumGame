@@ -15,6 +15,10 @@ public class AparicionTitulo : MonoBehaviour
     [SerializeField]
     private GameObject texto;
     //al ser active
+
+
+    [SerializeField]
+    private GameObject nave;
     void OnEnable()
     {
         StartCoroutineAparecerTitulo();
@@ -25,6 +29,7 @@ public class AparicionTitulo : MonoBehaviour
 
         StartCoroutine(AparecerTitulo());
         TweenAumentarTamañoTitulo();
+        Invoke("TweenDisminuirTamañoTitulo", 3f);
         Invoke("DesactivarTitulo", 5f);
     }
 
@@ -32,6 +37,12 @@ public class AparicionTitulo : MonoBehaviour
     {
         //1 segundo de tween 
         this.transform.DOScale(new Vector3(1.4f, 1.4f, 1.4f), 1f);
+
+    }
+    public void TweenDisminuirTamañoTitulo()
+    {
+        //1 segundo de tween 
+        this.transform.DOScale(new Vector3(0.001f, 0.001f, 0.001f), 1f);
 
     }
 
@@ -55,13 +66,28 @@ public class AparicionTitulo : MonoBehaviour
 
     private void DesactivarTitulo()
     {
+        //mover naves hacia arriba que suban, activarlas
+        nave.SetActive(true);
+        //ruido cohete despegando
+        AudioManagerIntro.instance.PlaySFX("cohete");
+        //tras acabar animacion
+        Invoke("DesactivarNaves", 11f);
+
         this.gameObject.SetActive(false);
+        
         //aparecer texto
         if (SceneManager.GetActiveScene().name == "SalidaTierra")
         {
             texto.SetActive(true);
         }
 
+    }
+
+   
+
+    private void DesactivarNaves()
+    {
+        nave.SetActive(false);
     }
 
 }

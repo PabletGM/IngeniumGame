@@ -50,6 +50,7 @@ public class TextManager : MonoBehaviour
         {
             //quitamos texto
             this.gameObject.transform.parent.gameObject.SetActive(false);
+            PasarSiguienteEscenaIntermedia();
         }
        
         //ponemos texto

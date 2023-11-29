@@ -13,6 +13,9 @@ public class MoverCamaraArriba : MonoBehaviour
     public Camera camara;
 
 
+
+   
+
     private void Start()
     {
         //si es salida del planeta
