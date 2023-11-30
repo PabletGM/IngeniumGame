@@ -37,6 +37,7 @@ public class ComportamientoNaveEspacio : MonoBehaviour
         //activar script de naves HuidaLateral
         naveEspacial2.GetComponent<HuidaLateral>().enabled = true;
         naveEspacial3.GetComponent<HuidaLateral>().enabled = true;
+        AudioManagerIntro.instance.PlaySFX("cohete");
     }
 
 
