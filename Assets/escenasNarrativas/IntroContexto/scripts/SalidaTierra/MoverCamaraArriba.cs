@@ -13,6 +13,9 @@ public class MoverCamaraArriba : MonoBehaviour
     public Camera camara;
 
 
+    [SerializeField]
+    private GameObject spritePlaneta;
+
 
    
 
@@ -69,6 +72,11 @@ public class MoverCamaraArriba : MonoBehaviour
                 {
                     zoomOut = false;
                     //pasar siguiente escena
+                    //activar boton nueva tierra interactuable
+                    if(SceneManager.GetActiveScene().name == "LlegadaPlaneta")
+                    {
+                        ActivarNuevaTierraInteractuable();
+                    }
                 }
             }
         #endregion
@@ -78,5 +86,14 @@ public class MoverCamaraArriba : MonoBehaviour
     public void ActivarZoomOut()
     {
         zoomOut = true;
+    }
+
+    public void ActivarNuevaTierraInteractuable()
+    {
+
+        //activamos animator
+        spritePlaneta.SetActive(true);
+        spritePlaneta.GetComponent<Animator>().enabled = true;
+        spritePlaneta.GetComponent<PlanetaHabitableComportamiento>().enabled = true;
     }
 }
