@@ -17,8 +17,13 @@ public class TextManager : MonoBehaviour
 
     private int numTextoActual = 0; //puede ser el 0,1 o 2
 
-    
 
+
+    private void Awake()
+    {
+        numMaxTextos = textos.Length;
+        Debug.Log(numMaxTextos);
+    }
     //metodo que quita todos los textos menos el que elijas
     public void PonerTextoActivo(GameObject textoElegido)
     {
@@ -50,7 +55,15 @@ public class TextManager : MonoBehaviour
         {
             //quitamos texto
             this.gameObject.transform.parent.gameObject.SetActive(false);
+            //si es escena LlegadaPlaneta
+            if (SceneManager.GetActiveScene().name == "LlegadaPlaneta")
+            {
+                //haces zoom out
+                Camera.main.GetComponent<MoverCamaraArriba>().ActivarZoomOut();
+            }
             PasarSiguienteEscenaIntermedia();
+
+            
         }
        
         //ponemos texto
@@ -79,8 +92,16 @@ public class TextManager : MonoBehaviour
 
     public void PasarSiguienteEscenaIntermedia()
     {
-        //cargas escena intermedia
-        SceneManager.LoadScene("ExplosionTierra");
+        if(SceneManager.GetActiveScene().name == "SalidaTierra")
+        {
+            //cargas escena intermedia
+            SceneManager.LoadScene("ExplosionTierra");
+        }
+
+        else if(SceneManager.GetActiveScene().name == "SalidaTierra")
+        {
+            SceneManager.LoadScene("LogoTitulo");
+        }
     }
 
 
