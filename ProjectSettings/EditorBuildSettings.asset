@@ -17,7 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/escenasNarrativas/IntroContexto/scenes/LlegadaPlaneta.unity
     guid: ef938a6a7c5e77448bd39d4e3b5babc7
-  - enabled: 1
-    path: Assets/escenasNarrativas/IntroContexto/scenes/LogoTitulo.unity
-    guid: 8282456c7fe15694b9ceff207e962ac7
   m_configObjects: {}
