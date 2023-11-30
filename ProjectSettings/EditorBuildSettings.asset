@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/escenasNarrativas/IntroContexto/scenes/viajeGalaxia.unity
     guid: 2e5d2ae13f1a25c49a789941b35c4391
+  - enabled: 1
+    path: Assets/escenasNarrativas/IntroContexto/scenes/LlegadaPlaneta.unity
+    guid: ef938a6a7c5e77448bd39d4e3b5babc7
   m_configObjects: {}
