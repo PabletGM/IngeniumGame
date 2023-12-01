@@ -17,7 +17,7 @@ public class TextManager : MonoBehaviour
 
     private int numTextoActual = 0; //puede ser el 0,1 o 2
 
-    private float tiempoEsperaEntreTextos = 5f;
+    private float tiempoEsperaEntreTextos = 6f;
 
 
 
@@ -48,7 +48,7 @@ public class TextManager : MonoBehaviour
     {
         if (numTextoActual < textos.Length && DialoguePanel.activeInHierarchy)
         {
-            InvokeRepeating("PasarSiguienteTexto", 3f, tiempoEsperaEntreTextos);
+            InvokeRepeating("PasarSiguienteTexto", tiempoEsperaEntreTextos, tiempoEsperaEntreTextos);
         }
     }
 
