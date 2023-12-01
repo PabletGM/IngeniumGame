@@ -44,6 +44,8 @@ public class MoverCamaraArriba : MonoBehaviour
              nuevaPosicion = posicionCamara + Vector3.up * velocidad * Time.deltaTime;
             // Limita la posición de la cámara al límite superior
             nuevaPosicion.y = Mathf.Min(nuevaPosicion.y, limiteSuperior);
+
+            
         }
         //si es llegada al planeta
         else
@@ -52,6 +54,12 @@ public class MoverCamaraArriba : MonoBehaviour
             nuevaPosicion = posicionCamara - Vector3.up * velocidad * Time.deltaTime;
             // Limita la posición de la cámara al límite superior
             nuevaPosicion.y = Mathf.Max(nuevaPosicion.y, limiteSuperior);
+
+            //si ha llegado a la parte de abajo del todo
+            if (nuevaPosicion.y == limiteSuperior)
+            { //haces zoom out
+                ActivarZoomOut();
+            }
         }
         // Establece la nueva posición de la cámara
         transform.position = nuevaPosicion;
@@ -96,4 +104,6 @@ public class MoverCamaraArriba : MonoBehaviour
         spritePlaneta.GetComponent<Animator>().enabled = true;
         spritePlaneta.GetComponent<PlanetaHabitableComportamiento>().enabled = true;
     }
+
+
 }

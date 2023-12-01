@@ -17,6 +17,8 @@ public class TextManager : MonoBehaviour
 
     private int numTextoActual = 0; //puede ser el 0,1 o 2
 
+    private float tiempoEsperaEntreTextos = 5f;
+
 
 
     private void Awake()
@@ -42,7 +44,15 @@ public class TextManager : MonoBehaviour
         }
     }
 
-    
+    private void OnEnable()
+    {
+        if (numTextoActual < textos.Length && DialoguePanel.activeInHierarchy)
+        {
+            InvokeRepeating("PasarSiguienteTexto", 3f, tiempoEsperaEntreTextos);
+        }
+    }
+
+
     public void  PasarSiguienteTexto()
     {
         //sumamos uno
@@ -55,15 +65,8 @@ public class TextManager : MonoBehaviour
         {
             //quitamos texto
             this.gameObject.transform.parent.gameObject.SetActive(false);
-            //si es escena LlegadaPlaneta
-            if (SceneManager.GetActiveScene().name == "LlegadaPlaneta")
-            {
-                //haces zoom out
-                Camera.main.GetComponent<MoverCamaraArriba>().ActivarZoomOut();
-            }
-            PasarSiguienteEscenaIntermedia();
-
             
+            PasarSiguienteEscenaIntermedia();           
         }
        
         //ponemos texto
@@ -98,9 +101,13 @@ public class TextManager : MonoBehaviour
             SceneManager.LoadScene("ExplosionTierra");
         }
 
-        else if(SceneManager.GetActiveScene().name == "SalidaTierra")
+        else if(SceneManager.GetActiveScene().name == "LlegadaPlaneta")
         {
             SceneManager.LoadScene("LogoTitulo");
+        }
+        else if (SceneManager.GetActiveScene().name == "viajeGalaxia")
+        {
+            SceneManager.LoadScene("LlegadaPlaneta");
         }
     }
 

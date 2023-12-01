@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlanetaHabitableComportamiento : MonoBehaviour
@@ -52,4 +53,20 @@ public class PlanetaHabitableComportamiento : MonoBehaviour
 
         transitionImage.color = endColor;
     }
+
+    public void PasarSiguienteEscenaIntermedia()
+    {
+        Invoke("PasarSiguienteEscenaLogo", 3f);
+    }
+
+    public void PasarSiguienteEscenaLogo()
+    {
+
+
+        if (SceneManager.GetActiveScene().name == "LlegadaPlaneta")
+        {
+            SceneManager.LoadScene("LogoTitulo");
+        }
+    }
+
 }

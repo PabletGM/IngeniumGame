@@ -29,8 +29,16 @@ public class AparicionTitulo : MonoBehaviour
 
         StartCoroutine(AparecerTitulo());
         TweenAumentarTamañoTitulo();
-        Invoke("TweenDisminuirTamañoTitulo", 3f);
-        Invoke("DesactivarTitulo", 5f);
+        //Invoke("TweenDisminuirTamañoTitulo", 3f);
+        Invoke("CorrutinaDesaparecerTitulo", 3f);
+        Invoke("DesactivarTitulo", 6f);
+
+
+    }
+
+    public void CorrutinaDesaparecerTitulo()
+    {
+        StartCoroutine("DesaparecerTitulo");
     }
 
     public void TweenAumentarTamañoTitulo()
@@ -53,7 +61,7 @@ public class AparicionTitulo : MonoBehaviour
         Color startColor = this.gameObject.GetComponent<TextMeshProUGUI>().color;
         Color endColor = new Color(startColor.r, startColor.g, startColor.b, 1f);
 
-        while (elapsedTime < transitionDuration)
+        while (elapsedTime < transitionDuration/2)
         {
             this.gameObject.GetComponent<TextMeshProUGUI>().color = Color.Lerp(startColor, endColor, elapsedTime / transitionDuration);
             elapsedTime += Time.deltaTime;
@@ -61,7 +69,25 @@ public class AparicionTitulo : MonoBehaviour
         }
 
         this.gameObject.GetComponent<TextMeshProUGUI>().color = endColor;
-       
+
+        
+    }
+
+    private IEnumerator DesaparecerTitulo()
+    {
+
+        Color startColor = this.gameObject.GetComponent<TextMeshProUGUI>().color;
+        Color endColor = new Color(startColor.r, startColor.g, startColor.b, 0f);
+
+        while (elapsedTime < transitionDuration)
+        {
+            this.gameObject.GetComponent<TextMeshProUGUI>().color = Color.Lerp(startColor, endColor, elapsedTime / transitionDuration);
+            elapsedTime += (0.05f+ Time.deltaTime);
+            yield return null;
+        }
+
+        this.gameObject.GetComponent<TextMeshProUGUI>().color = endColor;
+
     }
 
     private void DesactivarTitulo()

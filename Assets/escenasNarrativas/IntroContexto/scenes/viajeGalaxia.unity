@@ -154,7 +154,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textos:
   - {fileID: 182599158}
-  - {fileID: 0}
   DialoguePanel: {fileID: 878600799}
 --- !u!224 &51948505
 RectTransform:
@@ -311,8 +310,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 85
-  m_fontSizeBase: 85
+  m_fontSize: 70
+  m_fontSizeBase: 70
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -347,7 +346,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -189.79285, y: -14.49588, z: -102.29883, w: 109.51941}
+  m_margin: {x: -189.79285, y: -14.49588, z: -102.29883, w: 14.685608}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -1212,7 +1211,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &878600800
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1233,8 +1232,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 15.2323, y: 248.63089}
-  m_SizeDelta: {x: -905.0235, y: 276.0382}
+  m_AnchoredPosition: {x: 5.421875, y: 225.35065}
+  m_SizeDelta: {x: -846.161, y: 230.2563}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &878600801
 CanvasGroup:
@@ -1626,8 +1625,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 27.4581, y: 140}
-  m_SizeDelta: {x: -822.9165, y: -216.27821}
+  m_AnchoredPosition: {x: 27.026764, y: 114}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: -0.000000014877486, y: 0.50000024}
 --- !u!114 &1162524765
 MonoBehaviour:
@@ -2050,10 +2049,10 @@ RectTransform:
   m_Father: {fileID: 1162524764}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 96.03, y: -29.879997}
-  m_SizeDelta: {x: 144.06, y: 35.759995}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1591489533
 MonoBehaviour:
@@ -2075,7 +2074,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Capitana
+  m_text: Comandante
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -2382,7 +2381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1712808415
 RectTransform:
   m_ObjectHideFlags: 0
