@@ -1494,6 +1494,7 @@ MonoBehaviour:
   velocidad: 2
   camara: {fileID: 1463990478}
   spritePlaneta: {fileID: 2011731935}
+  naves: {fileID: 821485375}
 --- !u!114 &1463990476
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,7 +17,10 @@ public class MoverCamaraArriba : MonoBehaviour
     private GameObject spritePlaneta;
 
 
-   
+    [SerializeField]
+    private GameObject naves;
+
+
 
     private void Start()
     {
@@ -59,6 +62,8 @@ public class MoverCamaraArriba : MonoBehaviour
             if (nuevaPosicion.y == limiteSuperior)
             { //haces zoom out
                 ActivarZoomOut();
+                //desactivar animacion
+                naves.GetComponent<Animator>().enabled = false;
             }
         }
         // Establece la nueva posición de la cámara
