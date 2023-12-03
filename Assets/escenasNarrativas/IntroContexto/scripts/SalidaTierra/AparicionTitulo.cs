@@ -98,7 +98,7 @@ public class AparicionTitulo : MonoBehaviour
         //ruido cohete despegando
         AudioManagerIntro.instance.PlaySFX("cohete");
         //tras acabar animacion
-        Invoke("DesactivarNaves", 11f);
+        Invoke("DesactivarNaves", 25f);
 
         this.gameObject.SetActive(false);
         

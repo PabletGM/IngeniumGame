@@ -19,6 +19,13 @@ public class TextManager : MonoBehaviour
 
     private float tiempoEsperaEntreTextos = 6f;
 
+    [SerializeField]
+    private int tiempoNarracionTexto1;
+    [SerializeField]
+    private int tiempoNarracionTexto2;
+    [SerializeField]
+    private int tiempoNarracionTexto3;
+
 
 
     private void Awake()
@@ -46,19 +53,56 @@ public class TextManager : MonoBehaviour
 
     private void OnEnable()
     {
+        //comenzar dialogos y textos
+        Invoke("StartTextDialogue", 0f);
+    }
+
+    private void StartTextDialogue()
+    {
         if (numTextoActual < textos.Length && DialoguePanel.activeInHierarchy)
         {
-            InvokeRepeating("PasarSiguienteTexto", tiempoEsperaEntreTextos, tiempoEsperaEntreTextos);
+            //si escena actual es SalidaTierra
+            if(SceneManager.GetActiveScene().name =="SalidaTierra")
+            {
+                if (numTextoActual == 0)
+                {
+                    //si es texto 1,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    AudioManagerIntro.instance.PlayDialogue("dialogueNarracion1SalidaTierra", tiempoNarracionTexto1);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto1);
+                    
+                    
+                }
+                else if (numTextoActual == 1)
+                {
+                    //si es texto 2,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    AudioManagerIntro.instance.PlayDialogue("dialogueNarracion2SalidaTierra", tiempoNarracionTexto2);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto2);
+                    
+                }
+                else if (numTextoActual == 2)
+                {
+                    //si es texto 1,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    AudioManagerIntro.instance.PlayDialogue("dialogueNarracion3SalidaTierra", tiempoNarracionTexto3);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto3);
+                    
+                }
+            }
         }
     }
 
 
     public void  PasarSiguienteTexto()
     {
+        Debug.Log("Siguiente texto");
         //sumamos uno
         if(numTextoActual< textos.Length-1 && DialoguePanel.activeInHierarchy)
         {
             numTextoActual++;
+            //llamas otra vez a nuevo dialogo
+            StartTextDialogue();
         }
         //si ha llegado al final
         else

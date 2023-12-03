@@ -6,8 +6,8 @@ using UnityEngine;
 public class AudioManagerIntro : MonoBehaviour
 {
     public static AudioManagerIntro instance;
-    public SoundIntro[] musicSounds, sfxSounds;
-    public AudioSource musicSource, sfxSource;
+    public SoundIntro[] musicSounds, sfxSounds, dialogueSound;
+    public AudioSource musicSource, sfxSource, dialogueSource;
 
     private void Awake()
     {
@@ -67,6 +67,25 @@ public class AudioManagerIntro : MonoBehaviour
             musicSource.volume = 0.2f;
             sfxSource.PlayOneShot(s.clip);
             Invoke("PonerVolumenNormal", 1.5f);
+        }
+    }
+
+    public void PlayDialogue(string name, int duracionDialogue)
+    {
+        //buscamos la musica que queremos poner en el musicSound
+        SoundIntro s = Array.Find(dialogueSound, x => x.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+
+        else
+        {
+            //bajamos volumen de musica normal
+            musicSource.volume = 0.2f;
+            dialogueSource.PlayOneShot(s.clip);
+            Invoke("PonerVolumenNormal", duracionDialogue);
         }
     }
 
