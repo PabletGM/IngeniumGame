@@ -90,6 +90,11 @@ public class TextManager : MonoBehaviour
                     
                 }
             }
+            else if(SceneManager.GetActiveScene().name == "viajeGalaxia")
+            {
+                AudioManagerIntro.instance.PlayDialogue("dialogueNarracion4ViajeGalaxia", tiempoNarracionTexto1);
+                Invoke("PasarSiguienteTexto", tiempoNarracionTexto1);
+            }
         }
     }
 

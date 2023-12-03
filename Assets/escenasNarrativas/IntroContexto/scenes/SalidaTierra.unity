@@ -1897,6 +1897,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5143b09298e6d854999a8f6de02b6438, type: 3}
   - name: dialogueNarracion3SalidaTierra
     clip: {fileID: 8300000, guid: 99be01100f0560b4287118209f279144, type: 3}
+  - name: dialogueNarracion4ViajeGalaxia
+    clip: {fileID: 8300000, guid: 549aae31a7a38234d929b93a4d102aaf, type: 3}
   musicSource: {fileID: 2002633569}
   sfxSource: {fileID: 1179358600}
   dialogueSource: {fileID: 1770293880}
