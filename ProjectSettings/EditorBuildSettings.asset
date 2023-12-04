@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/escenasNarrativas/IntroContexto/scenes/LogoTitulo.unity
     guid: 8282456c7fe15694b9ceff207e962ac7
+  - enabled: 1
+    path: Assets/escena login/loginBueno/IntroLoginRegister.unity
+    guid: 85ebeac3d3132f844ab7f683342a2a9e
+  - enabled: 1
+    path: Assets/escena login/loginBueno/loginCorrect.unity
+    guid: 010056056ec8ecd4f9ac1e88af1cdd02
   m_configObjects: {}
