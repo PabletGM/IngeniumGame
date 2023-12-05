@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,17 +13,43 @@ public class MoveBackground : MonoBehaviour
     private bool isMoving = false;
     private float startTime;
 
-    [SerializeField] private GameObject dialogoRobot;
     [SerializeField] private GameObject robot;
-    [SerializeField] private GameObject playGame;
 
     private float duracionAnimacion = 1.2f;
+
+    [SerializeField]
+    private GameObject DialoguePanel;
 
     private void Start()
     {
         // Al inicio, asegúrate de que el fondo no se esté moviendo.
         isMoving = false;
+        StartMove();
+        //a los 2 segundos invocas el texto para que empiece el textManager
+        Invoke("ComenzarTextoRobot", 2f);
+
+    }
+
+    private void ComenzarTextoRobot()
+    {
+        //inicias robot
+        robot.SetActive(true);
+        Invoke("DialogoPanel", 1f);
         
+    }
+
+    private void DialogoPanel()
+    {
+        //activamos texto y animacion robot
+        DialoguePanel.SetActive(true);
+        TweenAumentarTamañoDialogo();
+    }
+
+    public void TweenAumentarTamañoDialogo()
+    {
+        //1 segundo de tween 
+        DialoguePanel.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 1f);
+
     }
 
     private void Update()
@@ -40,21 +67,11 @@ public class MoveBackground : MonoBehaviour
             {
                 // Detén el movimiento después de la duración especificada.
                 isMoving = false;
-                //inicias robot
-                robot.SetActive(true);
-                //inicias texto que explica lo del criosueño
-                Invoke("SetDialogoRobotActivar",duracionAnimacion);
+                
             }
         }
     }
 
-    //activar dialogo robot
-    private void SetDialogoRobotActivar()
-    {
-        dialogoRobot.SetActive(true);
-        //activamos PlayGame
-        playGame.SetActive(true);
-    }
 
     public void StartMove()
     {
@@ -66,9 +83,9 @@ public class MoveBackground : MonoBehaviour
         }
     }
 
-    public void EmpezarGameCirculos()
-    {
-        SceneManager.LoadScene("PanelRadar");
-    }
+    //public void EmpezarGameCirculos()
+    //{
+    //    SceneManager.LoadScene("PanelRadar");
+    //}
 }
 

@@ -6,8 +6,8 @@ using UnityEngine;
 public class AudioManagerCirculos : MonoBehaviour
 {
     public static AudioManagerCirculos instance;
-    public SoundCirculos[] musicSounds, sfxSounds;
-    public AudioSource musicSource, sfxSource;
+    public SoundCirculos[] musicSounds, sfxSounds, dialogueSound;
+    public AudioSource musicSource, sfxSource, dialogueSource;
 
     private void Awake()
     {
@@ -64,6 +64,25 @@ public class AudioManagerCirculos : MonoBehaviour
         else
         {
             sfxSource.PlayOneShot(s.clip);
+        }
+    }
+
+    public void PlayDialogue(string name, int duracionDialogue)
+    {
+        //buscamos la musica que queremos poner en el musicSound
+        SoundCirculos s = Array.Find(dialogueSound, x => x.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+
+        else
+        {
+            //bajamos volumen de musica normal
+            musicSource.volume = 0.2f;
+            dialogueSource.PlayOneShot(s.clip);
+            Invoke("PonerVolumenNormal", duracionDialogue);
         }
     }
 

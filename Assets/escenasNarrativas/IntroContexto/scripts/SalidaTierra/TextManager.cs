@@ -61,8 +61,10 @@ public class TextManager : MonoBehaviour
     {
         if (numTextoActual < textos.Length && DialoguePanel.activeInHierarchy)
         {
+
+            #region Secuencia 1
             //si escena actual es SalidaTierra
-            if(SceneManager.GetActiveScene().name =="SalidaTierra")
+            if (SceneManager.GetActiveScene().name =="SalidaTierra")
             {
                 if (numTextoActual == 0)
                 {
@@ -95,6 +97,31 @@ public class TextManager : MonoBehaviour
                 AudioManagerIntro.instance.PlayDialogue("dialogueNarracion4ViajeGalaxia", tiempoNarracionTexto1);
                 Invoke("PasarSiguienteTexto", tiempoNarracionTexto1);
             }
+            #endregion
+
+            #region Secuencia 2
+            if (SceneManager.GetActiveScene().name == "escenaIntro")
+            {
+                //primer texto
+                if (numTextoActual == 0)
+                {
+                    //si es texto 1,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    AudioManagerCirculos.instance.PlayDialogue("robotMinimalista1", tiempoNarracionTexto1);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto1);
+                }
+
+                //segundo texto
+                else if (numTextoActual == 1)
+                {
+                    //si es texto 2,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    AudioManagerCirculos.instance.PlayDialogue("robotMinimalista2", tiempoNarracionTexto2);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto2);
+
+                }
+            }
+            #endregion
         }
     }
 
@@ -144,7 +171,8 @@ public class TextManager : MonoBehaviour
 
     public void PasarSiguienteEscenaIntermedia()
     {
-        if(SceneManager.GetActiveScene().name == "SalidaTierra")
+        #region Secuencia 1
+        if (SceneManager.GetActiveScene().name == "SalidaTierra")
         {
             //cargas escena intermedia
             SceneManager.LoadScene("ExplosionTierra");
@@ -158,6 +186,15 @@ public class TextManager : MonoBehaviour
         {
             SceneManager.LoadScene("LlegadaPlaneta");
         }
+        #endregion
+
+        #region Secuencia 2
+        if (SceneManager.GetActiveScene().name == "escenaIntro")
+        {
+            //cargas escena intermedia
+            SceneManager.LoadScene("escenaRadar3D");
+        }
+        #endregion
     }
 
 
