@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Secuencia2/escenas/escenaRadar3D.unity
     guid: a59dcee56d90daa41a7575ad1b677ac8
+  - enabled: 1
+    path: Assets/Secuencia2/escenas/escenaConversacionRobot2.unity
+    guid: 12a152dc8fefded4ebc56962e4dd3660
+  - enabled: 1
+    path: Assets/Secuencia2/escenas/tareaCaras2.unity
+    guid: b08ea6df38c3b5343bb908ae502249e2
   m_configObjects: {}
