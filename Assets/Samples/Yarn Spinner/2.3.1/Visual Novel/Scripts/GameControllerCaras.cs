@@ -40,6 +40,8 @@ public class GameControllerCaras : MonoBehaviour
     [SerializeField]
     private GameObject botonRespuesta4;
 
+    private bool stopTanda1 = false;
+
     //[SerializeField]
     //private GameObject botonContinue;
 
@@ -112,9 +114,10 @@ public class GameControllerCaras : MonoBehaviour
         }
         //rango especifico de fotos
         //comprobamos que es la escena tareaCaras2
-        if (SceneManager.GetActiveScene().name == "tareaCaras2" && (Mathf.Abs(mainCamera.orthographicSize - targetZoom) <= 1f))
+        if (SceneManager.GetActiveScene().name == "tareaCaras2" && (Mathf.Abs(mainCamera.orthographicSize - targetZoom) <= 1f) &&!stopTanda1)
         {
             SetIniciarTanda1(true);
+            stopTanda1 = true;
         }
     }
 
@@ -163,10 +166,11 @@ public class GameControllerCaras : MonoBehaviour
         Debug.Log("IniciarTanda2");
         //comprobacion extra
         tanda2.SetActive(true);
-        tanda1.SetActive(false);
-        tanda3.SetActive(false);
         //quitamos dialoguePanel1
         SetTamañoPanel(dialoguePanel1, false);
+        tanda1.SetActive(false);
+        tanda3.SetActive(false);
+        
         //ponemos dialoguePanel2
         SetTamañoPanel(dialoguePanel2, true);
         //quitamos tanda1
