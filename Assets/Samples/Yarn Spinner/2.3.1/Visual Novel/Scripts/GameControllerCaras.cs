@@ -107,7 +107,7 @@ public class GameControllerCaras : MonoBehaviour
 
         //rango especifico de texto
         //comprobamos que es la escena tareaCaras2
-        if(SceneManager.GetActiveScene().name == "tareaCaras2" && (Mathf.Abs(mainCamera.orthographicSize - targetZoom) <= 0.3f))
+        if(SceneManager.GetActiveScene().name == "tareaCaras2" && (Mathf.Abs(mainCamera.orthographicSize - targetZoom) <= 0.3f)&& !stopTanda1)
         {
             //ponemos texto de pregunta
             SetTamañoPanel(dialoguePanel1, true);
@@ -121,107 +121,112 @@ public class GameControllerCaras : MonoBehaviour
         }
     }
 
+    #region Tanda1
     public void SetIniciarTanda1(bool set)
     {
-        //comprobacion extra
-        tanda1.SetActive(true);
-        tanda2.SetActive(false);
-        tanda3.SetActive(false);
+        //activamos tanda1
+        SetTandaChosen(true, false, false);
+        //quitamos dialoguePanel1
+        SetTamañoPanel(dialoguePanel1, true);
         //ponemos imagen  ajustamos tamaño 
-        foto1.SetActive(set);
-        foto1.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
+        SetImagenBigSize(foto1);
         //y botones de respuesta
-        botonRespuesta1.SetActive(set);
-        //botonRespuesta1.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
-
-        botonRespuesta2.SetActive(set);
-        //botonRespuesta2.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
-
-        botonRespuesta3.SetActive(set);
-        //botonRespuesta3.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
-
-        botonRespuesta4.SetActive(set);
-        //botonRespuesta4.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
-
-        
+        SetActiveBotonesOpciones(botonRespuesta1, botonRespuesta2, botonRespuesta3, botonRespuesta4, true);
     }
+
+    #endregion
+
+    #region Tanda2
+    public void SetIniciarTanda2(bool set)
+    {
+        Debug.Log("IniciarTanda2");
+
+        //activamos tanda 2
+        SetTandaChosen(false,true, false);
+
+        //quitamos dialoguePanel1
+        SetTamañoPanel(dialoguePanel1, false);
+        //ponemos dialoguePanel2  a grande
+        SetTamañoPanel(dialoguePanel2, true);
+        //activamos dialogo 2
+        SetDialoguePanel(false, true, false);
+
+        //poner imagen 2 a grande
+        SetImagenBigSize(foto2);
+
+        //y botones de respuesta
+        SetActiveBotonesOpciones(botonRespuesta21, botonRespuesta22, botonRespuesta23, botonRespuesta24, true);
+    }
+
+    #endregion
+
+    #region Tanda3
+    public void SetIniciarTanda3(bool set)
+    {
+        Debug.Log("IniciarTanda3");
+
+        //activamos tanda3
+        SetTandaChosen(false, false, true);
+
+        //quitamos dialoguePanel2
+        SetTamañoPanel(dialoguePanel2, false);
+        //ponemos dialoguePanel3
+        SetTamañoPanel(dialoguePanel3, true);
+        //activamos dialogo3
+        SetDialoguePanel(false, false, true);
+
+        //ponemos imagen  ajustamos tamaño 
+        SetImagenBigSize(foto3);
+        //y botones de respuesta
+        SetActiveBotonesOpciones(botonRespuesta31, botonRespuesta32, botonRespuesta33, botonRespuesta34, true);
+    }
+
+    #endregion
+
+    private void SetImagenBigSize(GameObject foto)
+    {
+        foto.SetActive(true);
+        foto.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
+    }
+
+    private void SetTandaChosen(bool setTanda1, bool setTanda2, bool setTanda3)
+    {
+        //comprobacion extra
+        tanda1.SetActive(setTanda1);
+        tanda2.SetActive(setTanda2);
+        tanda3.SetActive(setTanda3);
+    }
+
 
     private void SetTamañoPanel(GameObject dialoguePanel, bool set)
     {
-        
+        dialoguePanel.SetActive(set);
         //si lo quieres hacer grande
-        if(set)
+        if (set)
         {
+            
             dialoguePanel.transform.DOScale(new Vector3(1.4f, 1.4f, 1.4f), 1f);
         }
         else
         {
             dialoguePanel.transform.DOScale(new Vector3(0.001f, 0.001f, 0.001f), 1f);
         }
-        
+
     }
 
-    public void SetIniciarTanda2(bool set)
+    private void SetActiveBotonesOpciones(GameObject boton1, GameObject boton2, GameObject boton3, GameObject boton4, bool set)
     {
-        Debug.Log("IniciarTanda2");
-        //comprobacion extra
-        tanda2.SetActive(true);
-        //quitamos dialoguePanel1
-        SetTamañoPanel(dialoguePanel1, false);
-        tanda1.SetActive(false);
-        tanda3.SetActive(false);
-        
-        //ponemos dialoguePanel2
-        SetTamañoPanel(dialoguePanel2, true);
-        //quitamos tanda1
-        SetIniciarTanda1(false);
-
-        //ponemos imagen  ajustamos tamaño 
-        foto2.SetActive(set);
-        foto2.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
-        //y botones de respuesta
-        botonRespuesta21.SetActive(set);
-        //botonRespuesta1.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
-
-        botonRespuesta22.SetActive(set);
-        //botonRespuesta2.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
-
-        botonRespuesta23.SetActive(set);
-        //botonRespuesta3.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
-
-        botonRespuesta24.SetActive(set);
-        //botonRespuesta4.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
+        boton1.SetActive(set);
+        boton2.SetActive(set);
+        boton3.SetActive(set);
+        boton4.SetActive(set);
     }
 
-    public void SetIniciarTanda3(bool set)
+    private void SetDialoguePanel(bool setTanda1, bool setTanda2, bool setTanda3)
     {
-        Debug.Log("IniciarTanda3");
-        //comprobacion extra
-        tanda3.SetActive(true);
-        tanda2.SetActive(false);
-        tanda1.SetActive(false);
-        //quitamos dialoguePanel2
-        SetTamañoPanel(dialoguePanel2, false);
-        //ponemos dialoguePanel3
-        SetTamañoPanel(dialoguePanel3, true);
-        //quitamos tanda2
-        SetIniciarTanda2(false);
-
-        //ponemos imagen  ajustamos tamaño 
-        foto3.SetActive(set);
-        foto3.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
-        //y botones de respuesta
-        botonRespuesta31.SetActive(set);
-        //botonRespuesta1.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
-
-        botonRespuesta32.SetActive(set);
-        //botonRespuesta2.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
-
-        botonRespuesta33.SetActive(set);
-        //botonRespuesta3.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
-
-        botonRespuesta34.SetActive(set);
-        //botonRespuesta4.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
+        dialoguePanel1.SetActive(setTanda1);
+        dialoguePanel2.SetActive(setTanda2);
+        dialoguePanel3.SetActive(setTanda3);
     }
 
     public void NextScene()
@@ -229,6 +234,7 @@ public class GameControllerCaras : MonoBehaviour
         //SceneManager.LoadScene("dd");
         Debug.Log("Next Scene");
     }
+
 
     //public void BotonContinue()
     //{

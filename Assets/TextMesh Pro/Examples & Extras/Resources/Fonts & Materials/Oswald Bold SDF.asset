@@ -526,6 +526,21 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
+  - m_Index: 38
+    m_Metrics:
+      m_Width: 45.140625
+      m_Height: 82.171875
+      m_HorizontalBearingX: 3.6875
+      m_HorizontalBearingY: 80.640625
+      m_HorizontalAdvance: 51.59375
+    m_GlyphRect:
+      m_X: 68
+      m_Y: 453
+      m_Width: 46
+      m_Height: 83
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
   m_CharacterTable:
   - m_ElementType: 1
     m_Unicode: 32
@@ -626,6 +641,10 @@ MonoBehaviour:
   - m_ElementType: 1
     m_Unicode: 63
     m_GlyphIndex: 34
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 67
+    m_GlyphIndex: 38
     m_Scale: 1
   m_AtlasTextures:
   - {fileID: 28256370963634744}
@@ -729,6 +748,10 @@ MonoBehaviour:
     m_Y: 638
     m_Width: 59
     m_Height: 100
+  - m_X: 58
+    m_Y: 443
+    m_Width: 65
+    m_Height: 102
   m_FreeGlyphRects:
   - m_X: 63
     m_Y: 33
@@ -778,14 +801,6 @@ MonoBehaviour:
     m_Y: 126
     m_Width: 6
     m_Height: 78
-  - m_X: 113
-    m_Y: 275
-    m_Width: 910
-    m_Height: 748
-  - m_X: 113
-    m_Y: 204
-    m_Width: 5
-    m_Height: 819
   - m_X: 56
     m_Y: 205
     m_Width: 1
@@ -794,29 +809,41 @@ MonoBehaviour:
     m_Y: 299
     m_Width: 967
     m_Height: 64
-  - m_X: 101
-    m_Y: 299
-    m_Width: 922
-    m_Height: 724
-  - m_X: 46
-    m_Y: 443
-    m_Width: 977
-    m_Height: 16
-  - m_X: 58
-    m_Y: 443
-    m_Width: 965
-    m_Height: 195
-  - m_X: 59
-    m_Y: 443
-    m_Width: 964
-    m_Height: 580
   - m_X: 0
     m_Y: 738
     m_Width: 1023
     m_Height: 285
+  - m_X: 113
+    m_Y: 275
+    m_Width: 910
+    m_Height: 168
+  - m_X: 123
+    m_Y: 275
+    m_Width: 900
+    m_Height: 748
+  - m_X: 113
+    m_Y: 204
+    m_Width: 5
+    m_Height: 239
+  - m_X: 101
+    m_Y: 299
+    m_Width: 922
+    m_Height: 144
+  - m_X: 46
+    m_Y: 443
+    m_Width: 12
+    m_Height: 16
+  - m_X: 59
+    m_Y: 545
+    m_Width: 964
+    m_Height: 478
+  - m_X: 35
+    m_Y: 545
+    m_Width: 988
+    m_Height: 93
   - m_X: 35
     m_Y: 539
-    m_Width: 988
+    m_Width: 23
     m_Height: 99
   m_fontInfo:
     Name: Oswald
