@@ -231,7 +231,7 @@ public class GameControllerCaras : MonoBehaviour
 
     public void NextScene()
     {
-        //SceneManager.LoadScene("dd");
+        SceneManager.LoadScene("escenaConversacionRobot3");
         Debug.Log("Next Scene");
     }
 

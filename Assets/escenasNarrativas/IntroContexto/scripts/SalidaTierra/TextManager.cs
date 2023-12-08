@@ -142,6 +142,27 @@ public class TextManager : MonoBehaviour
 
                 }
             }
+            else if (SceneManager.GetActiveScene().name == "escenaConversacionRobot3")
+            {
+                //primer texto
+                if (numTextoActual == 0)
+                {
+                    //si es texto 1,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    AudioManagerCirculos.instance.PlayDialogue("robotMinimalista1", tiempoNarracionTexto1);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto1);
+                }
+
+                //segundo texto
+                else if (numTextoActual == 1)
+                {
+                    //si es texto 2,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    AudioManagerCirculos.instance.PlayDialogue("robotMinimalista3", tiempoNarracionTexto2);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto2);
+
+                }
+            }
             #endregion
         }
     }
