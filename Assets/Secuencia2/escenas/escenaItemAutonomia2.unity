@@ -181,8 +181,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Busco un ambiente estructurado, con procesos claros y una supervisi\xF3n
-    continua que me garantice que estoy avanzando en la direcci\xF3n correcta."
+  m_text: "Le pedir\xE9 a mi compa\xF1ero que me eche una mano para resolver la cuesti\xF3n
+    y aprender de \xE9l."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -452,8 +452,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Prefiero un ambiente laboral flexible, en el que cuente con la libertad
-    de elegir c\xF3mo abordar los objetivos marcados, aunque carezca de supervisi\xF3n "
+  m_text: "Revisar\xE9 los manuales para poder solucionarlo por mi cuenta, aunque
+    me lleve m\xE1s tiempo."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1427,8 +1427,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Me gustar\xEDa un contexto con revisiones peri\xF3dicas para asegurar
-    que progreso adecuadamente, pero d\xE1ndome cierta libertad de ejecuci\xF3n."
+  m_text: "Intento no molestarle, echar\xE9 un vistazo a los manuales y le preguntar\xE9
+    las dudas que me surjan."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2045,7 +2045,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xBFCon qu\xE9 estilo de trabajo eres m\xE1s efectivo?\r\n"
+  m_text: "Tienes que arreglar un problema el\xE9ctrico en una de las naves pero
+    no est\xE1s seguro de c\xF3mo hacerlo. A tu lado, un compa\xF1ero est\xE1 ocupado
+    con otra reparaci\xF3n. \xBFQu\xE9 haces?\r\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
   m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
@@ -2072,8 +2074,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
-  m_fontSizeBase: 90
+  m_fontSize: 59
+  m_fontSizeBase: 59
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2108,7 +2110,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -115.24786, y: -104.855896, z: -31.658447, w: 362.40497}
+  m_margin: {x: -115.24786, y: -104.855896, z: -31.658447, w: 296.18182}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

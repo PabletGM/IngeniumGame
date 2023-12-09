@@ -163,6 +163,17 @@ public class TextManager : MonoBehaviour
 
                 }
             }
+            else if (SceneManager.GetActiveScene().name == "escenaConversacionRobot4")
+            {
+                //primer texto
+                if (numTextoActual == 0)
+                {
+                    //si es texto 1,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    AudioManagerCirculos.instance.PlayDialogue("robotMinimalista1", tiempoNarracionTexto1);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto1);
+                }
+            }
             #endregion
         }
     }
@@ -240,6 +251,16 @@ public class TextManager : MonoBehaviour
         {
             //cargas escena intermedia
             SceneManager.LoadScene("tareaCaras2");
+        }
+        else if (SceneManager.GetActiveScene().name == "escenaConversacionRobot3")
+        {
+            //cargas escena intermedia
+            SceneManager.LoadScene("escenaItem");
+        }
+        else if (SceneManager.GetActiveScene().name == "escenaConversacionRobot5")
+        {
+            //cargas escena intermedia
+            SceneManager.LoadScene("escenaItemAutonomia2");
         }
         #endregion
     }
