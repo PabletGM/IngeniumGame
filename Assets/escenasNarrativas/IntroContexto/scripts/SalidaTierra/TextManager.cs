@@ -257,7 +257,7 @@ public class TextManager : MonoBehaviour
             //cargas escena intermedia
             SceneManager.LoadScene("escenaItem");
         }
-        else if (SceneManager.GetActiveScene().name == "escenaConversacionRobot5")
+        else if (SceneManager.GetActiveScene().name == "escenaConversacionRobot4")
         {
             //cargas escena intermedia
             SceneManager.LoadScene("escenaItemAutonomia2");
