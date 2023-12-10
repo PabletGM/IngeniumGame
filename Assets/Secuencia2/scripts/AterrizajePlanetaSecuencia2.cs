@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AterrizajePlanetaSecuencia2 : MonoBehaviour
 {
@@ -22,13 +23,26 @@ public class AterrizajePlanetaSecuencia2 : MonoBehaviour
     private void OnEnable()
     {
         nave.SetActive(true);
+        Invoke("SonidoNaveAterrizando", 0f);
         //hacemos efecto desaparecer particulas
         StartCoroutine(BajarMaxParticlesCanon1());
         StartCoroutine(BajarMaxParticlesCanon2());
         //hacemos efecto humo
+        
         Invoke("PonerHumo", 2.8f);
+        Invoke("QuitarFuncionalidadEscena", 5f);
     }
 
+    private void SonidoNaveAterrizando()
+    {
+        AudioManagerCirculos.instance.PlaySFXDuracion("Aterrizaje",2f);
+    }
+
+    private void QuitarFuncionalidadEscena()
+    {
+        //quitamos animacion nave
+        nave.GetComponent<Animator>().enabled = false;
+    }
     private void PonerHumo()
     {
         humo.SetActive(true);

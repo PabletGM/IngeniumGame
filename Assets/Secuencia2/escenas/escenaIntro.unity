@@ -1434,6 +1434,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b96cc7e21dd409541a66b9c59b1472f3, type: 3}
   - name: boton
     clip: {fileID: 8300000, guid: 86f4aa52d30b0c644b1f2e267787de9e, type: 3}
+  - name: Aterrizaje
+    clip: {fileID: 8300000, guid: c77fff8b3ced90342a7ff472aff43baa, type: 3}
   dialogueSound:
   - name: robotMinimalista1
     clip: {fileID: 8300000, guid: ed99ece5098ab6f468f80afa35fe669e, type: 3}
