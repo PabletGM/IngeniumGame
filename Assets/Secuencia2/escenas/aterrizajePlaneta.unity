@@ -263,6 +263,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
   - component: {fileID: 519420036}
+  - component: {fileID: 519420037}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -447,6 +448,20 @@ MonoBehaviour:
   m_BeforeTransparentBundles: []
   m_BeforeStackBundles: []
   m_AfterStackBundles: []
+--- !u!114 &519420037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed77133748c719d47920cb15a688fa68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duracionTerremoto: 3
+  intensidad: 0.1
 --- !u!1001 &1105253024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -897,8 +912,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1699542807}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.31, y: -1.9823, z: 5}
-  m_LocalScale: {x: 0.21273498, y: 0.18151201, z: 1}
+  m_LocalPosition: {x: -0.394, y: -1.9543, z: 5}
+  m_LocalScale: {x: 0.2351497, y: 0.2119012, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
