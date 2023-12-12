@@ -26,6 +26,9 @@ public class TextManager : MonoBehaviour
     [SerializeField]
     private int tiempoNarracionTexto3;
 
+    [SerializeField]
+    private Animator robotAnim;
+
 
 
     private void Awake()
@@ -205,8 +208,14 @@ public class TextManager : MonoBehaviour
         {
             //quitamos texto
             this.gameObject.transform.parent.gameObject.SetActive(false);
+            //animacion desaparecer robot
             
-            PasarSiguienteEscenaIntermedia();           
+            if(robotAnim!=null)
+            {
+                SetAnimRobotDesaparecer();
+            }
+
+            Invoke("PasarSiguienteEscenaIntermedia", 1.5f);         
         }
        
         //ponemos texto
@@ -215,6 +224,12 @@ public class TextManager : MonoBehaviour
             PonerTextoActivo(textos[numTextoActual]);
         }
        
+    }
+
+    private void SetAnimRobotDesaparecer()
+    {
+        Debug.Log(robotAnim);
+        robotAnim.SetBool("aparecer", false);
     }
 
     public void VolverAnteriorTexto()
