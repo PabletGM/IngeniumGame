@@ -1125,8 +1125,8 @@ MonoBehaviour:
   textos:
   - {fileID: 436817111}
   DialoguePanel: {fileID: 1438181198}
-  tiempoNarracionTexto1: 6
-  tiempoNarracionTexto2: 6
+  tiempoNarracionTexto1: 8
+  tiempoNarracionTexto2: 8
   tiempoNarracionTexto3: 8
   robotAnim: {fileID: 452413132}
 --- !u!224 &1523618939
