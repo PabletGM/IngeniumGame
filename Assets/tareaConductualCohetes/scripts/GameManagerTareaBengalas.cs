@@ -246,7 +246,8 @@ public class GameManagerTareaBengalas : MonoBehaviour
 
     public void PasarSiguienteEscena()
     {
-        LevelLoader.LoadLevel("escenaIntro");
+        //LevelLoader.LoadLevel("escenaIntro");
+        LevelLoader.LoadLevel("hoyos");
     }
 
 

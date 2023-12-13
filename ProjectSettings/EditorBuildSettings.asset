@@ -6,33 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaIntro.unity
-    guid: 82c3e69e53d4aca4abcb29f2e5350c5a
-  - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaRadar3D.unity
-    guid: a59dcee56d90daa41a7575ad1b677ac8
-  - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaConversacionRobot2.unity
-    guid: 12a152dc8fefded4ebc56962e4dd3660
+    path: Assets/escena login/loginBueno/loginCorrect.unity
+    guid: 010056056ec8ecd4f9ac1e88af1cdd02
   - enabled: 1
     path: Assets/Secuencia2/escenas/tareaCaras2.unity
     guid: b08ea6df38c3b5343bb908ae502249e2
   - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaConversacionRobot3.unity
-    guid: 500dfb880badf3c4b97088a9d2f26d0b
+    path: Assets/tareaConductualCohetes/scene/BengalasPrueba.unity
+    guid: 89551bb72c2d81e46b08e80062916eca
   - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaItem.unity
-    guid: 50f853cc9ea24004c95aded685becffd
-  - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaConversacionRobot4.unity
-    guid: 0d67a938c5a57f5429e8fa776185edaa
-  - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaItemAutonomia2.unity
-    guid: f12843af5612c4b489f93c25551278f0
-  - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaConversacionRobot5.unity
-    guid: d5574569baeb0344b96600a1da20798e
-  - enabled: 1
-    path: Assets/Secuencia2/escenas/aterrizajePlaneta.unity
-    guid: 68c04896f8b44814782f463de53a869c
+    path: Assets/tareaConductualCohetes/scene/TareaBengalasGame.unity
+    guid: 182c102d3cd14ba45908f8d30e02fb90
   m_configObjects: {}

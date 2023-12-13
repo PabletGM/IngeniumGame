@@ -14,12 +14,13 @@ public class Quit : MonoBehaviour
     public void ChangeSceneHanoi()
     {
         //SceneManager.LoadScene("tutorial");
-        LevelLoader.LoadLevel("tutorial");
+        //LevelLoader.LoadLevel("tutorial");
+        LevelLoader.LoadLevel("EscenaInicial3EnRaya");
     }
 
     public void ChangeNextScene()
     {
         //SceneManager.LoadScene("tutorial");
-        LevelLoader.LoadLevel("inicioTest1");
+        //LevelLoader.LoadLevel("inicioTest1");
     }
 }
