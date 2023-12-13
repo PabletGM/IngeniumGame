@@ -6,23 +6,27 @@ using UnityEngine.EventSystems;
 
 public class SeleccionarImagen : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
+    [SerializeField]
     private Vector3 originalScale;
+
+    [SerializeField]
+    private Vector3 bigScale;
 
     void Start()
     {
-        originalScale = new Vector3(0.01f, 0.01f, 0.01f);
+        //originalScale = new Vector3(0.01f, 0.01f, 0.01f);
     }
 
     //nada mas activarse que se haga
     private void OnEnable()
     {
-        this.gameObject.transform.DOScale(new Vector3(0.01f, 0.01f, 0.01f), 1f);
+        this.gameObject.transform.DOScale(originalScale, 1f);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         // Cuando el ratón entra en la imagen
-        transform.localScale = new Vector3(0.015f, 0.015f, 0.015f); // Aumenta el tamaño en un 50%
+        transform.localScale = bigScale; // Aumenta el tamaño en un 50%
     }
 
     public void OnPointerExit(PointerEventData eventData)
