@@ -5619,7 +5619,8 @@ MonoBehaviour:
   buttonChangeStateRegisterToLogin: {fileID: 919576502}
   userNameRegister: {fileID: 989123923}
   company: {fileID: 409401951}
-  email: {fileID: 703988486}
+  emailRegister: {fileID: 703988486}
+  emailLogin: {fileID: 375425006}
   firstName: {fileID: 0}
   lastName: {fileID: 0}
   age: {fileID: 0}
