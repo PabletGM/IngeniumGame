@@ -141,7 +141,7 @@ public class UIManagerLogin : MonoBehaviour
         public void DebugLoginParameters()
         {
             //metodo que envia a la base de datos un post del Login
-            StartCoroutine(PostLogin(userNameLogin.text, passwordLogin.text));
+            StartCoroutine(PostLogin(email.text, passwordLogin.text));
         }
 
         //metodo que escribe parametros de Registers
@@ -156,32 +156,36 @@ public class UIManagerLogin : MonoBehaviour
     #region ExecuteLoginRegister
     
         [Obsolete]
-        IEnumerator PostLogin(string userNameLogin, string passwordLogin)
+        IEnumerator PostLogin(string email, string passwordLogin)
         {
             // Crear formulario con los datos, todo en minusculas , porque va predefinido el formulario y username esta vez en minuscula
             WWWForm form = new WWWForm();
-            form.AddField("username", userNameLogin);
+            form.AddField("username", email);
             form.AddField("password", passwordLogin);
+
 
             using (UnityWebRequest request = UnityWebRequest.Post(uriLoginBackend, form))
             {
+                        
                 yield return request.SendWebRequest();
-
+                
                 //primera barrera de seguridad, para ver fallo
                 TipoFalloDetailLogin(request.downloadHandler.text);
-
+                Debug.Log("hola");
                 if (request.isNetworkError || request.isHttpError)
                 {
+                    Debug.Log(request.error);
                     errorCode = request.error;
                     //segunda barrera de seguridad, fallo numerico
                     TiposFalloLoginNumero(errorCode);
                 }
                 else
                 {
-                    
+                    Debug.Log("holaaa");
                     ComprobacionAccessTokenLoginCorrect(request.downloadHandler.text);
                     //en caso de que sea correcto nos movemos a escena hoyos
                     //SceneManager.LoadScene("EscenaInicial3EnRaya");
+                    Debug.Log("login hecho");
                     LevelLoader.LoadLevel("tareaCaras2");
                 }
             }
@@ -201,14 +205,19 @@ public class UIManagerLogin : MonoBehaviour
             // Cambia esto al valor adecuado de la edad
             string body;
         //
-                 body = $@"{{
-                    ""userName"": ""{userNameRegister}"",
-                    ""company"": ""{company}"",
-                    ""email"": ""{email}"",
-                    ""password"": ""{passwordRegister}""
-                }}";
+                // body = $@"{{
+                //    ""userName"": ""{userNameRegister}"",
+                //    ""company"": ""{company}"",
+                //    ""email"": ""{email}"",
+                //    ""password"": ""{passwordRegister}""
+                //}}";
 
-            using (UnityWebRequest request = UnityWebRequest.Post(uriRegisterBackend, body, "application/json"))
+                body = $@"{{
+                            ""username"": ""{email}"",
+                            ""password"": ""{passwordRegister}""
+                        }}";
+
+        using (UnityWebRequest request = UnityWebRequest.Post(uriRegisterBackend, body, "application/json"))
             {
                 yield return request.SendWebRequest();
               
