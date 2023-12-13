@@ -214,6 +214,9 @@ public class UIManagerLogin : MonoBehaviour
 
                 body = $@"{{
                             ""username"": ""{email}"",
+                            ""firstName"": ""{firstName}"",
+                            ""lastName"": ""{lastName}"",
+                            ""age"": ""0"",
                             ""password"": ""{passwordRegister}""
                         }}";
 
