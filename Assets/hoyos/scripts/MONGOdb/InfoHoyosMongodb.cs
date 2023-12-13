@@ -44,7 +44,7 @@ public class InfoHoyosMongodb : MonoBehaviour
     {
         string numPicadasHoyoIndivString = string.Join(",", numPicadasHoyoIndiv);
 
-        string uri = $"{baseUrl + "Users/gameData/hoyos"}";
+        string uri = $"{baseUrl + "Users/me/gameData/hoyos"}";
 
         string body2= $"{{ \"numExcavacionesTotales\": {numExcavacionesTotales}, \"totalTime\": {totalTime}, \"numPicadasCadaHoyo\": [{numPicadasHoyoIndivString}]}}";
 
