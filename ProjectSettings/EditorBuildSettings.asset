@@ -6,30 +6,42 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaIntro.unity
-    guid: 82c3e69e53d4aca4abcb29f2e5350c5a
-  - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaRadar3D.unity
-    guid: a59dcee56d90daa41a7575ad1b677ac8
-  - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaConversacionRobot2.unity
-    guid: 12a152dc8fefded4ebc56962e4dd3660
+    path: Assets/escena login/loginBueno/loginCorrect.unity
+    guid: 010056056ec8ecd4f9ac1e88af1cdd02
   - enabled: 1
     path: Assets/Secuencia2/escenas/tareaCaras2.unity
     guid: b08ea6df38c3b5343bb908ae502249e2
   - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaConversacionRobot3.unity
-    guid: 500dfb880badf3c4b97088a9d2f26d0b
+    path: Assets/tareaConductualCohetes/scene/BengalasPrueba.unity
+    guid: 89551bb72c2d81e46b08e80062916eca
   - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaItem.unity
-    guid: 50f853cc9ea24004c95aded685becffd
+    path: Assets/tareaConductualCohetes/scene/TareaBengalasGame.unity
+    guid: 182c102d3cd14ba45908f8d30e02fb90
   - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaConversacionRobot4.unity
-    guid: 0d67a938c5a57f5429e8fa776185edaa
+    path: Assets/PantallaCarga/PantallaCarga.unity
+    guid: 15e7014e04917dd4cb980c1275613c9f
   - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaItemAutonomia2.unity
-    guid: f12843af5612c4b489f93c25551278f0
+    path: Assets/hoyos/hoyos.unity
+    guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Secuencia2/escenas/escenaConversacionRobot5.unity
-    guid: d5574569baeb0344b96600a1da20798e
+    path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/EscenaInicial3EnRaya.unity
+    guid: 208fa17093e6d884c865ee365ec04562
+  - enabled: 1
+    path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/EscenaSalaInvitados.unity
+    guid: 6bcaa0df1b34cc14fb4c1ccf665d95f9
+  - enabled: 1
+    path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/mecanicas3EnRayaModoDificil.unity
+    guid: 46e7be7fffaf0044fa905a237585de1e
+  - enabled: 1
+    path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/mecanicas3EnRayaModoFacil.unity
+    guid: f263ed0e158da604ea4d9127eda2b875
+  - enabled: 1
+    path: Assets/3EnRayaTarea/escenas/pruebaMecanicas/mecanicas3EnRayaModoMedio.unity
+    guid: eca7365f5cc7f8349a4e45a31c4460fe
+  - enabled: 1
+    path: Assets/TowerHanoi/scene/tutorial.unity
+    guid: 86d8ec59907fe8143a9985a59e686ff0
+  - enabled: 1
+    path: Assets/TowerHanoi/scene/Hanoi.unity
+    guid: 97b3f674150d5df45942d652fe3dc824
   m_configObjects: {}

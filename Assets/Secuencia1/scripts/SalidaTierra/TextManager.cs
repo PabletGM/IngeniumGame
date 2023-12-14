@@ -26,6 +26,9 @@ public class TextManager : MonoBehaviour
     [SerializeField]
     private int tiempoNarracionTexto3;
 
+    [SerializeField]
+    private Animator robotAnim;
+
 
 
     private void Awake()
@@ -174,6 +177,17 @@ public class TextManager : MonoBehaviour
                     Invoke("PasarSiguienteTexto", tiempoNarracionTexto1);
                 }
             }
+            else if (SceneManager.GetActiveScene().name == "escenaConversacionRobot5")
+            {
+                //primer texto
+                if (numTextoActual == 0)
+                {
+                    //si es texto 1,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    AudioManagerCirculos.instance.PlayDialogue("robotMinimalista1", tiempoNarracionTexto1);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto1);
+                }
+            }
             #endregion
         }
     }
@@ -194,8 +208,14 @@ public class TextManager : MonoBehaviour
         {
             //quitamos texto
             this.gameObject.transform.parent.gameObject.SetActive(false);
+            //animacion desaparecer robot
             
-            PasarSiguienteEscenaIntermedia();           
+            if(robotAnim!=null)
+            {
+                SetAnimRobotDesaparecer();
+            }
+
+            Invoke("PasarSiguienteEscenaIntermedia", 1.5f);         
         }
        
         //ponemos texto
@@ -204,6 +224,12 @@ public class TextManager : MonoBehaviour
             PonerTextoActivo(textos[numTextoActual]);
         }
        
+    }
+
+    private void SetAnimRobotDesaparecer()
+    {
+        Debug.Log(robotAnim);
+        robotAnim.SetBool("aparecer", false);
     }
 
     public void VolverAnteriorTexto()
@@ -257,10 +283,15 @@ public class TextManager : MonoBehaviour
             //cargas escena intermedia
             SceneManager.LoadScene("escenaItem");
         }
-        else if (SceneManager.GetActiveScene().name == "escenaConversacionRobot5")
+        else if (SceneManager.GetActiveScene().name == "escenaConversacionRobot4")
         {
             //cargas escena intermedia
             SceneManager.LoadScene("escenaItemAutonomia2");
+        }
+        else if (SceneManager.GetActiveScene().name == "escenaConversacionRobot5")
+        {
+            //cargas escena intermedia
+            SceneManager.LoadScene("aterrizajePlaneta");
         }
         #endregion
     }

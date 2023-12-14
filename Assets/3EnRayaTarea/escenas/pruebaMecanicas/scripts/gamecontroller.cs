@@ -1731,7 +1731,8 @@ public class gamecontroller : MonoBehaviour
         //si esta en modo dificil pasas a modo facil
         else if (SceneManager.GetActiveScene().name == "mecanicas3EnRayaModoMedio")
         {
-            SceneManager.LoadScene("mecanicas3EnRayaModoDificil");
+            //SceneManager.LoadScene("mecanicas3EnRayaModoDificil");
+            SceneManager.LoadScene("tutorial");
         }
     }
 

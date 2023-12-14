@@ -27,7 +27,7 @@ public class ComportamientoCrearPantalla : MonoBehaviour
 
     public void SetTweenSizePantalla()
     {
-        pantalla.transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 1f);
+        pantalla.transform.DOScale(new Vector3(1,1,1), 1f);
     }
 
     private void NextScene()

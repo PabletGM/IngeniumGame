@@ -1434,6 +1434,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: b96cc7e21dd409541a66b9c59b1472f3, type: 3}
   - name: boton
     clip: {fileID: 8300000, guid: 86f4aa52d30b0c644b1f2e267787de9e, type: 3}
+  - name: Aterrizaje
+    clip: {fileID: 8300000, guid: c77fff8b3ced90342a7ff472aff43baa, type: 3}
   dialogueSound:
   - name: robotMinimalista1
     clip: {fileID: 8300000, guid: ed99ece5098ab6f468f80afa35fe669e, type: 3}
@@ -1570,9 +1572,10 @@ MonoBehaviour:
   - {fileID: 436817111}
   - {fileID: 547797109}
   DialoguePanel: {fileID: 1438181198}
-  tiempoNarracionTexto1: 2
-  tiempoNarracionTexto2: 3
+  tiempoNarracionTexto1: 6
+  tiempoNarracionTexto2: 6
   tiempoNarracionTexto3: 8
+  robotAnim: {fileID: 452413132}
 --- !u!224 &1523618939
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1708,6 +1711,7 @@ GameObject:
   - component: {fileID: 1625732258}
   - component: {fileID: 1625732257}
   - component: {fileID: 1625732256}
+  - component: {fileID: 1625732259}
   m_Layer: 5
   m_Name: BotonPasarTexto
   m_TagString: Untagged
@@ -1732,8 +1736,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -11.0436, y: 306.77}
-  m_SizeDelta: {x: 1871.8889, y: 822.84}
+  m_AnchoredPosition: {x: 439, y: -81.1}
+  m_SizeDelta: {x: 156.51, y: 162.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1625732256
 MonoBehaviour:
@@ -1778,7 +1782,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1625732257}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1523618938}
+        m_TargetAssemblyTypeName: TextManager, Assembly-CSharp
+        m_MethodName: PasarSiguienteTexto
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1625732257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1792,15 +1808,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 7d4afd8e6b3a6f340a67c03ed7ae79ef, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1817,6 +1833,27 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625732254}
   m_CullTransparentMesh: 1
+--- !u!95 &1625732259
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625732254}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5b8faee25625e24cbf15619e7812131, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1643867587
 GameObject:
   m_ObjectHideFlags: 0

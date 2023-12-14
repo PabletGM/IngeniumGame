@@ -38,7 +38,7 @@ public class InfoHanoiMongoDB : MonoBehaviour
     {
         
 
-        string uri = $"{baseUrl + "Users/gameData/torreHanoi"}";
+        string uri = $"{baseUrl + "Users/me/gameData/torreHanoi"}";
 
         string body2 = $"{{ \"totalTime\": {totalTime}, \"numJugadas\": {numJugadas}, \"numMovimientosIncorrectos\": {numMovimientosIncorrectos},\"numMovimientosOutOfLimits\": {numMovimientosOutOfLimits}}}";
 

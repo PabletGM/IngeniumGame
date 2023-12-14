@@ -124,7 +124,7 @@ public class InfoTestsMongoDB : MonoBehaviour
     {
 
 
-        string uri = $"{baseUrl + "Users/gameData/item"}";
+        string uri = $"{baseUrl + "Users/me/gameData/item"}";
 
         //"itemName": "CONF_2",
         //"softSkill": [  "confianza"],

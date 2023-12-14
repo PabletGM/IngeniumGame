@@ -43,7 +43,7 @@ public class InfoCirculosMongoDB : MonoBehaviour
     {
         string patronRondasString = string.Join(",", patronRondas);
 
-        string uri = $"{baseUrl + "Users/gameData/circulos"}";
+        string uri = $"{baseUrl + "Users/me/gameData/circulos"}";
 
         string body2 = $"{{ \"nivel\": [{patronRondasString}], \"totalTime\": \"{totalTime}\" }}";
 

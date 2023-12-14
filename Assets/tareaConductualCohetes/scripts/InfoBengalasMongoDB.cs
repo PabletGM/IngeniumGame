@@ -42,7 +42,7 @@ public class InfoBengalasMongoDB : MonoBehaviour
     [System.Obsolete]
     IEnumerator PutBengalasMongoDB(float[] alturaCohetes,int totalTime)
     {
-        string uri = $"{baseUrl + "Users/gameData/bengalas"}";
+        string uri = $"{baseUrl + "Users/me/gameData/bengalas"}";
 
         // Convierte el arreglo de enteros a una cadena JSON válida
         //esto para float [] y que no te separe todo en comas, parte decimal y entera

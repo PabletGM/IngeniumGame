@@ -45,7 +45,7 @@ public class Info3EnRayaMongoDB : MonoBehaviour
     [System.Obsolete]
     IEnumerator PutPuntuacion3EnRayaMongoDB(int totalTime)
     {
-        string uri = $"{baseUrl}Users/gameData/tresEnRaya";
+        string uri = $"{baseUrl}Users/me/gameData/tresEnRaya";
 
         // Convierte el arreglo de flotantes a una cadena JSON válida
         string victoria = string.Join(", ", puntuacionTest3EnRaya.Select(f => f.ToString("0.0", CultureInfo.InvariantCulture)));

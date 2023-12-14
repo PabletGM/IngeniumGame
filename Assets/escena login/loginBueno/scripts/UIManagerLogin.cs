@@ -43,7 +43,10 @@ public class UIManagerLogin : MonoBehaviour
     private TMP_InputField company;
 
     [SerializeField]
-    private TMP_InputField email;
+    private TMP_InputField emailRegister;
+
+    [SerializeField]
+    private TMP_InputField emailLogin;
 
     [SerializeField]
     private TMP_InputField firstName;
@@ -141,14 +144,14 @@ public class UIManagerLogin : MonoBehaviour
         public void DebugLoginParameters()
         {
             //metodo que envia a la base de datos un post del Login
-            StartCoroutine(PostLogin(userNameLogin.text, passwordLogin.text));
+            StartCoroutine(PostLogin(emailLogin.text, passwordLogin.text));
         }
 
         //metodo que escribe parametros de Registers
         [Obsolete]
         public void DebugRegisterParameters()
         {
-            StartCoroutine(PostRegister(userNameRegister.text, email.text, passwordRegister.text, company.text));
+            StartCoroutine(PostRegister(userNameRegister.text, emailRegister.text, passwordRegister.text, company.text));
         }
 
     #endregion
@@ -156,22 +159,28 @@ public class UIManagerLogin : MonoBehaviour
     #region ExecuteLoginRegister
     
         [Obsolete]
-        IEnumerator PostLogin(string userNameLogin, string passwordLogin)
+        IEnumerator PostLogin(string email, string passwordLogin)
         {
             // Crear formulario con los datos, todo en minusculas , porque va predefinido el formulario y username esta vez en minuscula
+            Debug.Log(email);
+            Debug.Log(passwordLogin);
             WWWForm form = new WWWForm();
-            form.AddField("username", userNameLogin);
+            form.AddField("username", email);
             form.AddField("password", passwordLogin);
+
 
             using (UnityWebRequest request = UnityWebRequest.Post(uriLoginBackend, form))
             {
+                        
                 yield return request.SendWebRequest();
-
+                
                 //primera barrera de seguridad, para ver fallo
                 TipoFalloDetailLogin(request.downloadHandler.text);
-
+                
                 if (request.isNetworkError || request.isHttpError)
                 {
+                    Debug.Log(request.error);
+                    Debug.Log("holaaa");
                     errorCode = request.error;
                     //segunda barrera de seguridad, fallo numerico
                     TiposFalloLoginNumero(errorCode);
@@ -182,7 +191,8 @@ public class UIManagerLogin : MonoBehaviour
                     ComprobacionAccessTokenLoginCorrect(request.downloadHandler.text);
                     //en caso de que sea correcto nos movemos a escena hoyos
                     //SceneManager.LoadScene("EscenaInicial3EnRaya");
-                    LevelLoader.LoadLevel("hoyos");
+                    Debug.Log("login hecho");
+                    LevelLoader.LoadLevel("tareaCaras2");
                 }
             }
         }
@@ -198,17 +208,25 @@ public class UIManagerLogin : MonoBehaviour
         IEnumerator PostRegister(string userNameRegister, string email, string passwordRegister, string company)
         {
 
-            // Cambia esto al valor adecuado de la edad
-            string body;
-        //
-                 body = $@"{{
-                    ""userName"": ""{userNameRegister}"",
-                    ""company"": ""{company}"",
-                    ""email"": ""{email}"",
-                    ""password"": ""{passwordRegister}""
-                }}";
+                // Cambia esto al valor adecuado de la edad
+                string body;
+            //
+            // body = $@"{{
+            //    ""userName"": ""{userNameRegister}"",
+            //    ""company"": ""{company}"",
+            //    ""email"": ""{email}"",
+            //    ""password"": ""{passwordRegister}""
+            //}}";
+            Debug.Log(email);
+                body = $@"{{
+                            ""email"": ""{email}"",
+                            ""firstName"": ""{firstName}"",
+                            ""lastName"": ""{lastName}"",
+                            ""age"": ""0"",
+                            ""password"": ""{passwordRegister}""
+                        }}";
 
-            using (UnityWebRequest request = UnityWebRequest.Post(uriRegisterBackend, body, "application/json"))
+        using (UnityWebRequest request = UnityWebRequest.Post(uriRegisterBackend, body, "application/json"))
             {
                 yield return request.SendWebRequest();
               

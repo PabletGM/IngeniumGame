@@ -68,6 +68,25 @@ public class AudioManagerCirculos : MonoBehaviour
         }
     }
 
+    public void PlaySFXDuracion(string name, float duracion)
+    {
+        //buscamos la musica que queremos poner en el musicSound
+        SoundCirculos s = Array.Find(sfxSounds, x => x.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+
+        else
+        {
+            //bajamos volumen de musica normal
+            musicSource.volume = 0.2f;
+            sfxSource.PlayOneShot(s.clip);
+            Invoke("PonerVolumenNormal", duracion);
+        }
+    }
+
     public void PlayDialogue(string name, int duracionDialogue)
     {
         //buscamos la musica que queremos poner en el musicSound
