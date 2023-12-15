@@ -72,6 +72,13 @@ public class AnimacionesManagerSecuencia3 : MonoBehaviour
         listaDeGameObjectsAnimacionOrden[4].GetComponent<AnimacionMultitudSaltando>().ActivarMultitudPersonas();
     }
 
+    public void ActivarJefeExploracionZoom()
+    {
+        //activamos jefe de exploracion
+        listaGOEscena[1].SetActive(true);
+        listaDeGameObjectsAnimacionOrden[5].GetComponent<AnimacionJefeExploracion>().ActivarJefeExploracionn();
+    }
+
 
 
 

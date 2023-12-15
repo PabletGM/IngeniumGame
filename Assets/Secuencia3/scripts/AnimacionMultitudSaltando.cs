@@ -25,7 +25,9 @@ public class AnimacionMultitudSaltando : MonoBehaviour
     private DOTweenAnimation DOJumpAstronauta8;
 
 
-
+    [Header("duracion animacion")]
+    [SerializeField]
+    private float duracionAnimacionMultitud;
 
     public void ActivarMultitudPersonas()
     {
@@ -40,7 +42,11 @@ public class AnimacionMultitudSaltando : MonoBehaviour
         DOJumpAstronauta8.DOPlay();
 
         //activar LO SIGUIENTE
-        //AnimacionesManagerSecuencia3.animsSecuencia3instance.ActivarPersonasBajandoRampa();
+        Invoke("NextAnimacion", duracionAnimacionMultitud);
+    }
+    private void NextAnimacion()
+    {
+        AnimacionesManagerSecuencia3.animsSecuencia3instance.ActivarJefeExploracionZoom();
     }
 
 
