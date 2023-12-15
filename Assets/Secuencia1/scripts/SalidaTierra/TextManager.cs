@@ -241,7 +241,7 @@ public class TextManager : MonoBehaviour
 
     public void  PasarSiguienteTexto()
     {
-        Debug.Log("Siguiente texto");
+        
         //sumamos uno
         if(numTextoActual< textos.Length-1 && DialoguePanel.activeInHierarchy)
         {
@@ -252,8 +252,10 @@ public class TextManager : MonoBehaviour
         //si ha llegado al final
         else
         {
-            //quitamos texto
-            this.gameObject.transform.parent.gameObject.SetActive(false);
+            //antes de quitar texto vemos los efectos
+            Invoke("EfectosSegunEscena",1f);
+            Invoke("QuitarTexto", 2f);
+            
             //animacion desaparecer robot
             
             if(robotAnim!=null)
@@ -270,6 +272,22 @@ public class TextManager : MonoBehaviour
             PonerTextoActivo(textos[numTextoActual]);
         }
        
+    }
+
+    private void EfectosSegunEscena()
+    {
+        if (SceneManager.GetActiveScene().name == "3.2ConversacionJefeExploracion")
+        {
+            //efecto empequeñecer dialogo
+            UIManagerDialogue.instance.SetDialoguePanelPequeno();
+            
+        }
+    }
+
+    private void QuitarTexto()
+    {
+        //quitamos texto
+        this.gameObject.transform.parent.gameObject.SetActive(false);
     }
 
     private void SetAnimRobotDesaparecer()
@@ -338,6 +356,15 @@ public class TextManager : MonoBehaviour
         {
             //cargas escena intermedia
             SceneManager.LoadScene("aterrizajePlaneta");
+        }
+        #endregion
+
+        #region Secuencia3
+        if (SceneManager.GetActiveScene().name == "3.2IntroduccionPrimeraMision")
+        {
+            //efecto empequeñecer dialogo
+            //cargas siguiente escena
+            SceneManager.LoadScene("3.3AdentrarseBosque");
         }
         #endregion
     }
