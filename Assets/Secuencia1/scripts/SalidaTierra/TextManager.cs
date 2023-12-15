@@ -25,6 +25,8 @@ public class TextManager : MonoBehaviour
     private int tiempoNarracionTexto2;
     [SerializeField]
     private int tiempoNarracionTexto3;
+    [SerializeField]
+    private int tiempoNarracionTexto4;
 
     [SerializeField]
     private Animator robotAnim;
@@ -186,6 +188,50 @@ public class TextManager : MonoBehaviour
                     //audioManager texto narracion 1
                     AudioManagerCirculos.instance.PlayDialogue("robotMinimalista1", tiempoNarracionTexto1);
                     Invoke("PasarSiguienteTexto", tiempoNarracionTexto1);
+                }
+            }
+            #endregion
+
+            #region Secuencia 3
+            if (SceneManager.GetActiveScene().name == "3.2ConversacionJefeExploracion")
+            {
+                //primer texto
+                if (numTextoActual == 0)
+                {
+                    //si es texto 1,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    //AudioManagerCirculos.instance.PlayDialogue("robotMinimalista1", tiempoNarracionTexto1);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto1);
+                }
+
+                //segundo texto
+                else if (numTextoActual == 1)
+                {
+                    //si es texto 2,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    //AudioManagerCirculos.instance.PlayDialogue("robotMinimalista2", tiempoNarracionTexto2);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto2);
+
+                }
+
+                //segundo texto
+                else if (numTextoActual == 2)
+                {
+                    //si es texto 2,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    //AudioManagerCirculos.instance.PlayDialogue("robotMinimalista2", tiempoNarracionTexto2);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto3);
+
+                }
+
+                //segundo texto
+                else if (numTextoActual == 3)
+                {
+                    //si es texto 2,empezamos la voz, pasamos el tiempoEsperaEntreTextos
+                    //audioManager texto narracion 1
+                    //AudioManagerCirculos.instance.PlayDialogue("robotMinimalista2", tiempoNarracionTexto2);
+                    Invoke("PasarSiguienteTexto", tiempoNarracionTexto4);
+
                 }
             }
             #endregion
