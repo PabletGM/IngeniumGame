@@ -6,27 +6,52 @@ using UnityEngine;
 
 public class AnimacionesManagerSecuencia3 : MonoBehaviour
 {
+    public static AnimacionesManagerSecuencia3 animsSecuencia3instance;
 
-    [Header("Animaciones ")]
-    [SerializeField]
-    private Animator animRampa;
-
-    [SerializeField]
-    private Animator animCajasRampa;
+    //de primera animacion a ultima animacion
+    public List<GameObject> listaDeGameObjectsAnimacionOrden;
 
 
-    [Header("DuracionAnimaciones")]
-    [SerializeField]
-    private float duracionAnimRampa;
+    private void Awake()
+    {
 
-    [SerializeField]
-    private float duracionCajasRampa;
+        if (animsSecuencia3instance == null)
+        {
+            animsSecuencia3instance = this;
+          
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
-        //Iniciamos escaleras
-        AnimacionEscalera();
+        ActivarAnimacionEscaleraObjetos();
     }
+
+    public void ActivarAnimacionEscaleraObjetos()
+    {
+        //iniciamos primera animacion ESCALERA OBJETOS
+        listaDeGameObjectsAnimacionOrden[0].GetComponent<AnimacionRampaObjetos>().ActivarAnimacionEscalera();
+    }
+
+    public void ActivarAnimacionCajas()
+    {
+        //iniciamos primera animacion ESCALERA OBJETOS
+        listaDeGameObjectsAnimacionOrden[1].GetComponent<AnimacionCajasBajando>().ActivarAnimacionCajasBajando();
+    }
+
+    public void ActivarRampaPersonas()
+    {
+        //iniciamos primera animacion ESCALERA OBJETOS
+        listaDeGameObjectsAnimacionOrden[2].GetComponent<AnimacionRampaPersonas>().ActivarRampaPersonas();
+    }
+
+
 
 
     #region AnimacionAcercarCamara
@@ -37,63 +62,6 @@ public class AnimacionesManagerSecuencia3 : MonoBehaviour
 
     #endregion
 
-    #region AnimacionEscalera
-
-    private void AnimacionEscalera()
-    {
-       
-        //transform.DOMove(Vector3.zero, 1f).on  OnComplete(() => QuitAnimacionEscalera());
-        //activamos animacion
-        SetAnimacionEscalera(true);
-        //desactivamos animacion al acabar duracion
-        Invoke("QuitAnimacionEscalera", duracionAnimRampa);
-    }
-
-    private void SetAnimacionEscalera(bool set)
-    {
-        //se activa animacion rampa
-        animRampa.enabled = set;
-       
-    }
-
-    private void QuitAnimacionEscalera()
-    {
-        //se quita animacion rampa
-        animRampa.enabled = false;
-        
-        //comenzar animacion cajas
-        //activamos animacion
-        AnimacionCajas();
-    }
-
-    #endregion
-
-
-    #region AnimacionCajas
-
-    private void AnimacionCajas()
-    {
-        //activamos animacion
-        SetAnimacionCajas(true);
-        //desactivamos animacion al acabar duracion
-        Invoke("QuitAnimacionCajas", duracionCajasRampa);
-    }
-
-    private void SetAnimacionCajas(bool set)
-    {
-        animCajasRampa.enabled = set;
-    }
-
-    private void QuitAnimacionCajas()
-    {
-        //se quita animacion cajas
-        animCajasRampa.enabled = false;
-        
-    }
-
-    #endregion
-
-
     #region AnimacionPersonasBajando
     private void SetAnimacionPersonasBajando()
     {
@@ -101,13 +69,19 @@ public class AnimacionesManagerSecuencia3 : MonoBehaviour
     }
     #endregion
 
+    #region Animacion SitiosCajasPersonasColocar
     private void ColocacionSitiosCajasPersonasAnimacion()
     {
 
     }
 
+    #endregion
+
+    #region SetAnimacionMultitud
     private void SetAnimacionMiltitud()
     {
 
     }
+
+    #endregion
 }
