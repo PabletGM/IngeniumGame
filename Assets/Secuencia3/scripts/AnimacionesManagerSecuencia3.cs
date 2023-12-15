@@ -28,16 +28,14 @@ public class AnimacionesManagerSecuencia3 : MonoBehaviour
         AnimacionEscalera();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
+    #region AnimacionAcercarCamara
     private void SetAnimacionProtaAcercaCamara()
     {
 
     }
+
+    #endregion
 
     #region AnimacionEscalera
 
@@ -96,11 +94,12 @@ public class AnimacionesManagerSecuencia3 : MonoBehaviour
     #endregion
 
 
-
+    #region AnimacionPersonasBajando
     private void SetAnimacionPersonasBajando()
     {
 
     }
+    #endregion
 
     private void ColocacionSitiosCajasPersonasAnimacion()
     {
