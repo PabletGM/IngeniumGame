@@ -21,5 +21,10 @@ public class AnimacionRampaPersonas : MonoBehaviour
         Debug.Log(DOMoveRampaPersonas);
         DOScaleRampaPersonas.DOPlay();
         DOMoveRampaPersonas.DOPlay();
+
+        //activar personas bajando rampa
+        AnimacionesManagerSecuencia3.animsSecuencia3instance.ActivarPersonasBajandoRampa();
     }
+
+
 }

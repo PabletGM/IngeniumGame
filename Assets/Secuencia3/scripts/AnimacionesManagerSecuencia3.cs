@@ -11,6 +11,9 @@ public class AnimacionesManagerSecuencia3 : MonoBehaviour
     //de primera animacion a ultima animacion
     public List<GameObject> listaDeGameObjectsAnimacionOrden;
 
+    [SerializeField]
+    public List<GameObject> listaGOEscena;
+
 
     private void Awake()
     {
@@ -51,6 +54,24 @@ public class AnimacionesManagerSecuencia3 : MonoBehaviour
         listaDeGameObjectsAnimacionOrden[2].GetComponent<AnimacionRampaPersonas>().ActivarRampaPersonas();
     }
 
+    public void ActivarPersonasBajandoRampa()
+    {
+        listaDeGameObjectsAnimacionOrden[3].GetComponent<AnimacionAstronautasBajandoNave>().ActivarPersonasBajandoRampa();
+    }
+
+    public void ActivarMultitudPersonasObjetos()
+    {
+        //quitamos objetos anteriores
+        listaDeGameObjectsAnimacionOrden[0].SetActive(false);
+        listaDeGameObjectsAnimacionOrden[1].SetActive(false);
+        listaDeGameObjectsAnimacionOrden[2].SetActive(false);
+        listaDeGameObjectsAnimacionOrden[3].SetActive(false);
+        //activamos multitud
+        listaGOEscena[0].SetActive(true);
+        //efecto multitud personas
+        listaDeGameObjectsAnimacionOrden[4].GetComponent<AnimacionMultitudSaltando>().ActivarMultitudPersonas();
+    }
+
 
 
 
@@ -62,12 +83,6 @@ public class AnimacionesManagerSecuencia3 : MonoBehaviour
 
     #endregion
 
-    #region AnimacionPersonasBajando
-    private void SetAnimacionPersonasBajando()
-    {
-
-    }
-    #endregion
 
     #region Animacion SitiosCajasPersonasColocar
     private void ColocacionSitiosCajasPersonasAnimacion()

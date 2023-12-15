@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +25,7 @@ public class AnimacionRampaObjetos : MonoBehaviour
     private void AnimacionEscalera()
     {
 
-        //transform.DOMove(Vector3.zero, 1f).on  OnComplete(() => QuitAnimacionEscalera());
+        //transform.DOMove(Vector3.zero, 1f).OnComplete(() => QuitAnimacionEscalera());
         //activamos animacion
         SetAnimacionEscalera(true);
         //desactivamos animacion al acabar duracion
