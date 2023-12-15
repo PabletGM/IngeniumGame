@@ -241,10 +241,15 @@ public class TextManager : MonoBehaviour
 
     public void  PasarSiguienteTexto()
     {
-        
-        //sumamos uno
-        if(numTextoActual< textos.Length-1 && DialoguePanel.activeInHierarchy)
+
+        //sumamos uno TODO: <= EN VEZ DE <
+        if (numTextoActual< textos.Length-1 && DialoguePanel.activeInHierarchy)
         {
+            //efectos penultimo dialogo
+            if (numTextoActual < textos.Length - 2)
+            {
+                EfectosSegunEscenaPenultimoDialogo();
+            }
             numTextoActual++;
             //llamas otra vez a nuevo dialogo
             StartTextDialogue();
@@ -253,7 +258,7 @@ public class TextManager : MonoBehaviour
         else
         {
             //antes de quitar texto vemos los efectos
-            Invoke("EfectosSegunEscena",1f);
+            Invoke("EfectosSegunEscenaUltimoDialogo", 1f);
             Invoke("QuitarTexto", 2f);
             
             //animacion desaparecer robot
@@ -274,13 +279,24 @@ public class TextManager : MonoBehaviour
        
     }
 
-    private void EfectosSegunEscena()
+    private void EfectosSegunEscenaUltimoDialogo()
     {
         if (SceneManager.GetActiveScene().name == "3.2ConversacionJefeExploracion")
         {
+            
             //efecto empequeñecer dialogo
             UIManagerDialogue.instance.SetDialoguePanelPequeno();
             
+        }
+    }
+
+    private void EfectosSegunEscenaPenultimoDialogo()
+    {
+        if (SceneManager.GetActiveScene().name == "3.2ConversacionJefeExploracion")
+        {
+            UIManagerDialogue.instance.RobotPopUpAparecer();
+            //efecto robot pop-up
+
         }
     }
 
@@ -360,7 +376,7 @@ public class TextManager : MonoBehaviour
         #endregion
 
         #region Secuencia3
-        if (SceneManager.GetActiveScene().name == "3.2IntroduccionPrimeraMision")
+        if (SceneManager.GetActiveScene().name == "3.2ConversacionJefeExploracion")
         {
             //efecto empequeñecer dialogo
             //cargas siguiente escena
