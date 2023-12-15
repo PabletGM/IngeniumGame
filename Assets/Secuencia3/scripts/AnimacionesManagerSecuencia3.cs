@@ -1,3 +1,5 @@
+using DG.Tweening;
+using DG.Tweening.Plugins.Core.PathCore;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -41,6 +43,8 @@ public class AnimacionesManagerSecuencia3 : MonoBehaviour
 
     private void AnimacionEscalera()
     {
+       
+        //transform.DOMove(Vector3.zero, 1f).on  OnComplete(() => QuitAnimacionEscalera());
         //activamos animacion
         SetAnimacionEscalera(true);
         //desactivamos animacion al acabar duracion
