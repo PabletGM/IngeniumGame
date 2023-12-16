@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Secuencia3/escenas/3.3AdentrarseBosque.unity
     guid: 13ae192f9271ac3409869f5d3029720f
+  - enabled: 1
+    path: Assets/Secuencia3/escenas/3.4ConversacionJefeExploracion.unity
+    guid: e8d3c5e6d12947242984fad8a6a1981b
+  - enabled: 1
+    path: Assets/Secuencia3/escenas/3.5Item.unity
+    guid: 8a95ce9ae23a4bc41908c4f2f15e3f28
   m_configObjects: {}
