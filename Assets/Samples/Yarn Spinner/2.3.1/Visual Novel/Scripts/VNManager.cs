@@ -48,6 +48,8 @@ namespace Yarn.Unity.Example {
 			// have to type out game object names in Yarn scripts (also
 			// gives us a performance increase by avoiding GameObject.Find)
 			runner.AddCommandHandler<string>("Scene", DoSceneChange );
+			//scale with a size
+            runner.AddCommandHandler<string,float>("ChangeLocalScale", ChangeLocalScale);
             runner.AddCommandHandler<string>("SceneChange", ChangeScene);
             runner.AddCommandHandler<string,string,string,string,string>("Act", SetActor );
 			runner.AddCommandHandler<string,string,string>("Draw", SetSpriteYarn );
@@ -89,9 +91,10 @@ namespace Yarn.Unity.Example {
 			bgImage.sprite = FetchAsset<Sprite>( spriteName );
 		}
 
+
         public void ChangeScene(string sceneName)
         {
-			SceneManager.LoadScene("tareaCaras2");
+			SceneManager.LoadScene(sceneName);
         }
 
         /// <summary>
@@ -264,6 +267,16 @@ namespace Yarn.Unity.Example {
             var image = FindActorOrSprite(actorOrSpriteName);
 
             image.rectTransform.localScale = new Vector3(image.rectTransform.localScale.x *scaleSize, image.rectTransform.localScale.y * scaleSize, image.rectTransform.localScale.z * scaleSize);
+        }
+
+
+        /// <summary>changes background image</summary>
+        public void ChangeLocalScale(string actorOrSpriteName, float scale = 0.1f)
+        {
+            var image = FindActorOrSprite(actorOrSpriteName);
+
+            image.rectTransform.localScale = new Vector3(image.rectTransform.localScale.x * scale, image.rectTransform.localScale.y * scale, image.rectTransform.localScale.z * scale);
+			Debug.Log(image.rectTransform.localScale);
         }
 
         /// <summary>Shake(actorName or spriteName, strength=0.5)</summary>
