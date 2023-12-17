@@ -935,7 +935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DOScaleAstronautaJefe: {fileID: 789299230}
   DOMoveAstronautaJefe: {fileID: 789299229}
-  duracionPasoSiguienteEscena: 1
+  duracionPasoSiguienteEscena: 0.5
 --- !u!114 &789299229
 MonoBehaviour:
   m_ObjectHideFlags: 0

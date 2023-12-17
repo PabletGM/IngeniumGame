@@ -1360,7 +1360,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   telefonoPopUp: {fileID: 1143312928}
-  timeNextSceneWait: 2
+  timeNextSceneWait: 1
 --- !u!1001 &4562516999387600099
 PrefabInstance:
   m_ObjectHideFlags: 0

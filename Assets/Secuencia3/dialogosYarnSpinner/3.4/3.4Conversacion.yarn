@@ -12,9 +12,9 @@ colorID: 0
 A VISUAL NOVEL EXAMPLE
 
 // adds actor named "Player" using sprite "astronauta", placed in left-half + center of screen, with green text label
-<<Act JefeExploracion AstronautaJefe left center green>>
+<<Act JefeExploracion AstronautaJefePequeño left center green>>
 
-<<ChangeLocalScale JefeExploracion>>
+<<ChangeLocalScale AstronautaJefePequeño>>
 
 JefeExploracion: ¡Explorador! 
 
