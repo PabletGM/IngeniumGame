@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Secuencia3/escenas/3.5Item.unity
     guid: 8a95ce9ae23a4bc41908c4f2f15e3f28
+  - enabled: 1
+    path: Assets/Secuencia3/escenas/3.6AndandoBosqueManager.unity
+    guid: 8c675c79b3b70b149896ca4c71ecf05b
   m_configObjects: {}

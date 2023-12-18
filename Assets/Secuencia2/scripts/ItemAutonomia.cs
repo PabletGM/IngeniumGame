@@ -31,6 +31,10 @@ public class ItemAutonomia : MonoBehaviour
         {
             Invoke("NextScene2", 1f);
         }
+        else if (SceneManager.GetActiveScene().name == "3.5Item")
+        {
+            Invoke("NextScene3", 1f);
+        }
 
     }
 
@@ -44,5 +48,11 @@ public class ItemAutonomia : MonoBehaviour
     {
         Debug.Log("next scene");
         SceneManager.LoadScene("escenaConversacionRobot5");
+    }
+
+    private void NextScene3()
+    {
+        Debug.Log("next scene");
+        SceneManager.LoadScene("3.6AndandoBosqueManager");
     }
 }
