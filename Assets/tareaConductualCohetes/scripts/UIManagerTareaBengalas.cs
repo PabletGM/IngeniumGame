@@ -188,7 +188,7 @@ public class UIManagerTareaBengalas : MonoBehaviour
     {
         robotPanel.SetActive(true);
         //tras animacion entrada robot aparece dialogo
-        Invoke("DialogoAppearAfterAnimation", 1.1f);
+        Invoke("DialogoAppearAfterAnimation", 1.4f);
     }
 
     public void DialogoAppearAfterAnimation()
