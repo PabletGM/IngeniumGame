@@ -10,14 +10,13 @@ colorID: 0
 // start playing audioclip "ambient_birds" at 50% volume, loop forever
 // <<PlayAudio ambient_birds 0.5 loop>>
 
-A VISUAL NOVEL EXAMPLE
 
 // adds actor named "Player" using sprite "astronauta", placed in left-half + center of screen, with green text label
 <<Act Robot robot2 left center green>>
 
 <<ChangeLocalScale robot2>>
 
-Robot: He perdido la comunicación con la nave…
+Robot: He perdido la comunicación con la nave… Parece que nos hemos perdido.
 
 
 // adds actor "Robocop" with sprite "robotBueno" off-screen right, with blue-ish text label
