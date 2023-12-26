@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -59,7 +60,7 @@ public class UIManagerTareaBengalas : MonoBehaviour
     private GameObject robotPanel;
 
     [SerializeField]
-    private GameObject robotPocaPequeño;
+    private GameObject robotPocaPequeÃ±o;
 
     [SerializeField]
     private GameObject testPanel;
@@ -116,7 +117,7 @@ public class UIManagerTareaBengalas : MonoBehaviour
     //activa interfaz y quitaPaneltext
     public void EmpezarJuegoBengalas()
     {
-        panelText.SetActive(false);
+        // panelText.SetActive(false);
         Interfaz.SetActive(true);
         
     }
@@ -168,6 +169,7 @@ public class UIManagerTareaBengalas : MonoBehaviour
     public void ActivarPanelPasarModoJuego()
     {
         panelPasarModoJuego.SetActive(true);
+        panelPasarModoJuego.GetComponent<DOTweenAnimation>().DORestart();
     }
 
     //parpadeo testMode
@@ -203,7 +205,7 @@ public class UIManagerTareaBengalas : MonoBehaviour
     {
         robotPanel.SetActive(false);
         //activar robot en pradera al final
-        robotPocaPequeño.SetActive(true);
+        robotPocaPequeÃ±o.SetActive(true);
     }
 
 
