@@ -3,7 +3,8 @@ tags:
 position: -140,115
 colorID: 0
 ---
-
+//
+//
 // sets background image to sprite called "bg_office"
 <<Scene 1>>
 // start playing audioclip "ambient_birds" at 50% volume, loop forever
