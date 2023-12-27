@@ -23,6 +23,9 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    //booleano para que cada comportamiento del update lo haga una vez por cohete
+    private bool turnoCoheteComportamiento = false;
+
 
     void Start()
     {
@@ -77,7 +80,12 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
                     seHaPasadoDistancia = true;
                 }
                 //Destruimos cohete
-                ExplosionCoheteBengala(seHaPasadoDistancia);
+                if(!turnoCoheteComportamiento)
+                {
+                    ExplosionCoheteBengala(seHaPasadoDistancia);
+                    turnoCoheteComportamiento = true;
+                }
+                
                 //reiniciamos contadores
                 LifeTime = 0;
                 SegundosVidaCohete = 0;
@@ -122,15 +130,46 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
         //paramos sonido
         AudioManagerBengalas.instance.StopSFX();
         AudioManagerBengalas.instance.PlaySFX("explosion");
-        //le quitamos permiso para despegar para que no entre en bucle de update 
-        permisoParaDespegar = false;
+
+
+
+        //comprobacion si nos hemos pasado el limite
+        if(seHaPasadoDistanciaLimite)
+        {
+            permisoParaDespegar = true;
+        }
+        //sino la hemos pasado comportamiento normal
+        else
+        {
+            //le quitamos permiso para despegar para que no entre en bucle de update 
+            permisoParaDespegar = false;
+        }
+        
+
+
+
         //Antes de destruir la bengala guardamos su ultima posicion registrada y la compartimos con GameManager
         _myGameManagerBengalas.GuardarUltimaPosicionBengalaDisparada(this.transform.position);
-        //quitamos vfx de cohete
-        vfxAcelerar.SetActive(false);
-        vfxDespegue.SetActive(false);
-        //quitar opacidad
-        spriteRenderer.DOFade(0f, 0.2f);
+
+
+
+
+        //comprobacion si nos hemos pasado el limite
+        if (seHaPasadoDistanciaLimite)
+        {
+            Invoke("CoheteAsciendeSinFuncionalidad", 1f);
+        }
+        //sino lo hemos pasado el limite de las nubes comportamiento normal
+        else
+        {
+            //quitamos vfx de cohete
+            vfxAcelerar.SetActive(false);
+            vfxDespegue.SetActive(false);
+            //quitar opacidad
+            spriteRenderer.DOFade(0f, 0.2f);
+        }
+
+       
         //quitamos
         //explosion
         //sino se ha pasado de dstancia hacemos explosion, si se ha pasado no hacemos explosion
@@ -138,9 +177,34 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
         {
             ExplosionCoheteVFX();
         } 
-        //repetir jugada
-        Invoke("RepetirLanzada", 0.5f);
+
+
+
+
+        //comprobacion si nos hemos pasado el limite
+        if (seHaPasadoDistanciaLimite)
+        {
+            //repetir jugada
+            Invoke("RepetirLanzada", 1.5f);
+        }
+        //sino lo hemos pasado el limite de las nubes comportamiento normal
+        else
+        {
+            //repetir jugada
+            Invoke("RepetirLanzada", 0.5f);
+        }
+       
         
+    }
+
+    //si nos hemos pasado de distancia dejamos que el cohete se vaya a las nubes
+    private void CoheteAsciendeSinFuncionalidad()
+    {
+        //quitamos vfx de cohete
+        vfxAcelerar.SetActive(false);
+        vfxDespegue.SetActive(false);
+        //quitar opacidad
+        spriteRenderer.DOFade(0f, 0.2f);
     }
 
     public void ExplosionCoheteVFX()
@@ -154,6 +218,9 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
 
     public void RepetirLanzada()
     {
+
+        turnoCoheteComportamiento = false;
+
         //por ahora en vez de destruir el objeto simplemente lo desactivamos
         this.gameObject.SetActive(false);
 
