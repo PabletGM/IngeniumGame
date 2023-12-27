@@ -223,8 +223,13 @@ public class GameManagerTareaBengalas : MonoBehaviour
     public void PasarEscenaBengalasJuego()
     {
         // Cargamos la escena aditiva
-        SceneManager.LoadScene("TareaBengalasGame");      
+        Invoke("EscenaBengalasTrasPausa", 1f);     
 
+    }
+
+    private void EscenaBengalasTrasPausa()
+    {
+        SceneManager.LoadScene("TareaBengalasGame");
     }
 
     public void ApareceDialogoRobotAlejadoAviso()
@@ -247,7 +252,7 @@ public class GameManagerTareaBengalas : MonoBehaviour
     public void PasarSiguienteEscena()
     {
         //LevelLoader.LoadLevel("escenaIntro");
-        LevelLoader.LoadLevel("hoyos");
+        SceneManager.LoadScene("3.8Rescate");
     }
 
 

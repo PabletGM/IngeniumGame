@@ -54,7 +54,7 @@ public class UIManagerTareaBengalas : MonoBehaviour
 
 
     [SerializeField]
-    private GameObject end;
+    private GameObject fadeInBlack;
 
     [SerializeField]
     private GameObject robotPanel;
@@ -181,7 +181,7 @@ public class UIManagerTareaBengalas : MonoBehaviour
 
     public void SetEnd(bool set)
     {
-        end.SetActive(set);
+        fadeInBlack.SetActive(set);
     }
 
     public void ApareceRobotHablando()
