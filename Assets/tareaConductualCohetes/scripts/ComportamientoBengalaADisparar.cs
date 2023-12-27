@@ -193,8 +193,6 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
             //repetir jugada
             Invoke("RepetirLanzada", 0.5f);
         }
-       
-        
     }
 
     //si nos hemos pasado de distancia dejamos que el cohete se vaya a las nubes
