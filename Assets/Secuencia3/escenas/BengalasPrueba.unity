@@ -2805,7 +2805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 698, y: 439}
+  m_AnchoredPosition: {x: 642, y: 439}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &850514166
@@ -4018,7 +4018,7 @@ MonoBehaviour:
   m_text: Test Mode
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a14aee02f030d4a4ba85660c69149562, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 6522f30e342599e4e9dd4cc2cc03c830, type: 2}
+  m_sharedMaterial: {fileID: -6341680641571132688, guid: a14aee02f030d4a4ba85660c69149562, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6758,7 +6758,7 @@ MonoBehaviour:
   m_text: "Esto es una prueba para que pilles las mecanicas, tendr\xE1s 2 oportunidades."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 320aa51946cb92f408d347e4cb0e6946, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: f2dcf029949142e28b974630369c8b4e, type: 2}
+  m_sharedMaterial: {fileID: 1331669058547700877, guid: 320aa51946cb92f408d347e4cb0e6946, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
