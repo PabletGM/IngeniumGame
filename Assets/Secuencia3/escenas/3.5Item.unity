@@ -347,8 +347,8 @@ MonoBehaviour:
   m_text: "Tienes el presentimiento de que esa zona no es segura. \xBFQu\xE9 har\xE1s
     ante tal dilema?"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
-  m_sharedMaterial: {fileID: 2140474, guid: 8a89fa14b10d46a99122fd4f73fca9a2, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: a427dbe1d5518614a8654c09916484de, type: 2}
+  m_sharedMaterial: {fileID: -8296940838559892861, guid: a427dbe1d5518614a8654c09916484de, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -372,19 +372,19 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 75
+  m_fontSizeBase: 75
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 33
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -20.74
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -408,7 +408,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -115.24786, y: -104.855896, z: -31.658447, w: 335.5495}
+  m_margin: {x: -115.24786, y: -104.97797, z: -31.658447, w: 326.76044}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -483,8 +483,8 @@ MonoBehaviour:
   m_text: "Le expreso a mi superior mis inquietudes sobre la seguridad de la zona,
     con el fin de avanzar seg\xFAn mis condiciones."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 320aa51946cb92f408d347e4cb0e6946, type: 2}
+  m_sharedMaterial: {fileID: 1331669058547700877, guid: 320aa51946cb92f408d347e4cb0e6946, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -772,8 +772,8 @@ MonoBehaviour:
   m_text: "Creo que no seguir\xE9 las \xF3rdenes de mi superior. Siento que su plan
     es peligroso y no quiero ponerme en riesgo."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 320aa51946cb92f408d347e4cb0e6946, type: 2}
+  m_sharedMaterial: {fileID: 1331669058547700877, guid: 320aa51946cb92f408d347e4cb0e6946, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -809,7 +809,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: -3.52
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -886,8 +886,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -442.25, y: -313.98}
-  m_SizeDelta: {x: 642.39, y: 149.9}
+  m_AnchoredPosition: {x: -441, y: -320.1}
+  m_SizeDelta: {x: 639.9, y: 176.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &636247598
 MonoBehaviour:
@@ -1058,8 +1058,8 @@ MonoBehaviour:
   m_text: "Aunque pienso que puede ser peligroso para m\xED, decido seguir las \xF3rdenes
     de mi superior."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 320aa51946cb92f408d347e4cb0e6946, type: 2}
+  m_sharedMaterial: {fileID: 1331669058547700877, guid: 320aa51946cb92f408d347e4cb0e6946, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1633,8 +1633,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 460, y: -314}
-  m_SizeDelta: {x: 649.8, y: 149.9}
+  m_AnchoredPosition: {x: 455.2, y: -320.06}
+  m_SizeDelta: {x: 659.4, y: 176.52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1275568943
 MonoBehaviour:
@@ -1783,8 +1783,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0027344, y: -74.923}
-  m_SizeDelta: {x: 640.7, y: 149.9}
+  m_AnchoredPosition: {x: -6, y: -60.4}
+  m_SizeDelta: {x: 652.8, y: 179}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1449483139
 MonoBehaviour:

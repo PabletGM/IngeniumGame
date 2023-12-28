@@ -653,6 +653,14 @@ PrefabInstance:
       value: Hola!
       objectReference: {fileID: 0}
     - target: {fileID: 740279678716981507, guid: 9e0841b82a4ebcd438730d23886e17e6, type: 3}
+      propertyPath: m_margin.z
+      value: 70.70914
+      objectReference: {fileID: 0}
+    - target: {fileID: 740279678716981507, guid: 9e0841b82a4ebcd438730d23886e17e6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 320aa51946cb92f408d347e4cb0e6946, type: 2}
+    - target: {fileID: 740279678716981507, guid: 9e0841b82a4ebcd438730d23886e17e6, type: 3}
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -664,6 +672,14 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 740279678716981507, guid: 9e0841b82a4ebcd438730d23886e17e6, type: 3}
+      propertyPath: m_lineSpacing
+      value: -1.48
+      objectReference: {fileID: 0}
+    - target: {fileID: 740279678716981507, guid: 9e0841b82a4ebcd438730d23886e17e6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 1331669058547700877, guid: 320aa51946cb92f408d347e4cb0e6946, type: 2}
     - target: {fileID: 740279678716981507, guid: 9e0841b82a4ebcd438730d23886e17e6, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278190080
@@ -856,6 +872,14 @@ PrefabInstance:
       propertyPath: m_text
       value: Jefe de Exploracion
       objectReference: {fileID: 0}
+    - target: {fileID: 8095329417957922553, guid: 9e0841b82a4ebcd438730d23886e17e6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: a14aee02f030d4a4ba85660c69149562, type: 2}
+    - target: {fileID: 8095329417957922553, guid: 9e0841b82a4ebcd438730d23886e17e6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -6341680641571132688, guid: a14aee02f030d4a4ba85660c69149562, type: 2}
     - target: {fileID: 9184206409336196516, guid: 9e0841b82a4ebcd438730d23886e17e6, type: 3}
       propertyPath: m_text
       value: Option option option
