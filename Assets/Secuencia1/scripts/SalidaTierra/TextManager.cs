@@ -241,7 +241,12 @@ public class TextManager : MonoBehaviour
 
     public void  PasarSiguienteTexto()
     {
-
+        //provisional hasta tener AudioManager generico
+        if(AudioManagerBengalas.instance!=null)
+        {
+            AudioManagerBengalas.instance.BotonDialogos();
+        }
+        
         //sumamos uno TODO: <= EN VEZ DE <
         if (numTextoActual< textos.Length-1 && DialoguePanel.activeInHierarchy)
         {

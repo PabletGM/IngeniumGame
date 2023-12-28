@@ -129,6 +129,6 @@ public class AudioManagerBengalas : MonoBehaviour
 
     public void BotonDialogos()
     {
-
+        PlaySFX("clickButton", 1f);
     }
 }
