@@ -16,8 +16,9 @@ colorID: 0
 
 <<ChangeLocalScale robot2>>
 
+<<PlayAudio robot1>>
 Robot: He perdido la comunicación con la nave… Parece que nos hemos perdido.
-
+<<PlayAudio clickButton>>
 
 // adds actor "Robocop" with sprite "robotBueno" off-screen right, with blue-ish text label
 // <<Act Robocop robotBueno 1.25 center #226677>>
@@ -32,7 +33,7 @@ Robot: He perdido la comunicación con la nave… Parece que nos hemos perdido.
 
 
 Robot: ¿Has usado bengalas alguna vez?
-
+<<PlayAudio clickButton>>
 // horizontally flips Eve actor to face Adam
 // <<Flip Player>>
 
@@ -70,7 +71,7 @@ Robot: ¿Has usado bengalas alguna vez?
 // Player: ROBOOOT!!!
 
 // // fade to black, from 0% opacity to 100% opacity, in 2.0 seconds
-// <<Fade black 0.0 1.0 2.0>>
+<<Fade black 0.0 1.0 2.0>>
 <<SceneChange BengalasPrueba>>
 THE END.
 ===

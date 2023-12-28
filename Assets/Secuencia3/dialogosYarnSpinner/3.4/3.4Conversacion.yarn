@@ -13,9 +13,9 @@ colorID: 0
 <<Act JefeExploracion AstronautaJefePequeño left center green>>
 
 <<ChangeLocalScale AstronautaJefePequeño>>
-
+<<PlayAudio hello>>
 JefeExploracion: ¡Explorador! 
-
+<<PlayAudio Sonidobotón>>
 
 // adds actor "Robocop" with sprite "robotBueno" off-screen right, with blue-ish text label
 // <<Act Robocop robotBueno 1.25 center #226677>>
@@ -26,11 +26,13 @@ JefeExploracion: ¡Explorador!
 //asi hay que hacer el size despues del move
 // <<Move Robocop right center 0.5>>
 // <<Size Robocop>>
-// <<PlayAudio music_funny 1.0 loop>>
 
 
-JefeExploracion: ¡Según tus coordenadas estás cerca de un importante yacimiento de minerales! 
-JefeExploracion:  ¡Cambio de planes! ¡Arriesgate y extrae todos los minerales que puedas! 
+
+JefeExploracion: ¡Según tus coordenadas estás cerca de un importante yacimiento de minerales!
+<<PlayAudio Sonidobotón>> 
+JefeExploracion:  ¡Cambio de planes! ¡Arriesgate y extrae todos los minerales que puedas!
+<<PlayAudio Sonidobotón>> 
 
 // horizontally flips Eve actor to face Adam
 // <<Flip Player>>

@@ -92,6 +92,11 @@ public class GameManagerTareaBengalas : MonoBehaviour
            
             numeroTiradasTotal = 3;
         }
+        //si es bengalasPrueba inicializamos musica
+        else
+        {
+            AudioManagerBengalas.instance.PlayMusic("nature", 1f);
+        }
     }
 
     static public GameManagerTareaBengalas GetInstanceGM()

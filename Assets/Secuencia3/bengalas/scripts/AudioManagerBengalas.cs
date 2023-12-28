@@ -93,6 +93,11 @@ public class AudioManagerBengalas : MonoBehaviour
         sfxSource.Stop();      
     }
 
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
+
 
     //sonidos de canvas como botones se llaman desde aqui
 

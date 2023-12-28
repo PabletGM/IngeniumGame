@@ -331,7 +331,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2620696061518274093, guid: 860eb70a6373b3746a83d691a991be05, type: 3}
       propertyPath: musicSounds.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2620696061518274093, guid: 860eb70a6373b3746a83d691a991be05, type: 3}
       propertyPath: dialogueSounds.Array.size
@@ -400,7 +400,7 @@ PrefabInstance:
     - target: {fileID: 2620696061518274093, guid: 860eb70a6373b3746a83d691a991be05, type: 3}
       propertyPath: sfxSounds.Array.data[11].clip
       value: 
-      objectReference: {fileID: 8300000, guid: 389486767b9816b45945c8b09bd20bc0, type: 3}
+      objectReference: {fileID: 8300000, guid: 06299963d892b694bb5274fd54ebdf35, type: 3}
     - target: {fileID: 2620696061518274093, guid: 860eb70a6373b3746a83d691a991be05, type: 3}
       propertyPath: sfxSounds.Array.data[11].name
       value: saltoPersonaje
@@ -476,6 +476,14 @@ PrefabInstance:
     - target: {fileID: 2620696061518274093, guid: 860eb70a6373b3746a83d691a991be05, type: 3}
       propertyPath: musicSounds.Array.data[4].name
       value: salvados
+      objectReference: {fileID: 0}
+    - target: {fileID: 2620696061518274093, guid: 860eb70a6373b3746a83d691a991be05, type: 3}
+      propertyPath: musicSounds.Array.data[5].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0e971fda5234bfa42a133955fc750ff6, type: 3}
+    - target: {fileID: 2620696061518274093, guid: 860eb70a6373b3746a83d691a991be05, type: 3}
+      propertyPath: musicSounds.Array.data[5].name
+      value: transitionFadeOut
       objectReference: {fileID: 0}
     - target: {fileID: 2620696061518274093, guid: 860eb70a6373b3746a83d691a991be05, type: 3}
       propertyPath: dialogueSounds.Array.data[0].clip

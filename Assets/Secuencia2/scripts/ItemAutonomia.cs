@@ -12,6 +12,12 @@ public class ItemAutonomia : MonoBehaviour
 
     private void Start()
     {
+        //Temporal hasta tener audioManager unificado
+        if(AudioManagerBengalas.instance!=null)
+        {
+            AudioManagerBengalas.instance.PlaySFX("sonidoItem", 1f);
+        }
+        
         Invoke("SetSizeItemBig", 1f);
     }
 
@@ -33,6 +39,7 @@ public class ItemAutonomia : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().name == "3.5Item")
         {
+            AudioManagerBengalas.instance.PlaySFX("clickButton", 1f);
             Invoke("NextScene3", 1f);
         }
 
