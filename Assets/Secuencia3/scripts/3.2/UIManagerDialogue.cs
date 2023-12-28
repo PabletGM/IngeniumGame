@@ -30,7 +30,7 @@ public class UIManagerDialogue : MonoBehaviour
 
     public void SetDialoguePanelGrande()
     {
-        this.gameObject.transform.DOScale(new Vector3(1.84f, 1.84f, 1.84f),1f);
+        this.gameObject.transform.DOScale(new Vector3(0.76f, 0.76f, 0.76f),1f);
         Debug.Log("he");
     }
 
