@@ -803,7 +803,7 @@ PrefabInstance:
     - target: {fileID: 6167349947878513351, guid: 9e0841b82a4ebcd438730d23886e17e6, type: 3}
       propertyPath: loadSprites.Array.data[3]
       value: 
-      objectReference: {fileID: 21300000, guid: 5bafef45f0bf0274889237546a88d5f1, type: 3}
+      objectReference: {fileID: 21300000, guid: 7a25511ee0ddf46468ef6e5551c83f28, type: 3}
     - target: {fileID: 6167349947878513351, guid: 9e0841b82a4ebcd438730d23886e17e6, type: 3}
       propertyPath: loadSprites.Array.data[4]
       value: 

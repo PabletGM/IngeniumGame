@@ -79,6 +79,9 @@ public class GameManagerTareaBengalas : MonoBehaviour
         }
     }
 
+
+    
+
     private void Start()
     {
         //ponemos pos inicial bengala
@@ -102,6 +105,11 @@ public class GameManagerTareaBengalas : MonoBehaviour
     static public GameManagerTareaBengalas GetInstanceGM()
     {
         return _instanceGMTareaBengalas;
+    }
+
+    public void SetBotonStartPermisoParaLanzamientoAutomatico(bool set)
+    {
+        botonStart.GetComponent<ComportamientoBotonStart>().permitirLanzamientoAutomatico = set;
     }
 
     //el cohete aguanta sin explotar el tiempo que se deje pulsado el boton
@@ -148,7 +156,11 @@ public class GameManagerTareaBengalas : MonoBehaviour
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().DespegueVFX();
         bengalaParaDespegar.GetComponent<ComportamientoBengalaADisparar>().PrepararPropulsion();
         //sonido vuelo despegue
-        AudioManagerBengalas.instance.PlaySFX("vueloDespegue", 1f);
+        if(AudioManagerBengalas.instance != null)
+        {
+            AudioManagerBengalas.instance.PlaySFX("vueloDespegue", 1f);
+        }
+        
     }
 
     //metodo que pone en pos inicial la bengala y la activa de nuevo

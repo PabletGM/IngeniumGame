@@ -107,8 +107,10 @@ namespace Yarn.Unity.Example {
 			var newActor = SetSpriteUnity( spriteName, positionX, positionY );
 
 			// define text label BG color
-            var actorColor = Color.black;
-			if (colorHex != string.Empty && ColorUtility.TryParseHtmlString( colorHex, out actorColor ) ==false ) {
+            //var actorColor = Color.black;
+			//define color transparente en a + rgb
+            var actorColor = new Color(1,1,1,0);
+            if (colorHex != string.Empty && ColorUtility.TryParseHtmlString( colorHex, out actorColor ) ==false ) {
 				Debug.LogErrorFormat(this, "VN Manager can't parse [{0}] as an HTML color (e.g. [#FFFFFF] or certain keywords like [white])", colorHex);
 			}
 
@@ -126,7 +128,7 @@ namespace Yarn.Unity.Example {
 				// if any missing color params, then assume actor color
 				// should stay the same
 				if ( colorHex == string.Empty ) {
-					actorColor = actors[actorName].actorColor;
+					//actorColor = actors[actorName].actorColor;
 				}
 				newActor.rectTransform.anchoredPosition = newPos;
 				// clean-up

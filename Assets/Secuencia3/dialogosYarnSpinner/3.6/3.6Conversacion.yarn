@@ -12,7 +12,7 @@ colorID: 0
 
 
 // adds actor named "Player" using sprite "astronauta", placed in left-half + center of screen, with green text label
-<<Act Robot robot2 left center green>>
+<<Act Robot robot2 left center >>
 
 <<ChangeLocalScale robot2>>
 

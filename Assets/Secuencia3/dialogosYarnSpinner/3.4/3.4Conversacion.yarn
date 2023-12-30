@@ -10,9 +10,9 @@ colorID: 0
 // <<PlayAudio ambient_birds 0.5 loop>>
 
 // adds actor named "Player" using sprite "astronauta", placed in left-half + center of screen, with green text label
-<<Act JefeExploracion AstronautaJefePequeño left center green>>
+<<Act JefeExploracion AstronautaJefePequeñoO left center >>
 
-<<ChangeLocalScale AstronautaJefePequeño>>
+<<ChangeLocalScale AstronautaJefePequeñoO>>
 <<PlayAudio hello>>
 JefeExploracion: ¡Explorador! 
 <<PlayAudio Sonidobotón>>

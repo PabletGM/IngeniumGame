@@ -128,8 +128,12 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
     public void ExplosionCoheteBengala(bool seHaPasadoDistanciaLimite)
     {
         //paramos sonido
-        AudioManagerBengalas.instance.StopSFX();
-        AudioManagerBengalas.instance.PlaySFX("explosion", 1f);
+        if(AudioManagerBengalas.instance!= null)
+        {
+            AudioManagerBengalas.instance.StopSFX();
+            AudioManagerBengalas.instance.PlaySFX("explosion", 1f);
+        }
+        
 
 
 
@@ -216,6 +220,9 @@ public class ComportamientoBengalaADisparar : MonoBehaviour
 
     public void RepetirLanzada()
     {
+        //volvemos a activar posibilidad lanzamiento automático en siguiente jugada y activamos boton
+        UIManagerTareaBengalas.GetInstanceUI().SetBoton(true);
+        GameManagerTareaBengalas.GetInstanceGM().SetBotonStartPermisoParaLanzamientoAutomatico(true);
 
         turnoCoheteComportamiento = false;
 

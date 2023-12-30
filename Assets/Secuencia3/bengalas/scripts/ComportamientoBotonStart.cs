@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using DG.Tweening;
+using System;
 
 public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
@@ -10,6 +11,12 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
     private float restante=0;
     //permiso para volar la bengala
     private bool enMarcha = false;
+
+    [SerializeField]
+    private float tiempoMaximoLanzamientoAutomatico;
+    //permitir lanzamiento automático 1 vez en cada tirada
+    [NonSerialized]
+    public bool permitirLanzamientoAutomatico = true;
 
 
     public Image imagenParaAgrandar; // Referencia a la imagen que quieres agrandar
@@ -97,10 +104,33 @@ public class ComportamientoBotonStart : MonoBehaviour, IPointerDownHandler, IPoi
             {
                 //va sumando segundos
                 restante += Time.deltaTime;
+                //debe haber un tiempo maximo controlado que si está pulsando el player durante más de x segundos que se lance automaticamente
+                if(restante > tiempoMaximoLanzamientoAutomatico && permitirLanzamientoAutomatico)
+                {
+                    //lanzamiento automático
+                    LanzamientoAutomatico();
+                }
                 Debug.Log("Button pressed: " + restante);
                 
             }
         #endregion
 
+    }
+
+
+    private void LanzamientoAutomatico()
+    {
+        //SIMULAMOS ACCION DE CUANDO SE SUELTA BOTON
+        // Acción cuando se suelta el botón
+        BotonSoltado();
+        // Volver al tamaño original con otro tween
+        imagenParaAgrandar.transform.DOScale(escalaOriginal, duracionTween);
+
+
+
+        //quitamos funcionalidad del boton y la ponemos otra vez luego para que lo suelte el player sin querer
+        UIManagerTareaBengalas.GetInstanceUI().SetBoton(false);
+        //quitamos permiso de lanzamiento automático
+        permitirLanzamientoAutomatico = false;
     }
 }
