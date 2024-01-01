@@ -31,7 +31,7 @@ JefeExploracion: ¡Explorador!
 
 JefeExploracion: ¡Según tus coordenadas estás cerca de un importante yacimiento de minerales!
 <<PlayAudio Sonidobotón>> 
-JefeExploracion:  ¡Cambio de planes! ¡Arriesgate y extrae todos los minerales que puedas!
+JefeExploracion:  ¡Cambio de planes! ¡Arriésgate y extrae todos los minerales que puedas!
 <<PlayAudio Sonidobotón>> 
 
 // horizontally flips Eve actor to face Adam
