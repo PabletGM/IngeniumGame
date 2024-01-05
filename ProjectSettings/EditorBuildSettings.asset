@@ -6,33 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Secuencia3/escenas/3.1IntroduccionPrimeraMision.unity
-    guid: 5cfdaac4d4cab8140b081e5e279be198
+    path: Assets/Secuencia4/escenas/4.1TareasReparacionDialogo.unity
+    guid: 117dbedefb44248479fbd99dedcf3279
   - enabled: 1
-    path: Assets/Secuencia3/escenas/3.2ConversacionJefeExploracion.unity
-    guid: fb55c8fd46bf22744b346bfc88c63fa8
-  - enabled: 1
-    path: Assets/Secuencia3/escenas/3.3AdentrarseBosque.unity
-    guid: 13ae192f9271ac3409869f5d3029720f
-  - enabled: 1
-    path: Assets/Secuencia3/escenas/3.4ConversacionJefeExploracion.unity
-    guid: e8d3c5e6d12947242984fad8a6a1981b
-  - enabled: 1
-    path: Assets/Secuencia3/escenas/3.5Item.unity
-    guid: 8a95ce9ae23a4bc41908c4f2f15e3f28
-  - enabled: 1
-    path: Assets/Secuencia3/escenas/3.6AndandoBosqueManager.unity
-    guid: 8c675c79b3b70b149896ca4c71ecf05b
-  - enabled: 1
-    path: Assets/Secuencia3/escenas/3.6Dialogo.unity
-    guid: 6e3f0137b85fe864fa1bcc915765b8d6
-  - enabled: 1
-    path: Assets/Secuencia3/escenas/BengalasPrueba.unity
-    guid: 89551bb72c2d81e46b08e80062916eca
-  - enabled: 1
-    path: Assets/Secuencia3/escenas/TareaBengalasGame.unity
-    guid: 182c102d3cd14ba45908f8d30e02fb90
-  - enabled: 1
-    path: Assets/Secuencia3/escenas/3.8Rescate.unity
-    guid: 0f9fcd61590df024b88a4b1c06b5ac32
+    path: Assets/Secuencia4/escenas/4.2Ingeniera.unity
+    guid: b7fa49477d69f99469c15f70dbc7b1e3
   m_configObjects: {}
