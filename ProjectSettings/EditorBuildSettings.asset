@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Secuencia4/escenas/4.2Ingeniera.unity
     guid: b7fa49477d69f99469c15f70dbc7b1e3
+  - enabled: 1
+    path: Assets/Secuencia4/escenas/4.2.2.unity
+    guid: 50d31f1dfcd957c409f13988baae54f3
+  - enabled: 1
+    path: Assets/Secuencia4/escenas/4.2IngenieraTrabajando.unity
+    guid: 984a4339e025160478a098fe6b4205ac
+  - enabled: 1
+    path: Assets/Secuencia4/escenas/4.3.unity
+    guid: dc6696c780597ca429b5bb573dcf5163
   m_configObjects: {}
