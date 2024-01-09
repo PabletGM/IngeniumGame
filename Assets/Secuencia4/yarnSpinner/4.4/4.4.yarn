@@ -19,6 +19,7 @@ colorID: 0
 Ingeniera: ¡Gracias por tu ayuda!
 <<PlayAudio clickButton>>
 
+<<AparecerPopUpTelefono>>
 
 Ingeniera: Tengo que irme, ¿Puedes echarle un ojo a mi mesa de trabajo hasta que vuelva?
 <<PlayAudio clickButton>>

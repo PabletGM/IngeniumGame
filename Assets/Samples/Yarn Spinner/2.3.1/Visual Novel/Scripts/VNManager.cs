@@ -43,6 +43,10 @@ namespace Yarn.Unity.Example {
 
 		static Vector2 screenSize = new Vector2( 1280f, 720f); // needed for position calcuations, e.g. what does "left" mean?
 
+		[Header("extras")]
+		[SerializeField]
+		private GameObject PopUpTelefono;
+
 		void Awake () {
 			// manually add all Yarn command handlers, so that we don't
 			// have to type out game object names in Yarn scripts (also
@@ -50,6 +54,10 @@ namespace Yarn.Unity.Example {
 			runner.AddCommandHandler<string>("Scene", DoSceneChange );
 			//scale with a size
             runner.AddCommandHandler<string,float>("ChangeLocalScale", ChangeLocalScale);
+
+            runner.AddCommandHandler("AparecerPopUpTelefono", AparecerPopUpTelefono);
+
+
             runner.AddCommandHandler<string>("SceneChange", ChangeScene);
             runner.AddCommandHandler<string,string,string,string,string>("Act", SetActor );
 			runner.AddCommandHandler<string,string,string>("Draw", SetSpriteYarn );
@@ -90,6 +98,12 @@ namespace Yarn.Unity.Example {
 		public void DoSceneChange(string spriteName) {
 			bgImage.sprite = FetchAsset<Sprite>( spriteName );
 		}
+
+		public void AparecerPopUpTelefono()
+		{
+            PopUpTelefono.SetActive( true );
+
+        }
 
 
         public void ChangeScene(string sceneName)
