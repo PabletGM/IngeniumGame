@@ -24,6 +24,15 @@ EditorBuildSettings:
     path: Assets/Secuencia4/escenas/4.4DialogoIngeniera.unity
     guid: 85d8582eafbfff3409b88c35ef403741
   - enabled: 1
+    path: Assets/Secuencia4/escenas/Transicion4.4_4.5.unity
+    guid: 712c73c1520594648a686c751434422c
+  - enabled: 1
     path: Assets/Secuencia4/escenas/4.5.unity
     guid: 67814759b8f902f45b5ce7490b06e1c0
+  - enabled: 1
+    path: Assets/Secuencia4/escenas/4.6Item.unity
+    guid: af7e834dbcdb67f41b9b97f4958b929a
+  - enabled: 1
+    path: Assets/Secuencia4/escenas/4.7.unity
+    guid: fc092090087cd0047b9f2242cfe15f20
   m_configObjects: {}

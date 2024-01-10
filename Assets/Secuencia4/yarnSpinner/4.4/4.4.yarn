@@ -62,7 +62,7 @@ Ingeniera: Tengo que irme, ¿Puedes echarle un ojo a mi mesa de trabajo hasta qu
 
 // // fade to black, from 0% opacity to 100% opacity, in 2.0 seconds
 <<Fade black 0.0 1.0 2.0>>
-<<SceneChange 4.5>>
+<<SceneChange Transicion4.4_4.5>>
 ===
 
 
