@@ -6,8 +6,8 @@ using UnityEngine;
 public class AudioManagerSecuencia4 : MonoBehaviour
 {
     public static AudioManagerSecuencia4 instance;
-    public SoundSecuencia4[] musicSounds, sfxSounds, dialogueSounds;
-    public AudioSource musicSource, sfxSource1, sfxSource2, sfxSource3, dialogueSource, dialogueSource2, dialogueSource3;
+    public SoundSecuencia4[] musicSounds, sfxSounds, dialogueSounds, transitionSounds;
+    public AudioSource musicSource, sfxSource1, sfxSource2, sfxSource3, dialogueSource, dialogueSource2, dialogueSource3, transitionSource;
 
     private void Awake()
     {
@@ -160,6 +160,24 @@ public class AudioManagerSecuencia4 : MonoBehaviour
         }
     }
 
+    //primer sonido TRANSITION
+    public void PlayTransition(string name, float volume)
+    {
+        //buscamos la musica que queremos poner en el musicSound
+        SoundSecuencia4 s = Array.Find(transitionSounds, x => x.name == name);
+
+        if (s == null)
+        {
+            Debug.Log("Sound Not Found");
+        }
+
+        else
+        {
+            transitionSource.volume = volume;
+            transitionSource.PlayOneShot(s.clip);
+        }
+    }
+
     public void StopSFX()
     {
         sfxSource1.Stop();
@@ -218,6 +236,13 @@ public class AudioManagerSecuencia4 : MonoBehaviour
     {
         dialogueSource3.volume = volume;
     }
+
+    public void TransitionVolume(float volume)
+    {
+        transitionSource.volume = volume;
+    }
+
+
 
 
     //sonidos de canvas como botones se llaman desde aqui

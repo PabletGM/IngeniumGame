@@ -1277,9 +1277,13 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2378010692492813032, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
+      propertyPath: m_Volume
+      value: 0.739
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378010692492813032, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8300000, guid: f2105c1e5f15c474f9f9b4bbd21aa80b, type: 3}
     - target: {fileID: 9222268958029029630, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
       propertyPath: sfxSource1
       value: 
@@ -1302,11 +1306,43 @@ PrefabInstance:
       objectReference: {fileID: 8388587967859016697}
     - target: {fileID: 9222268958029029630, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
       propertyPath: sfxSounds.Array.size
-      value: 0
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9222268958029029630, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
+      propertyPath: musicSounds.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222268958029029630, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
+      propertyPath: sfxSounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 2de76fa2aafe67f47861e33b6e27c25a, type: 3}
+    - target: {fileID: 9222268958029029630, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
       propertyPath: sfxSounds.Array.data[0].name
-      value: GenteHablando
+      value: PasosMetalicos
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222268958029029630, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
+      propertyPath: sfxSounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0072492143705874e91ceb106c3d3975, type: 3}
+    - target: {fileID: 9222268958029029630, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
+      propertyPath: sfxSounds.Array.data[1].name
+      value: puertaNave
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222268958029029630, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
+      propertyPath: sfxSounds.Array.data[2].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0072492143705874e91ceb106c3d3975, type: 3}
+    - target: {fileID: 9222268958029029630, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
+      propertyPath: sfxSounds.Array.data[2].name
+      value: sonidoZoom
+      objectReference: {fileID: 0}
+    - target: {fileID: 9222268958029029630, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
+      propertyPath: musicSounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: f2105c1e5f15c474f9f9b4bbd21aa80b, type: 3}
+    - target: {fileID: 9222268958029029630, guid: fa51d1836e8a13c49a1f9d667bace8fa, type: 3}
+      propertyPath: musicSounds.Array.data[0].name
+      value: musicaSecuencia4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
