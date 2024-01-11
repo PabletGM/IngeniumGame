@@ -435,13 +435,15 @@ MonoBehaviour:
   musicSounds: []
   sfxSounds: []
   dialogueSounds: []
+  transitionSounds: []
   musicSource: {fileID: 2378010692492813032}
-  sfxSource1: {fileID: 0}
-  sfxSource2: {fileID: 0}
-  sfxSource3: {fileID: 0}
+  sfxSource1: {fileID: 2116018352980321681}
+  sfxSource2: {fileID: 1420874530900014624}
+  sfxSource3: {fileID: 671388013626661889}
   dialogueSource: {fileID: 4612453200184230832}
-  dialogueSource2: {fileID: 0}
-  dialogueSource3: {fileID: 0}
+  dialogueSource2: {fileID: 4306261043402707773}
+  dialogueSource3: {fileID: 4787370402374904175}
+  transitionSource: {fileID: 6204827153488345286}
 --- !u!1 &2147960824991678766
 GameObject:
   m_ObjectHideFlags: 0
