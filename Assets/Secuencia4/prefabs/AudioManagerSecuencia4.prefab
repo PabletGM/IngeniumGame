@@ -737,7 +737,7 @@ MonoBehaviour:
   - name: sonidoBoton
     clip: {fileID: 8300000, guid: b54528e5baa637d4b8879c08dd484bea, type: 3}
   - name: sonidoPopUpTelefono
-    clip: {fileID: 8300000, guid: 1a9a740b41e028e4e97f1041377414a0, type: 3}
+    clip: {fileID: 8300000, guid: 99cb4647f8eb92746bcd0cf0ae5c269f, type: 3}
   - name: popUp
     clip: {fileID: 8300000, guid: 784330fd2cee0db4f9e027c6f48ae7e2, type: 3}
   - name: tecnologia1

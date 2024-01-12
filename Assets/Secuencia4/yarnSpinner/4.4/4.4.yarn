@@ -15,12 +15,12 @@ colorID: 0
 
 <<ChangeLocalScale IngenieraPeque >>
 
-
+<<PlayAudio IngenieraSonido>>
 Ingeniera: ¡Gracias por tu ayuda!
 <<PlayAudio clickButton>>
 
 <<AparecerPopUpTelefono>>
-
+<<PlayAudio Sonidollamadacomunicador>>
 Ingeniera: Tengo que irme, ¿Puedes echarle un ojo a mi mesa de trabajo hasta que vuelva?
 <<PlayAudio clickButton>>
 
