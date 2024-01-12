@@ -775,7 +775,7 @@ MonoBehaviour:
   - name: zona
     clip: {fileID: 8300000, guid: 8a175b7bbad44034283235c726a5ed90, type: 3}
   - name: transicionLateral
-    clip: {fileID: 8300000, guid: 77217530b39cadb45831cfab82bba1ad, type: 3}
+    clip: {fileID: 8300000, guid: 00d8039591b6db844b03751a9f7142ab, type: 3}
   musicSource: {fileID: 1332845154168183317}
   sfxSource1: {fileID: 4031640379151262645}
   sfxSource2: {fileID: 7957482713800594195}
