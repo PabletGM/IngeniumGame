@@ -30,6 +30,22 @@ public class PlaySoundSceneSecuencia4 : MonoBehaviour
 
 
 
+    public static PlaySoundSceneSecuencia4 instance;
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+
+
     #region SFX
     public void PlaySFX1(string sfx1)
     {

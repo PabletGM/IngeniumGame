@@ -762,6 +762,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 1d90aaad78df6e04b928849ae73bda71, type: 3}
   - name: alarmaFuego
     clip: {fileID: 8300000, guid: fc4b18240456a444aba73e2da67c530f, type: 3}
+  - name: glass
+    clip: {fileID: 8300000, guid: b7b8c36db2cbbf4439a2d8cabe8bc91e, type: 3}
   dialogueSounds:
   - name: IngenieraSonido
     clip: {fileID: 8300000, guid: d54004a8a0472904aa2cd5c8f276f6bc, type: 3}
