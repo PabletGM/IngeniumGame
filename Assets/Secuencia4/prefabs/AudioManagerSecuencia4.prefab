@@ -708,7 +708,7 @@ Transform:
   - {fileID: 2946321976113382398}
   - {fileID: 4842495969941074341}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5481014220466650849
 MonoBehaviour:
@@ -733,7 +733,7 @@ MonoBehaviour:
   - name: sonidoZoom
     clip: {fileID: 8300000, guid: 0072492143705874e91ceb106c3d3975, type: 3}
   - name: genteHablando
-    clip: {fileID: 8300000, guid: b68d390316e946041bebb676ecff0be9, type: 3}
+    clip: {fileID: 8300000, guid: 4584a8a69c565f84ea4d9d4598995baf, type: 3}
   - name: sonidoBoton
     clip: {fileID: 8300000, guid: b54528e5baa637d4b8879c08dd484bea, type: 3}
   - name: sonidoPopUpTelefono

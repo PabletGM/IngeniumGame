@@ -61,6 +61,13 @@ public class PlaySoundSceneSecuencia4 : MonoBehaviour
         volume = volumeSFX3;
     }
 
+    public void StopAllSFX()
+    {
+        AudioManagerSecuencia4.instance.StopSFX();
+    }
+
+
+
     #endregion
 
 
@@ -76,6 +83,11 @@ public class PlaySoundSceneSecuencia4 : MonoBehaviour
     public void ChangeVolumeMusic(float volume)
     {
         volume = volumeMusic;
+    }
+
+    public void StopAllMusic()
+    {
+        AudioManagerSecuencia4.instance.StopMusic();
     }
     #endregion
 
@@ -113,6 +125,11 @@ public class PlaySoundSceneSecuencia4 : MonoBehaviour
     {
         volume = volumeDialogue3;
     }
+
+    public void StopAllDialogue()
+    {
+        AudioManagerSecuencia4.instance.StopDialogue();
+    }
     #endregion
 
 
@@ -128,6 +145,11 @@ public class PlaySoundSceneSecuencia4 : MonoBehaviour
     public void ChangeVolumeTransition(float volume)
     {
         volume = volumeTransition;
+    }
+
+    public void StopAllTransition()
+    {
+        AudioManagerSecuencia4.instance.StopTransition();
     }
     #endregion
 }

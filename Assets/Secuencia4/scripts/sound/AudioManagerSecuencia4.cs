@@ -189,7 +189,18 @@ public class AudioManagerSecuencia4 : MonoBehaviour
         musicSource.Stop();
     }
 
+    public void StopDialogue()
+    {
+        dialogueSource.Stop();
+        dialogueSource2.Stop();
+        dialogueSource3.Stop();
+    }
 
+    public void StopTransition()
+    {
+        transitionSource.Stop();
+       
+    }
 
     public void ToggleMusic()
     {
