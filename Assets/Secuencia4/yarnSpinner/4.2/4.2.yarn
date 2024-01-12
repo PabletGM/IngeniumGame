@@ -15,7 +15,7 @@ colorID: 0
 
 <<ChangeLocalScale IngenieraPeque >>
 
-
+<<PlayAudio IngenieraSonido>>
 Ingeniera: Perdón por este desastre. Ya que estás aquí, ¿Puedes ayudarme a tomar una decisión?
 <<PlayAudio clickButton>>
 
