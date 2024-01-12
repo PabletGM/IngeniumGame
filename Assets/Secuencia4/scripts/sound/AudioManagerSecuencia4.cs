@@ -48,7 +48,6 @@ public class AudioManagerSecuencia4 : MonoBehaviour
         }
     }
 
-
     //primer sonido de dialogo
     public void PlayDialogue1(string name, float volume)
     {
@@ -245,6 +244,8 @@ public class AudioManagerSecuencia4 : MonoBehaviour
 
 
 
+
+    #region FuncionalidadExclusiva_Secuencia4
     //sonidos de canvas como botones se llaman desde aqui
     public void BotonDialogos()
     {
@@ -256,4 +257,7 @@ public class AudioManagerSecuencia4 : MonoBehaviour
         //sonido pala golpe al acabar animacion
         PlaySFX1("clickButton", 1f);
     }
+
+
+    #endregion
 }
