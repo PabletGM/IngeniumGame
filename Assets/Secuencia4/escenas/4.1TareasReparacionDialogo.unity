@@ -1219,7 +1219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddbe210eb2607a24a84b502c8d9fdee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contadorPasarSiguienteTexto: 6
+  contadorPasarSiguienteTexto: 10
   pasarSiguienteTexto: {fileID: 454480860}
 --- !u!1001 &769553772181368504
 PrefabInstance:

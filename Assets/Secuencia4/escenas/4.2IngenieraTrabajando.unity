@@ -918,7 +918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ddbe210eb2607a24a84b502c8d9fdee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contadorPasarSiguienteTexto: 6
+  contadorPasarSiguienteTexto: 10
   pasarSiguienteTexto: {fileID: 257527963}
 --- !u!1 &874685097
 GameObject:
