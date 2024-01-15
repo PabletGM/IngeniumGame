@@ -788,6 +788,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
+    - target: {fileID: 7678797678369739205, guid: d4d8d25f4674a4144af85206823f5f2e, type: 3}
+      propertyPath: m_fontSize
+      value: 22.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678797678369739205, guid: d4d8d25f4674a4144af85206823f5f2e, type: 3}
+      propertyPath: m_margin.x
+      value: 5.2420654
+      objectReference: {fileID: 0}
+    - target: {fileID: 7678797678369739205, guid: d4d8d25f4674a4144af85206823f5f2e, type: 3}
+      propertyPath: m_margin.z
+      value: 18.346985
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733706999962751724, guid: d4d8d25f4674a4144af85206823f5f2e, type: 3}
+      propertyPath: m_fontSize
+      value: 22.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733706999962751724, guid: d4d8d25f4674a4144af85206823f5f2e, type: 3}
+      propertyPath: m_margin.x
+      value: 7.8632812
+      objectReference: {fileID: 0}
+    - target: {fileID: 7733706999962751724, guid: d4d8d25f4674a4144af85206823f5f2e, type: 3}
+      propertyPath: m_margin.z
+      value: 15.725769
+      objectReference: {fileID: 0}
     - target: {fileID: 8420643066153572398, guid: d4d8d25f4674a4144af85206823f5f2e, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.size
       value: 2
