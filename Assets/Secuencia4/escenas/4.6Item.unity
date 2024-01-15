@@ -644,11 +644,11 @@ PrefabInstance:
     - target: {fileID: 6848339745957523380, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
       propertyPath: m_text
       value: "Intentar\xE9 cambiar la pieza por mi cuenta. Conf\xEDo en mis habilidades
-        de rob\xF3tica y s\xE9 que lo solventar\xE9.Z"
+        de rob\xF3tica y s\xE9 que lo solventar\xE9."
       objectReference: {fileID: 0}
     - target: {fileID: 6848339745957523380, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
       propertyPath: m_fontSize
-      value: 29.9
+      value: 30.05
       objectReference: {fileID: 0}
     - target: {fileID: 7600829860161726168, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
