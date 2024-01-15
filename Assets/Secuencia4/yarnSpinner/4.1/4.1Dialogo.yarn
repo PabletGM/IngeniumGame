@@ -16,7 +16,7 @@ colorID: 0
 <<ChangeLocalScale AstronautaJefePequeño>>
 
 
-Comandante: Asi que tu eres el nuevo.
+Comandante: Asi que tú eres el nuevo.
 <<PlayAudio clickButton>>
 
 Comandante: No te preocupes por el resultado de tu primera misión, tendrías que haber visto la mía, fue horrible.
@@ -25,7 +25,7 @@ Comandante: No te preocupes por el resultado de tu primera misión, tendrías qu
 Comandante: Nuestra misión principal es otorgar un futuro a la humanidad, un lugar donde podamos renacer y prosperar.
 <<PlayAudio clickButton>>
 
-Comandante: De momento, ¿Por qué no vas a echar una mano a la Ingeniera?.
+Comandante: De momento, ¿Por qué no vas a echar una mano a la Ingeniera?
 <<PlayAudio clickButton>>
 // horizontally flips Eve actor to face Adam
 // <<Flip Player>>
