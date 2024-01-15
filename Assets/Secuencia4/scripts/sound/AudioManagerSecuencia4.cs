@@ -184,6 +184,23 @@ public class AudioManagerSecuencia4 : MonoBehaviour
         sfxSource3.Stop();
     }
 
+    public void StopSFX1()
+    {
+        sfxSource1.Stop();      
+    }
+
+    public void StopSFX2()
+    {
+        sfxSource2.Stop();
+    }
+
+    public void StopSFX3()
+    {
+        sfxSource3.Stop();
+    }
+
+
+
     public void StopMusic()
     {
         musicSource.Stop();

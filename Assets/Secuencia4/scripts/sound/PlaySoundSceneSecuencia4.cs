@@ -82,6 +82,21 @@ public class PlaySoundSceneSecuencia4 : MonoBehaviour
         AudioManagerSecuencia4.instance.StopSFX();
     }
 
+    public void stopSFX1(string sfx1)
+    {
+        AudioManagerSecuencia4.instance.StopSFX1();
+    }
+
+    public void stopSFX2(string sfx2)
+    {
+        AudioManagerSecuencia4.instance.StopSFX2();
+    }
+
+    public void stopSFX3(string sfx3)
+    {
+        AudioManagerSecuencia4.instance.StopSFX3();
+    }
+
 
 
     #endregion
