@@ -16,13 +16,20 @@ colorID: 0
 <<ChangeLocalScale IngenieraPeque >>
 
 <<PlayAudio IngenieraSonido>>
+// <<PlayAudio Sonidollamadacomunicador>>
+
+<<PlayAudio clickButton>>
 Ingeniera: ¡Gracias por tu ayuda!
 <<PlayAudio clickButton>>
-
-<<AparecerPopUpTelefono>>
-<<PlayAudio Sonidollamadacomunicador>>
-Ingeniera: Tengo que irme, ¿Puedes echarle un ojo a mi mesa de trabajo hasta que vuelva?
+Ingeniera: ¡Gracias por tu ayuda!
 <<PlayAudio clickButton>>
+Ingeniera: Tengo que irme, ¿Puedes echarle un ojo a mi mesa de trabajo hasta que vuelva?
+
+
+
+// <<AparecerPopUpTelefono>>
+
+// <<PlayAudio clickButton>>
 
 // horizontally flips Eve actor to face Adam
 // <<Flip Player>>
