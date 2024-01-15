@@ -608,6 +608,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasMenuInicioResponsive
       objectReference: {fileID: 0}
+    - target: {fileID: 706754543199084661, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
+      propertyPath: m_text
+      value: "Esperar a la ingeniera. No es un problema urgente, ella conoce mejor
+        el robot y c\xF3mo solucionar cualquier problema que surja."
+      objectReference: {fileID: 0}
+    - target: {fileID: 706754543199084661, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
+      propertyPath: m_fontSize
+      value: 25.8
+      objectReference: {fileID: 0}
     - target: {fileID: 808738910694177046, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -620,6 +629,10 @@ PrefabInstance:
       propertyPath: onComplete.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 354676172}
+    - target: {fileID: 1742736770917199264, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
+      propertyPath: m_text
+      value: "Te encuentras ante un dilema, debes decidir qu\xE9 hacer:"
+      objectReference: {fileID: 0}
     - target: {fileID: 3477509760755272237, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -628,10 +641,28 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 1890
       objectReference: {fileID: 0}
+    - target: {fileID: 6848339745957523380, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
+      propertyPath: m_text
+      value: "Intentar\xE9 cambiar la pieza por mi cuenta. Conf\xEDo en mis habilidades
+        de rob\xF3tica y s\xE9 que lo solventar\xE9.Z"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6848339745957523380, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
+      propertyPath: m_fontSize
+      value: 29.9
+      objectReference: {fileID: 0}
     - target: {fileID: 7600829860161726168, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 354676172}
+    - target: {fileID: 7687286239883350401, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
+      propertyPath: m_text
+      value: "Pedir\xE9 ayuda a uno de sus subordinados y lo resolveremos. Aunque
+        no sean tan expertos, dos cabezas piensan mejor que una."
+      objectReference: {fileID: 0}
+    - target: {fileID: 7687286239883350401, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
+      propertyPath: m_fontSize
+      value: 24.9
+      objectReference: {fileID: 0}
     - target: {fileID: 8492811949609901658, guid: b8d071ae8fa28594ea08ef7d54268285, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
