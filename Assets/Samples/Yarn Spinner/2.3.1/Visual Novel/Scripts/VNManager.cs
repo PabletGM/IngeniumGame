@@ -101,7 +101,7 @@ namespace Yarn.Unity.Example {
 
 		public void AparecerPopUpTelefono()
 		{
-            PopUpTelefono.SetActive( true );
+            //PopUpTelefono.SetActive( true );
 
         }
 
