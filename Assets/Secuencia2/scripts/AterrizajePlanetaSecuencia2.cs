@@ -15,9 +15,19 @@ public class AterrizajePlanetaSecuencia2 : MonoBehaviour
     private ParticleSystem vfxAterrizaje2;
 
     [SerializeField]
+    private ParticleSystem vfxAterrizaje1Fuego;
+    [SerializeField]
+    private ParticleSystem vfxAterrizaje2Fuego;
+
+    [SerializeField]
     private GameObject humo;
 
     private int cantidadParticulasAQuitarPorIteracion = 7;
+
+    [SerializeField]
+    private string nameSecuencia2;
+    [SerializeField]
+    private string nameSecuencia5;
 
     // al activarse comenzamos animacion
     private void OnEnable()
@@ -27,15 +37,24 @@ public class AterrizajePlanetaSecuencia2 : MonoBehaviour
         //hacemos efecto desaparecer particulas
         StartCoroutine(BajarMaxParticlesCanon1());
         StartCoroutine(BajarMaxParticlesCanon2());
-        //hacemos efecto humo
         
+        //hacemos efecto humo
+
         Invoke("PonerHumo", 2.8f);
         Invoke("QuitarFuncionalidadEscena", 5f);
     }
 
     private void SonidoNaveAterrizando()
     {
-        AudioManagerCirculos.instance.PlaySFXDuracion("Aterrizaje",2f);
+        if(SceneManager.GetActiveScene().name == nameSecuencia2)
+        {
+            AudioManagerCirculos.instance.PlaySFXDuracion("Aterrizaje", 2f);
+        }
+        else if(SceneManager.GetActiveScene().name == nameSecuencia5)
+        {
+
+        }
+        
     }
 
     private void QuitarFuncionalidadEscena()
@@ -46,6 +65,11 @@ public class AterrizajePlanetaSecuencia2 : MonoBehaviour
     private void PonerHumo()
     {
         humo.SetActive(true);
+        if (SceneManager.GetActiveScene().name == nameSecuencia5)
+        {
+            vfxAterrizaje1Fuego.gameObject.SetActive(false);
+            vfxAterrizaje2Fuego.gameObject.SetActive(false);
+        }
     }
 
     // va bajando poco a poco max particles

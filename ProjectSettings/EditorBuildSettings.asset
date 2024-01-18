@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Secuencia5/scenes/5.2_INT_9_ORRES_7.unity
     guid: cf3920640bbc7c44c9dc40824dd691a2
+  - enabled: 1
+    path: Assets/Secuencia5/scenes/5.3aterrizajePlaneta.unity
+    guid: 7051ff91291088f4d978fc711efa3b35
   m_configObjects: {}
