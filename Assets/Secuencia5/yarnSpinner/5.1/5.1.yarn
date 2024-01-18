@@ -63,6 +63,6 @@ Comandante: Dividiré la sección de exploración en tres equipos y aquel que re
 
 // // fade to black, from 0% opacity to 100% opacity, in 2.0 seconds
 <<Fade black 0.0 1.0 2.0>>
-// <<SceneChange 4.2Ingeniera>>
+<<SceneChange 5.2_INT_9_ORRES_7>>
 // THE END.
 ===

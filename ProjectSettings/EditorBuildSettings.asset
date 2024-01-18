@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Secuencia5/scenes/5.1ReunionComandante.unity
     guid: 951cb59ec009e4f4889a85a48a5ee9a5
+  - enabled: 1
+    path: Assets/Secuencia5/scenes/5.2_INT_9_ORRES_7.unity
+    guid: cf3920640bbc7c44c9dc40824dd691a2
   m_configObjects: {}
